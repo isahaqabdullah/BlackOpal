@@ -1,0 +1,45 @@
+import { Link } from 'react-router';
+
+export function CTABand() {
+  return (
+    <section className="py-16 md:py-20">
+      <div className="premium-shell">
+        <div className="premium-panel relative overflow-hidden text-center px-6 py-10 md:px-10 md:py-12">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute left-[8%] top-[20%] h-32 w-32 rounded-full bg-[#c9a24d]/12 blur-3xl" />
+            <div className="absolute right-[6%] bottom-[10%] h-40 w-40 rounded-full bg-[#8c6526]/14 blur-3xl" />
+          </div>
+        <h2
+          className="premium-heading text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.08] tracking-[-0.02em] mb-4 relative z-10"
+          style={{ fontFamily: "'DM Serif Display', serif" }}
+        >
+          Need the right activated carbon for your process?
+        </h2>
+        <p
+          className="premium-copy text-[15px] mb-8 max-w-lg mx-auto relative z-10"
+          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+        >
+          Tell us your application and volume requirements.
+          We respond to all inquiries within one business day.
+        </p>
+        <div className="flex flex-wrap justify-center gap-3 relative z-10">
+          <Link
+            to="/contact"
+            className="premium-primary-btn text-[13px] px-8 py-3 rounded-full"
+            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+          >
+            Request Quote
+          </Link>
+          <Link
+            to="/contact"
+            className="premium-secondary-btn text-[13px] px-8 py-3 rounded-full"
+            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+          >
+            Send Technical Inquiry
+          </Link>
+        </div>
+        </div>
+      </div>
+    </section>
+  );
+}
