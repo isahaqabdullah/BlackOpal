@@ -20,25 +20,25 @@ export function Hero() {
         <div className="premium-split-grid">
           <div>
             <span
-              className="premium-kicker text-[11px] tracking-[0.24em] uppercase mb-5"
+              className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-5"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
               Prop 65 Compliant
             </span>
             <h1
-              className="premium-heading text-[clamp(2.4rem,5vw,4.7rem)] leading-[0.98] tracking-[-0.03em] mb-6 max-w-xl"
+              className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.4rem,5vw,4.7rem)] leading-[0.98] tracking-[-0.03em] mb-6 max-w-xl"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               Coconut Shell Activated Carbon for Water, Air, Gas &amp; Industrial Applications
             </h1>
             <p
-              className="premium-copy text-[15px] md:text-[16px] leading-[1.85] mb-8 max-w-xl"
+              className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] md:text-[16px] leading-[1.85] mb-8 max-w-xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               High-performance activated carbon solutions backed by large-scale
               manufacturing, certified quality, and application-specific expertise.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="premium-reveal premium-reveal-delay-3 flex flex-wrap gap-3">
               <Link
                 to="/contact"
                 className="premium-primary-btn text-[13px] px-7 py-3 rounded-full"
@@ -56,8 +56,12 @@ export function Hero() {
             </div>
 
             <div className="premium-compact-grid mt-9">
-              {proofPoints.map((p) => (
-                <div key={p.text} className="border-l border-[#c9a24d]/14 pl-4 flex items-center gap-3">
+              {proofPoints.map((p, index) => (
+                <div
+                  key={p.text}
+                  className="border-l border-[#c9a24d]/14 pl-4 flex items-center gap-3 premium-reveal"
+                  style={{ animationDelay: `${260 + index * 80}ms` }}
+                >
                   <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center shrink-0">
                     <p.icon size={18} className="text-[#e6cb87]" />
                   </div>
@@ -73,7 +77,7 @@ export function Hero() {
           </div>
 
           <div className="relative w-full max-w-[44rem] xl:justify-self-end">
-            <div className="premium-image-frame">
+            <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1">
               <img
                 src="https://images.unsplash.com/photo-1756729534562-ec0f8bcf252b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhY3RpdmF0ZWQlMjBjYXJib24lMjBncmFudWxlcyUyMGNoYXJjb2FsJTIwY2xvc2UlMjB1cHxlbnwxfHx8fDE3NzU0NzU0ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="Activated carbon granules"

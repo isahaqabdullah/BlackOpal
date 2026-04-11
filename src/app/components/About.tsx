@@ -6,13 +6,13 @@ export function AboutPage() {
     <div>
       <section className="py-12 md:py-16">
         <div className="premium-shell">
-          <span className="premium-kicker text-[11px] tracking-[0.24em] uppercase mb-4"
+          <span className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>About</span>
-          <h1 className="premium-heading text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] mb-6 max-w-3xl"
+          <h1 className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] mb-6 max-w-3xl"
             style={{ fontFamily: "'DM Serif Display', serif" }}>
             Large-scale coconut shell activated carbon manufacturing
           </h1>
-          <p className="premium-copy text-[15px] leading-[1.85] max-w-xl"
+          <p className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.85] max-w-xl"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
             Established in 2010 through a joint venture with experienced carbon manufacturers,
             Black Opal Carbon has built a reputation for consistent product quality and reliable supply.
@@ -23,16 +23,16 @@ export function AboutPage() {
       <section className="py-16 md:py-20">
         <div className="premium-shell">
           <div className="premium-split-grid">
-            <div className="premium-image-frame w-full max-w-[42rem]">
+            <div className="premium-image-frame premium-reveal premium-reveal-delay-1 w-full max-w-[42rem]">
               <img
                 src="https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwbWFudWZhY3R1cmluZyUyMHdhcmVob3VzZSUyMGZhY3RvcnklMjBpbnRlcmlvcnxlbnwxfHx8fDE3NzU0NzU0ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="Manufacturing facility"
                 className="w-full aspect-[5/4] object-cover"
               />
             </div>
-            <div className="space-y-5 premium-copy text-[14px] leading-[1.85]"
+            <div className="space-y-5 premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-              <h2 className="premium-heading text-[clamp(1.6rem,2.8vw,2.3rem)] leading-[1.08] tracking-[-0.02em] mb-4"
+              <h2 className="premium-heading premium-heading-elevated text-[clamp(1.6rem,2.8vw,2.3rem)] leading-[1.08] tracking-[-0.02em] mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}>Our story</h2>
               <p>Black Opal Carbon was founded in 2010 as a joint venture between experienced activated
                 carbon professionals and coconut shell carbon manufacturers in India. The goal was simple:
@@ -52,17 +52,21 @@ export function AboutPage() {
 
       <section className="py-16 md:py-20">
         <div className="premium-shell">
-          <h2 className="premium-heading text-[clamp(1.6rem,2.8vw,2.3rem)] leading-[1.08] tracking-[-0.02em] mb-12"
+          <h2 className="premium-heading premium-heading-elevated premium-reveal text-[clamp(1.6rem,2.8vw,2.3rem)] leading-[1.08] tracking-[-0.02em] mb-12"
             style={{ fontFamily: "'DM Serif Display', serif" }}>Certifications &amp; compliance</h2>
           <div className="premium-auto-grid">
             {[
               { icon: ShieldCheck, title: 'NSF/ANSI 42', desc: 'Certified for drinking water treatment — aesthetic effects including taste, odor, and chlorine reduction.' },
               { icon: Award, title: 'NSF/ANSI 61', desc: 'Certified for drinking water system components — safe for direct contact with potable water.' },
               { icon: FileCheck, title: 'California Prop 65', desc: 'Compliant with California Proposition 65 requirements for chemicals known to cause cancer or reproductive harm.' },
-            ].map((c) => (
-              <div key={c.title} className="premium-panel-soft p-7">
+            ].map((c, index) => (
+              <div
+                key={c.title}
+                className="premium-panel-soft premium-card-animated premium-reveal p-7"
+                style={{ animationDelay: `${120 + index * 90}ms` }}
+              >
                 <c.icon size={22} className="text-[#e6cb87] mb-4" />
-                <h3 className="text-[#f7efdb] text-[15px] mb-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{c.title}</h3>
+                <h3 className="premium-card-heading text-[16px] md:text-[17px] mb-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{c.title}</h3>
                 <p className="premium-copy text-[13px] leading-[1.75]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>{c.desc}</p>
               </div>
             ))}

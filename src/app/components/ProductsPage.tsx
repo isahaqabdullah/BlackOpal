@@ -57,13 +57,13 @@ export function ProductsPage() {
     <div>
       <section className="py-12 md:py-16">
         <div className="premium-shell">
-          <span className="premium-kicker text-[11px] tracking-[0.24em] uppercase mb-4"
+          <span className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>Products</span>
-          <h1 className="premium-heading text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] mb-6 max-w-3xl"
+          <h1 className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] mb-6 max-w-3xl"
             style={{ fontFamily: "'DM Serif Display', serif" }}>
             Application-matched activated carbon grades
           </h1>
-          <p className="premium-copy text-[15px] leading-[1.85] max-w-xl"
+          <p className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.85] max-w-xl"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
             All products manufactured from coconut shell raw material. COA and TDS available
             on request. REACH and RoHS compliant.
@@ -73,9 +73,14 @@ export function ProductsPage() {
 
       <section className="py-12 md:py-16">
         <div className="premium-shell space-y-16">
-          {products.map((p) => (
-            <div key={p.id} id={p.id} className="premium-panel-soft scroll-mt-24 p-7 md:p-8">
-              <h2 className="premium-heading text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.1] mb-3"
+          {products.map((p, index) => (
+            <div
+              key={p.id}
+              id={p.id}
+              className="premium-panel-soft premium-card-animated premium-reveal scroll-mt-24 p-7 md:p-8"
+              style={{ animationDelay: `${120 + index * 90}ms` }}
+            >
+              <h2 className="premium-heading premium-heading-elevated text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.1] mb-3"
                 style={{ fontFamily: "'DM Serif Display', serif" }}>{p.name}</h2>
               <p className="premium-copy text-[14px] leading-[1.8] mb-8 max-w-2xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>{p.desc}</p>

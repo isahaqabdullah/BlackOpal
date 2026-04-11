@@ -15,13 +15,13 @@ export function WhyBlackOpal() {
       <div className="premium-shell">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span
-            className="premium-kicker text-[11px] tracking-[0.24em] uppercase mb-4"
+            className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             Why Black Opal Carbon
           </span>
           <h2
-            className="premium-heading text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.08] tracking-[-0.02em]"
+            className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em]"
             style={{ fontFamily: "'DM Serif Display', serif" }}
           >
             Reliable supply from large-scale coconut shell carbon manufacturing
@@ -29,13 +29,17 @@ export function WhyBlackOpal() {
         </div>
 
         <div className="premium-auto-grid gap-y-8">
-          {reasons.map((r) => (
-            <div key={r.title} className="border-t border-[#c9a24d]/10 pt-6">
+          {reasons.map((r, index) => (
+            <div
+              key={r.title}
+              className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
+              style={{ animationDelay: `${120 + index * 90}ms` }}
+            >
               <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center mb-4">
                 <r.icon size={18} className="text-[#e6cb87]" />
               </div>
               <h3
-                className="text-[#f7efdb] text-[15px] mb-2"
+                className="premium-card-heading text-[16px] md:text-[17px] mb-2 max-w-[18ch]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
               >
                 {r.title}

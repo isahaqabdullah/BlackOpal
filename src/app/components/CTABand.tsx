@@ -10,19 +10,19 @@ export function CTABand() {
             <div className="absolute right-[6%] bottom-[10%] h-40 w-40 rounded-full bg-[#8c6526]/14 blur-3xl" />
           </div>
         <h2
-          className="premium-heading text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.08] tracking-[-0.02em] mb-4 relative z-10"
+          className="premium-heading premium-heading-elevated premium-reveal text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] mb-4 relative z-10"
           style={{ fontFamily: "'DM Serif Display', serif" }}
         >
           Need the right activated carbon for your process?
         </h2>
         <p
-          className="premium-copy text-[15px] mb-8 max-w-lg mx-auto relative z-10"
+          className="premium-copy premium-reveal premium-reveal-delay-1 text-[15px] mb-8 max-w-lg mx-auto relative z-10"
           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
         >
           Tell us your application and volume requirements.
           We respond to all inquiries within one business day.
         </p>
-        <div className="flex flex-wrap justify-center gap-3 relative z-10">
+        <div className="premium-reveal premium-reveal-delay-2 flex flex-wrap justify-center gap-3 relative z-10">
           <Link
             to="/contact"
             className="premium-primary-btn text-[13px] px-8 py-3 rounded-full"

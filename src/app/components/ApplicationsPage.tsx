@@ -57,13 +57,13 @@ export function ApplicationsPage() {
     <div>
       <section className="py-12 md:py-16">
         <div className="premium-shell">
-          <span className="premium-kicker text-[11px] tracking-[0.24em] uppercase mb-4"
+          <span className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>Applications</span>
-          <h1 className="premium-heading text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] mb-6 max-w-3xl"
+          <h1 className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] mb-6 max-w-3xl"
             style={{ fontFamily: "'DM Serif Display', serif" }}>
             Industries and applications we serve
           </h1>
-          <p className="premium-copy text-[15px] leading-[1.85] max-w-xl"
+          <p className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.85] max-w-xl"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
             Application-matched grades for water, gas, and industrial treatment.
             Our technical team can help identify the right product for your process.
@@ -74,13 +74,18 @@ export function ApplicationsPage() {
       <section className="py-12 md:py-16">
         <div className="premium-shell space-y-20">
           {apps.map((a, i) => (
-            <div key={a.id} id={a.id} className="premium-panel-soft premium-split-grid scroll-mt-24 p-6 md:p-7">
+            <div
+              key={a.id}
+              id={a.id}
+              className="premium-panel-soft premium-card-animated premium-reveal premium-split-grid scroll-mt-24 p-6 md:p-7"
+              style={{ animationDelay: `${120 + i * 90}ms` }}
+            >
               <div className={i % 2 === 1 ? 'xl:order-2' : ''}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="premium-icon-wrap w-9 h-9 rounded-full flex items-center justify-center">
                     <a.icon size={16} className="text-[#e6cb87]" />
                   </div>
-                  <h2 className="premium-heading text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.1]"
+                  <h2 className="premium-heading premium-heading-elevated text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.1]"
                     style={{ fontFamily: "'DM Serif Display', serif" }}>{a.name}</h2>
                 </div>
                 <p className="premium-copy text-[14px] leading-[1.85] mb-5"

@@ -16,13 +16,13 @@ export function ApplicationsGrid() {
       <div className="premium-shell">
         <div className="mb-12 md:mb-16">
           <span
-            className="premium-kicker text-[11px] tracking-[0.24em] uppercase mb-4"
+            className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             Applications
           </span>
           <h2
-            className="premium-heading text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.08] tracking-[-0.02em]"
+            className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] max-w-2xl"
             style={{ fontFamily: "'DM Serif Display', serif" }}
           >
             Industries we serve
@@ -30,17 +30,18 @@ export function ApplicationsGrid() {
         </div>
 
         <div className="premium-auto-grid">
-          {applications.map((a) => (
+          {applications.map((a, index) => (
             <Link
               key={a.slug}
               to={`/applications#${a.slug}`}
-              className="premium-panel-soft p-6 transition-colors group hover:border-[#d4ae5b]/20"
+              className="premium-panel-soft premium-card-animated premium-reveal p-6 transition-colors group hover:border-[#d4ae5b]/20"
+              style={{ animationDelay: `${120 + index * 90}ms` }}
             >
               <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center mb-4">
                 <a.icon size={18} className="text-[#e6cb87]" />
               </div>
               <h3
-                className="text-[#f7efdb] text-[15px] mb-1.5"
+                className="premium-card-heading text-[16px] md:text-[17px] mb-2 max-w-[16ch]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
               >
                 {a.name}
@@ -51,7 +52,7 @@ export function ApplicationsGrid() {
               >
                 {a.desc}
               </p>
-              <span className="premium-link inline-flex items-center gap-1 text-[12px] group-hover:gap-2 transition-all"
+              <span className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-3.5 py-2 rounded-[8px]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
                 Learn more <ArrowRight size={12} />
               </span>

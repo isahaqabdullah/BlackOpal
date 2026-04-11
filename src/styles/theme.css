@@ -230,7 +230,7 @@
   .premium-auto-grid {
     display: grid;
     gap: clamp(1.1rem, 2vw, 1.5rem);
-    grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .premium-compact-grid {
@@ -249,11 +249,19 @@
     .premium-shell {
       width: min(100% - 3rem, 108rem);
     }
+
+    .premium-auto-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (min-width: 1280px) {
     .premium-shell {
       width: min(100% - 4.5rem, 110rem);
+    }
+
+    .premium-auto-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
@@ -269,9 +277,67 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
+  .premium-nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .premium-nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.45rem;
+    height: 1px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(201, 162, 77, 0), rgba(242, 215, 139, 0.95), rgba(201, 162, 77, 0));
+    transform: scaleX(0.28);
+    transform-origin: center;
+    opacity: 0;
+    transition:
+      transform 220ms ease,
+      opacity 220ms ease;
+  }
+
+  .premium-nav-link:hover::after,
+  .premium-nav-link[data-active='true']::after {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  .premium-reveal {
+    opacity: 0;
+    animation: premium-fade-up 680ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    will-change: transform, opacity;
+  }
+
+  .premium-reveal-delay-1 {
+    animation-delay: 90ms;
+  }
+
+  .premium-reveal-delay-2 {
+    animation-delay: 180ms;
+  }
+
+  .premium-reveal-delay-3 {
+    animation-delay: 270ms;
+  }
+
   .premium-heading {
     color: #f7efdb;
     text-wrap: balance;
+  }
+
+  .premium-heading-elevated {
+    text-shadow: 0 10px 26px rgba(201, 162, 77, 0.08);
+  }
+
+  .premium-card-heading {
+    color: #fbf3e2;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
   }
 
   .premium-copy {
@@ -302,6 +368,39 @@
     backdrop-filter: blur(8px);
   }
 
+  .premium-card-animated {
+    transition:
+      transform 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease,
+      background 220ms ease;
+  }
+
+  .premium-card-animated:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 18px 34px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+      linear-gradient(135deg, rgba(201, 162, 77, 0.06), transparent 70%);
+  }
+
+  .premium-card-animated .premium-icon-wrap {
+    transition:
+      transform 220ms ease,
+      box-shadow 220ms ease,
+      border-color 220ms ease;
+  }
+
+  .premium-card-animated:hover .premium-icon-wrap {
+    transform: translateY(-1px);
+    border-color: rgba(201, 162, 77, 0.32);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 10px 22px rgba(201, 162, 77, 0.08);
+  }
+
   .premium-image-frame {
     position: relative;
     border-radius: 1.5rem;
@@ -315,9 +414,25 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
+  .premium-image-animated {
+    overflow: hidden;
+  }
+
   .premium-image-frame img {
     border-radius: 1.15rem;
     border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .premium-image-animated img {
+    transform: scale(1.035);
+    transform-origin: center;
+    animation: premium-image-settle 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) 90ms forwards;
+    transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    will-change: transform;
+  }
+
+  .premium-image-animated:hover img {
+    transform: scale(1.055);
   }
 
   .premium-icon-wrap {
@@ -339,12 +454,22 @@
       filter 160ms ease;
   }
 
+  .premium-primary-btn svg,
+  .premium-secondary-btn svg {
+    transition: transform 160ms ease;
+  }
+
   .premium-primary-btn:hover {
     transform: translateY(-1px);
     filter: brightness(1.04);
     box-shadow:
       0 20px 42px rgba(201, 162, 77, 0.28),
       inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  }
+
+  .premium-primary-btn:hover svg,
+  .premium-secondary-btn:hover svg {
+    transform: translateX(2px);
   }
 
   .premium-secondary-btn {
@@ -371,6 +496,96 @@
 
   .premium-link:hover {
     color: #f2d78b;
+  }
+
+  .premium-link-btn {
+    width: fit-content;
+    border: 1px solid rgba(201, 162, 77, 0.22);
+    background: linear-gradient(180deg, rgba(201, 162, 77, 0.12), rgba(201, 162, 77, 0.04));
+    color: #efcf84;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 12px 24px rgba(0, 0, 0, 0.14);
+    transition:
+      transform 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease,
+      background 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .premium-link-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(201, 162, 77, 0.34);
+    background: linear-gradient(180deg, rgba(201, 162, 77, 0.18), rgba(201, 162, 77, 0.07));
+    color: #f7de9f;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 16px 28px rgba(0, 0, 0, 0.18);
+  }
+
+  .premium-link-btn svg {
+    transition: transform 160ms ease;
+  }
+
+  .premium-link-btn:hover svg {
+    transform: translateX(2px);
+  }
+
+  @keyframes premium-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes premium-image-settle {
+    from {
+      transform: scale(1.07);
+    }
+
+    to {
+      transform: scale(1.035);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .premium-reveal {
+      opacity: 1;
+      animation: none;
+    }
+
+    .premium-image-animated img {
+      animation: none;
+      transform: none;
+    }
+
+    .premium-card-animated,
+    .premium-link-btn,
+    .premium-link-btn svg,
+    .premium-nav-link::after,
+    .premium-card-animated .premium-icon-wrap,
+    .premium-primary-btn,
+    .premium-primary-btn svg,
+    .premium-secondary-btn,
+    .premium-secondary-btn svg,
+    .premium-link {
+      transition: none;
+    }
+
+    .premium-card-animated:hover,
+    .premium-card-animated:hover .premium-icon-wrap,
+    .premium-image-animated:hover img,
+    .premium-link-btn:hover,
+    .premium-primary-btn:hover,
+    .premium-secondary-btn:hover {
+      transform: none;
+    }
   }
 
   .premium-input {

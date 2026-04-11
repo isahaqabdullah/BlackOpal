@@ -31,7 +31,8 @@ export function Navigation() {
             <Link
               key={l.path}
               to={l.path}
-              className={`text-[13px] transition-colors ${
+              data-active={location.pathname.startsWith(l.path)}
+              className={`premium-nav-link text-[13px] transition-colors ${
                 location.pathname.startsWith(l.path) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
               }`}
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
@@ -62,7 +63,8 @@ export function Navigation() {
               key={l.path}
               to={l.path}
               onClick={() => setOpen(false)}
-              className="block text-[14px] text-[#c0b08a] hover:text-[#f7efdb] py-1.5"
+              data-active={location.pathname.startsWith(l.path)}
+              className="premium-nav-link block text-[14px] text-[#c0b08a] hover:text-[#f7efdb] py-1.5"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
               {l.label}

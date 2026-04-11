@@ -34,13 +34,13 @@ export function ProductCards() {
       <div className="premium-shell">
         <div className="mb-12 md:mb-16">
           <span
-            className="premium-kicker text-[11px] tracking-[0.24em] uppercase mb-4"
+            className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             Product Categories
           </span>
           <h2
-            className="premium-heading text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.08] tracking-[-0.02em] max-w-xl"
+            className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] max-w-2xl"
             style={{ fontFamily: "'DM Serif Display', serif" }}
           >
             Application-matched grades for every process
@@ -48,13 +48,14 @@ export function ProductCards() {
         </div>
 
         <div className="premium-auto-grid">
-          {products.map((p) => (
+          {products.map((p, index) => (
             <div
               key={p.id}
-              className="premium-panel-soft p-6 md:p-7 transition-colors group hover:border-[#d4ae5b]/20"
+              className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7 transition-colors group hover:border-[#d4ae5b]/20"
+              style={{ animationDelay: `${120 + index * 90}ms` }}
             >
               <h3
-                className="text-[#f7efdb] text-[17px] mb-3"
+                className="premium-card-heading text-[18px] md:text-[19px] mb-3 max-w-[16ch]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
               >
                 {p.name}
@@ -79,7 +80,7 @@ export function ProductCards() {
               </ul>
               <Link
                 to={`/products#${p.id}`}
-                className="premium-link inline-flex items-center gap-1.5 text-[13px] group-hover:gap-2.5 transition-all"
+                className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2 rounded-[8px] transition-all"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 View details <ArrowRight size={14} />
