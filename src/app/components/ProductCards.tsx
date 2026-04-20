@@ -1,32 +1,6 @@
 import { Link } from 'react-router';
 import { ArrowRight } from 'lucide-react';
-
-const products = [
-  {
-    id: 'granular',
-    name: 'Granular Activated Carbon',
-    summary: 'Engineered for high adsorption capacity in fixed-bed and flow-through applications.',
-    uses: ['Municipal water treatment', 'Point-of-use filtration', 'Gold recovery'],
-  },
-  {
-    id: 'powder',
-    name: 'Powder Activated Carbon',
-    summary: 'Fine-grind carbon for rapid contaminant removal in batch and inline dosing systems.',
-    uses: ['Taste & odor control', 'Emergency spill response', 'Wastewater polishing'],
-  },
-  {
-    id: 'impregnated',
-    name: 'Impregnated Activated Carbon',
-    summary: 'Chemically enhanced grades for targeted removal of specific gases and compounds.',
-    uses: ['H₂S removal', 'Mercury capture', 'Acid gas scrubbing'],
-  },
-  {
-    id: 'catalytic',
-    name: 'Catalytic Activated Carbon',
-    summary: 'Optimized surface chemistry for catalytic decomposition of chloramines and H₂S.',
-    uses: ['Chloramine reduction', 'Hydrogen sulfide removal', 'Municipal disinfection byproducts'],
-  },
-];
+import { products } from '../content/siteContent';
 
 export function ProductCards() {
   return (
@@ -50,7 +24,7 @@ export function ProductCards() {
         <div className="premium-auto-grid">
           {products.map((p, index) => (
             <div
-              key={p.id}
+              key={p.slug}
               className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7 transition-colors group hover:border-[#d4ae5b]/20"
               style={{ animationDelay: `${120 + index * 90}ms` }}
             >
@@ -67,7 +41,7 @@ export function ProductCards() {
                 {p.summary}
               </p>
               <ul className="space-y-1.5 mb-6">
-                {p.uses.map((u) => (
+                {p.commonUses.slice(0, 3).map((u) => (
                   <li
                     key={u}
                     className="text-[13px] text-[#d7c7a2] flex items-center gap-2"
@@ -79,7 +53,7 @@ export function ProductCards() {
                 ))}
               </ul>
               <Link
-                to={`/products#${p.id}`}
+                to={`/products/${p.slug}`}
                 className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2 rounded-[8px] transition-all"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

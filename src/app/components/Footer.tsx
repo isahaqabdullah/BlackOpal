@@ -1,32 +1,28 @@
 import { Link } from 'react-router';
 import brandLogo from '../../public/images/BlackOpallogo.png';
+import { applications, companyDetails, products } from '../content/siteContent';
 
 const columns = [
   {
-    title: 'Products',
+    title: 'Explore',
     links: [
-      { label: 'Granular Activated Carbon', to: '/products#granular' },
-      { label: 'Powder Activated Carbon', to: '/products#powder' },
-      { label: 'Impregnated Activated Carbon', to: '/products#impregnated' },
-      { label: 'Catalytic Activated Carbon', to: '/products#catalytic' },
+      { label: 'Home', to: '/' },
+      { label: 'About', to: '/about' },
+      { label: 'Production', to: '/production' },
+      { label: 'Newsroom', to: '/newsroom' },
+      { label: 'Contact', to: '/contact' },
     ],
+  },
+  {
+    title: 'Products',
+    links: products.map((product) => ({ label: product.name, to: `/products/${product.slug}` })),
   },
   {
     title: 'Applications',
-    links: [
-      { label: 'Water Treatment', to: '/applications#water-treatment' },
-      { label: 'Gold Recovery', to: '/applications#gold-recovery' },
-      { label: 'Air & Gas', to: '/applications#air-gas' },
-      { label: 'Oil & Gas', to: '/applications#oil-gas' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About', to: '/about' },
-      { label: 'Newsroom', to: '/about' },
-      { label: 'Contact', to: '/contact' },
-    ],
+    links: applications.map((application) => ({
+      label: application.name,
+      to: `/applications/${application.slug}`,
+    })),
   },
 ];
 
@@ -38,20 +34,24 @@ export function Footer() {
           <div className="grid gap-10 mb-14 xl:grid-cols-[minmax(18rem,1.6fr)_repeat(3,minmax(10rem,1fr))] md:grid-cols-2">
           {/* Brand + contact */}
             <div className="max-w-[28rem]">
-              <div className="flex items-center mb-5">
+              <Link to="/" className="flex items-center mb-5 w-fit">
                 <img
                   src={brandLogo}
                   alt="Black Opal Carbon logo"
                   className="h-12 w-auto object-contain shrink-0 drop-shadow-[0_10px_28px_rgba(201,162,77,0.14)]"
                 />
-              </div>
+              </Link>
               <div className="space-y-2.5 text-[13px] text-[#b8ab8b]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-                <p>Pittsburgh, PA — U.S. Headquarters</p>
-                <p>Phone: +1 (412) 555-0180</p>
-                <p>Email: info@blackopalcarbon.com</p>
+                <p>
+                  {companyDetails.headquarters.line1}
+                  <br />
+                  {companyDetails.headquarters.line2}
+                </p>
+                <p>Phone: {companyDetails.phoneDisplay}</p>
+                <p>Email: {companyDetails.infoEmail}</p>
               </div>
               <div className="mt-4 text-[12px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-                <p>Warehouses: Pittsburgh, PA · Houston, TX · Los Angeles, CA · Atlanta, GA</p>
+                <p>Warehouses listed on the legacy site: Riverview, FL · Randolph, NJ · Circleville, OH</p>
               </div>
             </div>
 
@@ -88,8 +88,8 @@ export function Footer() {
               &copy; {new Date().getFullYear()} Black Opal Carbon. All rights reserved.
             </span>
             <div className="flex gap-6 text-[12px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-              <a href="#" className="hover:text-[#f2d78b] transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-[#f2d78b] transition-colors">Terms</a>
+              <Link to="/" className="hover:text-[#f2d78b] transition-colors">Back to Home</Link>
+              <Link to="/contact" className="hover:text-[#f2d78b] transition-colors">Contact</Link>
             </div>
           </div>
         </div>

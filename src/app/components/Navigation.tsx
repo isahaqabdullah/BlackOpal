@@ -4,15 +4,22 @@ import { Menu, X } from 'lucide-react';
 import brandLogo from '../../public/images/BlackOpallogo.png';
 
 const links = [
+  { label: 'Home', path: '/' },
   { label: 'Products', path: '/products' },
   { label: 'Applications', path: '/applications' },
+  { label: 'Production', path: '/production' },
   { label: 'About', path: '/about' },
+  { label: 'Newsroom', path: '/newsroom' },
   { label: 'Contact', path: '/contact' },
 ];
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const isActive = (path: string) =>
+    path === '/'
+      ? location.pathname === '/'
+      : location.pathname === path || location.pathname.startsWith(`${path}/`);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-[#c9a24d]/15 bg-[#050505]/85 backdrop-blur-xl">
@@ -26,14 +33,14 @@ export function Navigation() {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-5 xl:gap-6">
           {links.map((l) => (
             <Link
               key={l.path}
               to={l.path}
-              data-active={location.pathname.startsWith(l.path)}
+              data-active={isActive(l.path)}
               className={`premium-nav-link text-[13px] transition-colors ${
-                location.pathname.startsWith(l.path) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
+                isActive(l.path) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
               }`}
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
@@ -63,8 +70,10 @@ export function Navigation() {
               key={l.path}
               to={l.path}
               onClick={() => setOpen(false)}
-              data-active={location.pathname.startsWith(l.path)}
-              className="premium-nav-link block text-[14px] text-[#c0b08a] hover:text-[#f7efdb] py-1.5"
+              data-active={isActive(l.path)}
+              className={`premium-nav-link block text-[14px] py-1.5 ${
+                isActive(l.path) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
+              }`}
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
               {l.label}

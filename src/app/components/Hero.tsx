@@ -12,6 +12,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-[#c9a24d]/10">
       <div className="pointer-events-none absolute inset-0">
+        <div className="premium-flow-lines absolute inset-x-[-10%] top-[10%] bottom-[-12%]" />
         <div className="absolute left-[10%] top-[8%] h-48 w-48 rounded-full bg-[#c9a24d]/10 blur-3xl" />
         <div className="absolute right-[5%] top-[18%] h-64 w-64 rounded-full bg-[#8b6725]/14 blur-3xl" />
       </div>

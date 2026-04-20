@@ -5,6 +5,7 @@ import { ApplicationsGrid } from './ApplicationsGrid';
 import { WhyBlackOpal } from './WhyBlackOpal';
 import { FeaturedProduct } from './FeaturedProduct';
 import { CompanySection } from './CompanySection';
+import { NewsroomPreview } from './NewsroomPreview';
 import { CTABand } from './CTABand';
 
 export function HomePage() {
@@ -17,6 +18,7 @@ export function HomePage() {
       <WhyBlackOpal />
       <FeaturedProduct />
       <CompanySection />
+      <NewsroomPreview />
       <CTABand />
     </>
   );

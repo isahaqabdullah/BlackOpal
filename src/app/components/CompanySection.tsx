@@ -1,3 +1,6 @@
+import { Link } from 'react-router';
+import { companyDetails, siteMetrics } from '../content/siteContent';
+
 export function CompanySection() {
   return (
     <section className="py-16 md:py-20">
@@ -28,25 +31,16 @@ export function CompanySection() {
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               <p>
-                Established in 2010 through a joint venture with experienced
-                activated carbon manufacturers, Black Opal Carbon has grown into
-                a trusted supplier for industrial and municipal buyers across
-                North America.
+                Black Opal says the business was established in 2010 as a joint venture between a major coconut shell
+                activated carbon manufacturer in India and experienced entrepreneurs from the activated carbon industry.
               </p>
               <p>
-                Our manufacturing facilities in India produce coconut
-                shell activated carbon to exacting specifications. Our U.S.
-                headquarters in Pittsburgh manages sales, logistics, and
-                technical support — with warehouse locations positioned to
-                minimize transit times for customers nationwide.
+                The Pittsburgh headquarters at {companyDetails.headquarters.line1}, {companyDetails.headquarters.line2}
+                supports the North American market while production remains tied to large-scale manufacturing in India.
               </p>
             </div>
-            <div className="premium-compact-grid premium-reveal premium-reveal-delay-3 border-t border-[#c9a24d]/10 pt-6">
-              {[
-                { value: '2010', label: 'Established' },
-                { value: '2', label: 'Production centers' },
-                { value: '4', label: 'U.S. warehouses' },
-              ].map((s, index) => (
+            <div className="premium-compact-grid premium-reveal premium-reveal-delay-3 border-t border-[#c9a24d]/10 pt-6 mb-7">
+              {siteMetrics.map((s, index) => (
                 <div key={s.label} className={index === 0 ? '' : 'xl:border-l xl:border-[#c9a24d]/10 xl:pl-4'}>
                   <span
                     className="text-[#e6cb87] text-[clamp(1.3rem,2vw,1.8rem)] block mb-0.5"
@@ -62,6 +56,22 @@ export function CompanySection() {
                   </span>
                 </div>
               ))}
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                to="/about"
+                className="premium-primary-btn text-[13px] px-6 py-2.5 rounded-full"
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+              >
+                About Black Opal
+              </Link>
+              <Link
+                to="/production"
+                className="premium-secondary-btn text-[13px] px-6 py-2.5 rounded-full"
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+              >
+                View production
+              </Link>
             </div>
           </div>
         </div>

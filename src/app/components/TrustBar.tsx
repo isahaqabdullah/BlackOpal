@@ -1,9 +1,10 @@
-import { Award, Calendar, Warehouse, Globe } from 'lucide-react';
+import { Award, Calendar, Factory, Warehouse, Globe } from 'lucide-react';
 
 const items = [
   { icon: Award, label: 'Certifications', value: 'NSF 42 · NSF 61 · Prop 65' },
   { icon: Calendar, label: 'Established', value: 'Since 2010' },
-  { icon: Warehouse, label: 'Logistics', value: '4 U.S. Warehouses' },
+  { icon: Factory, label: 'Production', value: '2 Production Centers' },
+  { icon: Warehouse, label: 'Logistics', value: '4 Warehouse Locations' },
   { icon: Globe, label: 'Capacity', value: '50 Million lbs/year' },
 ];
 

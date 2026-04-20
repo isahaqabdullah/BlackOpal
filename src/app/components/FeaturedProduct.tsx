@@ -1,7 +1,10 @@
 import { Link } from 'react-router';
 import { Zap, ArrowRight } from 'lucide-react';
+import { productMap } from '../content/siteContent';
 
 export function FeaturedProduct() {
+  const catalytic = productMap.catalytic;
+
   return (
     <section className="py-16 md:py-20">
       <div className="premium-shell">
@@ -26,19 +29,10 @@ export function FeaturedProduct() {
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.85] mb-6 max-w-lg"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              Our catalytic activated carbon is specifically designed for the
-              decomposition of chloramines in municipal water systems. Unlike
-              standard activated carbon that relies on adsorption alone, our
-              catalytic grades break chloramines down through surface-catalyzed
-              reactions — delivering longer bed life and lower operating cost.
+              {catalytic.intro}
             </p>
             <ul className="space-y-2.5 mb-8 premium-reveal premium-reveal-delay-3">
-              {[
-                'Higher catalytic activity than standard GAC',
-                'Proven performance in point-of-entry and municipal systems',
-                'NSF 42 and NSF 61 certified for drinking water contact',
-                'Optimized pore structure for extended service life',
-              ].map((item) => (
+              {catalytic.highlights.map((item) => (
                 <li
                   key={item}
                   className="flex items-start gap-2.5 text-[13px] text-[#d7c7a2]"
@@ -50,11 +44,11 @@ export function FeaturedProduct() {
               ))}
             </ul>
             <Link
-              to="/products#catalytic"
+              to="/products/catalytic"
               className="premium-primary-btn premium-reveal premium-reveal-delay-3 inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Explore Catalytic Carbon <ArrowRight size={14} />
+              Explore CATCARB <ArrowRight size={14} />
             </Link>
           </div>
 

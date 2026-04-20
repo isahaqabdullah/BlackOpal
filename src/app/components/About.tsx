@@ -1,93 +1,177 @@
+import { Building2, Factory, RefreshCcw, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router';
-import { ShieldCheck, Award, FileCheck } from 'lucide-react';
+import { companyDetails, newsroomMap, siteMetrics } from '../content/siteContent';
+import { PageIntro } from './PageIntro';
+
+const aboutCards = [
+  {
+    icon: Factory,
+    title: 'Joint venture roots',
+    desc:
+      'Black Opal says the group was established in 2010 as a joint venture between one of the largest privately owned coconut shell activated carbon manufacturers in India and experienced activated carbon entrepreneurs.',
+  },
+  {
+    icon: Building2,
+    title: 'Pittsburgh commercial base',
+    desc:
+      'The live site lists the marketing headquarters at 651 Holiday Dr, STE 400, Pittsburgh, PA 15220, with U.S. sales and support routed through that office.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Quality and reliability',
+    desc:
+      'Across the site, Black Opal consistently ties its reputation to quality, innovation, service, reliability, and company-owned manufacturing rather than third-party trading.',
+  },
+  {
+    icon: RefreshCcw,
+    title: 'Brand transition',
+    desc:
+      'The newsroom explains how INDOCARB AC transitioned to Black Opal Carbons without changing products, facilities, pricing, or the support team customers already worked with.',
+  },
+];
 
 export function AboutPage() {
+  const pressRelease = newsroomMap['name-change-press-release'];
+
   return (
     <div>
-      <section className="py-12 md:py-16">
-        <div className="premium-shell">
-          <span className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
-            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>About</span>
-          <h1 className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] mb-6 max-w-3xl"
-            style={{ fontFamily: "'DM Serif Display', serif" }}>
-            Large-scale coconut shell activated carbon manufacturing
-          </h1>
-          <p className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.85] max-w-xl"
-            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-            Established in 2010 through a joint venture with experienced carbon manufacturers,
-            Black Opal Carbon has built a reputation for consistent product quality and reliable supply.
-          </p>
-        </div>
-      </section>
+      <PageIntro
+        label="About"
+        title="Black Opal Carbons, formerly INDOCARB AC"
+        description="This page combines the original site’s company story, manufacturing credibility, and name-change context into a clearer company overview."
+        breadcrumbs={[{ label: 'About' }]}
+      />
 
-      <section className="py-16 md:py-20">
+      <section className="pb-12 md:pb-16">
         <div className="premium-shell">
-          <div className="premium-split-grid">
-            <div className="premium-image-frame premium-reveal premium-reveal-delay-1 w-full max-w-[42rem]">
+          <div className="premium-panel premium-split-grid p-7 md:p-9">
+            <div className="premium-image-frame premium-image-animated w-full max-w-[42rem]">
               <img
                 src="https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwbWFudWZhY3R1cmluZyUyMHdhcmVob3VzZSUyMGZhY3RvcnklMjBpbnRlcmlvcnxlbnwxfHx8fDE3NzU0NzU0ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Manufacturing facility"
+                alt="Black Opal manufacturing and warehousing"
                 className="w-full aspect-[5/4] object-cover"
               />
             </div>
-            <div className="space-y-5 premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-              <h2 className="premium-heading premium-heading-elevated text-[clamp(1.6rem,2.8vw,2.3rem)] leading-[1.08] tracking-[-0.02em] mb-4"
-                style={{ fontFamily: "'DM Serif Display', serif" }}>Our story</h2>
-              <p>Black Opal Carbon was founded in 2010 as a joint venture between experienced activated
-                carbon professionals and coconut shell carbon manufacturers in India. The goal was simple:
-                bring high-quality, consistent coconut shell activated carbon to the North American market
-                at competitive pricing.</p>
-              <p>Today, we operate two production centers with a combined annual capacity of 50 million
-                pounds. Our U.S. headquarters in Pittsburgh manages all sales, technical support, and
-                logistics coordination, with four strategically located warehouse facilities ensuring
-                rapid delivery nationwide.</p>
-              <p>Our customers include municipal water utilities, gold mining operations, oil and gas
-                companies, and industrial manufacturers who depend on consistent quality and reliable
-                supply for their activated carbon needs.</p>
+            <div>
+              <h2
+                className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.35rem)] leading-[1.06] mb-5"
+                style={{ fontFamily: "'DM Serif Display', serif" }}
+              >
+                Reliability, consistency, and service since 2010
+              </h2>
+              <div
+                className="space-y-4 premium-copy text-[14px] leading-[1.85] mb-8"
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+              >
+                <p>
+                  The legacy site says the group was established in 2010 with over 50 years of combined industry
+                  experience behind it. That origin story remains central to the Black Opal brand positioning.
+                </p>
+                <p>
+                  Black Opal frames its company-owned manufacturing facilities in India as the foundation for higher
+                  quality standards, consistency, and dependable supply into North America.
+                </p>
+                <p>
+                  The Pittsburgh headquarters remains the commercial point of contact for sales, inquiries, and support:
+                  {` ${companyDetails.headquarters.line1}, ${companyDetails.headquarters.line2}.`}
+                </p>
+              </div>
+
+              <div className="premium-compact-grid border-t border-[#c9a24d]/10 pt-6">
+                {siteMetrics.map((metric) => (
+                  <div key={metric.label}>
+                    <span
+                      className="text-[#e6cb87] text-[clamp(1.25rem,2vw,1.8rem)] block mb-1"
+                      style={{ fontFamily: "'DM Serif Display', serif" }}
+                    >
+                      {metric.value}
+                    </span>
+                    <span
+                      className="text-[#8f835f] text-[11px] tracking-[0.12em] uppercase"
+                      style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                    >
+                      {metric.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-20">
+      <section className="py-12 md:py-16">
         <div className="premium-shell">
-          <h2 className="premium-heading premium-heading-elevated premium-reveal text-[clamp(1.6rem,2.8vw,2.3rem)] leading-[1.08] tracking-[-0.02em] mb-12"
-            style={{ fontFamily: "'DM Serif Display', serif" }}>Certifications &amp; compliance</h2>
           <div className="premium-auto-grid">
-            {[
-              { icon: ShieldCheck, title: 'NSF/ANSI 42', desc: 'Certified for drinking water treatment — aesthetic effects including taste, odor, and chlorine reduction.' },
-              { icon: Award, title: 'NSF/ANSI 61', desc: 'Certified for drinking water system components — safe for direct contact with potable water.' },
-              { icon: FileCheck, title: 'California Prop 65', desc: 'Compliant with California Proposition 65 requirements for chemicals known to cause cancer or reproductive harm.' },
-            ].map((c, index) => (
+            {aboutCards.map((card, index) => (
               <div
-                key={c.title}
-                className="premium-panel-soft premium-card-animated premium-reveal p-7"
+                key={card.title}
+                className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
                 style={{ animationDelay: `${120 + index * 90}ms` }}
               >
-                <c.icon size={22} className="text-[#e6cb87] mb-4" />
-                <h3 className="premium-card-heading text-[16px] md:text-[17px] mb-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{c.title}</h3>
-                <p className="premium-copy text-[13px] leading-[1.75]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>{c.desc}</p>
+                <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center mb-4">
+                  <card.icon size={18} className="text-[#e6cb87]" />
+                </div>
+                <h3
+                  className="premium-card-heading text-[16px] md:text-[17px] mb-2"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                >
+                  {card.title}
+                </h3>
+                <p
+                  className="premium-copy text-[13px] leading-[1.75]"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                >
+                  {card.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
-        <div className="premium-shell">
-          <div className="premium-panel text-center px-6 py-8">
-            <p className="premium-copy text-[15px] mb-5" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-            Questions about our manufacturing or certifications?
-            </p>
-            <Link to="/contact"
-              className="premium-primary-btn inline-block text-[13px] px-8 py-3 rounded-full"
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
-              Contact Us
-            </Link>
+      {pressRelease ? (
+        <section className="py-12 md:py-16">
+          <div className="premium-shell">
+            <div className="premium-panel-soft p-6 md:p-7">
+              <span
+                className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+              >
+                Brand update
+              </span>
+              <h2
+                className="premium-heading text-[1.6rem] mb-3"
+                style={{ fontFamily: "'DM Serif Display', serif" }}
+              >
+                {pressRelease.title}
+              </h2>
+              <p
+                className="premium-copy text-[14px] leading-[1.8] mb-5 max-w-3xl"
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+              >
+                {pressRelease.summary}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to="/newsroom/name-change-press-release"
+                  className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                >
+                  Read the release
+                </Link>
+                <Link
+                  to="/production"
+                  className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                >
+                  View production page
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
     </div>
   );
 }
