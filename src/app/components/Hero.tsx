@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { ShieldCheck, Factory, MapPin, Scale } from 'lucide-react';
+import axionVideo from '../../public/images/axionvideo1.mp4';
 
 const proofPoints = [
   { icon: ShieldCheck, text: 'NSF 42 / NSF 61 Certified' },
@@ -77,13 +78,25 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative w-full max-w-[44rem] xl:justify-self-end">
+          <div className="relative w-full max-w-[48rem] xl:justify-self-end">
+            <div className="pointer-events-none absolute inset-x-[12%] bottom-[-7%] h-24 rounded-full bg-[#c9a24d]/12 blur-3xl" />
             <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1">
-              <img
-                src="https://images.unsplash.com/photo-1756729534562-ec0f8bcf252b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhY3RpdmF0ZWQlMjBjYXJib24lMjBncmFudWxlcyUyMGNoYXJjb2FsJTIwY2xvc2UlMjB1cHxlbnwxfHx8fDE3NzU0NzU0ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Activated carbon granules"
-                className="w-full aspect-[4/3] object-cover"
-              />
+              <div className="relative overflow-hidden rounded-[1.15rem]">
+                <video
+                  src={axionVideo}
+                  className="block w-full aspect-video object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Axion production video"
+                >
+                  Your browser does not support the video tag.
+                </video>
+
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(255,255,255,0.06),transparent_34%),linear-gradient(180deg,rgba(5,5,5,0.02),rgba(5,5,5,0.22))]" />
+              </div>
             </div>
           </div>
         </div>
