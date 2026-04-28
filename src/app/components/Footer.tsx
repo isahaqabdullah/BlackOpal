@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import brandLogo from '../../public/images/BlackOpallogo.png';
 import { applications, companyDetails, products } from '../content/siteContent';
+import { siteConfig } from '../config/siteConfig';
 
 const columns = [
   {
@@ -37,7 +38,7 @@ export function Footer() {
               <Link to="/" className="flex items-center mb-5 w-fit">
                 <img
                   src={brandLogo}
-                  alt="Black Opal Carbon logo"
+                  alt="Black Opal Carbons logo"
                   className="h-12 w-auto object-contain shrink-0 drop-shadow-[0_10px_28px_rgba(201,162,77,0.14)]"
                 />
               </Link>
@@ -50,9 +51,11 @@ export function Footer() {
                 <p>Phone: {companyDetails.phoneDisplay}</p>
                 <p>Email: {companyDetails.infoEmail}</p>
               </div>
-              <div className="mt-4 text-[12px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-                <p>Warehouses listed on the legacy site: Riverview, FL · Randolph, NJ · Circleville, OH</p>
-              </div>
+              {siteConfig.warehouseSummary ? (
+                <div className="mt-4 text-[12px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
+                  <p>Warehouse network: {siteConfig.warehouseSummary}</p>
+                </div>
+              ) : null}
             </div>
 
             {/* Link columns */}
@@ -85,7 +88,7 @@ export function Footer() {
 
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
             <span className="text-[#8f835f] text-[12px]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-              &copy; {new Date().getFullYear()} Black Opal Carbon. All rights reserved.
+              &copy; {new Date().getFullYear()} {siteConfig.siteName}. All rights reserved.
             </span>
             <div className="flex gap-6 text-[12px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
               <Link to="/" className="hover:text-[#f2d78b] transition-colors">Back to Home</Link>

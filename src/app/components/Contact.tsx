@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { companyDetails } from '../content/siteContent';
+import { siteConfig } from '../config/siteConfig';
 import { PageIntro } from './PageIntro';
 
 export function ContactPage() {
@@ -17,8 +18,8 @@ export function ContactPage() {
     <div>
       <PageIntro
         label="Contact"
-        title="Request a quote, enquiry, or technical recommendation"
-        description="The original site exposed both a contact section and a dedicated enquiry page. This rebuild combines them into a single route with the live address, phone numbers, and mailbox information."
+        title={siteConfig.contactTitle}
+        description={siteConfig.contactDescription}
         breadcrumbs={[{ label: 'Contact' }]}
       />
 
@@ -30,18 +31,27 @@ export function ContactPage() {
                 {[
                   {
                     icon: MapPin,
-                    label: 'Marketing headquarters',
+                    label: companyDetails.headquartersLabel,
                     value: `${companyDetails.headquarters.name}\n${companyDetails.headquarters.line1}\n${companyDetails.headquarters.line2}`,
                   },
-                  {
-                    icon: Phone,
-                    label: 'Phone',
-                    value: `${companyDetails.phoneDisplay}\nFax: ${companyDetails.fax}`,
-                  },
+                  companyDetails.fax
+                    ? {
+                        icon: Phone,
+                        label: 'Phone',
+                        value: `${companyDetails.phoneDisplay}\nFax: ${companyDetails.fax}`,
+                      }
+                    : {
+                        icon: Phone,
+                        label: 'Phone',
+                        value: companyDetails.phoneDisplay,
+                      },
                   {
                     icon: Mail,
                     label: 'Email',
-                    value: `${companyDetails.infoEmail}\n${companyDetails.salesEmail}`,
+                    value:
+                      companyDetails.infoEmail === companyDetails.salesEmail
+                        ? companyDetails.infoEmail
+                        : `${companyDetails.infoEmail}\n${companyDetails.salesEmail}`,
                   },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4">
@@ -69,35 +79,99 @@ export function ContactPage() {
                 ))}
               </div>
 
-              <div className="premium-panel-soft p-6 md:p-7">
-                <span
-                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                >
-                  Warehouse locations listed on the legacy site
-                </span>
-                <div className="space-y-5">
-                  {companyDetails.warehouses.map((warehouse) => (
-                    <div key={warehouse.name}>
-                      <h3
-                        className="premium-card-heading text-[15px] mb-1"
-                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
-                      >
-                        {warehouse.name}
-                      </h3>
-                      {warehouse.address.map((line) => (
-                        <p
-                          key={line}
-                          className="premium-copy text-[13px] leading-[1.7]"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+              {companyDetails.additionalOffices.length ? (
+                <div className="premium-panel-soft p-6 md:p-7">
+                  <span
+                    className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                  >
+                    {siteConfig.additionalOfficesTitle}
+                  </span>
+                  <div className="space-y-5">
+                    {companyDetails.additionalOffices.map((office) => (
+                      <div key={`${office.label}-${office.name}`}>
+                        <span
+                          className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                         >
-                          {line}
-                        </p>
-                      ))}
-                    </div>
-                  ))}
+                          {office.label}
+                        </span>
+                        <h3
+                          className="premium-card-heading text-[15px] mb-1"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                        >
+                          {office.name}
+                        </h3>
+                        {office.address.map((line) => (
+                          <p
+                            key={line}
+                            className="premium-copy text-[13px] leading-[1.7]"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                          >
+                            {line}
+                          </p>
+                        ))}
+                        {office.phone ? (
+                          <p
+                            className="premium-copy text-[13px] leading-[1.7] mt-2"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                          >
+                            Tel: {office.phone}
+                          </p>
+                        ) : null}
+                        {office.email ? (
+                          <p
+                            className="premium-copy text-[13px] leading-[1.7]"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                          >
+                            Email: {office.email}
+                          </p>
+                        ) : null}
+                        {office.note ? (
+                          <p
+                            className="premium-copy text-[12px] leading-[1.7] mt-2 text-[#8f835f]"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                          >
+                            {office.note}
+                          </p>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              ) : null}
+
+              {companyDetails.warehouses.length ? (
+                <div className="premium-panel-soft p-6 md:p-7">
+                  <span
+                    className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                  >
+                    Warehouse locations
+                  </span>
+                  <div className="space-y-5">
+                    {companyDetails.warehouses.map((warehouse) => (
+                      <div key={warehouse.name}>
+                        <h3
+                          className="premium-card-heading text-[15px] mb-1"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                        >
+                          {warehouse.name}
+                        </h3>
+                        {warehouse.address.map((line) => (
+                          <p
+                            key={line}
+                            className="premium-copy text-[13px] leading-[1.7]"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                          >
+                            {line}
+                          </p>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
 
             <div>
@@ -113,7 +187,8 @@ export function ContactPage() {
                     className="premium-copy text-[14px]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
-                    Your request has been staged in the rebuild UI. Use the listed phone or email details for a live Black Opal response.
+                    Thank you for your enquiry. For urgent requirements, use the listed phone or email details for the
+                    fastest Black Opal response.
                   </p>
                 </div>
               ) : (

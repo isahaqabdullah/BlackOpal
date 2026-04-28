@@ -1,3 +1,6 @@
+import { companyDetails, siteConfig } from '../config/siteConfig';
+export { companyDetails } from '../config/siteConfig';
+
 export type SiteMetric = {
   value: string;
   label: string;
@@ -46,37 +49,11 @@ export type NewsroomItem = {
 export const siteMetrics: SiteMetric[] = [
   { value: '2010', label: 'Year established' },
   { value: '2', label: 'Production centers' },
-  { value: '4', label: 'Warehouse locations' },
+  ...(siteConfig.warehouseCount === '0'
+    ? []
+    : [{ value: siteConfig.warehouseCount, label: 'Warehouse locations' }]),
   { value: '50 million lbs', label: 'Annual capacity' },
 ];
-
-export const companyDetails = {
-  legacyName: 'INDOCARB AC',
-  headquarters: {
-    name: 'Black Opal Carbons',
-    line1: '651 Holiday Dr, STE 400',
-    line2: 'Pittsburgh, PA 15220, USA',
-  },
-  phoneDisplay: '+1 (412) 928-4970',
-  phoneHref: 'tel:+14129284970',
-  fax: '+1 (412) 365-5634',
-  infoEmail: 'info@blackopalcarbons.com',
-  salesEmail: 'sales@blackopalcarbons.com',
-  warehouses: [
-    {
-      name: 'Florida',
-      address: ['6333 Pelican Creek Circle', 'Riverview, FL 33578'],
-    },
-    {
-      name: 'New Jersey',
-      address: ['1578 Sussex Turnpike', 'Randolph, NJ 07869'],
-    },
-    {
-      name: 'Ohio',
-      address: ['Scippo Creek Rd', 'Circleville, OH 43113'],
-    },
-  ],
-};
 
 export const products: ProductEntry[] = [
   {
@@ -90,7 +67,7 @@ export const products: ProductEntry[] = [
     highlights: [
       'Manufactured from selected grades of coconut shell under stringent controls for hardness, surface area, and attrition resistance.',
       'Available in different mesh sizes, adsorption levels, and pH-adjusted or washed variants tailored to customer requirements.',
-      'Water-treatment grades are manufactured in ISO accredited facilities and positioned around NSF 42 and NSF 61 applications.',
+      'Water-treatment grades are manufactured in ISO accredited facilities and support NSF 42 and NSF 61 applications.',
     ],
     commonUses: [
       'Water treatment',
@@ -102,7 +79,7 @@ export const products: ProductEntry[] = [
       {
         title: 'Where it is used',
         body:
-          'Gold recovery, water treatment, solvent recovery, condensate polishing, and hydrogen sulfide removal are core granular carbon applications on the legacy Black Opal site.',
+          'Gold recovery, water treatment, solvent recovery, condensate polishing, and hydrogen sulfide removal are core applications for Black Opal granular activated carbon.',
       },
       {
         title: 'How it is built',
@@ -132,7 +109,7 @@ export const products: ProductEntry[] = [
     intro:
       'Black Opal positions PAC as the fast-response format for drinking water and batch treatment programs where rapid contact and flexible dosing matter more than fixed-bed operation.',
     highlights: [
-      'Presented on the legacy site as ANSI/NSF Standard 42 and 61 classified for drinking-water and food-grade applications.',
+      'Positioned for drinking-water and food-grade applications aligned with ANSI/NSF Standard 42 and 61 requirements.',
       'Used in water treatment, wastewater treatment, odor removal, and brewery or winery applications.',
       'Commonly applied for chloramines, pesticides, herbicides, groundwater remediation, and DBP reduction.',
     ],
@@ -151,7 +128,7 @@ export const products: ProductEntry[] = [
       {
         title: 'Contaminant profile',
         body:
-          'The legacy site highlights chloramines, pesticides, herbicides, and disinfection by-product reduction as common PAC use cases in drinking-water and remediation environments.',
+          'Common PAC use cases include chloramines, pesticides, herbicides, and disinfection by-product reduction in drinking-water and remediation environments.',
       },
       {
         title: 'Why it matters',
@@ -174,11 +151,11 @@ export const products: ProductEntry[] = [
     summary:
       'Chemically enhanced coconut shell carbon for targeted gas-stream, bacteriostatic, and specialty purification duties.',
     intro:
-      'Impregnation is presented as a way to extend standard activated carbon performance so certain contaminants can be removed more effectively and more economically.',
+      'Impregnation extends standard activated carbon performance so certain contaminants can be removed more effectively and more economically.',
     highlights: [
       'Silver-impregnated carbon is positioned for bacteriostatic protection in drinking-water filters and water systems.',
       'Sulfur-impregnated carbon is highlighted for mercury removal in natural gas, air, hydrogen, and other gas streams.',
-      'The site also references targeted impregnation for acid gases, ammonia, and amines.',
+      'Targeted impregnation supports removal of acid gases, ammonia, amines, and other specialty contaminants.',
     ],
     commonUses: [
       'Gas purification',
@@ -195,7 +172,7 @@ export const products: ProductEntry[] = [
       {
         title: 'Water and gas examples',
         body:
-          'On the legacy site, silver is tied to point-of-use water filters while sulfur is tied to mercury capture in gas service. The broader positioning spans gas purification and protective equipment.',
+          'Silver-impregnated carbon supports point-of-use water filters, while sulfur-impregnated carbon supports mercury capture in gas service. The broader positioning spans gas purification and protective equipment.',
       },
       {
         title: 'Common targets',
@@ -219,11 +196,11 @@ export const products: ProductEntry[] = [
     summary:
       'Surface-modified coconut shell carbon for chloramine, hydrogen sulfide, and difficult water-treatment contaminants.',
     intro:
-      'Catalytic carbon receives the strongest emphasis across the legacy site, especially for chloramine reduction in U.S. drinking-water systems moving away from free chlorine.',
+      `Catalytic carbon is emphasized for chloramine reduction in ${siteConfig.utilityMarketLabel} drinking-water systems moving away from free chlorine.`,
     highlights: [
       'Positioned for chloramines, hydrogen sulfides, hydrogen peroxides, THMs, TCE, PCE, detergents, pesticides, phenols, and taste and odor compounds.',
       'Presented as a surface-modified carbon that enhances the media’s natural ability to chemically change contaminants.',
-      'CATCARB is described as especially developed for water-treatment applications requiring rapid chloramine and H2S decomposition.',
+      'CATCARB is engineered for water-treatment applications requiring rapid chloramine and H2S decomposition.',
     ],
     commonUses: [
       'Chloramine reduction',
@@ -236,20 +213,20 @@ export const products: ProductEntry[] = [
       {
         title: 'Why utilities use it',
         body:
-          'The site explains that many U.S. water utilities have transitioned to chloramine as a more stable disinfectant in response to EPA pressure around disinfection by-products.',
+          `Many ${siteConfig.utilityMarketLabel} water utilities have transitioned to chloramine as a more stable disinfectant in response to regulatory pressure around disinfection by-products.`,
       },
       {
         title: 'Why standard carbon is not enough',
         body:
-          'Standard activated carbon filters sized for chlorine removal are described as having limited capacity for chloramine reduction at normal flow rates, which is why catalytic grades are emphasized.',
+          'Standard activated carbon filters sized for chlorine removal have limited capacity for chloramine reduction at normal flow rates, which is why catalytic grades are emphasized.',
       },
       {
-        title: 'How CATCARB is positioned',
+        title: 'How CATCARB works',
         body:
-          'CATCARB is described as surface modified, with particle size and pore structure tuned for adsorption while maintaining the hardness, surface area, and attrition resistance associated with high-quality coconut shell carbon.',
+          'CATCARB is surface modified, with particle size and pore structure tuned for adsorption while maintaining the hardness, surface area, and attrition resistance associated with high-quality coconut shell carbon.',
         bullets: [
           'Built for chloramine-heavy drinking-water programs',
-          'Also positioned for hydrogen sulfide decomposition',
+          'Also suited for hydrogen sulfide decomposition',
           'Strong flagship product for Black Opal’s technical sales story',
         ],
       },
@@ -266,9 +243,9 @@ export const applications: ApplicationEntry[] = [
     summary:
       'Granular, powder, impregnated, and catalytic grades for drinking water, municipal systems, and wastewater purification.',
     intro:
-      'The legacy site positions Black Opal as a broad water-treatment supplier covering drinking water, industrial process water, municipal systems, groundwater remediation, and wastewater polishing.',
+      'Black Opal supplies activated carbon for drinking water, industrial process water, municipal systems, groundwater remediation, and wastewater polishing.',
     keyPoints: [
-      'Activated carbon is presented as an efficient and cost-effective option for industrial and municipal wastewater plus contaminated ground and groundwater.',
+      'Activated carbon is an efficient and cost-effective option for industrial and municipal wastewater plus contaminated ground and groundwater.',
       'Coconut shell carbon is highlighted for chlorine reduction and adsorption of VOCs, pesticides, solvents, THMs, and other organics.',
       'The water-treatment range includes GAC, PAC, impregnated, acid/water-washed, and specialty catalytic grades.',
     ],
@@ -277,7 +254,7 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'POU water filters',
         body:
-          'Black Opal describes water filters, cartridges, and carbon blocks as one of the most widely used water-filtration technologies. The site emphasizes balanced adsorption and pore structure, low ash, high strength, and consistent particle-size distribution.',
+          'Water filters, cartridges, and carbon blocks are among the most widely used water-filtration technologies. Black Opal emphasizes balanced adsorption and pore structure, low ash, high strength, and consistent particle-size distribution.',
         bullets: [
           'NSF 42 positioning',
           'Prop 65 messaging',
@@ -292,7 +269,7 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Wastewater treatment',
         body:
-          'Granular carbon is positioned for fixed-bed removal of dissolved non-biodegradable organics, while powder carbon is positioned for sludge-contact treatment programs to support stability and settling.',
+          'Granular carbon supports fixed-bed removal of dissolved non-biodegradable organics, while powder carbon supports sludge-contact treatment programs to improve stability and settling.',
         bullets: [
           'Process effluent',
           'Swimming pools and aquariums',
@@ -311,10 +288,10 @@ export const applications: ApplicationEntry[] = [
     summary:
       'Microporous coconut shell carbon grades for CIP, CIC, and tank-adsorbed precious-metal recovery systems.',
     intro:
-      'Gold recovery is positioned as a specialist performance application where hardness, low platelets, low dust, and adsorption kinetics directly affect metal loading and carbon loss.',
+      'Gold recovery is a specialist performance application where hardness, low platelets, low dust, and adsorption kinetics directly affect metal loading and carbon loss.',
     keyPoints: [
-      'GC grades are described as highly microporous, high-hardness, and built with excellent attrition resistance.',
-      'The site emphasizes very low platelet content, zero dust, and vee-wire screening to keep fines to a minimum.',
+      'GC grades are highly microporous, high-hardness, and built with excellent attrition resistance.',
+      'The product range emphasizes very low platelet content, zero dust, and vee-wire screening to keep fines to a minimum.',
       'Black Opal positions itself as a supplier to some of the world’s largest mining companies.',
     ],
     recommendedProducts: ['granular'],
@@ -328,12 +305,12 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Why the carbon is tuned this way',
         body:
-          'The particle size and pore structure are described as engineered for precious-metal adsorption while maintaining the hardness needed to resist attrition in mining circuits.',
+          'The particle size and pore structure are engineered for precious-metal adsorption while maintaining the hardness needed to resist attrition in mining circuits.',
       },
       {
         title: 'Stated advantages',
         body:
-          'The gold-recovery page is straightforward about the reasons buyers use these grades.',
+          'Buyers specify these grades for durability, adsorption performance, and clean operation in recovery circuits.',
         bullets: [
           'Superior hardness to minimize attrition loss and dust',
           'Higher gold adsorption capacities for maximum loading',
@@ -350,28 +327,28 @@ export const applications: ApplicationEntry[] = [
     summary:
       'Coconut shell and impregnated grades for indoor air quality, protection equipment, flue gas, and odor control.',
     intro:
-      'The legacy site frames air and gas purification as a hardness- and retentivity-driven application, making coconut shell carbon the preferred base media.',
+      'Air and gas purification depends on hardness and retentivity, making coconut shell carbon a strong base media for demanding filtration duties.',
     keyPoints: [
       'Air filtration requires excellent hardness and high retentivity.',
       'Coconut shell carbon is highlighted because of its microporous structure and toughness.',
-      'Both standard and impregnated grades are positioned for industrial and protective environments.',
+      'Both standard and impregnated grades are suited for industrial and protective environments.',
     ],
     recommendedProducts: ['impregnated', 'granular'],
     sections: [
       {
         title: 'Protective equipment',
         body:
-          'Respirators and gas masks containing IndoCarb VP granular activated carbon filters are described as protection against acid gases, organic vapors, ammonia, mercury vapor, formaldehyde, and radioactive iodides.',
+          'Respirators and gas masks containing IndoCarb VP granular activated carbon filters provide protection against acid gases, organic vapors, ammonia, mercury vapor, formaldehyde, and radioactive iodides.',
       },
       {
         title: 'Industrial and environmental filtration',
         body:
-          'The air-and-gas page references filters and adsorbers for indoor air quality, cabin air filtration, emission control, odor control, mines, chemical facilities, nuclear power stations, and manufacturing plants.',
+          'Air and gas applications include filters and adsorbers for indoor air quality, cabin air filtration, emission control, odor control, mines, chemical facilities, nuclear power stations, and manufacturing plants.',
       },
       {
         title: 'Named application areas',
         body:
-          'The site explicitly lists several recurring use cases for this category.',
+          'Common use cases for this category include:',
         bullets: [
           'Cabin air filtration',
           'Protection equipment including gas masks',
@@ -390,10 +367,10 @@ export const applications: ApplicationEntry[] = [
     summary:
       'Activated carbon for vapor recovery, H2S removal, condensate polishing, and low-silica boiler-feed protection.',
     intro:
-      'Oil and gas is positioned around refinery vapor recovery, hydrogen sulfide removal, and high-purity condensate boiler-feed water treatment.',
+      'Oil and gas applications include refinery vapor recovery, hydrogen sulfide removal, and high-purity condensate boiler-feed water treatment.',
     keyPoints: [
-      'Activated carbon is described as an adsorbent for gasoline vapors, benzene, solvents, and hydrogen sulfide during refining.',
-      'The site stresses condensate polishing to protect ion-exchange resins and sensitive equipment.',
+      'Activated carbon adsorbs gasoline vapors, benzene, solvents, and hydrogen sulfide during refining.',
+      'Condensate polishing helps protect ion-exchange resins and sensitive equipment.',
       'A major performance claim is extremely low silica leaching and nil ash for refinery water service.',
     ],
     recommendedProducts: ['granular', 'impregnated'],
@@ -402,7 +379,7 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Refinery recovery and gas cleanup',
         body:
-          'The oil-and-gas page ties activated carbon to recovery of economically valuable vapors and to removal of hydrogen sulfide during oil refining.',
+          'Activated carbon supports recovery of economically valuable vapors and removal of hydrogen sulfide during oil refining.',
       },
       {
         title: 'Condensate and boiler-feed water',
@@ -412,7 +389,7 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Stated advantages',
         body:
-          'The legacy page explicitly lists the qualities refinery buyers care about most.',
+          'Refinery buyers typically prioritize these performance qualities.',
         bullets: [
           'Lowest level of silica leaching',
           'Low ash content and nil dust',
@@ -430,11 +407,11 @@ export const applications: ApplicationEntry[] = [
     summary:
       'Specialty catalytic carbon for chloramine decomposition and hydrogen sulfide control in drinking-water systems.',
     intro:
-      'This application page is built around one message: utilities are switching to chloramine, and catalytic activated carbon is the correct point-of-use or treatment response when standard chlorine carbon is not enough.',
+      'Utilities are switching to chloramine, and catalytic activated carbon is the correct point-of-use or treatment response when standard chlorine carbon is not enough.',
     keyPoints: [
-      'The site ties chloramine adoption to EPA pressure on disinfection by-products formed by free chlorine and organics.',
-      'Chloramine is described as more stable than chlorine but harder to remove with standard carbon products.',
-      'CATCARB grades are positioned as specially developed for water-treatment applications needing faster decomposition performance.',
+      'Chloramine adoption is tied to regulatory pressure on disinfection by-products formed by free chlorine and organics.',
+      'Chloramine is more stable than chlorine but harder to remove with standard carbon products.',
+      'CATCARB grades are specially developed for water-treatment applications needing faster decomposition performance.',
     ],
     recommendedProducts: ['catalytic'],
     grades: ['CATCARB'],
@@ -442,17 +419,17 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Why the market is changing',
         body:
-          'Many U.S. water utilities are said to be transitioning to chloramine disinfection, which changes the treatment requirements downstream for residential, commercial, and municipal filtration systems.',
+          `Many ${siteConfig.utilityMarketLabel} water utilities are transitioning to chloramine disinfection, which changes the treatment requirements downstream for residential, commercial, and municipal filtration systems.`,
       },
       {
         title: 'Why catalytic carbon matters',
         body:
-          'Standard granular activated carbon and carbon blocks are described as having limited chloramine capacity at typical flow rates, which is why catalytic media is recommended instead.',
+          'Standard granular activated carbon and carbon blocks have limited chloramine capacity at typical flow rates, which is why catalytic media is recommended instead.',
       },
       {
-        title: 'How CATCARB is described',
+        title: 'How CATCARB works',
         body:
-          'The CATCARB range is presented as surface modified to rapidly decompose chloramine and hydrogen sulfide while retaining the hardness, surface area, and attrition resistance expected from high-quality coconut shell carbon.',
+          'The CATCARB range is surface modified to rapidly decompose chloramine and hydrogen sulfide while retaining the hardness, surface area, and attrition resistance expected from high-quality coconut shell carbon.',
       },
     ],
     image:
@@ -464,11 +441,11 @@ export const applications: ApplicationEntry[] = [
     summary:
       'Specialty grades for solvent recovery, food and beverage purification, edible oil, and related industrial processes.',
     intro:
-      'The site uses this page to cover solvent recovery plus food and beverage purification work that does not fit the main water, mining, gas, or refinery buckets.',
+      'Black Opal supplies specialty grades for solvent recovery plus food and beverage purification work beyond the main water, mining, gas, and refinery categories.',
     keyPoints: [
-      'Solvent recovery is positioned for printing, dry cleaning, and paint applications.',
-      'Food and beverage copy focuses on taste and odor control, CO2 purification, and edible-oil decolorization.',
-      'Granular, extruded, and food-grade powder carbons are all referenced on the page.',
+      'Solvent recovery supports printing, dry cleaning, and paint applications.',
+      'Food and beverage applications focus on taste and odor control, CO2 purification, and edible-oil decolorization.',
+      'Granular, extruded, and food-grade powder carbons support different process requirements.',
     ],
     recommendedProducts: ['granular', 'powder', 'impregnated'],
     sections: [
@@ -480,12 +457,12 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Food and beverages',
         body:
-          'The site highlights removal of undesired odor and taste from beverages and edible oils, plus purification of brewery CO2 and removal of residual disinfectants including chlorine, chloramines, and THMs.',
+          'Activated carbon removes undesired odor and taste from beverages and edible oils, purifies brewery CO2, and removes residual disinfectants including chlorine, chloramines, and THMs.',
       },
       {
         title: 'Grades and outputs',
         body:
-          'This page emphasizes application-matched activity levels, desorption characteristics, filtration performance, and purity instead of a one-size-fits-all carbon grade.',
+          'Specialty applications require application-matched activity levels, desorption characteristics, filtration performance, and purity instead of a one-size-fits-all carbon grade.',
         bullets: [
           'Solvent Recovery Grade',
           'Edible Oil Grade',
@@ -506,15 +483,15 @@ export const newsroomItems: NewsroomItem[] = [
     summary:
       'Black Opal announced the completion of its transition from INDOCARB AC to Black Opal Carbons as part of a broader global branding effort.',
     detail: [
-      'The release explains that the transition process announced in 2019 was moving into completion and that the North American brand would operate under the Black Opal Carbons name.',
-      'The company says the new name better reflects the product portfolio and aligns the North American business with the wider group, including manufacturing facilities in India.',
-      'Core operating elements were stated to remain the same: products, factory, address, facilities, pricing, support procedures, and day-to-day contacts.',
-      'The release also points to expanded production capacity, additional sales and customer-service resources, and new specialty-product offerings.',
+      `The transition process announced in 2019 moved toward completion with the ${siteConfig.marketName} brand operating under the Black Opal Carbons name.`,
+      `The new name better reflects the product portfolio and aligns the ${siteConfig.marketName} business with the wider group, including manufacturing facilities in India.`,
+      'Core operating elements remained the same: products, factory, address, facilities, pricing, support procedures, and day-to-day contacts.',
+      'The announcement also covered expanded production capacity, additional sales and customer-service resources, and new specialty-product offerings.',
     ],
     bullets: [
       'Former name: INDOCARB AC',
       'Transition initiated in 2019',
-      'Contact listed in release: info@blackopalcarbons.com',
+      `Contact listed in release: ${companyDetails.infoEmail}`,
     ],
   },
   {
@@ -522,35 +499,35 @@ export const newsroomItems: NewsroomItem[] = [
     title: 'Catalytic Carbon',
     type: 'resource',
     summary:
-      'Legacy newsroom resource title carried on the site for catalytic-carbon collateral.',
+      'Product collateral covering catalytic activated carbon performance and use cases.',
   },
   {
     slug: 'gold-grade-carbon-resource',
     title: 'Gold Grade Carbon',
     type: 'resource',
     summary:
-      'Legacy newsroom resource title carried on the site for gold-recovery carbon collateral.',
+      'Product collateral covering activated carbon grades for gold recovery applications.',
   },
   {
     slug: 'powerpoint-presentation-resource',
     title: 'PowerPoint Presentation',
     type: 'resource',
     summary:
-      'Legacy newsroom resource title carried on the site for a general company presentation.',
+      'Company presentation material for procurement reviews and sales discussions.',
   },
   {
     slug: 'water-treatment-resource',
     title: 'Water Treatment',
     type: 'resource',
     summary:
-      'Legacy newsroom resource title carried on the site for water-treatment collateral.',
+      'Product collateral covering activated carbon for drinking water, process water, and wastewater.',
   },
   {
     slug: 'pou-filter-carbon-resource',
     title: 'POU Filter Carbon',
     type: 'resource',
     summary:
-      'Legacy newsroom resource title carried on the site for point-of-use filter carbon collateral.',
+      'Product collateral covering point-of-use filter carbon applications and grade selection.',
   },
 ];
 

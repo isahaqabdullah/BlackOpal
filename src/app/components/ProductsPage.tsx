@@ -9,7 +9,7 @@ export function ProductsPage() {
       <PageIntro
         label="Products"
         title="Coconut shell activated carbon product families"
-        description="The live Black Opal site centered on four core product groups: granular, powder, impregnated, and catalytic activated carbon. Each one now has its own route with the original use-case content folded in."
+        description="Explore Black Opal's granular, powder, impregnated, and catalytic activated carbon product groups for water, gold recovery, air and gas, oil and gas, and specialty purification."
         breadcrumbs={[{ label: 'Products' }]}
       />
 

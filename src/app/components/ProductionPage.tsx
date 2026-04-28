@@ -6,7 +6,7 @@ const productionSections = [
   {
     title: 'Largest regional coconut activated carbon facility',
     body:
-      'The legacy production page describes Black Opal\'s coconut activated carbon facility in India as the largest in the region, with annual production capacity of 50 million pounds of carbon.',
+      'Black Opal\'s coconut activated carbon facility in India is positioned among the largest in the region, with annual production capacity of 50 million pounds of carbon.',
   },
   {
     title: 'Quality control from raw material to shipment',
@@ -26,7 +26,7 @@ export function ProductionPage() {
       <PageIntro
         label="Production"
         title="Manufacturing scale, process control, and coconut shell carbon quality"
-        description="The original Black Opal site gave manufacturing its own page. This rebuild preserves that story as a dedicated route instead of burying it inside the homepage."
+        description="India-based coconut shell activation, controlled processing, and quality assurance support dependable supply for regional and global activated carbon buyers."
         breadcrumbs={[{ label: 'Production' }]}
       />
 
@@ -45,16 +45,16 @@ export function ProductionPage() {
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 <p>
-                  Black Opal describes company-owned and operated manufacturing facilities as the reason it can
-                  maintain tighter quality standards, stronger reliability, and better consistency than a trading-only model.
+                  Company-owned and operated manufacturing facilities help Black Opal maintain tighter quality
+                  standards, stronger reliability, and better consistency than a trading-only model.
                 </p>
                 <p>
                   The production narrative starts at raw-material selection. Charcoal is sourced from selected outlets
                   after rigorous inspections, then processed with modern equipment and overseen by skilled technicians.
                 </p>
                 <p>
-                  The site also states that Black Opal products have been extensively tested and recognized by major
-                  industry leaders and laboratories around the world.
+                  Black Opal products are extensively tested and recognized by major industry leaders and laboratories
+                  around the world.
                 </p>
               </div>
             </div>
@@ -135,8 +135,8 @@ export function ProductionPage() {
               className="premium-copy text-[15px] mb-5"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              For manufacturing questions, technical support, or current product availability, contact the
-              Pittsburgh headquarters at {companyDetails.phoneDisplay}.
+              For manufacturing questions, technical support, or current product availability, contact the{' '}
+              {companyDetails.headquartersDescriptor} at {companyDetails.phoneDisplay}.
             </p>
             <Link
               to="/contact"

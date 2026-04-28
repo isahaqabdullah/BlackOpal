@@ -1,6 +1,7 @@
 import { Building2, Factory, RefreshCcw, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router';
 import { companyDetails, newsroomMap, siteMetrics } from '../content/siteContent';
+import { siteConfig } from '../config/siteConfig';
 import { PageIntro } from './PageIntro';
 
 const aboutCards = [
@@ -8,19 +9,18 @@ const aboutCards = [
     icon: Factory,
     title: 'Joint venture roots',
     desc:
-      'Black Opal says the group was established in 2010 as a joint venture between one of the largest privately owned coconut shell activated carbon manufacturers in India and experienced activated carbon entrepreneurs.',
+      'Black Opal was established in 2010 as a joint venture between one of the largest privately owned coconut shell activated carbon manufacturers in India and experienced activated carbon entrepreneurs.',
   },
   {
     icon: Building2,
-    title: 'Pittsburgh commercial base',
-    desc:
-      'The live site lists the marketing headquarters at 651 Holiday Dr, STE 400, Pittsburgh, PA 15220, with U.S. sales and support routed through that office.',
+    title: companyDetails.marketBaseTitle,
+    desc: companyDetails.marketBaseDescription,
   },
   {
     icon: ShieldCheck,
     title: 'Quality and reliability',
     desc:
-      'Across the site, Black Opal consistently ties its reputation to quality, innovation, service, reliability, and company-owned manufacturing rather than third-party trading.',
+      'Black Opal ties its reputation to quality, innovation, service, reliability, and company-owned manufacturing rather than third-party trading.',
   },
   {
     icon: RefreshCcw,
@@ -37,8 +37,8 @@ export function AboutPage() {
     <div>
       <PageIntro
         label="About"
-        title="Black Opal Carbons, formerly INDOCARB AC"
-        description="This page combines the original site’s company story, manufacturing credibility, and name-change context into a clearer company overview."
+        title={`${siteConfig.siteName}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName}` : ''}`}
+        description="Company story, manufacturing credibility, and brand context for buyers evaluating Black Opal activated carbon supply."
         breadcrumbs={[{ label: 'About' }]}
       />
 
@@ -64,15 +64,16 @@ export function AboutPage() {
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 <p>
-                  The legacy site says the group was established in 2010 with over 50 years of combined industry
-                  experience behind it. That origin story remains central to the Black Opal brand positioning.
+                  Black Opal was established in 2010 with over 50 years of combined industry experience behind it. That
+                  origin story remains central to the Black Opal brand positioning.
                 </p>
                 <p>
                   Black Opal frames its company-owned manufacturing facilities in India as the foundation for higher
-                  quality standards, consistency, and dependable supply into North America.
+                  quality standards, consistency, and dependable supply into the {siteConfig.marketName} market.
                 </p>
                 <p>
-                  The Pittsburgh headquarters remains the commercial point of contact for sales, inquiries, and support:
+                  The {companyDetails.headquartersDescriptor} remains the commercial point of contact for sales,
+                  inquiries, and support:
                   {` ${companyDetails.headquarters.line1}, ${companyDetails.headquarters.line2}.`}
                 </p>
               </div>

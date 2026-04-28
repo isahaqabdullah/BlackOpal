@@ -20,15 +20,14 @@ export function NewsroomPreview() {
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] mb-4"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              Legacy resources and brand updates
+              Resources and brand updates
             </h2>
             <p
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.8]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              The original site included a small newsroom with a name-change announcement and a set of
-              product collateral titles. We surfaced those assets here and linked them into the rebuilt
-              site structure.
+              Find company updates and product collateral covering catalytic carbon, gold recovery, water treatment,
+              POU filter carbon, and general company materials.
             </p>
           </div>
 

@@ -27,7 +27,7 @@ export function Navigation() {
         <Link to="/" className="flex items-center">
           <img
             src={brandLogo}
-            alt="Black Opal Carbon logo"
+            alt="Black Opal Carbons logo"
             className="h-11 w-auto object-contain shrink-0 drop-shadow-[0_8px_24px_rgba(201,162,77,0.16)]"
           />
         </Link>

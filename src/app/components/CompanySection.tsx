@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { companyDetails, siteMetrics } from '../content/siteContent';
+import { siteConfig } from '../config/siteConfig';
 
 export function CompanySection() {
   return (
@@ -18,25 +19,23 @@ export function CompanySection() {
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Our Company
+              {siteConfig.companyEyebrow}
             </span>
             <h2
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] mb-6"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              Built on reliability, consistency, and service
+              {siteConfig.companyTitle}
             </h2>
             <div
               className="space-y-4 premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85] mb-10"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               <p>
-                Black Opal says the business was established in 2010 as a joint venture between a major coconut shell
-                activated carbon manufacturer in India and experienced entrepreneurs from the activated carbon industry.
+                {siteConfig.companyBodyPrimary}
               </p>
               <p>
-                The Pittsburgh headquarters at {companyDetails.headquarters.line1}, {companyDetails.headquarters.line2}
-                supports the North American market while production remains tied to large-scale manufacturing in India.
+                {siteConfig.companyBodySecondary}
               </p>
             </div>
             <div className="premium-compact-grid premium-reveal premium-reveal-delay-3 border-t border-[#c9a24d]/10 pt-6 mb-7">

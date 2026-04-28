@@ -1,10 +1,11 @@
 import { TreePalm, Target, Layers, Truck, Headphones, ShieldCheck } from 'lucide-react';
+import { siteConfig } from '../config/siteConfig';
 
 const reasons = [
   { icon: TreePalm, title: 'Coconut Shell Specialization', desc: 'Dedicated focus on coconut shell-based carbon for superior hardness, micropore structure, and renewable sourcing.' },
   { icon: Target, title: 'Consistent Quality', desc: 'Rigorous in-process QC at every production stage. Batch-to-batch consistency backed by full COA documentation.' },
   { icon: Layers, title: 'Application-Specific Grades', desc: 'Tailored product grades for water, air, gas, and specialty processes — not one-size-fits-all carbon.' },
-  { icon: Truck, title: 'Supply Reliability', desc: 'Strategic warehouse locations across the U.S. for reduced lead times and reliable just-in-time delivery.' },
+  { icon: Truck, title: 'Supply Reliability', desc: siteConfig.logisticsSummary },
   { icon: Headphones, title: 'Technical Support', desc: 'Application engineers available to help with product selection, dosing guidance, and performance optimization.' },
   { icon: ShieldCheck, title: 'Certifications & Compliance', desc: 'NSF 42, NSF 61, and California Prop 65 compliant. Ready for regulated and food-grade applications.' },
 ];
@@ -18,7 +19,7 @@ export function WhyBlackOpal() {
             className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
-            Why Black Opal Carbon
+            Why {siteConfig.siteName}
           </span>
           <h2
             className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em]"

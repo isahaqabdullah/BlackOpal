@@ -1,10 +1,13 @@
 import { Award, Calendar, Factory, Warehouse, Globe } from 'lucide-react';
+import { siteConfig } from '../config/siteConfig';
 
 const items = [
   { icon: Award, label: 'Certifications', value: 'NSF 42 · NSF 61 · Prop 65' },
   { icon: Calendar, label: 'Established', value: 'Since 2010' },
   { icon: Factory, label: 'Production', value: '2 Production Centers' },
-  { icon: Warehouse, label: 'Logistics', value: '4 Warehouse Locations' },
+  ...(siteConfig.warehouseCount === '0'
+    ? []
+    : [{ icon: Warehouse, label: 'Logistics', value: `${siteConfig.warehouseCount} Warehouse Locations` }]),
   { icon: Globe, label: 'Capacity', value: '50 Million lbs/year' },
 ];
 

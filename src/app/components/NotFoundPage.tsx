@@ -16,13 +16,13 @@ export function NotFoundPage() {
             className="premium-heading premium-heading-elevated text-[clamp(2rem,4vw,3.4rem)] leading-[1.04] tracking-[-0.02em] mb-4"
             style={{ fontFamily: "'DM Serif Display', serif" }}
           >
-            That route does not exist in this rebuild
+            That page could not be found
           </h1>
           <p
             className="premium-copy text-[15px] leading-[1.8] max-w-2xl mx-auto mb-8"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
-            Use the home page, navigation, or the route lists for products, applications, production, newsroom, and contact.
+            Use the home page or navigation to find products, applications, production, newsroom, and contact details.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link

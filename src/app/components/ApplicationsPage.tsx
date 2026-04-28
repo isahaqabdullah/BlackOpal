@@ -8,8 +8,8 @@ export function ApplicationsPage() {
     <div>
       <PageIntro
         label="Applications"
-        title="Industrial applications rebuilt from the live Black Opal site"
-        description="Water treatment, gold recovery, air and gas purification, oil and gas, catalytic chloramine removal, and other specialty applications are now split into routeable detail pages."
+        title="Industrial activated carbon applications"
+        description="Activated carbon grades for water treatment, gold recovery, air and gas purification, oil and gas, catalytic chloramine removal, and other specialty applications."
         breadcrumbs={[{ label: 'Applications' }]}
       />
 

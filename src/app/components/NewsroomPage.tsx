@@ -11,8 +11,8 @@ export function NewsroomPage() {
     <div>
       <PageIntro
         label="Newsroom"
-        title="Legacy resource index and company updates"
-        description="The original website exposed a small newsroom with collateral titles and a name-change announcement. This route preserves those references in a cleaner format."
+        title="Company updates and product resources"
+        description="Find Black Opal company announcements and product collateral for catalytic carbon, gold recovery, water treatment, POU filter carbon, and company overview materials."
         breadcrumbs={[{ label: 'Newsroom' }]}
       />
 
@@ -72,8 +72,8 @@ export function NewsroomPage() {
                   className="premium-copy text-[14px] leading-[1.8]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
-                  The press release is the clearest explanation on the legacy site of how the Black Opal brand
-                  replaced INDOCARB AC while keeping products, facilities, pricing, and support continuity intact.
+                  The press release explains how the Black Opal brand replaced INDOCARB AC while keeping products,
+                  facilities, pricing, and support continuity intact.
                 </p>
               </div>
             </div>
@@ -89,14 +89,14 @@ export function NewsroomPage() {
                 className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.35rem)] leading-[1.06] mb-3"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Resource titles carried forward from the original site
+                Product resources and collateral
               </h2>
               <p
                 className="premium-copy text-[14px] leading-[1.8] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
-                The legacy newsroom listed these collateral items by title. Where a live download was not available in
-                this workspace, the rebuild keeps the title and routes buyers to contact sales for the current copy.
+                Request current product collateral for technical reviews, procurement documentation, and application
+                discussions with the Black Opal sales team.
               </p>
             </div>
             <Link
@@ -119,7 +119,7 @@ export function NewsroomPage() {
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Legacy resource title
+                  Product resource
                 </span>
                 <h3
                   className="premium-card-heading text-[18px] mb-3"

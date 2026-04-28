@@ -1,12 +1,13 @@
 import { Link } from 'react-router';
 import { ShieldCheck, Factory, MapPin, Scale } from 'lucide-react';
+import { siteConfig } from '../config/siteConfig';
 import axionVideo from '../../public/images/axionvideo1.mp4';
 
 const proofPoints = [
   { icon: ShieldCheck, text: 'NSF 42 / NSF 61 Certified' },
   { icon: Scale, text: '50M lbs Annual Capacity' },
   { icon: Factory, text: '2 Production Centers' },
-  { icon: MapPin, text: 'U.S. HQ + Warehouse Network' },
+  { icon: MapPin, text: siteConfig.heroLocationProof },
 ];
 
 export function Hero() {
@@ -25,20 +26,19 @@ export function Hero() {
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-5"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Prop 65 Compliant
+              {siteConfig.heroKicker}
             </span>
             <h1
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.4rem,5vw,4.7rem)] leading-[0.98] tracking-[-0.03em] mb-6 max-w-xl"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              Coconut Shell Activated Carbon for Water, Air, Gas &amp; Industrial Applications
+              {siteConfig.heroTitle}
             </h1>
             <p
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] md:text-[16px] leading-[1.85] mb-8 max-w-xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              High-performance activated carbon solutions backed by large-scale
-              manufacturing, certified quality, and application-specific expertise.
+              {siteConfig.heroDescription}
             </p>
             <div className="premium-reveal premium-reveal-delay-3 flex flex-wrap gap-3">
               <Link
