@@ -24,7 +24,7 @@ export function ApplicationDetailPage() {
         ]}
       />
 
-      <section className="pb-12 md:pb-16">
+      <section className="pb-10 md:pb-12">
         <div className="premium-shell">
           <div className="premium-split-grid items-start">
             <div className="premium-panel-soft premium-reveal premium-reveal-delay-1 p-6 md:p-7">
@@ -84,7 +84,7 @@ export function ApplicationDetailPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
+      <section className="py-10 md:py-12">
         <div className="premium-shell space-y-6">
           {application.sections.map((section, index) => (
             <div
@@ -123,7 +123,7 @@ export function ApplicationDetailPage() {
         </div>
       </section>
 
-      <section className="pb-16 md:pb-20">
+      <section className="pb-12 md:pb-14">
         <div className="premium-shell">
           <div className="premium-panel px-6 py-7 md:px-8">
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
@@ -144,7 +144,8 @@ export function ApplicationDetailPage() {
                   className="premium-copy text-[14px] mb-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
-                  Use these product pages as the next filter in the selection process, then contact sales for grade matching.
+                  These product families form the usual starting point for grade matching, performance review, and
+                  availability planning.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {application.recommendedProducts.map((slug) => {

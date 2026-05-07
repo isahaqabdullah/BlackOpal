@@ -23,7 +23,7 @@ export function ContactPage() {
         breadcrumbs={[{ label: 'Contact' }]}
       />
 
-      <section className="pb-16 md:pb-20">
+      <section className="pb-12 md:pb-14">
         <div className="premium-shell">
           <div className="grid gap-10 xl:gap-14 xl:grid-cols-[minmax(18rem,0.82fr)_minmax(0,1.18fr)]">
             <div className="space-y-6">
@@ -135,38 +135,6 @@ export function ContactPage() {
                             {office.note}
                           </p>
                         ) : null}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              {companyDetails.warehouses.length ? (
-                <div className="premium-panel-soft p-6 md:p-7">
-                  <span
-                    className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                  >
-                    Warehouse locations
-                  </span>
-                  <div className="space-y-5">
-                    {companyDetails.warehouses.map((warehouse) => (
-                      <div key={warehouse.name}>
-                        <h3
-                          className="premium-card-heading text-[15px] mb-1"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
-                        >
-                          {warehouse.name}
-                        </h3>
-                        {warehouse.address.map((line) => (
-                          <p
-                            key={line}
-                            className="premium-copy text-[13px] leading-[1.7]"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                          >
-                            {line}
-                          </p>
-                        ))}
                       </div>
                     ))}
                   </div>

@@ -9,12 +9,12 @@ export function ApplicationsPage() {
       <PageIntro
         label="Applications"
         title="Industrial activated carbon applications"
-        description="Activated carbon grades for water treatment, gold recovery, air and gas purification, oil and gas, catalytic chloramine removal, and other specialty applications."
+        description="Water, gold recovery, air, gas, refinery, and specialty industrial programs each place different demands on hardness, pore structure, activity, and purity."
         breadcrumbs={[{ label: 'Applications' }]}
       />
 
-      <section className="pb-12 md:pb-16">
-        <div className="premium-shell space-y-8">
+      <section className="pb-10 md:pb-12">
+        <div className="premium-shell space-y-6">
           {applications.map((application, index) => (
             <div
               key={application.slug}
@@ -97,7 +97,7 @@ export function ApplicationsPage() {
                       className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
-                      Open application page
+                      Application details
                       <ArrowRight size={14} />
                     </Link>
                     <Link

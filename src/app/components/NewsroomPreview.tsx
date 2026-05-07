@@ -6,9 +6,9 @@ const featuredItems = newsroomItems.slice(0, 3);
 
 export function NewsroomPreview() {
   return (
-    <section className="py-16 md:py-20">
+    <section className="py-10 md:py-12">
       <div className="premium-shell">
-        <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
+        <div className="flex flex-wrap items-end justify-between gap-6 mb-8 md:mb-10">
           <div className="max-w-2xl">
             <span
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
@@ -26,8 +26,8 @@ export function NewsroomPreview() {
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.8]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              Find company updates and product collateral covering catalytic carbon, gold recovery, water treatment,
-              POU filter carbon, and general company materials.
+              Technical notes and brand notices stay tied to the same products, facilities, and support channels buyers
+              already work with.
             </p>
           </div>
 
@@ -36,7 +36,7 @@ export function NewsroomPreview() {
             className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
-            Visit newsroom
+            Resource center
             <ArrowRight size={14} />
           </Link>
         </div>
@@ -72,7 +72,7 @@ export function NewsroomPreview() {
                   className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Read update
+                  Brand update
                   <ArrowRight size={13} />
                 </Link>
               ) : (
@@ -81,7 +81,7 @@ export function NewsroomPreview() {
                   className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Request copy
+                  Request resource
                   <ArrowRight size={13} />
                 </Link>
               )}

@@ -12,12 +12,11 @@ export function NewsroomPage() {
       <PageIntro
         label="Newsroom"
         title="Company updates and product resources"
-        description="Find Black Opal company announcements and product collateral for catalytic carbon, gold recovery, water treatment, POU filter carbon, and company overview materials."
         breadcrumbs={[{ label: 'Newsroom' }]}
       />
 
       {pressRelease ? (
-        <section className="pb-12 md:pb-16">
+        <section className="pb-10 md:pb-12">
           <div className="premium-shell">
             <div className="premium-panel premium-split-grid p-7 md:p-9">
               <div>
@@ -56,7 +55,7 @@ export function NewsroomPage() {
                   className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Read press release
+                  Brand transition details
                   <ArrowRight size={14} />
                 </Link>
               </div>
@@ -72,8 +71,8 @@ export function NewsroomPage() {
                   className="premium-copy text-[14px] leading-[1.8]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
-                  The press release explains how the Black Opal brand replaced INDOCARB AC while keeping products,
-                  facilities, pricing, and support continuity intact.
+                  The Black Opal brand replaced INDOCARB AC while products, facilities, pricing, and customer support
+                  continuity remained intact.
                 </p>
               </div>
             </div>
@@ -81,7 +80,7 @@ export function NewsroomPage() {
         </section>
       ) : null}
 
-      <section className="pb-16 md:pb-20">
+      <section className="pb-12 md:pb-14">
         <div className="premium-shell">
           <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
             <div>
@@ -95,7 +94,7 @@ export function NewsroomPage() {
                 className="premium-copy text-[14px] leading-[1.8] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
-                Request current product collateral for technical reviews, procurement documentation, and application
+                Current product collateral supports technical reviews, procurement documentation, and application
                 discussions with the Black Opal sales team.
               </p>
             </div>
@@ -104,7 +103,7 @@ export function NewsroomPage() {
               className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Request current collateral
+              Product collateral
             </Link>
           </div>
 
@@ -138,7 +137,7 @@ export function NewsroomPage() {
                   className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Request latest version
+                  Latest version
                   <ArrowRight size={13} />
                 </Link>
               </div>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X } from 'lucide-react';
-import brandLogo from '../../public/images/BlackOpallogo.png';
+import brandLogo from '../../public/images/BlackOpallogo.avif';
 
 const links = [
   { label: 'Home', path: '/' },

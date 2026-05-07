@@ -17,9 +17,9 @@ function getApplicationIcon(slug: string) {
 
 export function ApplicationsGrid() {
   return (
-    <section className="py-16 md:py-20">
+    <section className="py-10 md:py-12">
       <div className="premium-shell">
-        <div className="mb-12 md:mb-16">
+        <div className="mb-8 md:mb-10">
           <span
             className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
@@ -62,7 +62,7 @@ export function ApplicationsGrid() {
                 </p>
                 <span className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-3.5 py-2 rounded-[8px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
-                  View application <ArrowRight size={12} />
+                  Application fit <ArrowRight size={12} />
                 </span>
               </Link>
             );

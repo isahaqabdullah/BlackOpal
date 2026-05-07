@@ -1,15 +1,15 @@
 import { Building2, Factory, RefreshCcw, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router';
 import { companyDetails, newsroomMap, siteMetrics } from '../content/siteContent';
-import { siteConfig } from '../config/siteConfig';
 import { PageIntro } from './PageIntro';
+import heroLogo from '../../public/images/black-opal-hero-logo-transparent.png';
 
 const aboutCards = [
   {
     icon: Factory,
     title: 'Joint venture roots',
     desc:
-      'Black Opal was established in 2010 as a joint venture between one of the largest privately owned coconut shell activated carbon manufacturers in India and experienced activated carbon entrepreneurs.',
+      'The group was established in 2010 as a joint venture between a leading South India coconut shell activated carbon manufacturer and experienced activated carbon entrepreneurs.',
   },
   {
     icon: Building2,
@@ -20,14 +20,31 @@ const aboutCards = [
     icon: ShieldCheck,
     title: 'Quality and reliability',
     desc:
-      'Black Opal ties its reputation to quality, innovation, service, reliability, and company-owned manufacturing rather than third-party trading.',
+      'Company-owned and operated manufacturing facilities support tighter quality control, stronger reliability, and more consistent coconut activated carbon performance.',
   },
   {
     icon: RefreshCcw,
     title: 'Brand transition',
     desc:
-      'The newsroom explains how INDOCARB AC transitioned to Black Opal Carbons without changing products, facilities, pricing, or the support team customers already worked with.',
+      'The INDOCARB AC transition to Black Opal Carbons preserved the products, facilities, pricing structure, and support team customers already worked with.',
   },
+];
+
+const officeNetwork = [
+  {
+    label: companyDetails.headquartersLabel,
+    name: companyDetails.headquarters.name,
+    address: [companyDetails.headquarters.line1, companyDetails.headquarters.line2],
+    phone: companyDetails.phoneDisplay,
+    email: companyDetails.infoEmail,
+  },
+  ...companyDetails.additionalOffices.map((office) => ({
+    label: office.label,
+    name: office.name,
+    address: office.address,
+    phone: office.phone,
+    email: office.email,
+  })),
 ];
 
 export function AboutPage() {
@@ -37,12 +54,16 @@ export function AboutPage() {
     <div>
       <PageIntro
         label="About"
-        title={`${siteConfig.siteName}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName}` : ''}`}
-        description="Company story, manufacturing credibility, and brand context for buyers evaluating Black Opal activated carbon supply."
+        title="Black Opal Carbons"
+        titleVisual={
+          <span className="premium-brand-logo-frame premium-page-title-logo-frame" aria-hidden="true">
+            <img src={heroLogo} alt="" className="premium-brand-logo premium-page-title-logo" />
+          </span>
+        }
         breadcrumbs={[{ label: 'About' }]}
       />
 
-      <section className="pb-12 md:pb-16">
+      <section className="pb-10 md:pb-12">
         <div className="premium-shell">
           <div className="premium-panel premium-split-grid p-7 md:p-9">
             <div className="premium-image-frame premium-image-animated w-full max-w-[42rem]">
@@ -64,21 +85,80 @@ export function AboutPage() {
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 <p>
-                  Black Opal was established in 2010 with over 50 years of combined industry experience behind it. That
-                  origin story remains central to the Black Opal brand positioning.
+                  The group was established in 2010 as a joint venture between the largest privately owned coconut shell
+                  activated carbon manufacturer in South India and highly experienced activated carbon entrepreneurs
+                  with more than 50 years of combined field experience.
                 </p>
                 <p>
-                  Black Opal frames its company-owned manufacturing facilities in India as the foundation for higher
-                  quality standards, consistency, and dependable supply into the {siteConfig.marketName} market.
+                  Over the years, Black Opal Carbons has become one of the most recognized brands in the activated
+                  carbon industry, with a reputation built on quality, innovation, service, and reliability.
                 </p>
                 <p>
-                  The {companyDetails.headquartersDescriptor} remains the commercial point of contact for sales,
-                  inquiries, and support:
-                  {` ${companyDetails.headquarters.line1}, ${companyDetails.headquarters.line2}.`}
+                  Company-owned and operated manufacturing facilities give the group direct control over raw material
+                  selection, activation, processing, and final quality assurance. That operating model supports higher
+                  standards, dependable supply, and consistent product performance.
+                </p>
+                <p>
+                  The state-of-the-art factory in South India has an annual production capacity of 50 million pounds of
+                  coconut activated carbon for export markets. The team is committed to value-added products and
+                  services, open communication, and customer support focused on satisfaction 24 hours a day, 7 days a
+                  week.
                 </p>
               </div>
 
-              <div className="premium-compact-grid border-t border-[#c9a24d]/10 pt-6">
+              <div className="border-y border-[#c9a24d]/10 py-5 mb-8">
+                <span
+                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                >
+                  Office network
+                </span>
+                <div className="grid gap-5 lg:grid-cols-3">
+                  {officeNetwork.map((office) => (
+                    <div key={`${office.label}-${office.name}`}>
+                      <span
+                        className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
+                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                      >
+                        {office.label}
+                      </span>
+                      <h3
+                        className="premium-card-heading text-[14px] mb-1"
+                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                      >
+                        {office.name}
+                      </h3>
+                      {office.address.map((line) => (
+                        <p
+                          key={`${office.label}-${line}`}
+                          className="premium-copy text-[12px] leading-[1.65]"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        >
+                          {line}
+                        </p>
+                      ))}
+                      {office.phone ? (
+                        <p
+                          className="premium-copy text-[12px] leading-[1.65] mt-2"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        >
+                          Tel: {office.phone}
+                        </p>
+                      ) : null}
+                      {office.email ? (
+                        <p
+                          className="premium-copy text-[12px] leading-[1.65]"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        >
+                          Email: {office.email}
+                        </p>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="premium-compact-grid">
                 {siteMetrics.map((metric) => (
                   <div key={metric.label}>
                     <span
@@ -101,7 +181,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
+      <section className="py-10 md:py-12">
         <div className="premium-shell">
           <div className="premium-auto-grid">
             {aboutCards.map((card, index) => (
@@ -132,7 +212,7 @@ export function AboutPage() {
       </section>
 
       {pressRelease ? (
-        <section className="py-12 md:py-16">
+        <section className="py-10 md:py-12">
           <div className="premium-shell">
             <div className="premium-panel-soft p-6 md:p-7">
               <span
@@ -159,14 +239,14 @@ export function AboutPage() {
                   className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Read the release
+                  Brand transition
                 </Link>
                 <Link
                   to="/production"
                   className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  View production page
+                  Production capability
                 </Link>
               </div>
             </div>

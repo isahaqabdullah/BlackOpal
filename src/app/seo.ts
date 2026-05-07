@@ -56,6 +56,7 @@ function normalizePath(pathname: string) {
 
 const defaultDescription =
   siteConfig.defaultDescription;
+const originSeoNote = `Includes ${siteConfig.originDescription} for dependable regional and global supply.`;
 
 type StaticPageMetadata = Omit<SeoMetadata, 'path' | 'breadcrumbs'> & {
   breadcrumbLabel: string;
@@ -71,42 +72,42 @@ const staticPages: Record<string, StaticPageMetadata> = {
   '/products': {
     title: pageTitle('Activated Carbon Products'),
     description:
-      'Explore Black Opal granular, powder, impregnated, and catalytic activated carbon products for industrial and water-treatment applications.',
+      `Granular, powder, impregnated, and catalytic activated carbon products sit within the Black Opal portfolio. ${originSeoNote}`,
     imageAlt: `Activated carbon products from ${SITE_NAME}`,
     breadcrumbLabel: 'Products',
   },
   '/applications': {
     title: pageTitle('Activated Carbon Applications'),
     description:
-      'Activated carbon solutions for water treatment, gold recovery, air and gas purification, oil and gas, chloramine removal, and specialty industrial processes.',
+      `Activated carbon solutions for water treatment, gold recovery, air and gas purification, oil and gas, chloramine removal, and specialty industrial processes. ${originSeoNote}`,
     imageAlt: 'Industrial activated carbon application areas',
     breadcrumbLabel: 'Applications',
   },
   '/production': {
     title: pageTitle('Activated Carbon Production and Quality Control'),
     description:
-      `Learn about ${SITE_NAME} manufacturing scale, coconut shell raw-material control, particle-size screening, and quality assurance process.`,
+      `${SITE_NAME} production scale for ${siteConfig.originDescription} is supported by coconut shell raw-material control, particle-size screening, export readiness, and quality assurance.`,
     imageAlt: 'Coconut shell activated carbon production and quality control',
     breadcrumbLabel: 'Production',
   },
   '/about': {
     title: pageTitle(`About ${SITE_NAME}`),
     description:
-      `${SITE_NAME}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} supplies coconut shell activated carbon through company-owned manufacturing and a regional commercial base.`,
+      `${SITE_NAME}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} supplies ${siteConfig.originDescription} through company-owned manufacturing and an office network covering India, the Middle East, and the U.S. headquarters.`,
     imageAlt: `${SITE_NAME} company profile`,
     breadcrumbLabel: 'About',
   },
   '/newsroom': {
     title: pageTitle('Newsroom and Resources'),
     description:
-      `Read ${SITE_NAME} company updates and request current activated carbon collateral for water treatment, gold recovery, and catalytic carbon.`,
+      `${SITE_NAME} company updates and technical resources cover brand continuity, water treatment, gold recovery, catalytic carbon, and application guidance.`,
     imageAlt: `${SITE_NAME} newsroom and resources`,
     breadcrumbLabel: 'Newsroom',
   },
   '/contact': {
-    title: pageTitle('Request a Quote'),
+    title: pageTitle('Pricing and Technical Recommendations'),
     description:
-      `Contact ${SITE_NAME} for activated carbon pricing, technical recommendations, product availability, and application-specific grade matching.`,
+      `${SITE_NAME} pricing, product availability, and technical recommendations connect application requirements with ${siteConfig.originDescription}.`,
     imageAlt: `Contact ${SITE_NAME} for activated carbon quotes`,
     breadcrumbLabel: 'Contact',
   },
@@ -141,7 +142,7 @@ export function resolveSeo(pathname: string): SeoMetadata {
     if (product) {
       return {
         title: pageTitle(product.name),
-        description: product.summary,
+        description: `${product.summary} ${originSeoNote}`,
         path,
         image: product.image,
         imageAlt: product.name,
@@ -162,7 +163,7 @@ export function resolveSeo(pathname: string): SeoMetadata {
     if (application) {
       return {
         title: pageTitle(`${application.name} Activated Carbon Applications`),
-        description: application.summary,
+        description: `${application.summary} ${originSeoNote}`,
         path,
         image: application.image,
         imageAlt: application.name,
@@ -227,6 +228,7 @@ function organizationSchema() {
     '@id': `${siteUrl}/#organization`,
     name: SITE_NAME,
     alternateName: companyDetails.legacyName,
+    description: siteConfig.defaultDescription,
     url: siteUrl,
     email: companyDetails.infoEmail,
     telephone: companyDetails.phoneDisplay,

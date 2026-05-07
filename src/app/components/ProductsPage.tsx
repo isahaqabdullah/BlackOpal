@@ -9,12 +9,12 @@ export function ProductsPage() {
       <PageIntro
         label="Products"
         title="Coconut shell activated carbon product families"
-        description="Explore Black Opal's granular, powder, impregnated, and catalytic activated carbon product groups for water, gold recovery, air and gas, oil and gas, and specialty purification."
+        description="Granular, powder, impregnated, and catalytic grades cover fixed-bed filtration, fast-response dosing, targeted gas treatment, chloramine reduction, and specialty process duties."
         breadcrumbs={[{ label: 'Products' }]}
       />
 
-      <section className="pb-12 md:pb-16">
-        <div className="premium-shell space-y-8">
+      <section className="pb-10 md:pb-12">
+        <div className="premium-shell space-y-6">
           {products.map((product, index) => (
             <div
               key={product.slug}
@@ -119,7 +119,7 @@ export function ProductsPage() {
                       className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
-                      Open product page
+                      Product details
                       <ArrowRight size={14} />
                     </Link>
                     <Link

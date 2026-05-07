@@ -1,14 +1,7 @@
 import { Link } from 'react-router';
-import { ShieldCheck, Factory, MapPin, Scale } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import axionVideo from '../../public/images/axionvideo1.mp4';
-
-const proofPoints = [
-  { icon: ShieldCheck, text: 'NSF 42 / NSF 61 Certified' },
-  { icon: Scale, text: '50M lbs Annual Capacity' },
-  { icon: Factory, text: '2 Production Centers' },
-  { icon: MapPin, text: siteConfig.heroLocationProof },
-];
+import heroLogo from '../../public/images/black-opal-hero-logo-transparent.png';
 
 export function Hero() {
   return (
@@ -19,8 +12,16 @@ export function Hero() {
         <div className="absolute right-[5%] top-[18%] h-64 w-64 rounded-full bg-[#8b6725]/14 blur-3xl" />
       </div>
 
-      <div className="premium-shell py-16 md:py-24 relative z-10">
-        <div className="premium-split-grid">
+      <div className="premium-shell pt-14 pb-8 md:pt-20 md:pb-10 relative z-10">
+        <h1
+          className="premium-brand-title premium-reveal"
+          aria-label="Black Opal Carbons"
+        >
+          <span className="premium-brand-logo-frame" aria-hidden="true">
+            <img src={heroLogo} alt="" className="premium-brand-logo" />
+          </span>
+        </h1>
+        <div className="premium-split-grid premium-hero-grid">
           <div>
             <span
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-5"
@@ -28,15 +29,15 @@ export function Hero() {
             >
               {siteConfig.heroKicker}
             </span>
-            <h1
+            <h2
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.4rem,5vw,4.7rem)] leading-[0.98] tracking-[-0.03em] mb-6 max-w-xl"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               {siteConfig.heroTitle}
-            </h1>
+            </h2>
             <p
-              className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] md:text-[16px] leading-[1.85] mb-8 max-w-xl"
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+              className="premium-copy premium-hero-copy premium-reveal premium-reveal-delay-2 text-[16px] md:text-[18px] leading-[1.72] mb-9 max-w-2xl"
+              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
               {siteConfig.heroDescription}
             </p>
@@ -56,29 +57,9 @@ export function Hero() {
                 Talk to Technical Sales
               </Link>
             </div>
-
-            <div className="premium-compact-grid mt-9">
-              {proofPoints.map((p, index) => (
-                <div
-                  key={p.text}
-                  className="border-l border-[#c9a24d]/14 pl-4 flex items-center gap-3 premium-reveal"
-                  style={{ animationDelay: `${260 + index * 80}ms` }}
-                >
-                  <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center shrink-0">
-                    <p.icon size={18} className="text-[#e6cb87]" />
-                  </div>
-                  <span
-                    className="text-[12px] text-[#d7c7a2] leading-tight"
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
-                  >
-                    {p.text}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
 
-          <div className="relative w-full max-w-[48rem] xl:justify-self-end">
+          <div className="relative w-full max-w-[58rem] xl:justify-self-end">
             <div className="pointer-events-none absolute inset-x-[12%] bottom-[-7%] h-24 rounded-full bg-[#c9a24d]/12 blur-3xl" />
             <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1">
               <div className="relative overflow-hidden rounded-[1.15rem]">

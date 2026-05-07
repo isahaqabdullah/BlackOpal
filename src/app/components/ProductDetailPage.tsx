@@ -24,7 +24,7 @@ export function ProductDetailPage() {
         ]}
       />
 
-      <section className="pb-12 md:pb-16">
+      <section className="pb-10 md:pb-12">
         <div className="premium-shell">
           <div className="premium-split-grid items-start">
             <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1 w-full max-w-[42rem]">
@@ -82,7 +82,7 @@ export function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
+      <section className="py-10 md:py-12">
         <div className="premium-shell space-y-6">
           {product.sections.map((section, index) => (
             <div
@@ -121,7 +121,7 @@ export function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="pb-16 md:pb-20">
+      <section className="pb-12 md:pb-14">
         <div className="premium-shell">
           <div className="premium-panel flex flex-col md:flex-row md:items-center md:justify-between gap-5 px-6 py-7 md:px-8">
             <div>
@@ -129,13 +129,13 @@ export function ProductDetailPage() {
                 className="premium-heading text-[1.5rem] mb-2"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Need current pricing or a technical recommendation?
+                Pricing and recommendations shaped by process conditions
               </h2>
               <p
                 className="premium-copy text-[14px]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
-                Share your application, volume, and performance target and Black Opal can match the right grade.
+                Application, volume, and performance targets shape the grade match and availability recommendation.
               </p>
             </div>
 

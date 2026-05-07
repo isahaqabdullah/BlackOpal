@@ -23,7 +23,7 @@ export function PressReleasePage() {
         ]}
       />
 
-      <section className="pb-16 md:pb-20">
+      <section className="pb-12 md:pb-14">
         <div className="premium-shell">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)]">
             <article className="premium-panel p-7 md:p-9">
@@ -65,7 +65,7 @@ export function PressReleasePage() {
                 className="premium-primary-btn inline-block text-[13px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Contact Black Opal
+                Sales coordination
               </Link>
             </aside>
           </div>

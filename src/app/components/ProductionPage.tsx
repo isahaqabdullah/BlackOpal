@@ -1,22 +1,43 @@
 import { Link } from 'react-router';
-import { companyDetails, siteMetrics } from '../content/siteContent';
+import { ArrowRight } from 'lucide-react';
+import { companyDetails } from '../content/siteContent';
+import { siteConfig } from '../config/siteConfig';
 import { PageIntro } from './PageIntro';
+import productionFacilityImage from '../../public/images/production-facility.avif';
 
-const productionSections = [
+const productionAtGlance = [
   {
-    title: 'Largest regional coconut activated carbon facility',
-    body:
-      'Black Opal\'s coconut activated carbon facility in India is positioned among the largest in the region, with annual production capacity of 50 million pounds of carbon.',
+    value: '50 million lbs',
+    label: 'Annual capacity',
   },
   {
-    title: 'Quality control from raw material to shipment',
-    body:
-      'Black Opal states that a meticulous quality-control program runs through every stage of production, from raw-material selection through final quality assurance before shipment.',
+    value: 'Steam activated',
+    label: 'Two-stage method',
   },
   {
-    title: 'Application-specific particle-size control',
+    value: 'Custom mesh',
+    label: 'Application-specific sizing',
+  },
+];
+
+const steamActivationSteps = [
+  {
+    step: '01',
+    title: 'Carbonization',
     body:
-      'Specially designed crushing and screening equipment is highlighted for precise control over particle size so the finished carbon can be matched to end-use mesh-size requirements.',
+      'Coconut shell lumps are heated without oxygen, usually below 700 C, converting the shell into charcoal with volatile content reduced to less than 20%.',
+  },
+  {
+    step: '02',
+    title: 'Steam activation',
+    body:
+      'The carbonized material is activated in steam at around 1,100 C / 2,012 F, opening and enlarging the internal pore network that gives the carbon its adsorption character.',
+  },
+  {
+    step: '03',
+    title: 'Sizing and finishing',
+    body:
+      'Rotary kiln output is crushed, screened, and cleaned for granular specifications. Powder grades are produced by further grinding the granules with a gentle pulverizing action.',
   },
 ];
 
@@ -25,44 +46,61 @@ export function ProductionPage() {
     <div>
       <PageIntro
         label="Production"
-        title="Manufacturing scale, process control, and coconut shell carbon quality"
-        description="India-based coconut shell activation, controlled processing, and quality assurance support dependable supply for regional and global activated carbon buyers."
+        title="50 million lbs capacity, steam activation, and mesh-size control"
+        description={`${siteConfig.originStatement}. Raw material selection, activation, sizing, and final quality assurance are controlled before shipment.`}
         breadcrumbs={[{ label: 'Production' }]}
       />
 
-      <section className="pb-12 md:pb-16">
+      <section className="pb-10 md:pb-12">
         <div className="premium-shell">
           <div className="premium-panel premium-split-grid p-7 md:p-9">
             <div>
+              <span
+                className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+              >
+                Production at a glance
+              </span>
+
+              <div className="grid gap-5 sm:grid-cols-3 border-y border-[#c9a24d]/12 py-5 mb-6">
+                {productionAtGlance.map((item) => (
+                  <div key={item.label} className="sm:border-l sm:first:border-l-0 sm:border-[#c9a24d]/12 sm:pl-5">
+                    <span
+                      className="text-[#e6cb87] text-[clamp(1.25rem,2vw,1.75rem)] leading-tight block mb-1"
+                      style={{ fontFamily: "'DM Serif Display', serif" }}
+                    >
+                      {item.value}
+                    </span>
+                    <span
+                      className="text-[#8f835f] text-[10px] tracking-[0.14em] uppercase"
+                      style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                    >
+                      {item.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
               <h2
-                className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.4rem)] leading-[1.06] mb-5"
+                className="premium-heading premium-heading-elevated text-[clamp(1.55rem,2.4vw,2.1rem)] leading-[1.08] mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Built around no-compromise manufacturing
+                One production system from coconut shell charcoal to finished carbon
               </h2>
-              <div
-                className="space-y-4 premium-copy text-[14px] leading-[1.85]"
+              <p
+                className="premium-copy text-[14px] leading-[1.85] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
-                <p>
-                  Company-owned and operated manufacturing facilities help Black Opal maintain tighter quality
-                  standards, stronger reliability, and better consistency than a trading-only model.
-                </p>
-                <p>
-                  The production narrative starts at raw-material selection. Charcoal is sourced from selected outlets
-                  after rigorous inspections, then processed with modern equipment and overseen by skilled technicians.
-                </p>
-                <p>
-                  Black Opal products are extensively tested and recognized by major industry leaders and laboratories
-                  around the world.
-                </p>
-              </div>
+                Black Opal's India coconut activated carbon facility is the largest in the region, with annual
+                production capacity of 50 million pounds. The same production flow controls raw material selection,
+                steam activation, particle sizing, packing, and final assurance before shipment.
+              </p>
             </div>
 
             <div className="premium-image-frame premium-image-animated w-full max-w-[42rem] xl:justify-self-end">
               <img
-                src="https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwbWFudWZhY3R1cmluZyUyMHdhcmVob3VzZSUyMGZhY3RvcnklMjBpbnRlcmlvcnxlbnwxfHx8fDE3NzU0NzU0ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Industrial production facility"
+                src={productionFacilityImage}
+                alt="Black Opal production facility"
                 className="w-full aspect-[4/3] object-cover"
               />
             </div>
@@ -70,80 +108,105 @@ export function ProductionPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16">
+      <section className="py-10 md:py-12">
         <div className="premium-shell">
-          <div className="premium-auto-grid">
-            {productionSections.map((section, index) => (
-              <div
-                key={section.title}
-                className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
-                style={{ animationDelay: `${120 + index * 90}ms` }}
-              >
-                <h3
-                  className="premium-card-heading text-[18px] mb-3"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+          <div className="premium-panel p-7 md:p-9">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+              <div>
+                <span
+                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  {section.title}
-                </h3>
-                <p
-                  className="premium-copy text-[13px] leading-[1.75]"
+                  Quality program
+                </span>
+                <h2
+                  className="premium-heading premium-heading-elevated text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.08] mb-4"
+                  style={{ fontFamily: "'DM Serif Display', serif" }}
+                >
+                  No-compromise control before activation, during processing, and before shipment
+                </h2>
+                <div
+                  className="space-y-4 premium-copy text-[14px] leading-[1.85]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
-                  {section.body}
+                  <p>
+                    Charcoal is sourced from selected outlets only after rigorous quality inspection. State-of-the-art
+                    equipment and skilled technicians support control over activation, handling, screening, and packing.
+                  </p>
+                  <p>
+                    INDOCARB brand coconut carbon products, now carried under Black Opal Carbons, have been extensively
+                    tested and acclaimed by major industry leaders and reputed laboratories around the world.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <span
+                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                >
+                  Steam activation method
+                </span>
+                <div className="border-y border-[#c9a24d]/12">
+                  {steamActivationSteps.map((step) => (
+                    <div
+                      key={step.title}
+                      className="grid gap-4 border-b border-[#c9a24d]/10 py-5 last:border-b-0 sm:grid-cols-[3rem_1fr]"
+                    >
+                      <span
+                        className="text-[#e6cb87] text-[1.5rem] leading-none"
+                        style={{ fontFamily: "'DM Serif Display', serif" }}
+                      >
+                        {step.step}
+                      </span>
+                      <div>
+                        <h3
+                          className="premium-card-heading text-[16px] mb-2"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                        >
+                          {step.title}
+                        </h3>
+                        <p
+                          className="premium-copy text-[13px] leading-[1.75]"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        >
+                          {step.body}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p
+                  className="premium-copy text-[13px] leading-[1.75] mt-5"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                >
+                  Activation time, temperature, and post-production sizing allow the pore structure and particle size to
+                  be matched to water purification, gas treatment, color removal, granular media, and powdered carbon
+                  requirements.
                 </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 md:py-16">
-        <div className="premium-shell">
-          <div className="premium-panel-soft p-6 md:p-7">
-            <span
-              className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-            >
-              Scale snapshot
-            </span>
-            <div className="premium-compact-grid">
-              {siteMetrics.map((metric) => (
-                <div key={metric.label}>
-                  <span
-                    className="text-[#e6cb87] text-[clamp(1.3rem,2vw,1.85rem)] block mb-1"
-                    style={{ fontFamily: "'DM Serif Display', serif" }}
-                  >
-                    {metric.value}
-                  </span>
-                  <span
-                    className="text-[#8f835f] text-[11px] tracking-[0.12em] uppercase"
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
-                  >
-                    {metric.label}
-                  </span>
-                </div>
-              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="pb-16 md:pb-20">
+      <section className="pb-12 md:pb-14">
         <div className="premium-shell">
-          <div className="premium-panel text-center px-6 py-8">
+          <div className="flex flex-col gap-4 border-t border-[#c9a24d]/12 pt-8 text-center md:flex-row md:items-center md:justify-between md:text-left">
             <p
-              className="premium-copy text-[15px] mb-5"
+              className="premium-copy text-[14px] leading-[1.75] max-w-2xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              For manufacturing questions, technical support, or current product availability, contact the{' '}
-              {companyDetails.headquartersDescriptor} at {companyDetails.phoneDisplay}.
+              For manufacturing questions, technical support, or current product availability, contact Black Opal at{' '}
+              {companyDetails.phoneDisplay}.
             </p>
             <Link
               to="/contact"
-              className="premium-primary-btn inline-block text-[13px] px-8 py-3 rounded-full"
+              className="premium-primary-btn inline-flex items-center justify-center gap-2 text-[13px] px-7 py-3 rounded-full self-center md:self-auto"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
               Contact production team
+              <ArrowRight size={14} />
             </Link>
           </div>
         </div>

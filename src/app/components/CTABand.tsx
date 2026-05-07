@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 
 export function CTABand() {
   return (
-    <section className="py-16 md:py-20">
+    <section className="py-10 md:py-12">
       <div className="premium-shell">
         <div className="premium-panel relative overflow-hidden text-center px-6 py-10 md:px-10 md:py-12">
           <div className="pointer-events-none absolute inset-0">
@@ -13,14 +13,13 @@ export function CTABand() {
           className="premium-heading premium-heading-elevated premium-reveal text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] mb-4 relative z-10"
           style={{ fontFamily: "'DM Serif Display', serif" }}
         >
-          Need the right activated carbon for your process?
+          Grade selection starts with the process
         </h2>
         <p
           className="premium-copy premium-reveal premium-reveal-delay-1 text-[15px] mb-8 max-w-lg mx-auto relative z-10"
           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
         >
-          Tell us your application and volume requirements.
-          We respond to all inquiries within one business day.
+          Mesh size, activity, washing, compliance, and delivery requirements shape the final recommendation.
         </p>
         <div className="premium-reveal premium-reveal-delay-2 flex flex-wrap justify-center gap-3 relative z-10">
           <Link

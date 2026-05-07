@@ -4,7 +4,7 @@ import { siteConfig } from '../config/siteConfig';
 
 export function CompanySection() {
   return (
-    <section className="py-16 md:py-20">
+    <section className="py-10 md:py-12">
       <div className="premium-shell">
         <div className="premium-split-grid">
           <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1 w-full max-w-[42rem]">

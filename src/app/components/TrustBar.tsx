@@ -4,18 +4,18 @@ import { siteConfig } from '../config/siteConfig';
 const items = [
   { icon: Award, label: 'Certifications', value: 'NSF 42 · NSF 61 · Prop 65' },
   { icon: Calendar, label: 'Established', value: 'Since 2010' },
-  { icon: Factory, label: 'Production', value: '2 Production Centers' },
-  ...(siteConfig.warehouseCount === '0'
+  { icon: Factory, label: 'Production', value: `${siteConfig.productionCenterCount} Production Centers` },
+  ...(siteConfig.warehouseLocationCount === '0'
     ? []
-    : [{ icon: Warehouse, label: 'Logistics', value: `${siteConfig.warehouseCount} Warehouse Locations` }]),
+    : [{ icon: Warehouse, label: 'Logistics', value: `${siteConfig.warehouseLocationCount} Warehouse Locations` }]),
   { icon: Globe, label: 'Capacity', value: '50 Million lbs/year' },
 ];
 
 export function TrustBar() {
   return (
-    <section className="py-8 md:py-10">
+    <section className="py-4 md:py-5">
       <div className="premium-shell">
-        <div className="premium-compact-grid border-y border-[#c9a24d]/10 py-6">
+        <div className="premium-compact-grid border-y border-[#c9a24d]/10 py-4">
           {items.map((item, index) => (
             <div key={item.label} className={`flex items-start gap-4 ${index > 0 ? 'xl:border-l xl:border-[#c9a24d]/10 xl:pl-6' : ''}`}>
               <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center shrink-0">

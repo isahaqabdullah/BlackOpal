@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router';
 
@@ -9,13 +10,14 @@ type Breadcrumb = {
 type PageIntroProps = {
   label: string;
   title: string;
-  description: string;
+  titleVisual?: ReactNode;
+  description?: string;
   breadcrumbs?: Breadcrumb[];
 };
 
-export function PageIntro({ label, title, description, breadcrumbs = [] }: PageIntroProps) {
+export function PageIntro({ label, title, titleVisual, description, breadcrumbs = [] }: PageIntroProps) {
   return (
-    <section className="py-12 md:py-16">
+    <section className="pt-10 pb-6 md:pt-12 md:pb-8">
       <div className="premium-shell">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
           <nav
@@ -46,7 +48,7 @@ export function PageIntro({ label, title, description, breadcrumbs = [] }: PageI
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             <ArrowLeft size={13} />
-            Back to home
+            Home
           </Link>
         </div>
 
@@ -57,17 +59,20 @@ export function PageIntro({ label, title, description, breadcrumbs = [] }: PageI
           {label}
         </span>
         <h1
-          className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] mb-6 max-w-4xl"
+          className={`premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] max-w-4xl${description ? ' mb-5' : ''}${titleVisual ? ' premium-page-title-visual' : ''}`}
+          aria-label={titleVisual ? title : undefined}
           style={{ fontFamily: "'DM Serif Display', serif" }}
         >
-          {title}
+          {titleVisual ?? title}
         </h1>
-        <p
-          className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.85] max-w-3xl"
-          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-        >
-          {description}
-        </p>
+        {description ? (
+          <p
+            className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.85] max-w-3xl"
+            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+          >
+            {description}
+          </p>
+        ) : null}
       </div>
     </section>
   );

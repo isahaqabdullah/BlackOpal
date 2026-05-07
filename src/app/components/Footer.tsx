@@ -1,11 +1,11 @@
 import { Link } from 'react-router';
-import brandLogo from '../../public/images/BlackOpallogo.png';
+import brandLogo from '../../public/images/BlackOpallogo.avif';
 import { applications, companyDetails, products } from '../content/siteContent';
 import { siteConfig } from '../config/siteConfig';
 
 const columns = [
   {
-    title: 'Explore',
+    title: 'Company',
     links: [
       { label: 'Home', to: '/' },
       { label: 'About', to: '/about' },
@@ -28,12 +28,14 @@ const columns = [
 ];
 
 export function Footer() {
+  const footerContact = companyDetails.websiteContact;
+
   return (
     <footer className="relative z-10 border-t border-[#c9a24d]/12 bg-[#050505] pt-16 pb-8">
       <div className="premium-shell">
         <div className="px-1 py-4 md:px-0 md:py-6">
           <div className="grid gap-10 mb-14 xl:grid-cols-[minmax(18rem,1.6fr)_repeat(3,minmax(10rem,1fr))] md:grid-cols-2">
-          {/* Brand + contact */}
+          {/* Brand + regional contact */}
             <div className="max-w-[28rem]">
               <Link to="/" className="flex items-center mb-5 w-fit">
                 <img
@@ -43,19 +45,28 @@ export function Footer() {
                 />
               </Link>
               <div className="space-y-2.5 text-[13px] text-[#b8ab8b]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
+                <span
+                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                >
+                  {footerContact.label}
+                </span>
                 <p>
-                  {companyDetails.headquarters.line1}
+                  <span className="text-[#f7efdb]">{footerContact.name}</span>
                   <br />
-                  {companyDetails.headquarters.line2}
+                  {footerContact.address.map((line) => (
+                    <span key={line}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
                 </p>
-                <p>Phone: {companyDetails.phoneDisplay}</p>
-                <p>Email: {companyDetails.infoEmail}</p>
+                {footerContact.phone ? <p>Phone: {footerContact.phone}</p> : null}
+                {footerContact.email ? <p>Email: {footerContact.email}</p> : null}
+                <Link to="/contact" className="inline-flex text-[#f2d78b] hover:text-[#fff2bf] transition-colors">
+                  Contact Black Opal
+                </Link>
               </div>
-              {siteConfig.warehouseSummary ? (
-                <div className="mt-4 text-[12px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-                  <p>Warehouse network: {siteConfig.warehouseSummary}</p>
-                </div>
-              ) : null}
             </div>
 
             {/* Link columns */}
@@ -91,7 +102,7 @@ export function Footer() {
               &copy; {new Date().getFullYear()} {siteConfig.siteName}. All rights reserved.
             </span>
             <div className="flex gap-6 text-[12px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-              <Link to="/" className="hover:text-[#f2d78b] transition-colors">Back to Home</Link>
+              <Link to="/" className="hover:text-[#f2d78b] transition-colors">Home</Link>
               <Link to="/contact" className="hover:text-[#f2d78b] transition-colors">Contact</Link>
             </div>
           </div>

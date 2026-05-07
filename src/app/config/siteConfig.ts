@@ -26,7 +26,7 @@ type Headquarters = {
 const DEFAULT_SITE_URL = 'https://www.blackopalcarbons.com';
 const DEFAULT_SITE_NAME = 'Black Opal Carbons';
 const DEFAULT_DESCRIPTION =
-  'Black Opal Carbons supplies coconut shell activated carbon for water treatment, gold recovery, air and gas purification, oil and gas, and industrial applications.';
+  'Black Opal Carbons supplies coconut shell activated carbon manufactured and exported from India for water treatment, gold recovery, air and gas purification, oil and gas, and industrial applications.';
 
 const defaultWarehouses: Warehouse[] = [
   {
@@ -84,9 +84,9 @@ function parseWarehouses(value: string | undefined): Warehouse[] | undefined {
   return undefined;
 }
 
-function parseOffices(value: string | undefined): Office[] {
+function parseOffices(value: string | undefined): Office[] | undefined {
   if (!value?.trim()) {
-    return [];
+    return undefined;
   }
 
   try {
@@ -111,7 +111,7 @@ function parseOffices(value: string | undefined): Office[] {
     // Invalid optional deployment config should not break rendering.
   }
 
-  return [];
+  return undefined;
 }
 
 const siteName = envValue('VITE_SITE_NAME', DEFAULT_SITE_NAME);
@@ -121,6 +121,11 @@ const serviceArea = envValue('VITE_SERVICE_AREA', 'US');
 const marketName = envValue('VITE_MARKET_NAME', 'North American');
 const utilityMarketLabel = envValue('VITE_UTILITY_MARKET_LABEL', regionLabel);
 const warehouses = parseWarehouses(import.meta.env.VITE_WAREHOUSES_JSON) ?? defaultWarehouses;
+const originStatement = envValue('VITE_ORIGIN_STATEMENT', 'Manufactured and exported from India');
+const originDescription = envValue(
+  'VITE_ORIGIN_DESCRIPTION',
+  'coconut shell activated carbon manufactured and exported from India',
+);
 
 const headquarters: Headquarters = {
   name: envValue('VITE_HEADQUARTERS_NAME', siteName),
@@ -134,10 +139,49 @@ const headquarters: Headquarters = {
 };
 
 const phoneDisplay = envValue('VITE_PHONE_DISPLAY', '+1 (412) 928-4970');
-const additionalOffices = parseOffices(import.meta.env.VITE_ADDITIONAL_OFFICES_JSON);
+const fax = optionalEnvValue('VITE_FAX', '+1 (412) 365-5634');
+const infoEmail = envValue('VITE_INFO_EMAIL', 'info@blackopalcarbons.com');
+const salesEmail = envValue('VITE_SALES_EMAIL', 'sales@blackopalcarbons.com');
+const defaultAdditionalOffices: Office[] = [
+  {
+    label: 'India office',
+    name: 'Black Opal Private Limited',
+    address: ['XV/100, Nr. DYSP office', 'Kalathil Road, Aluva, Kerala, India'],
+    phone: '+91 9995994799',
+    email: 'info@blackopal.co.in',
+    note: 'Manufacturing and export coordination for coconut shell activated carbon from India.',
+  },
+  {
+    label: 'Middle East office',
+    name: 'Black Opal Carbons',
+    address: ['Smart Station, 1st Floor, Incubator Bldg. I Masdar City', 'Abu Dhabi, UAE'],
+    phone: '+971 50 240 4708',
+    email: 'info@blackopalcarbonsme.com',
+    note: 'Regional office for Middle East customer coordination.',
+  },
+];
+const additionalOffices = parseOffices(import.meta.env.VITE_ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices;
 const defaultLogisticsSummary = warehouses.length
-  ? `Strategic warehouse locations across the ${regionLabel} market for reduced lead times and reliable just-in-time delivery.`
-  : `Regional sales and technical support for the ${regionLabel} market.`;
+  ? 'Company-owned manufacturing, 50 million lbs annual capacity, and final quality assurance before shipment support consistent coconut activated carbon supply.'
+  : 'Company-owned manufacturing, controlled particle sizing, and final quality assurance before shipment support consistent coconut activated carbon supply.';
+const headquartersLabel = envValue('VITE_HEADQUARTERS_LABEL', 'U.S. headquarters');
+const headquartersDescriptor = envValue('VITE_HEADQUARTERS_DESCRIPTOR', 'U.S. headquarters');
+const marketBaseTitle = envValue('VITE_MARKET_BASE_TITLE', 'Manufacturing base and office network');
+const marketBaseDescription = envValue(
+  'VITE_MARKET_BASE_DESCRIPTION',
+  "Black Opal's state-of-the-art factory in India anchors 50 million lbs of annual coconut activated carbon capacity. The U.S. headquarters, India office, and Middle East office keep customers connected to the team for enquiries, technical support, and service.",
+);
+const normalizedRegion = regionLabel.toLowerCase().replace(/[^a-z0-9]/g, '');
+const regionalContact = additionalOffices.find((office) =>
+  office.label.toLowerCase().replace(/[^a-z0-9]/g, '').includes(normalizedRegion),
+);
+const websiteContact: Office = regionalContact ?? {
+  label: headquartersLabel,
+  name: headquarters.name,
+  address: [headquarters.line1, headquarters.line2],
+  phone: phoneDisplay,
+  email: infoEmail,
+};
 
 export const siteConfig = {
   siteName,
@@ -153,33 +197,37 @@ export const siteConfig = {
   ),
   heroDescription: envValue(
     'VITE_HERO_DESCRIPTION',
-    'High-performance activated carbon solutions backed by large-scale manufacturing, certified quality, and application-specific expertise.',
+    `${originStatement}, Black Opal coconut shell activated carbon supports demanding water, air, gas, gold recovery, and industrial purification systems.`,
   ),
+  originStatement,
+  originDescription,
   heroLocationProof: envValue(
     'VITE_HERO_LOCATION_PROOF',
-    warehouses.length ? `${regionLabel} HQ + Warehouse Network` : `${regionLabel} HQ + Regional Support`,
+    warehouses.length ? 'India Manufacturing + Warehouse Network' : 'India Manufacturing + Export Support',
   ),
   companyEyebrow: envValue('VITE_COMPANY_EYEBROW', 'Our Company'),
-  companyTitle: envValue('VITE_COMPANY_TITLE', 'Built on reliability, consistency, and service'),
+  companyTitle: envValue('VITE_COMPANY_TITLE', 'Controlled from coconut shell selection to final shipment'),
   companyBodyPrimary: envValue(
     'VITE_COMPANY_BODY_PRIMARY',
-    'Black Opal was established in 2010 as a joint venture between a major coconut shell activated carbon manufacturer in India and experienced entrepreneurs from the activated carbon industry.',
+    'Black Opal works from selected coconut shell feedstock through controlled activation, sizing, and final quality checks so each grade is built for repeatable adsorption performance.',
   ),
   companyBodySecondary: envValue(
     'VITE_COMPANY_BODY_SECONDARY',
-    `The ${headquarters.locality} office supports the ${marketName} market while production remains tied to large-scale manufacturing in India.`,
+    'Grades can be customised by mesh size, adsorption level, pH adjustment, washing, and impregnation requirements instead of forcing every application into the same carbon.',
   ),
-  contactTitle: envValue('VITE_CONTACT_TITLE', 'Request a quote, enquiry, or technical recommendation'),
+  contactTitle: envValue('VITE_CONTACT_TITLE', 'Pricing, availability, and technical recommendations'),
   contactDescription: envValue(
     'VITE_CONTACT_DESCRIPTION',
-    'Use this page for product enquiries, activated carbon quote requests, technical recommendations, and current availability.',
+    `Grade matching, availability, and logistics coordination start with the application conditions and expected volume.`,
   ),
-  additionalOfficesTitle: envValue('VITE_ADDITIONAL_OFFICES_TITLE', 'Regional presence'),
+  additionalOfficesTitle: envValue('VITE_ADDITIONAL_OFFICES_TITLE', 'Office network'),
   regionLabel,
   serviceArea,
   marketName,
   utilityMarketLabel,
   warehouseCount: String(warehouses.length),
+  productionCenterCount: envValue('VITE_PRODUCTION_CENTER_COUNT', '3'),
+  warehouseLocationCount: optionalEnvValue('VITE_WAREHOUSE_LOCATION_COUNT', String(warehouses.length)),
   warehouseSummary: optionalEnvValue(
     'VITE_WAREHOUSE_SUMMARY',
     warehouses.map((warehouse) => warehouse.address[warehouse.address.length - 1]).join(' · '),
@@ -193,20 +241,18 @@ export const siteConfig = {
 export const companyDetails = {
   legacyName: optionalEnvValue('VITE_LEGACY_NAME', 'INDOCARB AC'),
   headquarters,
-  headquartersLabel: envValue('VITE_HEADQUARTERS_LABEL', 'Marketing headquarters'),
-  headquartersDescriptor: envValue('VITE_HEADQUARTERS_DESCRIPTOR', `${headquarters.locality} headquarters`),
-  marketBaseTitle: envValue('VITE_MARKET_BASE_TITLE', `${headquarters.locality} commercial base`),
-  marketBaseDescription: envValue(
-    'VITE_MARKET_BASE_DESCRIPTION',
-    `The ${headquarters.locality} commercial office supports sales, enquiries, and customer coordination from ${headquarters.line1}, ${headquarters.line2}.`,
-  ),
+  headquartersLabel,
+  headquartersDescriptor,
+  marketBaseTitle,
+  marketBaseDescription,
   phoneDisplay,
   phoneHref: envValue('VITE_PHONE_HREF', phoneHref(phoneDisplay)),
-  fax: optionalEnvValue('VITE_FAX', '+1 (412) 365-5634'),
-  infoEmail: envValue('VITE_INFO_EMAIL', 'info@blackopalcarbons.com'),
-  salesEmail: envValue('VITE_SALES_EMAIL', 'sales@blackopalcarbons.com'),
+  fax,
+  infoEmail,
+  salesEmail,
   additionalOffices,
   warehouses,
+  websiteContact,
 };
 
 export { siteUrl };

@@ -22,7 +22,8 @@ export function NotFoundPage() {
             className="premium-copy text-[15px] leading-[1.8] max-w-2xl mx-auto mb-8"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
-            Use the home page or navigation to find products, applications, production, newsroom, and contact details.
+            Core product, application, production, newsroom, and contact routes remain available through the main
+            navigation.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
@@ -31,14 +32,14 @@ export function NotFoundPage() {
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
               <ArrowLeft size={14} />
-              Back to home
+              Home
             </Link>
             <Link
               to="/products"
               className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Browse products
+              Product families
             </Link>
           </div>
         </div>
