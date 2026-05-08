@@ -1,4 +1,3 @@
-import { Link } from 'react-router';
 import { ArrowRight } from 'lucide-react';
 import { companyDetails } from '../content/siteContent';
 import { siteConfig } from '../config/siteConfig';
@@ -42,6 +41,8 @@ const steamActivationSteps = [
 ];
 
 export function ProductionPage() {
+  const productionContactEmail = companyDetails.websiteContact.email ?? companyDetails.infoEmail;
+
   return (
     <div>
       <PageIntro
@@ -192,22 +193,26 @@ export function ProductionPage() {
 
       <section className="pb-12 md:pb-14">
         <div className="premium-shell">
-          <div className="flex flex-col gap-4 border-t border-[#c9a24d]/12 pt-8 text-center md:flex-row md:items-center md:justify-between md:text-left">
+          <div className="flex flex-col items-center gap-5 border-t border-[#c9a24d]/12 pt-8 text-center">
             <p
               className="premium-copy text-[14px] leading-[1.75] max-w-2xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              For manufacturing questions, technical support, or current product availability, contact Black Opal at{' '}
-              {companyDetails.phoneDisplay}.
+              For questions regarding manufacturing, technical specifications, or current product availability, contact
+              Black Opal at{' '}
+              <a href={`mailto:${productionContactEmail}`} className="text-[#f2d78b] hover:text-[#f7efdb]">
+                {productionContactEmail}
+              </a>
+              .
             </p>
-            <Link
-              to="/contact"
-              className="premium-primary-btn inline-flex items-center justify-center gap-2 text-[13px] px-7 py-3 rounded-full self-center md:self-auto"
+            <a
+              href={`mailto:${productionContactEmail}`}
+              className="premium-primary-btn inline-flex items-center justify-center gap-2 text-[13px] px-7 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Contact production team
+              Email production team
               <ArrowRight size={14} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
