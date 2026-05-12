@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, Phone, Printer } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { companyDetails } from '../content/siteContent';
 import { siteConfig } from '../config/siteConfig';
@@ -15,35 +15,6 @@ export function ContactPage() {
   };
 
   const inputClass = 'premium-input w-full px-4 py-3 text-[14px] transition-colors';
-  const directContacts = [
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: companyDetails.phoneDisplay,
-      href: companyDetails.phoneHref,
-    },
-    ...(companyDetails.fax
-      ? [
-          {
-            icon: Printer,
-            label: 'Fax',
-            value: companyDetails.fax,
-          },
-        ]
-      : []),
-    {
-      icon: Mail,
-      label: 'Email',
-      value: companyDetails.infoEmail,
-      href: `mailto:${companyDetails.infoEmail}`,
-    },
-    {
-      icon: Mail,
-      label: 'Sales',
-      value: companyDetails.salesEmail,
-      href: `mailto:${companyDetails.salesEmail}`,
-    },
-  ];
 
   return (
     <div>
@@ -58,58 +29,6 @@ export function ContactPage() {
         <div className="premium-shell">
           <div className="grid gap-10 xl:gap-14 xl:grid-cols-[minmax(18rem,0.82fr)_minmax(0,1.18fr)]">
             <div className="space-y-6">
-              <div className="premium-panel-soft p-6 md:p-7">
-                <span
-                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                >
-                  Direct contact
-                </span>
-                <div className="grid gap-3">
-                  {directContacts.map((item) => {
-                    const Icon = item.icon;
-                    const content = (
-                      <>
-                        <span className="premium-icon-wrap h-9 w-9 shrink-0 rounded-full flex items-center justify-center">
-                          <Icon size={16} className="text-[#e6cb87]" />
-                        </span>
-                        <span>
-                          <span
-                            className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                          >
-                            {item.label}
-                          </span>
-                          <span
-                            className="text-[#f7efdb] text-[14px] leading-[1.45] break-words"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                          >
-                            {item.value}
-                          </span>
-                        </span>
-                      </>
-                    );
-
-                    return item.href ? (
-                      <a
-                        key={`${item.label}-${item.value}`}
-                        href={item.href}
-                        className="flex items-center gap-3 rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4 transition-colors hover:border-[#c9a24d]/35"
-                      >
-                        {content}
-                      </a>
-                    ) : (
-                      <div
-                        key={`${item.label}-${item.value}`}
-                        className="flex items-center gap-3 rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
-                      >
-                        {content}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
               <div className="premium-panel-soft p-6 md:p-7">
                 <span
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
@@ -144,6 +63,28 @@ export function ContactPage() {
                           {line}
                         </p>
                       ))}
+                      <div className="mt-4 space-y-2 border-t border-[#c9a24d]/10 pt-3">
+                        {office.phone ? (
+                          <a
+                            href={`tel:${office.phone.replace(/[^+\d]/g, '')}`}
+                            className="flex items-center gap-2 text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                          >
+                            <Phone size={14} className="shrink-0 text-[#e6cb87]" />
+                            <span className="text-[13px] leading-[1.5]">{office.phone}</span>
+                          </a>
+                        ) : null}
+                        {office.email ? (
+                          <a
+                            href={`mailto:${office.email}`}
+                            className="flex items-center gap-2 text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                          >
+                            <Mail size={14} className="shrink-0 text-[#e6cb87]" />
+                            <span className="text-[13px] leading-[1.5] break-all">{office.email}</span>
+                          </a>
+                        ) : null}
+                      </div>
                     </address>
                   ))}
                 </div>
