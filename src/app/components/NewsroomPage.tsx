@@ -85,29 +85,22 @@ export function NewsroomPage() {
 
       <section className="pb-12 md:pb-14">
         <div className="premium-shell">
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+          <div className="mb-10">
             <div>
               <h2
                 className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.35rem)] leading-[1.06] mb-3"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Product resources and collateral
+                Product Resources
               </h2>
               <p
                 className="premium-copy text-[14px] leading-[1.8] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
-                Current product collateral supports technical reviews, procurement documentation, and application
+                Access product information and supporting documents for technical review, procurement, and application
                 discussions with the Black Opal sales team.
               </p>
             </div>
-            <Link
-              href="/contact"
-              className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-            >
-              Product collateral
-            </Link>
           </div>
 
           <div className="premium-auto-grid">
