@@ -33,23 +33,6 @@ const aboutCards = [
   },
 ];
 
-const officeNetwork = [
-  {
-    label: companyDetails.headquartersLabel,
-    name: companyDetails.headquarters.name,
-    address: [companyDetails.headquarters.line1, companyDetails.headquarters.line2],
-    phone: companyDetails.phoneDisplay,
-    email: companyDetails.infoEmail,
-  },
-  ...companyDetails.additionalOffices.map((office) => ({
-    label: office.label,
-    name: office.name,
-    address: office.address,
-    phone: office.phone,
-    email: office.email,
-  })),
-];
-
 export function AboutPage() {
   const { newsroomMap } = useSiteContent();
   const pressRelease = newsroomMap['name-change-press-release'];
@@ -118,7 +101,7 @@ export function AboutPage() {
                   Office network
                 </span>
                 <div className="grid gap-5 lg:grid-cols-3">
-                  {officeNetwork.map((office) => (
+                  {companyDetails.officeNetwork.map((office) => (
                     <div key={`${office.label}-${office.name}`}>
                       <span
                         className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"

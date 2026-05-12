@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { companyDetails } from '../content/siteContent';
 import { siteConfig } from '../config/siteConfig';
@@ -29,13 +29,68 @@ export function ContactPage() {
         <div className="premium-shell">
           <div className="grid gap-10 xl:gap-14 xl:grid-cols-[minmax(18rem,0.82fr)_minmax(0,1.18fr)]">
             <div className="space-y-6">
+              <div className="premium-panel-soft p-6 md:p-7">
+                <span
+                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                >
+                  {siteConfig.additionalOfficesTitle}
+                </span>
+                <div className="space-y-5">
+                  {companyDetails.officeNetwork.map((office) => (
+                    <div key={`${office.label}-${office.name}`}>
+                      <span
+                        className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
+                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                      >
+                        {office.label}
+                      </span>
+                      <h3
+                        className="premium-card-heading text-[15px] mb-1"
+                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                      >
+                        {office.name}
+                      </h3>
+                      {office.address.map((line) => (
+                        <p
+                          key={`${office.label}-${line}`}
+                          className="premium-copy text-[13px] leading-[1.7]"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        >
+                          {line}
+                        </p>
+                      ))}
+                      {office.phone ? (
+                        <p
+                          className="premium-copy text-[13px] leading-[1.7] mt-2"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        >
+                          Tel: {office.phone}
+                        </p>
+                      ) : null}
+                      {office.email ? (
+                        <p
+                          className="premium-copy text-[13px] leading-[1.7]"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        >
+                          Email: {office.email}
+                        </p>
+                      ) : null}
+                      {office.note ? (
+                        <p
+                          className="premium-copy text-[12px] leading-[1.7] mt-2 text-[#8f835f]"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        >
+                          {office.note}
+                        </p>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div className="premium-panel-soft p-6 md:p-7 space-y-7">
                 {[
-                  {
-                    icon: MapPin,
-                    label: companyDetails.headquartersLabel,
-                    value: `${companyDetails.headquarters.name}\n${companyDetails.headquarters.line1}\n${companyDetails.headquarters.line2}`,
-                  },
                   companyDetails.fax
                     ? {
                         icon: Phone,
@@ -54,7 +109,7 @@ export function ContactPage() {
                       companyDetails.infoEmail === companyDetails.salesEmail
                         ? companyDetails.infoEmail
                         : `${companyDetails.infoEmail}\n${companyDetails.salesEmail}`,
-                  },
+                    },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4">
                     <div className="premium-icon-wrap w-9 h-9 rounded-full flex items-center justify-center shrink-0 mt-0.5">
@@ -81,67 +136,6 @@ export function ContactPage() {
                 ))}
               </div>
 
-              {companyDetails.additionalOffices.length ? (
-                <div className="premium-panel-soft p-6 md:p-7">
-                  <span
-                    className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                  >
-                    {siteConfig.additionalOfficesTitle}
-                  </span>
-                  <div className="space-y-5">
-                    {companyDetails.additionalOffices.map((office) => (
-                      <div key={`${office.label}-${office.name}`}>
-                        <span
-                          className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                        >
-                          {office.label}
-                        </span>
-                        <h3
-                          className="premium-card-heading text-[15px] mb-1"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
-                        >
-                          {office.name}
-                        </h3>
-                        {office.address.map((line) => (
-                          <p
-                            key={line}
-                            className="premium-copy text-[13px] leading-[1.7]"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                          >
-                            {line}
-                          </p>
-                        ))}
-                        {office.phone ? (
-                          <p
-                            className="premium-copy text-[13px] leading-[1.7] mt-2"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                          >
-                            Tel: {office.phone}
-                          </p>
-                        ) : null}
-                        {office.email ? (
-                          <p
-                            className="premium-copy text-[13px] leading-[1.7]"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                          >
-                            Email: {office.email}
-                          </p>
-                        ) : null}
-                        {office.note ? (
-                          <p
-                            className="premium-copy text-[12px] leading-[1.7] mt-2 text-[#8f835f]"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                          >
-                            {office.note}
-                          </p>
-                        ) : null}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
             </div>
 
             <div>

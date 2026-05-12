@@ -108,6 +108,41 @@ function normalizeHeadquartersCopy(value: string) {
   return value.replace(/\b(?:the\s+)?U\.S\. headquarters\b/gi, GROUP_HEADQUARTERS_LABEL);
 }
 
+function officeKind(office: Office) {
+  const text = `${office.label} ${office.name} ${office.address.join(' ')}`.toLowerCase();
+
+  if (/head\s*quarters|headquarters/.test(text)) {
+    return 'headquarters';
+  }
+
+  if (text.includes('middle east') || text.includes('abu dhabi') || text.includes('uae')) {
+    return 'middleEast';
+  }
+
+  if (text.includes('india') || text.includes('kerala') || text.includes('aluva')) {
+    return 'india';
+  }
+
+  return 'other';
+}
+
+function orderOfficeNetwork(offices: Office[], activeSiteId: string) {
+  const preferredOrder =
+    activeSiteId === 'black-opal-middle-east'
+      ? ['middleEast', 'india', 'other', 'headquarters']
+      : ['india', 'middleEast', 'other', 'headquarters'];
+
+  return offices
+    .map((office, index) => ({ office, index, priority: preferredOrder.indexOf(officeKind(office)) }))
+    .sort((a, b) => {
+      const aPriority = a.priority === -1 ? preferredOrder.length : a.priority;
+      const bPriority = b.priority === -1 ? preferredOrder.length : b.priority;
+
+      return aPriority - bPriority || a.index - b.index;
+    })
+    .map(({ office }) => office);
+}
+
 function optionalEnvValue(name: string, fallback = '') {
   const value = runtimeEnv[name] as string | undefined;
   return value?.trim() || fallback;
@@ -176,6 +211,7 @@ function parseOffices(value: string | undefined): Office[] | undefined {
 
 const siteName = envValue('VITE_SITE_NAME', DEFAULT_SITE_NAME);
 const siteUrl = envValue('VITE_SITE_URL', DEFAULT_SITE_URL).replace(/\/+$/, '');
+const siteId = envValue('VITE_SITE_ID', 'black-opal-india');
 const regionLabel = envValue('VITE_REGION_LABEL', 'U.S.');
 const serviceArea = envValue('VITE_SERVICE_AREA', 'US');
 const marketName = envValue('VITE_MARKET_NAME', 'North American');
@@ -246,11 +282,24 @@ const websiteContact: Office = regionalContact ?? {
   phone: phoneDisplay,
   email: infoEmail,
 };
+const officeNetwork = orderOfficeNetwork(
+  [
+    ...additionalOffices,
+    {
+      label: headquartersLabel,
+      name: headquarters.name,
+      address: [headquarters.line1, headquarters.line2],
+      phone: phoneDisplay,
+      email: infoEmail,
+    },
+  ],
+  siteId,
+);
 
 export const siteConfig = {
   siteName,
   siteUrl,
-  siteId: envValue('VITE_SITE_ID', 'black-opal-india'),
+  siteId,
   homeTitle: envValue('VITE_HOME_TITLE', `Coconut Shell Activated Carbon Supplier | ${siteName}`),
   defaultDescription: envValue('VITE_SITE_DESCRIPTION', DEFAULT_DESCRIPTION.replace(DEFAULT_SITE_NAME, siteName)),
   defaultImagePath: '/og-image.svg',
@@ -315,6 +364,7 @@ export const companyDetails = {
   infoEmail,
   salesEmail,
   additionalOffices,
+  officeNetwork,
   warehouses,
   websiteContact,
 };
