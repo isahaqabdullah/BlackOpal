@@ -52,6 +52,12 @@ export type HomePageContent = {
   ctaSecondaryLabel: string;
 };
 
+export type ProductionPageContent = {
+  _id?: string;
+  _type?: 'productionPage';
+  overviewTitle: string;
+};
+
 export type ProductEntry = {
   _id?: string;
   _type?: 'product';
@@ -122,6 +128,10 @@ export const homePageContent: HomePageContent = {
   ctaDescription: 'Mesh size, activity, washing, compliance, and delivery requirements shape the final recommendation.',
   ctaPrimaryLabel: 'Request Quote',
   ctaSecondaryLabel: 'Send Technical Inquiry',
+};
+
+export const productionPageContent: ProductionPageContent = {
+  overviewTitle: 'From Coconut Shell Charcoal to High-Performance Activated Carbon - Fully Integrated Production',
 };
 
 export const siteMetrics: SiteMetric[] = [

@@ -262,6 +262,23 @@ export const product = {
   ],
 };
 
+export const productionPage = {
+  name: 'productionPage',
+  title: 'Production Page',
+  type: 'document',
+  fields: [
+    {
+      name: 'overviewTitle',
+      title: 'Overview Title',
+      type: 'string',
+      validation: (Rule: any) => Rule.required(),
+    },
+  ],
+  preview: {
+    prepare: () => ({ title: 'Production Page' }),
+  },
+};
+
 export const application = {
   name: 'application',
   title: 'Application',
@@ -332,4 +349,4 @@ export const newsroomItem = {
   ],
 };
 
-export const schemaTypes = [contentSection, seoFields, homePage, product, application, newsroomItem];
+export const schemaTypes = [contentSection, seoFields, homePage, productionPage, product, application, newsroomItem];

@@ -33,6 +33,21 @@ export function homePageDataAttribute(path: string, documentId = homePageDocumen
   }).toString();
 }
 
+export function productionPageDataAttribute(path: string, documentId = 'productionPage') {
+  if (!projectId || !dataset) {
+    return undefined;
+  }
+
+  return createDataAttribute({
+    baseUrl: studioUrl,
+    dataset,
+    id: documentId,
+    path,
+    projectId,
+    type: 'productionPage',
+  }).toString();
+}
+
 export function useHomePageDataAttribute(documentId?: string) {
   const { source } = useSiteContent();
 
@@ -42,5 +57,17 @@ export function useHomePageDataAttribute(documentId?: string) {
     }
 
     return homePageDataAttribute(path, documentId);
+  };
+}
+
+export function useProductionPageDataAttribute(documentId?: string) {
+  const { source } = useSiteContent();
+
+  return (path: string) => {
+    if (source !== 'sanity-preview') {
+      return undefined;
+    }
+
+    return productionPageDataAttribute(path, documentId);
   };
 }

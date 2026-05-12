@@ -59,6 +59,11 @@ export const siteContentQuery = `{
     ctaPrimaryLabel,
     ctaSecondaryLabel
   },
+  "productionPage": *[_type == "productionPage" && _id == "productionPage"][0] {
+    _id,
+    _type,
+    overviewTitle
+  },
   "products": *[_type == "product"] | order(coalesce(sortOrder, 999) asc, name asc) {
     _id,
     _type,

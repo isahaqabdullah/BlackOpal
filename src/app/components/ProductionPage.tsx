@@ -2,7 +2,9 @@
 
 import { ArrowRight } from 'lucide-react';
 import { companyDetails } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { siteConfig } from '../config/siteConfig';
+import { useProductionPageDataAttribute } from '../cms/visualEditingAttributes';
 import { PageIntro } from './PageIntro';
 const productionFacilityImage = '/images/production-facility.avif';
 
@@ -42,8 +44,17 @@ const steamActivationSteps = [
   },
 ];
 
+const balancedOverviewTitle =
+  'From Coconut Shell Charcoal to High-Performance Activated Carbon - Fully Integrated Production';
+
 export function ProductionPage() {
+  const { productionPage } = useSiteContent();
+  const productionPageDataAttribute = useProductionPageDataAttribute();
   const productionContactEmail = companyDetails.websiteContact.email ?? companyDetails.infoEmail;
+  const overviewTitleLines =
+    productionPage.overviewTitle === balancedOverviewTitle
+      ? ['From Coconut Shell Charcoal to', 'High-Performance Activated Carbon -', 'Fully Integrated Production']
+      : [productionPage.overviewTitle];
 
   return (
     <div>
@@ -85,10 +96,15 @@ export function ProductionPage() {
               </div>
 
               <h2
-                className="premium-heading premium-heading-elevated text-[clamp(1.55rem,2.4vw,2.1rem)] leading-[1.08] mb-4"
+                data-sanity={productionPageDataAttribute('overviewTitle')}
+                className="premium-heading premium-heading-elevated max-w-[36rem] text-[clamp(1.42rem,1.95vw,1.85rem)] leading-[1.14] mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                From Coconut Shell Charcoal to High-Performance Activated Carbon - Fully Integrated Production
+                {overviewTitleLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
               </h2>
               <p
                 className="premium-copy text-[14px] leading-[1.85] max-w-3xl"

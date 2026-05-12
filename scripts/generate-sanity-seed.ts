@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { applications, homePageContent, newsroomItems, products, type ContentSection } from '../src/app/content/siteContent';
+import { applications, homePageContent, newsroomItems, products, productionPageContent, type ContentSection } from '../src/app/content/siteContent';
 import { resolveSeo } from '../src/app/seo';
 
 type SanityDocument = Record<string, unknown> & {
@@ -64,6 +64,12 @@ const homePageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-mid
   siteId,
 }));
 
+const productionPageDocument: SanityDocument = {
+  _id: 'productionPage',
+  _type: 'productionPage',
+  ...productionPageContent,
+};
+
 const applicationDocuments: SanityDocument[] = applications.map((application, index) => ({
   _id: `application-${application.slug}`,
   _type: 'application',
@@ -93,7 +99,7 @@ const newsroomDocuments: SanityDocument[] = newsroomItems.map((item, index) => (
   bullets: item.bullets,
 }));
 
-const documents = [...homePageDocuments, ...productDocuments, ...applicationDocuments, ...newsroomDocuments];
+const documents = [...homePageDocuments, productionPageDocument, ...productDocuments, ...applicationDocuments, ...newsroomDocuments];
 const ndjson = `${documents.map((document) => JSON.stringify(document)).join('\n')}\n`;
 
 await mkdir(path.dirname(outputPath), { recursive: true });

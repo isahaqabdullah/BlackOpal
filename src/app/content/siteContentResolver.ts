@@ -7,16 +7,19 @@ import {
   newsroomMap as fallbackNewsroomMap,
   productMap as fallbackProductMap,
   products as fallbackProducts,
+  productionPageContent as fallbackProductionPageContent,
   type ApplicationEntry,
   type ContentSection,
   type HomePageContent,
   type NewsroomItem,
   type ProductEntry,
+  type ProductionPageContent,
   type SeoFields,
 } from './siteContent';
 
 export type SanitySiteContent = {
   homePage?: Partial<HomePageContent> | null;
+  productionPage?: Partial<ProductionPageContent> | null;
   products?: Partial<ProductEntry>[];
   applications?: Partial<ApplicationEntry>[];
   newsroomItems?: Partial<NewsroomItem>[];
@@ -24,6 +27,7 @@ export type SanitySiteContent = {
 
 export type ContentInput = {
   homePage: HomePageContent;
+  productionPage: ProductionPageContent;
   products: ProductEntry[];
   applications: ApplicationEntry[];
   newsroomItems: NewsroomItem[];
@@ -37,6 +41,7 @@ export type SeoContentInput = ContentInput & {
 
 export const fallbackContentInput: ContentInput = {
   homePage: fallbackHomePageContent,
+  productionPage: fallbackProductionPageContent,
   products: fallbackProducts,
   applications: fallbackApplications,
   newsroomItems: fallbackNewsroomItems,
@@ -232,6 +237,17 @@ function normalizeHomePage(value?: Partial<HomePageContent> | null): HomePageCon
   };
 }
 
+function normalizeProductionPage(value?: Partial<ProductionPageContent> | null): ProductionPageContent {
+  const fallback = fallbackProductionPageContent;
+  const id = cleanTextValue(value?._id);
+
+  return {
+    _id: id || undefined,
+    _type: value?._type === 'productionPage' ? value._type : undefined,
+    overviewTitle: textValue(value?.overviewTitle, fallback.overviewTitle),
+  };
+}
+
 function mergeBySlug<T extends { slug: string }>(
   cmsItems: Partial<T>[] | undefined,
   fallbackItems: T[],
@@ -273,6 +289,7 @@ export function mergeSanityContent(content?: SanitySiteContent | null): ContentI
 
   return {
     homePage: normalizeHomePage(content.homePage),
+    productionPage: normalizeProductionPage(content.productionPage),
     products: mergeBySlug(content.products, fallbackProducts, fallbackProductMap, normalizeProduct),
     applications: mergeBySlug(
       content.applications,

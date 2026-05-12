@@ -3,7 +3,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { createClient } from '@sanity/client';
 
-export const CMS_DOCUMENT_TYPES = ['homePage', 'product', 'application', 'newsroomItem'];
+export const CMS_DOCUMENT_TYPES = ['homePage', 'productionPage', 'product', 'application', 'newsroomItem'];
 export const SITE_IDS = ['black-opal-india', 'black-opal-middle-east'];
 
 export const cmsDocumentsProjection = `{
@@ -38,6 +38,9 @@ export const cmsDocumentsProjection = `{
     ctaDescription,
     ctaPrimaryLabel,
     ctaSecondaryLabel
+  },
+  _type == "productionPage" => {
+    overviewTitle
   },
   _type == "product" => {
     seo,

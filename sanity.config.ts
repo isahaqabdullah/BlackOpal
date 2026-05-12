@@ -65,6 +65,7 @@ export default defineConfig({
       resolve: {
         mainDocuments: [
           { route: '/', filter: `_type == "homePage" && siteId == ${studioSiteIdLiteral}` },
+          { route: '/production', filter: `_type == "productionPage" && _id == "productionPage"` },
           { route: '/products/:productSlug', filter: `_type == "product" && slug.current == $productSlug` },
           { route: '/applications/:applicationSlug', filter: `_type == "application" && slug.current == $applicationSlug` },
           { route: '/newsroom/:storySlug', filter: `_type == "newsroomItem" && slug.current == $storySlug` },
@@ -77,6 +78,12 @@ export default defineConfig({
                 document?.siteId === studioSiteId
                   ? [documentLocation(document.title || 'Home page', '/')]
                   : [],
+            }),
+          },
+          productionPage: {
+            select: { title: 'overviewTitle' },
+            resolve: () => ({
+              locations: [documentLocation('Production page', '/production')],
             }),
           },
           product: {

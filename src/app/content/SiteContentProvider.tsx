@@ -6,13 +6,14 @@ import {
   mapBySlug,
   type ContentInput,
 } from './siteContentResolver';
-import type { ApplicationEntry, HomePageContent, NewsroomItem, ProductEntry } from './siteContent';
+import type { ApplicationEntry, HomePageContent, NewsroomItem, ProductEntry, ProductionPageContent } from './siteContent';
 
 export type ContentStatus = 'loading' | 'ready' | 'error';
 export type ContentSource = 'static' | 'sanity' | 'sanity-preview';
 
 export type SiteContent = {
   homePage: HomePageContent;
+  productionPage: ProductionPageContent;
   products: ProductEntry[];
   applications: ApplicationEntry[];
   newsroomItems: NewsroomItem[];
