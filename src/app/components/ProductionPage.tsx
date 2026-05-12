@@ -88,7 +88,7 @@ export function ProductionPage() {
                 className="premium-heading premium-heading-elevated text-[clamp(1.55rem,2.4vw,2.1rem)] leading-[1.08] mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                One production system from coconut shell charcoal to finished carbon
+                High-Performance Activated Carbon — Fully Integrated Production
               </h2>
               <p
                 className="premium-copy text-[14px] leading-[1.85] max-w-3xl"
