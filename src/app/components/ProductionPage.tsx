@@ -126,12 +126,13 @@ export function ProductionPage() {
                   className="premium-heading premium-heading-elevated text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.08] mb-4"
                   style={{ fontFamily: "'DM Serif Display', serif" }}
                 >
-                  No-compromise control before activation, during processing, and before shipment
+                  End-to-End Quality Control
                 </h2>
                 <div
                   className="space-y-4 premium-copy text-[14px] leading-[1.85]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
+                  <p>Controlled, tested, and verified from raw material preparation to final dispatch.</p>
                   <p>
                     Charcoal is sourced from selected outlets only after rigorous quality inspection. State-of-the-art
                     equipment and skilled technicians support control over activation, handling, screening, and packing.
