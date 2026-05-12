@@ -3,6 +3,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const inheritedEnvKeys = new Set(Object.keys(process.env));
 
 function loadEnvFile(filename) {
   const filePath = join(rootDir, filename);
@@ -32,7 +33,7 @@ function loadEnvFile(filename) {
         value = value.slice(1, -1);
       }
 
-      if (!(key in process.env)) {
+      if (!inheritedEnvKeys.has(key)) {
         process.env[key] = value;
       }
     });
@@ -44,7 +45,7 @@ function loadEnvFile(filename) {
 loadEnvFile('.env');
 loadEnvFile('.env.local');
 
-const siteUrl = (process.env.VITE_SITE_URL || 'https://www.blackopalcarbons.com').replace(/\/+$/, '');
+const siteUrl = (process.env.VITE_SITE_URL || 'https://black-opal-india.vercel.app').replace(/\/+$/, '');
 const publicDir = join(rootDir, 'public');
 
 const routes = [

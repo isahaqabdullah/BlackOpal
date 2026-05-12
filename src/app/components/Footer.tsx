@@ -1,34 +1,37 @@
 import { Link } from 'react-router';
 import brandLogo from '../../public/images/BlackOpallogo.avif';
-import { applications, companyDetails, products } from '../content/siteContent';
+import { companyDetails } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { siteConfig } from '../config/siteConfig';
 
-const columns = [
-  {
-    title: 'Company',
-    links: [
-      { label: 'Home', to: '/' },
-      { label: 'About', to: '/about' },
-      { label: 'Production', to: '/production' },
-      { label: 'Newsroom', to: '/newsroom' },
-      { label: 'Contact', to: '/contact' },
-    ],
-  },
-  {
-    title: 'Products',
-    links: products.map((product) => ({ label: product.name, to: `/products/${product.slug}` })),
-  },
-  {
-    title: 'Applications',
-    links: applications.map((application) => ({
-      label: application.name,
-      to: `/applications/${application.slug}`,
-    })),
-  },
-];
+const companyColumn = {
+  title: 'Company',
+  links: [
+    { label: 'Home', to: '/' },
+    { label: 'About', to: '/about' },
+    { label: 'Production', to: '/production' },
+    { label: 'Newsroom', to: '/newsroom' },
+    { label: 'Contact', to: '/contact' },
+  ],
+};
 
 export function Footer() {
+  const { applications, products } = useSiteContent();
   const footerContact = companyDetails.websiteContact;
+  const columns = [
+    companyColumn,
+    {
+      title: 'Products',
+      links: products.map((product) => ({ label: product.name, to: `/products/${product.slug}` })),
+    },
+    {
+      title: 'Applications',
+      links: applications.map((application) => ({
+        label: application.name,
+        to: `/applications/${application.slug}`,
+      })),
+    },
+  ];
 
   return (
     <footer className="relative z-10 border-t border-[#c9a24d]/12 bg-[#050505] pt-16 pb-8">

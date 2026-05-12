@@ -21,6 +21,22 @@ type SeoEntity =
   | { type: 'application'; item: ApplicationEntry }
   | { type: 'article'; item: NewsroomItem };
 
+export type SeoContent = {
+  products: ProductEntry[];
+  applications: ApplicationEntry[];
+  productMap: Record<string, ProductEntry>;
+  applicationMap: Record<string, ApplicationEntry>;
+  newsroomMap: Record<string, NewsroomItem>;
+};
+
+const fallbackSeoContent: SeoContent = {
+  products,
+  applications,
+  productMap,
+  applicationMap,
+  newsroomMap,
+};
+
 export type SeoMetadata = {
   title: string;
   description: string;
@@ -120,7 +136,7 @@ function baseBreadcrumb(path: string, label: string): Breadcrumb[] {
   ];
 }
 
-export function resolveSeo(pathname: string): SeoMetadata {
+export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoContent): SeoMetadata {
   const path = normalizePath(pathname);
 
   if (path in staticPages) {
@@ -137,7 +153,7 @@ export function resolveSeo(pathname: string): SeoMetadata {
 
   const productMatch = path.match(/^\/products\/([^/]+)$/);
   if (productMatch) {
-    const product = productMap[productMatch[1]];
+    const product = content.productMap[productMatch[1]];
 
     if (product) {
       return {
@@ -158,7 +174,7 @@ export function resolveSeo(pathname: string): SeoMetadata {
 
   const applicationMatch = path.match(/^\/applications\/([^/]+)$/);
   if (applicationMatch) {
-    const application = applicationMap[applicationMatch[1]];
+    const application = content.applicationMap[applicationMatch[1]];
 
     if (application) {
       return {
@@ -179,7 +195,7 @@ export function resolveSeo(pathname: string): SeoMetadata {
 
   const newsroomMatch = path.match(/^\/newsroom\/([^/]+)$/);
   if (newsroomMatch) {
-    const story = newsroomMap[newsroomMatch[1]];
+    const story = content.newsroomMap[newsroomMatch[1]];
 
     if (story?.type === 'press-release') {
       return {
@@ -314,7 +330,7 @@ function entitySchema(metadata: SeoMetadata) {
   return null;
 }
 
-export function buildJsonLd(metadata: SeoMetadata) {
+export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbackSeoContent) {
   const pageUrl = absoluteUrl(metadata.path);
   const schemas: Array<Record<string, unknown>> = [
     organizationSchema(),
@@ -349,7 +365,7 @@ export function buildJsonLd(metadata: SeoMetadata) {
     schemas.push({
       '@type': 'ItemList',
       name: 'Activated Carbon Products',
-      itemListElement: products.map((product, index) => ({
+      itemListElement: content.products.map((product, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         name: product.name,
@@ -362,7 +378,7 @@ export function buildJsonLd(metadata: SeoMetadata) {
     schemas.push({
       '@type': 'ItemList',
       name: 'Activated Carbon Applications',
-      itemListElement: applications.map((application, index) => ({
+      itemListElement: content.applications.map((application, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         name: application.name,

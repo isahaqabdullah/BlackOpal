@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.blackopalcarbons.com/sitemap.xml
+Sitemap: https://black-opal-india.vercel.app/sitemap.xml

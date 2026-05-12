@@ -1,12 +1,17 @@
 import { ArrowRight } from 'lucide-react';
 import { Link, useParams } from 'react-router';
-import { applicationMap, productMap } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { NotFoundPage } from './NotFoundPage';
 import { PageIntro } from './PageIntro';
 
 export function ApplicationDetailPage() {
   const { applicationSlug } = useParams();
+  const { applicationMap, productMap, status } = useSiteContent();
   const application = applicationSlug ? applicationMap[applicationSlug] : undefined;
+
+  if (!application && status === 'loading') {
+    return null;
+  }
 
   if (!application) {
     return <NotFoundPage />;
@@ -27,7 +32,7 @@ export function ApplicationDetailPage() {
       <section className="pb-10 md:pb-12">
         <div className="premium-shell">
           <div className="premium-split-grid items-start">
-            <div className="premium-panel-soft premium-reveal premium-reveal-delay-1 p-6 md:p-7">
+            <div data-sanity-edit-target className="premium-panel-soft premium-reveal premium-reveal-delay-1 p-6 md:p-7">
               <span
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
@@ -89,6 +94,7 @@ export function ApplicationDetailPage() {
           {application.sections.map((section, index) => (
             <div
               key={section.title}
+              data-sanity-edit-target
               className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
               style={{ animationDelay: `${120 + index * 90}ms` }}
             >
@@ -125,7 +131,7 @@ export function ApplicationDetailPage() {
 
       <section className="pb-12 md:pb-14">
         <div className="premium-shell">
-          <div className="premium-panel px-6 py-7 md:px-8">
+          <div data-sanity-edit-target className="premium-panel px-6 py-7 md:px-8">
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
               <div className="max-w-2xl">
                 <span

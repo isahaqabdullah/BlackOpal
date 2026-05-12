@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Navigation } from './Navigation';
 import { Footer } from './Footer';
 import { Seo } from './Seo';
+import { SanityVisualEditing } from '../cms/SanityVisualEditing';
 
 export function Layout() {
   const { pathname } = useLocation();
@@ -70,6 +71,7 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <SanityVisualEditing />
     </div>
   );
 }

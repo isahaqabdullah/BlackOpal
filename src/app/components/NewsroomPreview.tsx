@@ -1,10 +1,11 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
-import { newsroomItems } from '../content/siteContent';
-
-const featuredItems = newsroomItems.slice(0, 3);
+import { useSiteContent } from '../content/SiteContentProvider';
 
 export function NewsroomPreview() {
+  const { newsroomItems } = useSiteContent();
+  const featuredItems = newsroomItems.slice(0, 3);
+
   return (
     <section className="py-10 md:py-12">
       <div className="premium-shell">
@@ -45,6 +46,7 @@ export function NewsroomPreview() {
           {featuredItems.map((item, index) => (
             <div
               key={item.slug}
+              data-sanity-edit-target
               className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
               style={{ animationDelay: `${120 + index * 90}ms` }}
             >

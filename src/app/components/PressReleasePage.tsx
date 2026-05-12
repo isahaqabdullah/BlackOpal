@@ -1,11 +1,16 @@
 import { Link, useParams } from 'react-router';
-import { newsroomMap } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { NotFoundPage } from './NotFoundPage';
 import { PageIntro } from './PageIntro';
 
 export function PressReleasePage() {
   const { storySlug } = useParams();
+  const { newsroomMap, status } = useSiteContent();
   const story = storySlug ? newsroomMap[storySlug] : undefined;
+
+  if (!story && status === 'loading') {
+    return null;
+  }
 
   if (!story || story.type !== 'press-release') {
     return <NotFoundPage />;
@@ -26,7 +31,7 @@ export function PressReleasePage() {
       <section className="pb-12 md:pb-14">
         <div className="premium-shell">
           <div className="grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)]">
-            <article className="premium-panel p-7 md:p-9">
+            <article data-sanity-edit-target className="premium-panel p-7 md:p-9">
               <div className="space-y-5">
                 {story.detail?.map((paragraph) => (
                   <p
@@ -40,7 +45,7 @@ export function PressReleasePage() {
               </div>
             </article>
 
-            <aside className="premium-panel-soft p-6 md:p-7 self-start">
+            <aside data-sanity-edit-target className="premium-panel-soft p-6 md:p-7 self-start">
               <span
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}

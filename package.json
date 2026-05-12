@@ -5,8 +5,18 @@
   "type": "module",
   "scripts": {
     "prebuild": "node scripts/generate-seo-assets.mjs",
+    "postbuild": "tsx scripts/prerender-seo.ts",
     "seo:generate": "node scripts/generate-seo-assets.mjs",
     "build": "vite build",
+    "cms:build": "node scripts/run-sanity.mjs build sanity-dist --yes",
+    "cms:deploy": "node scripts/run-sanity.mjs build sanity-dist --yes && node scripts/run-sanity.mjs deploy sanity-dist --no-build --yes",
+    "cms:dev": "node scripts/run-sanity.mjs dev",
+    "cms:import": "npm run cms:seed && node scripts/run-sanity.mjs dataset import sanity/seed.ndjson production --replace",
+    "cms:login": "node scripts/run-sanity.mjs login",
+    "cms:migrate:homepages": "node scripts/migrate-sanity-homepages.mjs",
+    "cms:pull": "node scripts/pull-sanity-content.mjs",
+    "cms:push": "node scripts/push-sanity-content.mjs",
+    "cms:seed": "tsx scripts/generate-sanity-seed.ts",
     "dev": "vite"
   },
   "dependencies": {
@@ -38,9 +48,12 @@
     "@radix-ui/react-slot": "1.1.2",
     "@radix-ui/react-switch": "1.1.3",
     "@radix-ui/react-tabs": "1.1.3",
-    "@radix-ui/react-toggle-group": "1.1.2",
     "@radix-ui/react-toggle": "1.1.2",
+    "@radix-ui/react-toggle-group": "1.1.2",
     "@radix-ui/react-tooltip": "1.1.8",
+    "@sanity/client": "^7.22.0",
+    "@sanity/preview-url-secret": "^2.1.14",
+    "@sanity/visual-editing": "^2.15.4",
     "canvas-confetti": "1.9.4",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
@@ -62,19 +75,23 @@
     "react-slick": "0.31.0",
     "recharts": "2.15.2",
     "sonner": "2.0.3",
+    "styled-components": "^6.4.1",
     "tailwind-merge": "3.2.0",
     "tw-animate-css": "1.3.8",
     "vaul": "1.1.2"
   },
   "devDependencies": {
+    "@sanity/vision": "^3.99.0",
     "@tailwindcss/vite": "4.1.12",
     "@vitejs/plugin-react": "4.7.0",
+    "sanity": "^3.99.0",
     "tailwindcss": "4.1.12",
+    "tsx": "^4.21.0",
     "vite": "6.3.5"
   },
   "peerDependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "peerDependenciesMeta": {
     "react": {

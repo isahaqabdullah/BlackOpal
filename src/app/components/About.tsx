@@ -1,6 +1,7 @@
 import { Building2, Factory, RefreshCcw, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router';
-import { companyDetails, newsroomMap, siteMetrics } from '../content/siteContent';
+import { companyDetails, siteMetrics } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 import heroLogo from '../../public/images/black-opal-hero-logo-transparent.png';
 
@@ -48,6 +49,7 @@ const officeNetwork = [
 ];
 
 export function AboutPage() {
+  const { newsroomMap } = useSiteContent();
   const pressRelease = newsroomMap['name-change-press-release'];
 
   return (
@@ -235,7 +237,7 @@ export function AboutPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  to="/newsroom/name-change-press-release"
+                  to={`/newsroom/${pressRelease.slug}`}
                   className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >

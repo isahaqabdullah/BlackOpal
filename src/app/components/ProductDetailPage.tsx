@@ -1,12 +1,17 @@
 import { ArrowRight } from 'lucide-react';
 import { Link, useParams } from 'react-router';
-import { productMap } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { NotFoundPage } from './NotFoundPage';
 import { PageIntro } from './PageIntro';
 
 export function ProductDetailPage() {
   const { productSlug } = useParams();
+  const { productMap, status } = useSiteContent();
   const product = productSlug ? productMap[productSlug] : undefined;
+
+  if (!product && status === 'loading') {
+    return null;
+  }
 
   if (!product) {
     return <NotFoundPage />;
@@ -31,7 +36,7 @@ export function ProductDetailPage() {
               <img src={product.image} alt={product.name} className="w-full aspect-[4/3] object-cover" />
             </div>
 
-            <div className="premium-panel-soft premium-reveal premium-reveal-delay-2 p-6 md:p-7">
+            <div data-sanity-edit-target className="premium-panel-soft premium-reveal premium-reveal-delay-2 p-6 md:p-7">
               <span
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
@@ -87,6 +92,7 @@ export function ProductDetailPage() {
           {product.sections.map((section, index) => (
             <div
               key={section.title}
+              data-sanity-edit-target
               className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
               style={{ animationDelay: `${120 + index * 90}ms` }}
             >

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { siteConfig } from '../config/siteConfig';
 import { absoluteUrl, buildJsonLd, resolveSeo } from '../seo';
 
@@ -43,9 +44,10 @@ function upsertJsonLd(jsonLd: Record<string, unknown>) {
 
 export function Seo() {
   const { pathname } = useLocation();
+  const content = useSiteContent();
 
   useEffect(() => {
-    const metadata = resolveSeo(pathname);
+    const metadata = resolveSeo(pathname, content);
     const canonicalUrl = absoluteUrl(metadata.path);
     const image = metadata.image || absoluteUrl('/og-image.svg');
     const robots = metadata.noindex ? 'noindex, nofollow' : 'index, follow';
@@ -72,8 +74,8 @@ export function Seo() {
     }
 
     upsertCanonical(canonicalUrl);
-    upsertJsonLd(buildJsonLd(metadata));
-  }, [pathname]);
+    upsertJsonLd(buildJsonLd(metadata, content));
+  }, [content, pathname]);
 
   return null;
 }

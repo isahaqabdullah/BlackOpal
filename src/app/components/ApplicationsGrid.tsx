@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { Droplets, Gem, Wind, Fuel, FlaskConical, Cog, ArrowRight } from 'lucide-react';
-import { applications } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
+import { homePageDataAttribute } from '../cms/visualEditingAttributes';
 
 const iconMap = {
   'water-treatment': Droplets,
@@ -16,21 +17,26 @@ function getApplicationIcon(slug: string) {
 }
 
 export function ApplicationsGrid() {
+  const { applications, homePage } = useSiteContent();
+  const homePageDocumentId = homePage._id;
+
   return (
     <section className="py-10 md:py-12">
       <div className="premium-shell">
-        <div className="mb-8 md:mb-10">
+        <div className="mb-8 md:mb-10" data-sanity-edit-target>
           <span
+            data-sanity={homePageDataAttribute('applicationSectionKicker', homePageDocumentId)}
             className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
-            Applications
+            {homePage.applicationSectionKicker}
           </span>
           <h2
+            data-sanity={homePageDataAttribute('applicationSectionTitle', homePageDocumentId)}
             className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] max-w-2xl"
             style={{ fontFamily: "'DM Serif Display', serif" }}
           >
-            Industries we serve
+            {homePage.applicationSectionTitle}
           </h2>
         </div>
 
@@ -41,6 +47,7 @@ export function ApplicationsGrid() {
             return (
               <Link
                 key={a.slug}
+                data-sanity-edit-target
                 to={`/applications/${a.slug}`}
                 className="premium-panel-soft premium-card-animated premium-reveal p-6 transition-colors group hover:border-[#d4ae5b]/20"
                 style={{ animationDelay: `${120 + index * 90}ms` }}

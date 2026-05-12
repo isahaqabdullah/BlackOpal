@@ -1,12 +1,13 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
-import { newsroomItems } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
-const pressRelease = newsroomItems.find((item) => item.type === 'press-release');
-const resourceItems = newsroomItems.filter((item) => item.type === 'resource');
-
 export function NewsroomPage() {
+  const { newsroomItems } = useSiteContent();
+  const pressRelease = newsroomItems.find((item) => item.type === 'press-release');
+  const resourceItems = newsroomItems.filter((item) => item.type === 'resource');
+
   return (
     <div>
       <PageIntro
@@ -18,7 +19,7 @@ export function NewsroomPage() {
       {pressRelease ? (
         <section className="pb-10 md:pb-12">
           <div className="premium-shell">
-            <div className="premium-panel premium-split-grid p-7 md:p-9">
+            <div data-sanity-edit-target className="premium-panel premium-split-grid p-7 md:p-9">
               <div>
                 <span
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
@@ -111,6 +112,7 @@ export function NewsroomPage() {
             {resourceItems.map((item, index) => (
               <div
                 key={item.slug}
+                data-sanity-edit-target
                 className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
                 style={{ animationDelay: `${120 + index * 90}ms` }}
               >

@@ -1,9 +1,11 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
-import { applications, productMap } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
 export function ApplicationsPage() {
+  const { applications, productMap } = useSiteContent();
+
   return (
     <div>
       <PageIntro
@@ -18,6 +20,7 @@ export function ApplicationsPage() {
           {applications.map((application, index) => (
             <div
               key={application.slug}
+              data-sanity-edit-target
               className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
               style={{ animationDelay: `${120 + index * 90}ms` }}
             >

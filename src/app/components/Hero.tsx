@@ -1,9 +1,13 @@
 import { Link } from 'react-router';
-import { siteConfig } from '../config/siteConfig';
+import { useSiteContent } from '../content/SiteContentProvider';
+import { homePageDataAttribute } from '../cms/visualEditingAttributes';
 import axionVideo from '../../public/images/axionvideo1.mp4';
 import heroLogo from '../../public/images/black-opal-hero-logo-transparent.png';
 
 export function Hero() {
+  const { homePage } = useSiteContent();
+  const homePageDocumentId = homePage._id;
+
   return (
     <section className="relative overflow-hidden border-b border-[#c9a24d]/10">
       <div className="pointer-events-none absolute inset-0">
@@ -22,24 +26,27 @@ export function Hero() {
           </span>
         </h1>
         <div className="premium-split-grid premium-hero-grid">
-          <div>
+          <div data-sanity-edit-target>
             <span
+              data-sanity={homePageDataAttribute('heroKicker', homePageDocumentId)}
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-5"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              {siteConfig.heroKicker}
+              {homePage.heroKicker}
             </span>
             <h2
+              data-sanity={homePageDataAttribute('heroTitle', homePageDocumentId)}
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.4rem,5vw,4.7rem)] leading-[0.98] tracking-[-0.03em] mb-6 max-w-xl"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              {siteConfig.heroTitle}
+              {homePage.heroTitle}
             </h2>
             <p
+              data-sanity={homePageDataAttribute('heroDescription', homePageDocumentId)}
               className="premium-copy premium-hero-copy premium-reveal premium-reveal-delay-2 text-[16px] md:text-[18px] leading-[1.72] mb-9 max-w-2xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
-              {siteConfig.heroDescription}
+              {homePage.heroDescription}
             </p>
             <div className="premium-reveal premium-reveal-delay-3 flex flex-wrap gap-3">
               <Link

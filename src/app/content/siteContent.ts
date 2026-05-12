@@ -7,12 +7,46 @@ export type SiteMetric = {
 };
 
 export type ContentSection = {
+  _key?: string;
   title: string;
   body: string;
   bullets?: string[];
 };
 
+export type HomePageContent = {
+  _id?: string;
+  _type?: 'homePage';
+  siteId?: string;
+  heroKicker: string;
+  heroTitle: string;
+  heroDescription: string;
+  trustCertificationLabel: string;
+  trustCertificationValue: string;
+  trustEstablishedLabel: string;
+  trustEstablishedValue: string;
+  trustProductionLabel: string;
+  trustProductionValue: string;
+  trustLogisticsLabel: string;
+  trustLogisticsValue: string;
+  trustCapacityLabel: string;
+  trustCapacityValue: string;
+  productSectionKicker: string;
+  productSectionTitle: string;
+  applicationSectionKicker: string;
+  applicationSectionTitle: string;
+  companyEyebrow: string;
+  companyTitle: string;
+  companyBodyPrimary: string;
+  companyBodySecondary: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaPrimaryLabel: string;
+  ctaSecondaryLabel: string;
+};
+
 export type ProductEntry = {
+  _id?: string;
+  _type?: 'product';
   slug: string;
   name: string;
   shortName: string;
@@ -26,6 +60,8 @@ export type ProductEntry = {
 };
 
 export type ApplicationEntry = {
+  _id?: string;
+  _type?: 'application';
   slug: string;
   name: string;
   summary: string;
@@ -38,12 +74,43 @@ export type ApplicationEntry = {
 };
 
 export type NewsroomItem = {
+  _id?: string;
+  _type?: 'newsroomItem';
   slug: string;
   title: string;
   type: 'press-release' | 'resource';
   summary: string;
   detail?: string[];
   bullets?: string[];
+};
+
+export const homePageContent: HomePageContent = {
+  siteId: siteConfig.siteId,
+  heroKicker: siteConfig.heroKicker,
+  heroTitle: siteConfig.heroTitle,
+  heroDescription: siteConfig.heroDescription,
+  trustCertificationLabel: 'Certifications',
+  trustCertificationValue: 'NSF 42 · NSF 61 · Prop 65',
+  trustEstablishedLabel: 'Established',
+  trustEstablishedValue: 'Since 2010',
+  trustProductionLabel: 'Production',
+  trustProductionValue: `${siteConfig.productionCenterCount} Production Centers`,
+  trustLogisticsLabel: 'Logistics',
+  trustLogisticsValue: `${siteConfig.warehouseLocationCount} Warehouse Locations`,
+  trustCapacityLabel: 'Capacity',
+  trustCapacityValue: '50 Million lbs/year',
+  productSectionKicker: 'Product Categories',
+  productSectionTitle: 'Application-matched grades for every process',
+  applicationSectionKicker: 'Applications',
+  applicationSectionTitle: 'Industries we serve',
+  companyEyebrow: siteConfig.companyEyebrow,
+  companyTitle: siteConfig.companyTitle,
+  companyBodyPrimary: siteConfig.companyBodyPrimary,
+  companyBodySecondary: siteConfig.companyBodySecondary,
+  ctaTitle: 'Grade selection starts with the process',
+  ctaDescription: 'Mesh size, activity, washing, compliance, and delivery requirements shape the final recommendation.',
+  ctaPrimaryLabel: 'Request Quote',
+  ctaSecondaryLabel: 'Send Technical Inquiry',
 };
 
 export const siteMetrics: SiteMetric[] = [

@@ -23,10 +23,12 @@ type Headquarters = {
   countryCode: string;
 };
 
-const DEFAULT_SITE_URL = 'https://www.blackopalcarbons.com';
+const DEFAULT_SITE_URL = 'https://black-opal-india.vercel.app';
 const DEFAULT_SITE_NAME = 'Black Opal Carbons';
 const DEFAULT_DESCRIPTION =
   'Black Opal Carbons supplies coconut shell activated carbon manufactured and exported from India for water treatment, gold recovery, air and gas purification, oil and gas, and industrial applications.';
+const runtimeEnv =
+  import.meta.env ?? (typeof process !== 'undefined' ? (process.env as Record<string, string | undefined>) : {});
 
 const defaultWarehouses: Warehouse[] = [
   {
@@ -44,12 +46,12 @@ const defaultWarehouses: Warehouse[] = [
 ];
 
 function envValue(name: string, fallback: string) {
-  const value = import.meta.env[name] as string | undefined;
+  const value = runtimeEnv[name] as string | undefined;
   return value?.trim() || fallback;
 }
 
 function optionalEnvValue(name: string, fallback = '') {
-  const value = import.meta.env[name] as string | undefined;
+  const value = runtimeEnv[name] as string | undefined;
   return value?.trim() || fallback;
 }
 
@@ -120,7 +122,7 @@ const regionLabel = envValue('VITE_REGION_LABEL', 'U.S.');
 const serviceArea = envValue('VITE_SERVICE_AREA', 'US');
 const marketName = envValue('VITE_MARKET_NAME', 'North American');
 const utilityMarketLabel = envValue('VITE_UTILITY_MARKET_LABEL', regionLabel);
-const warehouses = parseWarehouses(import.meta.env.VITE_WAREHOUSES_JSON) ?? defaultWarehouses;
+const warehouses = parseWarehouses(runtimeEnv.VITE_WAREHOUSES_JSON) ?? defaultWarehouses;
 const originStatement = envValue('VITE_ORIGIN_STATEMENT', 'Manufactured and exported from India');
 const originDescription = envValue(
   'VITE_ORIGIN_DESCRIPTION',
@@ -160,7 +162,7 @@ const defaultAdditionalOffices: Office[] = [
     note: 'Regional office for Middle East customer coordination.',
   },
 ];
-const additionalOffices = parseOffices(import.meta.env.VITE_ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices;
+const additionalOffices = parseOffices(runtimeEnv.VITE_ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices;
 const defaultLogisticsSummary = warehouses.length
   ? 'Company-owned manufacturing, 50 million lbs annual capacity, and final quality assurance before shipment support consistent coconut activated carbon supply.'
   : 'Company-owned manufacturing, controlled particle sizing, and final quality assurance before shipment support consistent coconut activated carbon supply.';

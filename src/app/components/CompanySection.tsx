@@ -1,8 +1,12 @@
 import { Link } from 'react-router';
-import { companyDetails, siteMetrics } from '../content/siteContent';
-import { siteConfig } from '../config/siteConfig';
+import { siteMetrics } from '../content/siteContent';
+import { useSiteContent } from '../content/SiteContentProvider';
+import { homePageDataAttribute } from '../cms/visualEditingAttributes';
 
 export function CompanySection() {
+  const { homePage } = useSiteContent();
+  const homePageDocumentId = homePage._id;
+
   return (
     <section className="py-10 md:py-12">
       <div className="premium-shell">
@@ -14,28 +18,34 @@ export function CompanySection() {
               className="w-full aspect-[5/4] object-cover"
             />
           </div>
-          <div>
+          <div data-sanity-edit-target>
             <span
+              data-sanity={homePageDataAttribute('companyEyebrow', homePageDocumentId)}
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              {siteConfig.companyEyebrow}
+              {homePage.companyEyebrow}
             </span>
             <h2
+              data-sanity={homePageDataAttribute('companyTitle', homePageDocumentId)}
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] mb-6"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              {siteConfig.companyTitle}
+              {homePage.companyTitle}
             </h2>
             <div
               className="space-y-4 premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85] mb-10"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               <p>
-                {siteConfig.companyBodyPrimary}
+                <span data-sanity={homePageDataAttribute('companyBodyPrimary', homePageDocumentId)}>
+                  {homePage.companyBodyPrimary}
+                </span>
               </p>
               <p>
-                {siteConfig.companyBodySecondary}
+                <span data-sanity={homePageDataAttribute('companyBodySecondary', homePageDocumentId)}>
+                  {homePage.companyBodySecondary}
+                </span>
               </p>
             </div>
             <div className="premium-compact-grid premium-reveal premium-reveal-delay-3 border-t border-[#c9a24d]/10 pt-6 mb-7">
