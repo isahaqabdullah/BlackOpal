@@ -100,9 +100,12 @@ export function AboutPage() {
                 >
                   Office network
                 </span>
-                <div className="grid gap-5 lg:grid-cols-3">
+                <div className="grid gap-3 lg:grid-cols-3">
                   {companyDetails.officeNetwork.map((office) => (
-                    <div key={`${office.label}-${office.name}`}>
+                    <address
+                      key={`${office.label}-${office.name}`}
+                      className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
+                    >
                       <span
                         className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
@@ -124,23 +127,7 @@ export function AboutPage() {
                           {line}
                         </p>
                       ))}
-                      {office.phone ? (
-                        <p
-                          className="premium-copy text-[12px] leading-[1.65] mt-2"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                        >
-                          Tel: {office.phone}
-                        </p>
-                      ) : null}
-                      {office.email ? (
-                        <p
-                          className="premium-copy text-[12px] leading-[1.65]"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                        >
-                          Email: {office.email}
-                        </p>
-                      ) : null}
-                    </div>
+                    </address>
                   ))}
                 </div>
               </div>

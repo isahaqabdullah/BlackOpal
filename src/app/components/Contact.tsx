@@ -1,6 +1,5 @@
 'use client';
 
-import { Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { companyDetails } from '../content/siteContent';
 import { siteConfig } from '../config/siteConfig';
@@ -36,9 +35,12 @@ export function ContactPage() {
                 >
                   {siteConfig.additionalOfficesTitle}
                 </span>
-                <div className="space-y-5">
+                <div className="grid gap-3">
                   {companyDetails.officeNetwork.map((office) => (
-                    <div key={`${office.label}-${office.name}`}>
+                    <address
+                      key={`${office.label}-${office.name}`}
+                      className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
+                    >
                       <span
                         className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
@@ -60,82 +62,10 @@ export function ContactPage() {
                           {line}
                         </p>
                       ))}
-                      {office.phone ? (
-                        <p
-                          className="premium-copy text-[13px] leading-[1.7] mt-2"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                        >
-                          Tel: {office.phone}
-                        </p>
-                      ) : null}
-                      {office.email ? (
-                        <p
-                          className="premium-copy text-[13px] leading-[1.7]"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                        >
-                          Email: {office.email}
-                        </p>
-                      ) : null}
-                      {office.note ? (
-                        <p
-                          className="premium-copy text-[12px] leading-[1.7] mt-2 text-[#8f835f]"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                        >
-                          {office.note}
-                        </p>
-                      ) : null}
-                    </div>
+                    </address>
                   ))}
                 </div>
               </div>
-
-              <div className="premium-panel-soft p-6 md:p-7 space-y-7">
-                {[
-                  companyDetails.fax
-                    ? {
-                        icon: Phone,
-                        label: 'Phone',
-                        value: `${companyDetails.phoneDisplay}\nFax: ${companyDetails.fax}`,
-                      }
-                    : {
-                        icon: Phone,
-                        label: 'Phone',
-                        value: companyDetails.phoneDisplay,
-                      },
-                  {
-                    icon: Mail,
-                    label: 'Email',
-                    value:
-                      companyDetails.infoEmail === companyDetails.salesEmail
-                        ? companyDetails.infoEmail
-                        : `${companyDetails.infoEmail}\n${companyDetails.salesEmail}`,
-                    },
-                ].map((item) => (
-                  <div key={item.label} className="flex items-start gap-4">
-                    <div className="premium-icon-wrap w-9 h-9 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                      <item.icon size={16} className="text-[#e6cb87]" />
-                    </div>
-                    <div>
-                      <span
-                        className="text-[#8f835f] text-[11px] tracking-[0.18em] uppercase block mb-1"
-                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
-                      >
-                        {item.label}
-                      </span>
-                      {item.value.split('\n').map((line) => (
-                        <div
-                          key={line}
-                          className="text-[#f7efdb] text-[14px]"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
-                        >
-                          {line}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
             </div>
 
             <div>
@@ -151,8 +81,8 @@ export function ContactPage() {
                     className="premium-copy text-[14px]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
-                    Thank you for your enquiry. For urgent requirements, use the listed phone or email details for the
-                    fastest Black Opal response.
+                    Thank you for your enquiry. The Black Opal team will review the details and respond with the next
+                    step.
                   </p>
                 </div>
               ) : (
