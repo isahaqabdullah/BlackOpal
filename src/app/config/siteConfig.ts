@@ -258,7 +258,7 @@ const defaultAdditionalOffices: Office[] = [
 ];
 const additionalOffices = parseOffices(runtimeEnv.VITE_ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices;
 const defaultLogisticsSummary = warehouses.length
-  ? 'Company-owned manufacturing, 50 million lbs annual capacity, and final quality assurance before shipment support consistent coconut activated carbon supply.'
+  ? 'Company-owned manufacturing, 35000 metric tons annual capacity, and final quality assurance before shipment support consistent coconut activated carbon supply.'
   : 'Company-owned manufacturing, controlled particle sizing, and final quality assurance before shipment support consistent coconut activated carbon supply.';
 const headquartersLabel = normalizeHeadquartersCopy(envValue('VITE_HEADQUARTERS_LABEL', GROUP_HEADQUARTERS_LABEL));
 const headquartersDescriptor = normalizeHeadquartersCopy(
@@ -268,7 +268,7 @@ const marketBaseTitle = envValue('VITE_MARKET_BASE_TITLE', 'Manufacturing base a
 const marketBaseDescription = normalizeHeadquartersCopy(
   envValue(
     'VITE_MARKET_BASE_DESCRIPTION',
-    "Black Opal's state-of-the-art factory in India anchors 50 million lbs of annual coconut activated carbon capacity. Black Opal Group Head Quarters, India office, and Middle East office keep customers connected to the team for enquiries, technical support, and service.",
+    "Black Opal's state-of-the-art factory in India anchors 35000 metric tons of annual coconut activated carbon capacity. Black Opal Group Head Quarters, India office, and Middle East office keep customers connected to the team for enquiries, technical support, and service.",
   ),
 );
 const normalizedRegion = regionLabel.toLowerCase().replace(/[^a-z0-9]/g, '');

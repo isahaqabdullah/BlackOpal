@@ -8,7 +8,7 @@ const productionFacilityImage = '/images/production-facility.avif';
 
 const productionAtGlance = [
   {
-    value: '50 million lbs',
+    value: '35000 metric tons',
     label: 'Annual capacity',
   },
   {
@@ -49,7 +49,7 @@ export function ProductionPage() {
     <div>
       <PageIntro
         label="Production"
-        title="50 million lbs capacity, steam activation, and mesh-size control"
+        title="35000 metric tons capacity, steam activation, and mesh-size control"
         description={`${siteConfig.originStatement}. Raw material selection, activation, sizing, and final quality assurance are controlled before shipment.`}
         breadcrumbs={[{ label: 'Production' }]}
       />
@@ -95,7 +95,7 @@ export function ProductionPage() {
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 Black Opal's India coconut activated carbon facility is the largest in the region, with annual
-                production capacity of 50 million pounds. The same production flow controls raw material selection,
+                production capacity of 35000 metric tons. The same production flow controls raw material selection,
                 steam activation, particle sizing, packing, and final assurance before shipment.
               </p>
             </div>

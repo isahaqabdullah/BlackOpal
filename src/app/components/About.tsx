@@ -86,7 +86,7 @@ export function AboutPage() {
                   standards, dependable supply, and consistent product performance.
                 </p>
                 <p>
-                  The state-of-the-art factory in South India has an annual production capacity of 50 million pounds of
+                  The state-of-the-art factory in South India has an annual production capacity of 35000 metric tons of
                   coconut activated carbon for export markets. The team is committed to value-added products and
                   services, open communication, and customer support focused on satisfaction 24 hours a day, 7 days a
                   week.

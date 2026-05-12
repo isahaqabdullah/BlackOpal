@@ -109,7 +109,7 @@ export const homePageContent: HomePageContent = {
   trustLogisticsLabel: 'Logistics',
   trustLogisticsValue: `${siteConfig.warehouseLocationCount} Warehouse Locations`,
   trustCapacityLabel: 'Capacity',
-  trustCapacityValue: '50 Million lbs/year',
+  trustCapacityValue: '35000 metric tons/year',
   productSectionKicker: 'Product Categories',
   productSectionTitle: 'Application-matched grades for every process',
   applicationSectionKicker: 'Applications',
@@ -130,7 +130,7 @@ export const siteMetrics: SiteMetric[] = [
   ...(siteConfig.warehouseLocationCount === '0'
     ? []
     : [{ value: siteConfig.warehouseLocationCount, label: 'Warehouse locations' }]),
-  { value: '50 million lbs', label: 'Annual capacity' },
+  { value: '35000 metric tons', label: 'Annual capacity' },
 ];
 
 export const products: ProductEntry[] = [
