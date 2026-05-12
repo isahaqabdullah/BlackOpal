@@ -1,7 +1,10 @@
+'use client';
+
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import brandLogo from '../../public/images/BlackOpallogo.avif';
+const brandLogo = '/images/BlackOpallogo.avif';
 
 const links = [
   { label: 'Home', path: '/' },
@@ -15,16 +18,16 @@ const links = [
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
   const isActive = (path: string) =>
     path === '/'
-      ? location.pathname === '/'
-      : location.pathname === path || location.pathname.startsWith(`${path}/`);
+      ? pathname === '/'
+      : pathname === path || pathname.startsWith(`${path}/`);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-[#c9a24d]/15 bg-[#050505]/85 backdrop-blur-xl">
       <div className="premium-shell h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <img
             src={brandLogo}
             alt="Black Opal Carbons logo"
@@ -37,7 +40,7 @@ export function Navigation() {
           {links.map((l) => (
             <Link
               key={l.path}
-              to={l.path}
+              href={l.path}
               data-active={isActive(l.path)}
               className={`premium-nav-link text-[13px] transition-colors ${
                 isActive(l.path) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
@@ -48,7 +51,7 @@ export function Navigation() {
             </Link>
           ))}
           <Link
-            to="/contact"
+            href="/contact"
             className="premium-primary-btn text-[13px] px-5 py-2.5 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
@@ -68,7 +71,7 @@ export function Navigation() {
           {links.map((l) => (
             <Link
               key={l.path}
-              to={l.path}
+              href={l.path}
               onClick={() => setOpen(false)}
               data-active={isActive(l.path)}
               className={`premium-nav-link block text-[14px] py-1.5 ${
@@ -80,7 +83,7 @@ export function Navigation() {
             </Link>
           ))}
           <Link
-            to="/contact"
+            href="/contact"
             onClick={() => setOpen(false)}
             className="premium-primary-btn block text-[13px] text-center px-5 py-2.5 rounded-full mt-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}

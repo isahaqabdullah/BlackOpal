@@ -1,8 +1,10 @@
+'use client';
+
 import { ArrowRight } from 'lucide-react';
 import { companyDetails } from '../content/siteContent';
 import { siteConfig } from '../config/siteConfig';
 import { PageIntro } from './PageIntro';
-import productionFacilityImage from '../../public/images/production-facility.avif';
+const productionFacilityImage = '/images/production-facility.avif';
 
 const productionAtGlance = [
   {

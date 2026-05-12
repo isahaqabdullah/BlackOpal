@@ -1,5 +1,7 @@
+'use client';
+
 import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 
 export function NotFoundPage() {
   return (
@@ -27,7 +29,7 @@ export function NotFoundPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
-              to="/"
+              href="/"
               className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
@@ -35,7 +37,7 @@ export function NotFoundPage() {
               Home
             </Link>
             <Link
-              to="/products"
+              href="/products"
               className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >

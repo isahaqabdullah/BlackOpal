@@ -1,5 +1,7 @@
+'use client';
+
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
@@ -118,7 +120,7 @@ export function ProductsPage() {
 
                   <div className="mt-7 pt-6 border-t border-[#c9a24d]/10 flex flex-wrap gap-3">
                     <Link
-                      to={`/products/${product.slug}`}
+                      href={`/products/${product.slug}`}
                       className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
@@ -126,7 +128,7 @@ export function ProductsPage() {
                       <ArrowRight size={14} />
                     </Link>
                     <Link
-                      to="/contact"
+                      href="/contact"
                       className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >

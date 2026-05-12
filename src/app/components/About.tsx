@@ -1,9 +1,11 @@
+'use client';
+
 import { Building2, Factory, RefreshCcw, ShieldCheck } from 'lucide-react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 import { companyDetails, siteMetrics } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
-import heroLogo from '../../public/images/black-opal-hero-logo-transparent.png';
+const heroLogo = '/images/black-opal-hero-logo-transparent.png';
 
 const aboutCards = [
   {
@@ -237,14 +239,14 @@ export function AboutPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  to={`/newsroom/${pressRelease.slug}`}
+                  href={`/newsroom/${pressRelease.slug}`}
                   className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   Brand transition
                 </Link>
                 <Link
-                  to="/production"
+                  href="/production"
                   className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >

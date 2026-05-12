@@ -1,12 +1,15 @@
-import { Link } from 'react-router';
+'use client';
+
+import Link from 'next/link';
 import { useSiteContent } from '../content/SiteContentProvider';
-import { homePageDataAttribute } from '../cms/visualEditingAttributes';
-import axionVideo from '../../public/images/axionvideo1.mp4';
-import heroLogo from '../../public/images/black-opal-hero-logo-transparent.png';
+import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
+const axionVideo = '/images/axionvideo1.mp4';
+const heroLogo = '/images/black-opal-hero-logo-transparent.png';
 
 export function Hero() {
   const { homePage } = useSiteContent();
   const homePageDocumentId = homePage._id;
+  const homePageDataAttribute = useHomePageDataAttribute(homePageDocumentId);
 
   return (
     <section className="relative overflow-hidden border-b border-[#c9a24d]/10">
@@ -28,21 +31,21 @@ export function Hero() {
         <div className="premium-split-grid premium-hero-grid">
           <div data-sanity-edit-target>
             <span
-              data-sanity={homePageDataAttribute('heroKicker', homePageDocumentId)}
+              data-sanity={homePageDataAttribute('heroKicker')}
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-5"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
               {homePage.heroKicker}
             </span>
             <h2
-              data-sanity={homePageDataAttribute('heroTitle', homePageDocumentId)}
+              data-sanity={homePageDataAttribute('heroTitle')}
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.4rem,5vw,4.7rem)] leading-[0.98] tracking-[-0.03em] mb-6 max-w-xl"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               {homePage.heroTitle}
             </h2>
             <p
-              data-sanity={homePageDataAttribute('heroDescription', homePageDocumentId)}
+              data-sanity={homePageDataAttribute('heroDescription')}
               className="premium-copy premium-hero-copy premium-reveal premium-reveal-delay-2 text-[16px] md:text-[18px] leading-[1.72] mb-9 max-w-2xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
@@ -50,14 +53,14 @@ export function Hero() {
             </p>
             <div className="premium-reveal premium-reveal-delay-3 flex flex-wrap gap-3">
               <Link
-                to="/contact"
+                href="/contact"
                 className="premium-primary-btn text-[13px] px-7 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 Request a Quote
               </Link>
               <Link
-                to="/contact"
+                href="/contact"
                 className="premium-secondary-btn text-[13px] px-7 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

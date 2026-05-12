@@ -1,4 +1,5 @@
 import {
+  homePageContent,
   applicationMap,
   applications,
   newsroomMap,
@@ -6,6 +7,7 @@ import {
   productMap,
 } from './content/siteContent';
 import type { ApplicationEntry, NewsroomItem, ProductEntry } from './content/siteContent';
+import { stegaClean } from '@sanity/client/stega';
 import { companyDetails, siteConfig, siteUrl } from './config/siteConfig';
 
 const SITE_NAME = siteConfig.siteName;
@@ -22,6 +24,7 @@ type SeoEntity =
   | { type: 'article'; item: NewsroomItem };
 
 export type SeoContent = {
+  homePage: typeof homePageContent;
   products: ProductEntry[];
   applications: ApplicationEntry[];
   productMap: Record<string, ProductEntry>;
@@ -30,6 +33,7 @@ export type SeoContent = {
 };
 
 const fallbackSeoContent: SeoContent = {
+  homePage: homePageContent,
   products,
   applications,
   productMap,
@@ -60,6 +64,22 @@ export function absoluteUrl(pathOrUrl: string) {
 
 function pageTitle(title: string) {
   return title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+}
+
+function cleanSeoText(value: string | undefined) {
+  return value ? stegaClean(value).trim() : '';
+}
+
+function applyExplicitSeo(metadata: SeoMetadata, entity?: { seo?: ProductEntry['seo'] }) {
+  const seo = entity?.seo;
+
+  return {
+    ...metadata,
+    title: cleanSeoText(seo?.seoTitle) || metadata.title,
+    description: cleanSeoText(seo?.seoDescription) || metadata.description,
+    image: cleanSeoText(seo?.seoImage) || metadata.image,
+    noindex: typeof seo?.noIndex === 'boolean' ? seo.noIndex : metadata.noindex,
+  };
 }
 
 function normalizePath(pathname: string) {
@@ -143,12 +163,14 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
     const metadata = staticPages[path];
     const { breadcrumbLabel, ...pageMetadata } = metadata;
 
-    return {
+    const resolved = {
       ...pageMetadata,
       path,
       image: absoluteUrl(DEFAULT_IMAGE_PATH),
       breadcrumbs: path === '/' ? [{ name: 'Home', path: '/' }] : baseBreadcrumb(path, breadcrumbLabel),
     };
+
+    return path === '/' ? applyExplicitSeo(resolved, content.homePage) : resolved;
   }
 
   const productMatch = path.match(/^\/products\/([^/]+)$/);
@@ -156,7 +178,7 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
     const product = content.productMap[productMatch[1]];
 
     if (product) {
-      return {
+      return applyExplicitSeo({
         title: pageTitle(product.name),
         description: `${product.summary} ${originSeoNote}`,
         path,
@@ -168,7 +190,7 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
           { name: product.name, path },
         ],
         entity: { type: 'product', item: product },
-      };
+      }, product);
     }
   }
 
@@ -177,7 +199,7 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
     const application = content.applicationMap[applicationMatch[1]];
 
     if (application) {
-      return {
+      return applyExplicitSeo({
         title: pageTitle(`${application.name} Activated Carbon Applications`),
         description: `${application.summary} ${originSeoNote}`,
         path,
@@ -189,7 +211,7 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
           { name: application.name, path },
         ],
         entity: { type: 'application', item: application },
-      };
+      }, application);
     }
   }
 
@@ -198,7 +220,7 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
     const story = content.newsroomMap[newsroomMatch[1]];
 
     if (story?.type === 'press-release') {
-      return {
+      return applyExplicitSeo({
         title: pageTitle(story.title),
         description: story.summary,
         path,
@@ -211,7 +233,7 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
           { name: story.title, path },
         ],
         entity: { type: 'article', item: story },
-      };
+      }, story);
     }
   }
 

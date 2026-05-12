@@ -1,25 +1,28 @@
-import { Link } from 'react-router';
+'use client';
+
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
-import { homePageDataAttribute } from '../cms/visualEditingAttributes';
+import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
 
 export function ProductCards() {
   const { homePage, products } = useSiteContent();
   const homePageDocumentId = homePage._id;
+  const homePageDataAttribute = useHomePageDataAttribute(homePageDocumentId);
 
   return (
     <section className="py-10 md:py-12">
       <div className="premium-shell">
         <div className="mb-8 md:mb-10" data-sanity-edit-target>
           <span
-            data-sanity={homePageDataAttribute('productSectionKicker', homePageDocumentId)}
+            data-sanity={homePageDataAttribute('productSectionKicker')}
             className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             {homePage.productSectionKicker}
           </span>
           <h2
-            data-sanity={homePageDataAttribute('productSectionTitle', homePageDocumentId)}
+            data-sanity={homePageDataAttribute('productSectionTitle')}
             className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] max-w-2xl"
             style={{ fontFamily: "'DM Serif Display', serif" }}
           >
@@ -60,7 +63,7 @@ export function ProductCards() {
                 ))}
               </ul>
               <Link
-                to={`/products/${p.slug}`}
+                href={`/products/${p.slug}`}
                 className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2 rounded-[8px] transition-all"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

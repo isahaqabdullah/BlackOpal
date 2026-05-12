@@ -1,10 +1,13 @@
-import { Link, useParams } from 'react-router';
+'use client';
+
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { NotFoundPage } from './NotFoundPage';
 import { PageIntro } from './PageIntro';
 
 export function PressReleasePage() {
-  const { storySlug } = useParams();
+  const { storySlug } = useParams<{ storySlug: string }>();
   const { newsroomMap, status } = useSiteContent();
   const story = storySlug ? newsroomMap[storySlug] : undefined;
 
@@ -66,7 +69,7 @@ export function PressReleasePage() {
               </div>
 
               <Link
-                to="/contact"
+                href="/contact"
                 className="premium-primary-btn inline-block text-[13px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

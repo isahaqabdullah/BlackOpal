@@ -1,3 +1,5 @@
+'use client';
+
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { companyDetails } from '../content/siteContent';

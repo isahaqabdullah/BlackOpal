@@ -1,10 +1,13 @@
+'use client';
+
 import { Award, Calendar, Factory, Warehouse, Globe } from 'lucide-react';
-import { homePageDataAttribute } from '../cms/visualEditingAttributes';
+import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
 import { useSiteContent } from '../content/SiteContentProvider';
 
 export function TrustBar() {
   const { homePage } = useSiteContent();
   const homePageDocumentId = homePage._id;
+  const homePageDataAttribute = useHomePageDataAttribute(homePageDocumentId);
   const items = [
     {
       icon: Award,
@@ -58,14 +61,14 @@ export function TrustBar() {
               </div>
               <div>
                 <span
-                  data-sanity={homePageDataAttribute(item.labelPath, homePageDocumentId)}
+                  data-sanity={homePageDataAttribute(item.labelPath)}
                   className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                 >
                   {item.label}
                 </span>
                 <span
-                  data-sanity={homePageDataAttribute(item.valuePath, homePageDocumentId)}
+                  data-sanity={homePageDataAttribute(item.valuePath)}
                   className="text-[#f7efdb] text-[14px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >

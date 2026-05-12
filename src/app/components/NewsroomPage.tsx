@@ -1,5 +1,7 @@
+'use client';
+
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
@@ -52,7 +54,7 @@ export function NewsroomPage() {
                   ))}
                 </div>
                 <Link
-                  to={`/newsroom/${pressRelease.slug}`}
+                  href={`/newsroom/${pressRelease.slug}`}
                   className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
@@ -100,7 +102,7 @@ export function NewsroomPage() {
               </p>
             </div>
             <Link
-              to="/contact"
+              href="/contact"
               className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
@@ -135,7 +137,7 @@ export function NewsroomPage() {
                   {item.summary}
                 </p>
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >

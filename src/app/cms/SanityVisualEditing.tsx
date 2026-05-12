@@ -1,19 +1,16 @@
-import { VisualEditing } from '@sanity/visual-editing/react-router';
-import { isSanityPreviewActive } from './sanity';
-import { useSiteContent } from '../content/SiteContentProvider';
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { VisualEditing } from 'next-sanity/visual-editing';
 
 export function SanityVisualEditing() {
-  const { refresh } = useSiteContent();
-
-  if (!isSanityPreviewActive()) {
-    return null;
-  }
+  const router = useRouter();
 
   return (
     <VisualEditing
       zIndex={2147483000}
       refresh={async () => {
-        await refresh({ showLoading: false });
+        router.refresh();
       }}
     />
   );

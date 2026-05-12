@@ -13,10 +13,18 @@ export type ContentSection = {
   bullets?: string[];
 };
 
+export type SeoFields = {
+  seoTitle?: string;
+  seoDescription?: string;
+  seoImage?: string;
+  noIndex?: boolean;
+};
+
 export type HomePageContent = {
   _id?: string;
   _type?: 'homePage';
   siteId?: string;
+  seo?: SeoFields;
   heroKicker: string;
   heroTitle: string;
   heroDescription: string;
@@ -47,6 +55,7 @@ export type HomePageContent = {
 export type ProductEntry = {
   _id?: string;
   _type?: 'product';
+  seo?: SeoFields;
   slug: string;
   name: string;
   shortName: string;
@@ -62,6 +71,7 @@ export type ProductEntry = {
 export type ApplicationEntry = {
   _id?: string;
   _type?: 'application';
+  seo?: SeoFields;
   slug: string;
   name: string;
   summary: string;
@@ -76,6 +86,7 @@ export type ApplicationEntry = {
 export type NewsroomItem = {
   _id?: string;
   _type?: 'newsroomItem';
+  seo?: SeoFields;
   slug: string;
   title: string;
   type: 'press-release' | 'resource';

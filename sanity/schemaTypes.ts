@@ -9,6 +9,23 @@ export const contentSection = {
   ],
 };
 
+export const seoFields = {
+  name: 'seoFields',
+  title: 'SEO',
+  type: 'object',
+  fields: [
+    { name: 'seoTitle', title: 'SEO Title', type: 'string' },
+    { name: 'seoDescription', title: 'SEO Description', type: 'text', rows: 3 },
+    { name: 'seoImage', title: 'SEO Image', type: 'image', options: { hotspot: true } },
+    {
+      name: 'noIndex',
+      title: 'Hide from search engines',
+      type: 'boolean',
+      initialValue: false,
+    },
+  ],
+};
+
 export const homePage = {
   name: 'homePage',
   title: 'Home Page',
@@ -49,6 +66,7 @@ export const homePage = {
           return value ? true : 'Website is required.';
         }),
     },
+    { name: 'seo', title: 'SEO', type: 'seoFields' },
     {
       name: 'heroKicker',
       title: 'Hero Kicker',
@@ -218,6 +236,7 @@ export const product = {
   type: 'document',
   fields: [
     { name: 'sortOrder', title: 'Sort Order', type: 'number' },
+    { name: 'seo', title: 'SEO', type: 'seoFields' },
     { name: 'name', title: 'Name', type: 'string', validation: (Rule: any) => Rule.required() },
     { name: 'shortName', title: 'Short Name', type: 'string', validation: (Rule: any) => Rule.required() },
     {
@@ -249,6 +268,7 @@ export const application = {
   type: 'document',
   fields: [
     { name: 'sortOrder', title: 'Sort Order', type: 'number' },
+    { name: 'seo', title: 'SEO', type: 'seoFields' },
     { name: 'name', title: 'Name', type: 'string', validation: (Rule: any) => Rule.required() },
     {
       name: 'slug',
@@ -285,6 +305,7 @@ export const newsroomItem = {
   type: 'document',
   fields: [
     { name: 'publishedAt', title: 'Published At', type: 'datetime' },
+    { name: 'seo', title: 'SEO', type: 'seoFields' },
     { name: 'title', title: 'Title', type: 'string', validation: (Rule: any) => Rule.required() },
     {
       name: 'slug',
@@ -311,4 +332,4 @@ export const newsroomItem = {
   ],
 };
 
-export const schemaTypes = [contentSection, homePage, product, application, newsroomItem];
+export const schemaTypes = [contentSection, seoFields, homePage, product, application, newsroomItem];

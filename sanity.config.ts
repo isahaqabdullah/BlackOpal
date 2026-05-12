@@ -4,10 +4,17 @@ import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './sanity/schemaTypes';
 
-const projectId = process.env.SANITY_STUDIO_PROJECT_ID || process.env.VITE_SANITY_PROJECT_ID || 'replace-with-project-id';
-const dataset = process.env.SANITY_STUDIO_DATASET || process.env.VITE_SANITY_DATASET || 'production';
-const studioSiteId = process.env.SANITY_STUDIO_SITE_ID || process.env.VITE_SITE_ID || 'black-opal-india';
-const previewOrigin = process.env.SANITY_STUDIO_PREVIEW_ORIGIN || process.env.VITE_SITE_URL || 'http://localhost:5174';
+const projectId =
+  process.env.SANITY_STUDIO_PROJECT_ID ||
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||
+  process.env.VITE_SANITY_PROJECT_ID ||
+  'replace-with-project-id';
+const dataset =
+  process.env.SANITY_STUDIO_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET || process.env.VITE_SANITY_DATASET || 'production';
+const studioSiteId =
+  process.env.SANITY_STUDIO_SITE_ID || process.env.NEXT_PUBLIC_SITE_ID || process.env.VITE_SITE_ID || 'black-opal-india';
+const previewOrigin =
+  process.env.SANITY_STUDIO_PREVIEW_ORIGIN || process.env.NEXT_PUBLIC_SITE_URL || process.env.VITE_SITE_URL || 'http://localhost:3000';
 const studioSiteIdLiteral = JSON.stringify(studioSiteId);
 
 function originFor(value: string | undefined) {
@@ -30,11 +37,10 @@ const allowOrigins = Array.from(
   new Set(
     [
       originFor(previewOrigin),
+      originFor(process.env.NEXT_PUBLIC_SITE_URL),
       originFor(process.env.VITE_SITE_URL),
-      'http://localhost:5173',
-      'http://localhost:5174',
-      'http://127.0.0.1:5173',
-      'http://127.0.0.1:5174',
+      'http://localhost:3000',
+      'http://127.0.0.1:3000',
     ].filter((origin): origin is string => Boolean(origin)),
   ),
 );

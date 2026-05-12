@@ -1,5 +1,7 @@
-import { Link } from 'react-router';
-import brandLogo from '../../public/images/BlackOpallogo.avif';
+'use client';
+
+import Link from 'next/link';
+const brandLogo = '/images/BlackOpallogo.avif';
 import { companyDetails } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { siteConfig } from '../config/siteConfig';
@@ -40,7 +42,7 @@ export function Footer() {
           <div className="grid gap-10 mb-14 xl:grid-cols-[minmax(18rem,1.6fr)_repeat(3,minmax(10rem,1fr))] md:grid-cols-2">
           {/* Brand + regional contact */}
             <div className="max-w-[28rem]">
-              <Link to="/" className="flex items-center mb-5 w-fit">
+              <Link href="/" className="flex items-center mb-5 w-fit">
                 <img
                   src={brandLogo}
                   alt="Black Opal Carbons logo"
@@ -66,7 +68,7 @@ export function Footer() {
                 </p>
                 {footerContact.phone ? <p>Phone: {footerContact.phone}</p> : null}
                 {footerContact.email ? <p>Email: {footerContact.email}</p> : null}
-                <Link to="/contact" className="inline-flex text-[#f2d78b] hover:text-[#fff2bf] transition-colors">
+                <Link href="/contact" className="inline-flex text-[#f2d78b] hover:text-[#fff2bf] transition-colors">
                   Contact Black Opal
                 </Link>
               </div>
@@ -85,7 +87,7 @@ export function Footer() {
                   {col.links.map((link) => (
                     <li key={link.label}>
                       <Link
-                        to={link.to}
+                        href={link.to}
                         className="text-[13px] text-[#b8ab8b] hover:text-[#f2d78b] transition-colors"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                       >
@@ -105,8 +107,8 @@ export function Footer() {
               &copy; {new Date().getFullYear()} {siteConfig.siteName}. All rights reserved.
             </span>
             <div className="flex gap-6 text-[12px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-              <Link to="/" className="hover:text-[#f2d78b] transition-colors">Home</Link>
-              <Link to="/contact" className="hover:text-[#f2d78b] transition-colors">Contact</Link>
+              <Link href="/" className="hover:text-[#f2d78b] transition-colors">Home</Link>
+              <Link href="/contact" className="hover:text-[#f2d78b] transition-colors">Contact</Link>
             </div>
           </div>
         </div>

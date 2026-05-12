@@ -1,11 +1,14 @@
-import { Link } from 'react-router';
+'use client';
+
+import Link from 'next/link';
 import { siteMetrics } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
-import { homePageDataAttribute } from '../cms/visualEditingAttributes';
+import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
 
 export function CompanySection() {
   const { homePage } = useSiteContent();
   const homePageDocumentId = homePage._id;
+  const homePageDataAttribute = useHomePageDataAttribute(homePageDocumentId);
 
   return (
     <section className="py-10 md:py-12">
@@ -20,14 +23,14 @@ export function CompanySection() {
           </div>
           <div data-sanity-edit-target>
             <span
-              data-sanity={homePageDataAttribute('companyEyebrow', homePageDocumentId)}
+              data-sanity={homePageDataAttribute('companyEyebrow')}
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
               {homePage.companyEyebrow}
             </span>
             <h2
-              data-sanity={homePageDataAttribute('companyTitle', homePageDocumentId)}
+              data-sanity={homePageDataAttribute('companyTitle')}
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] mb-6"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
@@ -38,12 +41,12 @@ export function CompanySection() {
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               <p>
-                <span data-sanity={homePageDataAttribute('companyBodyPrimary', homePageDocumentId)}>
+                <span data-sanity={homePageDataAttribute('companyBodyPrimary')}>
                   {homePage.companyBodyPrimary}
                 </span>
               </p>
               <p>
-                <span data-sanity={homePageDataAttribute('companyBodySecondary', homePageDocumentId)}>
+                <span data-sanity={homePageDataAttribute('companyBodySecondary')}>
                   {homePage.companyBodySecondary}
                 </span>
               </p>
@@ -68,14 +71,14 @@ export function CompanySection() {
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
-                to="/about"
+                href="/about"
                 className="premium-primary-btn text-[13px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 About Black Opal
               </Link>
               <Link
-                to="/production"
+                href="/production"
                 className="premium-secondary-btn text-[13px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

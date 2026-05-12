@@ -1,4 +1,6 @@
-import { Link } from 'react-router';
+'use client';
+
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, Zap } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
@@ -144,7 +146,7 @@ export function FeaturedProduct() {
             </ul>
             <div className="flex flex-wrap items-center gap-3">
               <Link
-                to={activeSlide.to}
+                href={activeSlide.to}
                 className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

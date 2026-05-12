@@ -1,11 +1,14 @@
+'use client';
+
 import { ArrowRight } from 'lucide-react';
-import { Link, useParams } from 'react-router';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { NotFoundPage } from './NotFoundPage';
 import { PageIntro } from './PageIntro';
 
 export function ApplicationDetailPage() {
-  const { applicationSlug } = useParams();
+  const { applicationSlug } = useParams<{ applicationSlug: string }>();
   const { applicationMap, productMap, status } = useSiteContent();
   const application = applicationSlug ? applicationMap[applicationSlug] : undefined;
 
@@ -160,7 +163,7 @@ export function ApplicationDetailPage() {
                     return product ? (
                       <Link
                         key={slug}
-                        to={`/products/${slug}`}
+                        href={`/products/${slug}`}
                         className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-full"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
@@ -173,7 +176,7 @@ export function ApplicationDetailPage() {
               </div>
 
               <Link
-                to="/contact"
+                href="/contact"
                 className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full self-start"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

@@ -1,3 +1,5 @@
+'use client';
+
 import { Hero } from './Hero';
 import { TrustBar } from './TrustBar';
 import { ProductCards } from './ProductCards';

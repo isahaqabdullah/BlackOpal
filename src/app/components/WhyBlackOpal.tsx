@@ -1,3 +1,5 @@
+'use client';
+
 import { TreePalm, Target, Layers, Truck, Headphones, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 

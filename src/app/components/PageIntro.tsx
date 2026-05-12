@@ -1,6 +1,8 @@
+'use client';
+
 import type { ReactNode } from 'react';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 
 type Breadcrumb = {
   label: string;
@@ -25,14 +27,14 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
             className="flex flex-wrap items-center gap-2 text-[12px] text-[#8f835f]"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
           >
-            <Link to="/" className="hover:text-[#f2d78b] transition-colors">
+            <Link href="/" className="hover:text-[#f2d78b] transition-colors">
               Home
             </Link>
             {breadcrumbs.map((crumb, index) => (
               <span key={`${crumb.label}-${index}`} className="inline-flex items-center gap-2">
                 <ChevronRight size={12} className="text-[#6f654c]" />
                 {crumb.to ? (
-                  <Link to={crumb.to} className="hover:text-[#f2d78b] transition-colors">
+                  <Link href={crumb.to} className="hover:text-[#f2d78b] transition-colors">
                     {crumb.label}
                   </Link>
                 ) : (
@@ -43,7 +45,7 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
           </nav>
 
           <Link
-            to="/"
+            href="/"
             className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >

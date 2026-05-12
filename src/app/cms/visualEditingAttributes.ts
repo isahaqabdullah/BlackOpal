@@ -1,12 +1,12 @@
+'use client';
+
 import { createDataAttribute } from '@sanity/visual-editing/create-data-attribute';
-import { isSanityPreviewActive } from './sanity';
+import { useSiteContent } from '../content/SiteContentProvider';
 
-const env = import.meta.env as Record<string, string | undefined>;
-
-const projectId = env.VITE_SANITY_PROJECT_ID?.trim();
-const dataset = env.VITE_SANITY_DATASET?.trim();
-const studioUrl = env.VITE_SANITY_STUDIO_URL?.trim();
-const siteId = env.VITE_SITE_ID?.trim();
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim() || process.env.VITE_SANITY_PROJECT_ID?.trim();
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET?.trim() || process.env.VITE_SANITY_DATASET?.trim();
+const studioUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_URL?.trim() || process.env.VITE_SANITY_STUDIO_URL?.trim();
+const siteId = process.env.NEXT_PUBLIC_SITE_ID?.trim() || process.env.VITE_SITE_ID?.trim();
 
 export function homePageDocumentId(fallbackId = 'homePage') {
   if (siteId === 'black-opal-india' || siteId === 'black-opal-middle-east') {
@@ -17,7 +17,7 @@ export function homePageDocumentId(fallbackId = 'homePage') {
 }
 
 export function homePageDataAttribute(path: string, documentId = homePageDocumentId()) {
-  if (!isSanityPreviewActive() || !projectId || !dataset) {
+  if (!projectId || !dataset) {
     return undefined;
   }
 
@@ -31,4 +31,16 @@ export function homePageDataAttribute(path: string, documentId = homePageDocumen
     projectId,
     type: 'homePage',
   }).toString();
+}
+
+export function useHomePageDataAttribute(documentId?: string) {
+  const { source } = useSiteContent();
+
+  return (path: string) => {
+    if (source !== 'sanity-preview') {
+      return undefined;
+    }
+
+    return homePageDataAttribute(path, documentId);
+  };
 }

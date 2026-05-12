@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { applications, homePageContent, newsroomItems, products, type ContentSection } from '../src/app/content/siteContent';
+import { resolveSeo } from '../src/app/seo';
 
 type SanityDocument = Record<string, unknown> & {
   _id: string;
@@ -28,9 +29,20 @@ function sectionsForSanity(sections: ContentSection[]) {
   }));
 }
 
+function seoFor(pathname: string) {
+  const metadata = resolveSeo(pathname);
+
+  return {
+    seoTitle: metadata.title,
+    seoDescription: metadata.description,
+    noIndex: metadata.noindex ?? false,
+  };
+}
+
 const productDocuments: SanityDocument[] = products.map((product, index) => ({
   _id: `product-${product.slug}`,
   _type: 'product',
+  seo: seoFor(`/products/${product.slug}`),
   sortOrder: index + 1,
   name: product.name,
   shortName: product.shortName,
@@ -48,12 +60,14 @@ const homePageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-mid
   _id: `homePage-${siteId}`,
   _type: 'homePage',
   ...homePageContent,
+  seo: seoFor('/'),
   siteId,
 }));
 
 const applicationDocuments: SanityDocument[] = applications.map((application, index) => ({
   _id: `application-${application.slug}`,
   _type: 'application',
+  seo: seoFor(`/applications/${application.slug}`),
   sortOrder: index + 1,
   name: application.name,
   slug: slugField(application.slug),
@@ -69,6 +83,7 @@ const applicationDocuments: SanityDocument[] = applications.map((application, in
 const newsroomDocuments: SanityDocument[] = newsroomItems.map((item, index) => ({
   _id: `newsroom-item-${item.slug}`,
   _type: 'newsroomItem',
+  seo: seoFor(`/newsroom/${item.slug}`),
   publishedAt: new Date(Date.UTC(2026, 0, 1, 12, newsroomItems.length - index)).toISOString(),
   title: item.title,
   slug: slugField(item.slug),

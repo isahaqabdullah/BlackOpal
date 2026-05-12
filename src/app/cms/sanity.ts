@@ -1,42 +1,25 @@
 import { createClient } from '@sanity/client';
-import type { ApplicationEntry, HomePageContent, NewsroomItem, ProductEntry } from '../content/siteContent';
+import type { SanitySiteContent } from '../content/siteContentResolver';
 
-export type SanitySiteContent = {
-  homePage?: Partial<HomePageContent> | null;
-  products: ProductEntry[];
-  applications: ApplicationEntry[];
-  newsroomItems: NewsroomItem[];
+type SanityClientOptions = {
+  preview?: boolean;
+  studioUrl?: string;
 };
 
-export type SanitySiteContentResult = {
-  content: SanitySiteContent;
-  preview: boolean;
-};
+function envValue(nextName: string, viteName?: string) {
+  return process.env[nextName]?.trim() || (viteName ? process.env[viteName]?.trim() : '');
+}
 
-const env =
-  (import.meta.env as Record<string, string | undefined> | undefined) ??
-  (typeof process !== 'undefined' ? (process.env as Record<string, string | undefined>) : {});
+export const sanityProjectId = envValue('NEXT_PUBLIC_SANITY_PROJECT_ID', 'VITE_SANITY_PROJECT_ID');
+export const sanityDataset = envValue('NEXT_PUBLIC_SANITY_DATASET', 'VITE_SANITY_DATASET') || 'production';
+export const sanityApiVersion = envValue('NEXT_PUBLIC_SANITY_API_VERSION', 'VITE_SANITY_API_VERSION') || '2026-04-15';
+export const configuredSiteId = envValue('NEXT_PUBLIC_SITE_ID', 'VITE_SITE_ID') || 'black-opal-india';
+export const sanityStudioUrl =
+  envValue('NEXT_PUBLIC_SANITY_STUDIO_URL', 'VITE_SANITY_STUDIO_URL') || 'http://localhost:3333';
 
-const projectId = env.VITE_SANITY_PROJECT_ID?.trim();
-const dataset = env.VITE_SANITY_DATASET?.trim();
-const apiVersion = env.VITE_SANITY_API_VERSION?.trim() || '2026-04-15';
-const siteId = env.VITE_SITE_ID?.trim() || 'black-opal-us';
-const previewCookieName = 'black-opal-sanity-preview';
-const previewPerspectiveParam = 'sanity-preview-perspective';
+export const isSanityConfigured = Boolean(sanityProjectId && sanityDataset);
 
-export const isSanityConfigured = Boolean(projectId && dataset);
-export const configuredSiteId = siteId;
-
-const sanityClient = isSanityConfigured
-  ? createClient({
-      projectId: projectId!,
-      dataset: dataset!,
-      apiVersion,
-      useCdn: true,
-    })
-  : null;
-
-const siteContentQuery = `{
+export const siteContentQuery = `{
   "homePage": *[
     _type == "homePage" &&
     (siteId == $siteId || (!defined(siteId) && _id == "homePage"))
@@ -44,6 +27,12 @@ const siteContentQuery = `{
     _id,
     _type,
     siteId,
+    "seo": {
+      "seoTitle": seo.seoTitle,
+      "seoDescription": seo.seoDescription,
+      "seoImage": coalesce(seo.seoImage.asset->url, seo.seoImageUrl),
+      "noIndex": seo.noIndex
+    },
     heroKicker,
     heroTitle,
     heroDescription,
@@ -74,6 +63,12 @@ const siteContentQuery = `{
     _id,
     _type,
     "slug": coalesce(slug.current, slug),
+    "seo": {
+      "seoTitle": seo.seoTitle,
+      "seoDescription": seo.seoDescription,
+      "seoImage": coalesce(seo.seoImage.asset->url, seo.seoImageUrl),
+      "noIndex": seo.noIndex
+    },
     name,
     shortName,
     summary,
@@ -93,6 +88,12 @@ const siteContentQuery = `{
     _id,
     _type,
     "slug": coalesce(slug.current, slug),
+    "seo": {
+      "seoTitle": seo.seoTitle,
+      "seoDescription": seo.seoDescription,
+      "seoImage": coalesce(seo.seoImage.asset->url, seo.seoImageUrl),
+      "noIndex": seo.noIndex
+    },
     name,
     summary,
     intro,
@@ -111,6 +112,12 @@ const siteContentQuery = `{
     _id,
     _type,
     "slug": coalesce(slug.current, slug),
+    "seo": {
+      "seoTitle": seo.seoTitle,
+      "seoDescription": seo.seoDescription,
+      "seoImage": coalesce(seo.seoImage.asset->url, seo.seoImageUrl),
+      "noIndex": seo.noIndex
+    },
     title,
     type,
     summary,
@@ -119,56 +126,56 @@ const siteContentQuery = `{
   }
 }`;
 
-export function isSanityPreviewActive() {
-  if (typeof document === 'undefined') {
-    return false;
-  }
-
-  if (new URLSearchParams(window.location.search).has(previewPerspectiveParam)) {
-    return true;
-  }
-
-  return document.cookie
-    .split(';')
-    .map((item) => item.trim())
-    .some((item) => item === `${previewCookieName}=1`);
+function readToken() {
+  return process.env.SANITY_API_READ_TOKEN || process.env.SANITY_API_TOKEN;
 }
 
-async function fetchPreviewSiteContent() {
-  const response = await fetch('/api/sanity-site-content', {
-    credentials: 'include',
-    cache: 'no-store',
-  });
-
-  if (!response.ok) {
-    throw new Error(`Unable to load Sanity preview content (${response.status}).`);
-  }
-
-  const data = (await response.json()) as Partial<SanitySiteContentResult>;
-
-  if (!data.content) {
-    throw new Error('Sanity preview API returned no content.');
-  }
-
-  return {
-    content: data.content,
-    preview: Boolean(data.preview),
-  } satisfies SanitySiteContentResult;
-}
-
-export async function fetchSanitySiteContent(options: { preview?: boolean } = {}) {
-  if (options.preview ?? isSanityPreviewActive()) {
-    return fetchPreviewSiteContent();
-  }
-
-  if (!sanityClient) {
+export function createSanityClient({ preview = false, studioUrl = sanityStudioUrl }: SanityClientOptions = {}) {
+  if (!isSanityConfigured) {
     return null;
   }
 
-  const content = await sanityClient.fetch<SanitySiteContent>(siteContentQuery, { siteId });
+  const token = preview ? readToken() : undefined;
 
-  return {
-    content,
-    preview: false,
-  } satisfies SanitySiteContentResult;
+  if (preview && !token) {
+    throw new Error('Missing SANITY_API_READ_TOKEN for draft preview.');
+  }
+
+  return createClient({
+    projectId: sanityProjectId!,
+    dataset: sanityDataset,
+    apiVersion: sanityApiVersion,
+    useCdn: !preview,
+    token,
+    perspective: preview ? 'previewDrafts' : 'published',
+    stega: preview
+      ? {
+          enabled: true,
+          studioUrl,
+        }
+      : false,
+  });
+}
+
+export async function fetchSanitySiteContent({
+  preview = false,
+  studioUrl,
+}: SanityClientOptions = {}): Promise<SanitySiteContent | null> {
+  const client = createSanityClient({ preview, studioUrl });
+
+  if (!client) {
+    return null;
+  }
+
+  const data = (await client.fetch<SanitySiteContent>(
+    siteContentQuery,
+    { siteId: configuredSiteId },
+    {
+      filterResponse: false,
+      resultSourceMap: preview ? 'withKeyArraySelector' : false,
+      next: { tags: ['sanity-content'], revalidate: 3600 },
+    },
+  )) as unknown;
+
+  return (data as { result?: SanitySiteContent }).result || (data as SanitySiteContent);
 }

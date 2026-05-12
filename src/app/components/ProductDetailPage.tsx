@@ -1,11 +1,14 @@
+'use client';
+
 import { ArrowRight } from 'lucide-react';
-import { Link, useParams } from 'react-router';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { NotFoundPage } from './NotFoundPage';
 import { PageIntro } from './PageIntro';
 
 export function ProductDetailPage() {
-  const { productSlug } = useParams();
+  const { productSlug } = useParams<{ productSlug: string }>();
   const { productMap, status } = useSiteContent();
   const product = productSlug ? productMap[productSlug] : undefined;
 
@@ -147,14 +150,14 @@ export function ProductDetailPage() {
 
             <div className="flex flex-wrap gap-3">
               <Link
-                to="/products"
+                href="/products"
                 className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 All products
               </Link>
               <Link
-                to="/contact"
+                href="/contact"
                 className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

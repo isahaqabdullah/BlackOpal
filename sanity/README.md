@@ -32,19 +32,20 @@ Add these to `.env.local` for local development and to the production deployment
 SANITY_STUDIO_PROJECT_ID=your_project_id
 SANITY_STUDIO_DATASET=production
 SANITY_STUDIO_SITE_ID=black-opal-india
-SANITY_STUDIO_PREVIEW_ORIGIN=http://localhost:5174
+SANITY_STUDIO_PREVIEW_ORIGIN=http://localhost:3000
 SANITY_STUDIO_HOSTNAME=black-opal-india-cms
 SANITY_API_READ_TOKEN=server_side_viewer_token
 SANITY_API_WRITE_TOKEN=server_side_write_token_for_cms_push
-VITE_SANITY_PROJECT_ID=your_project_id
-VITE_SANITY_DATASET=production
-VITE_SANITY_API_VERSION=2026-04-15
-VITE_SANITY_STUDIO_URL=http://localhost:3333
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2026-04-15
+NEXT_PUBLIC_SANITY_STUDIO_URL=http://localhost:3333
+SANITY_REVALIDATE_SECRET=shared_webhook_secret
 ```
 
-Leave `VITE_SANITY_PROJECT_ID` blank to use the checked-in static content fallback.
+Leave `NEXT_PUBLIC_SANITY_PROJECT_ID` blank to use the checked-in static content fallback.
 
-`SANITY_API_READ_TOKEN` is used by the draft preview API route. `SANITY_API_WRITE_TOKEN` is used by `cms:push` and `cms:migrate:homepages`. Keep both server-side and never expose them through a `VITE_*` variable.
+`SANITY_API_READ_TOKEN` is used by the draft preview API route. `SANITY_API_WRITE_TOKEN` is used by `cms:push` and `cms:migrate:homepages`. Keep both server-side and never expose them through a `NEXT_PUBLIC_*` variable.
 
 ## 3. Run the Studio
 
@@ -59,7 +60,7 @@ Studio runs at `http://localhost:3333` by default.
 Run the website on the same preview origin configured above:
 
 ```bash
-npm run dev -- --host localhost --port 5174
+npm run dev
 ```
 
 Open Studio, choose `Visual Editor`, and edit homepage, product, application, and newsroom entries from the preview. Editors can change the content fields inside those sections while the site updates visually.
@@ -109,11 +110,8 @@ In the Sanity project settings, add allowed CORS origins for:
 
 - `https://black-opal-india.vercel.app`
 - `https://black-opal-middle-east.vercel.app`
-- `http://localhost:5173`
-- `http://localhost:5174`
-- `http://127.0.0.1:5173`
-- `http://127.0.0.1:5174`
-- the active Vite fallback port, if both local ports are already in use
+- `http://localhost:3000`
+- `http://127.0.0.1:3000`
 - each deployed domain
 
-Published content is queried from the browser. Draft preview content is queried through the server-side preview API route using `SANITY_API_READ_TOKEN`.
+Published content is fetched server-side by Next.js. Draft preview content is fetched server-side through draft mode using `SANITY_API_READ_TOKEN`, and Visual Editing runs only while draft mode is enabled.
