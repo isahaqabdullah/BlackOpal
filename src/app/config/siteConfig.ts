@@ -25,6 +25,7 @@ type Headquarters = {
 
 const DEFAULT_SITE_URL = 'https://black-opal-india.vercel.app';
 const DEFAULT_SITE_NAME = 'Black Opal Carbons';
+const GROUP_HEADQUARTERS_LABEL = 'Black Opal Group Head Quarters';
 const DEFAULT_DESCRIPTION =
   'Black Opal Carbons supplies coconut shell activated carbon manufactured and exported from India for water treatment, gold recovery, air and gas purification, oil and gas, and industrial applications.';
 const runtimeEnv: Record<string, string | undefined> = {
@@ -101,6 +102,10 @@ const defaultWarehouses: Warehouse[] = [
 function envValue(name: string, fallback: string) {
   const value = runtimeEnv[name] as string | undefined;
   return value?.trim() || fallback;
+}
+
+function normalizeHeadquartersCopy(value: string) {
+  return value.replace(/\b(?:the\s+)?U\.S\. headquarters\b/gi, GROUP_HEADQUARTERS_LABEL);
 }
 
 function optionalEnvValue(name: string, fallback = '') {
@@ -219,12 +224,16 @@ const additionalOffices = parseOffices(runtimeEnv.VITE_ADDITIONAL_OFFICES_JSON) 
 const defaultLogisticsSummary = warehouses.length
   ? 'Company-owned manufacturing, 50 million lbs annual capacity, and final quality assurance before shipment support consistent coconut activated carbon supply.'
   : 'Company-owned manufacturing, controlled particle sizing, and final quality assurance before shipment support consistent coconut activated carbon supply.';
-const headquartersLabel = envValue('VITE_HEADQUARTERS_LABEL', 'U.S. headquarters');
-const headquartersDescriptor = envValue('VITE_HEADQUARTERS_DESCRIPTOR', 'U.S. headquarters');
+const headquartersLabel = normalizeHeadquartersCopy(envValue('VITE_HEADQUARTERS_LABEL', GROUP_HEADQUARTERS_LABEL));
+const headquartersDescriptor = normalizeHeadquartersCopy(
+  envValue('VITE_HEADQUARTERS_DESCRIPTOR', GROUP_HEADQUARTERS_LABEL),
+);
 const marketBaseTitle = envValue('VITE_MARKET_BASE_TITLE', 'Manufacturing base and office network');
-const marketBaseDescription = envValue(
-  'VITE_MARKET_BASE_DESCRIPTION',
-  "Black Opal's state-of-the-art factory in India anchors 50 million lbs of annual coconut activated carbon capacity. The U.S. headquarters, India office, and Middle East office keep customers connected to the team for enquiries, technical support, and service.",
+const marketBaseDescription = normalizeHeadquartersCopy(
+  envValue(
+    'VITE_MARKET_BASE_DESCRIPTION',
+    "Black Opal's state-of-the-art factory in India anchors 50 million lbs of annual coconut activated carbon capacity. Black Opal Group Head Quarters, India office, and Middle East office keep customers connected to the team for enquiries, technical support, and service.",
+  ),
 );
 const normalizedRegion = regionLabel.toLowerCase().replace(/[^a-z0-9]/g, '');
 const regionalContact = additionalOffices.find((office) =>

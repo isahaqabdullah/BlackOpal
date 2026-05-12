@@ -46,7 +46,7 @@ NSF 42 / NSF 61
 Prop 65 Compliant
 50 million lbs capacity
 2 production centers
-U.S. headquarters + warehouse network
+Black Opal Group Head Quarters + warehouse network
 2. Trust bar
 Display:
 Certifications
@@ -87,7 +87,7 @@ Short story:
 established in 2010
 joint venture roots
 manufacturing facilities in India
-U.S. headquarters in Pittsburgh
+Black Opal Group Head Quarters in Pittsburgh
 reliability, consistency, service
 8. Client / partner logos
 Cleaner monochrome logo grid with better spacing
@@ -171,7 +171,6 @@ Scale points: established 2010, 2 production centers, 4 warehouses, 50 million l
 U.S. HQ in Pittsburgh, with multiple warehouse locations
 Primary CTA should be quote/inquiry driven
 I can turn this next into a full page-by-page wireframe outline or actual rewritten website copy for the new design.
-
 
 
 

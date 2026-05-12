@@ -129,7 +129,7 @@ const staticPages: Record<string, StaticPageMetadata> = {
   '/about': {
     title: pageTitle(`About ${SITE_NAME}`),
     description:
-      `${SITE_NAME}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} supplies ${siteConfig.originDescription} through company-owned manufacturing and an office network covering India, the Middle East, and the U.S. headquarters.`,
+      `${SITE_NAME}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} supplies ${siteConfig.originDescription} through company-owned manufacturing and an office network covering India, the Middle East, and Black Opal Group Head Quarters.`,
     imageAlt: `${SITE_NAME} company profile`,
     breadcrumbLabel: 'About',
   },
