@@ -303,7 +303,7 @@ export const siteConfig = {
   homeTitle: envValue('VITE_HOME_TITLE', `Coconut Shell Activated Carbon Supplier | ${siteName}`),
   defaultDescription: envValue('VITE_SITE_DESCRIPTION', DEFAULT_DESCRIPTION.replace(DEFAULT_SITE_NAME, siteName)),
   defaultImagePath: '/og-image.svg',
-  heroKicker: envValue('VITE_HERO_KICKER', 'Prop 65 Compliant'),
+  heroKicker: envValue('VITE_HERO_KICKER', 'NSF 42 / NSF 61 CERTIFIED - PROP 65 COMPLIANT'),
   heroTitle: envValue(
     'VITE_HERO_TITLE',
     'Coconut Shell Activated Carbon for Water, Air, Gas & Industrial Applications',
