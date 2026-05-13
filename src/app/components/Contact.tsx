@@ -63,7 +63,7 @@ export function ContactPage() {
                           {line}
                         </p>
                       ))}
-                      <div className="mt-4 space-y-2 border-t border-[#c9a24d]/10 pt-3">
+                      <div className="mt-4 space-y-2">
                         {office.phone ? (
                           <a
                             href={`tel:${office.phone.replace(/[^+\d]/g, '')}`}
