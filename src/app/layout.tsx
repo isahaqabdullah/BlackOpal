@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import type { Viewport } from 'next';
 import '../styles/index.css';
 import { Layout } from './components/Layout';
-import { SanityVisualEditing } from './cms/SanityVisualEditing';
 import { getSiteContent } from './cms/siteContent';
 import { SiteContentProvider } from './content/SiteContentProvider';
 
@@ -19,9 +18,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     <html lang="en-US">
       <body>
         <SiteContentProvider initialContent={content} initialSource={preview ? 'sanity-preview' : 'sanity'}>
-          <Layout>{children}</Layout>
+          <Layout preview={preview}>{children}</Layout>
         </SiteContentProvider>
-        {preview ? <SanityVisualEditing /> : null}
       </body>
     </html>
   );

@@ -97,7 +97,12 @@ Run this once to create site-specific homepage documents from the legacy `homePa
 npm run cms:migrate:homepages
 ```
 
-Deploy each Sanity-hosted Studio with its own preview target:
+The recommended production Studio entrypoints are embedded on the Vercel sites so Studio and preview share the same origin:
+
+- India Studio: `https://black-opal-india.vercel.app/studio`
+- Middle East Studio: `https://black-opal-middle-east.vercel.app/studio`
+
+This avoids browser third-party cookie restrictions in visual editing. You can still deploy each Sanity-hosted Studio as a fallback with its own preview target:
 
 ```bash
 SANITY_STUDIO_SITE_ID=black-opal-india SANITY_STUDIO_PREVIEW_ORIGIN=https://black-opal-india.vercel.app SANITY_STUDIO_HOSTNAME=black-opal-india-cms npm run cms:deploy

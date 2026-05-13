@@ -5,11 +5,17 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Navigation } from './Navigation';
 import { Footer } from './Footer';
+import { SanityVisualEditing } from '../cms/SanityVisualEditing';
 
-export function Layout({ children }: { children: ReactNode }) {
+export function Layout({ children, preview = false }: { children: ReactNode; preview?: boolean }) {
   const pathname = usePathname();
+  const isStudioRoute = pathname?.startsWith('/studio');
 
   useEffect(() => {
+    if (isStudioRoute) {
+      return;
+    }
+
     window.scrollTo(0, 0);
 
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>('main .premium-reveal'));
@@ -57,7 +63,11 @@ export function Layout({ children }: { children: ReactNode }) {
     return () => {
       observer.disconnect();
     };
-  }, [pathname]);
+  }, [isStudioRoute, pathname]);
+
+  if (isStudioRoute) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="premium-site min-h-screen flex flex-col bg-background" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -71,6 +81,7 @@ export function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
       <Footer />
+      {preview ? <SanityVisualEditing /> : null}
     </div>
   );
 }

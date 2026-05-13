@@ -68,14 +68,19 @@
   npm run cms:migrate:homepages
   ```
 
-  To deploy the hosted Sanity Studios, run the same script with different env values:
+  The recommended production Studio entrypoints are embedded on the Vercel sites so Studio and preview share the same origin:
+
+  - India Studio: `https://black-opal-india.vercel.app/studio`
+  - Middle East Studio: `https://black-opal-middle-east.vercel.app/studio`
+
+  This avoids browser third-party cookie restrictions in visual editing. The Sanity-hosted Studios can still be deployed as fallbacks by running the same script with different env values:
 
   ```bash
   SANITY_STUDIO_SITE_ID=black-opal-india SANITY_STUDIO_PREVIEW_ORIGIN=https://black-opal-india.vercel.app SANITY_STUDIO_HOSTNAME=black-opal-india-cms npm run cms:deploy
   SANITY_STUDIO_SITE_ID=black-opal-middle-east SANITY_STUDIO_PREVIEW_ORIGIN=https://black-opal-middle-east.vercel.app SANITY_STUDIO_HOSTNAME=black-opal-middle-east-cms npm run cms:deploy
   ```
 
-  `SANITY_STUDIO_HOSTNAME=black-opal-india-cms` deploys to `https://black-opal-india-cms.sanity.studio`. Set each Vercel project’s `NEXT_PUBLIC_SANITY_STUDIO_URL` to its matching Studio URL.
+  `SANITY_STUDIO_HOSTNAME=black-opal-india-cms` deploys to `https://black-opal-india-cms.sanity.studio`. For the embedded Studio flow, set each Vercel project’s `NEXT_PUBLIC_SANITY_STUDIO_URL` to its matching same-domain Studio URL, for example `https://black-opal-india.vercel.app/studio`.
 
   For visual editing, run the website and Studio together:
 
@@ -84,7 +89,7 @@
   npm run cms:dev
   ```
 
-  Then open Sanity Studio at `http://localhost:3333`, choose `Visual Editor`, and edit the existing homepage, product, application, and newsroom fields while the site preview updates.
+  Then open Sanity Studio at `http://localhost:3000/studio`, choose `Visual Editor`, and edit the existing homepage, product, application, and newsroom fields while the site preview updates. `npm run cms:dev` is still useful when you specifically want to test the separately hosted Studio build at `http://localhost:3333`.
 
   To update live pages after Sanity publishes, create one Sanity webhook per Vercel project that sends document payloads to:
 
