@@ -176,7 +176,7 @@ export async function fetchSanitySiteContent({
     {
       filterResponse: false,
       resultSourceMap: preview ? 'withKeyArraySelector' : false,
-      next: { tags: ['sanity-content'], revalidate: 3600 },
+      ...(preview ? { cache: 'no-store' as const } : { next: { tags: ['sanity-content'], revalidate: 3600 } }),
     },
   )) as unknown;
 
