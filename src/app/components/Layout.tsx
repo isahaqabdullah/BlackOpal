@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Navigation } from './Navigation';
 import { Footer } from './Footer';
@@ -10,6 +10,18 @@ import { SanityVisualEditing } from '../cms/SanityVisualEditing';
 export function Layout({ children, preview = false }: { children: ReactNode; preview?: boolean }) {
   const pathname = usePathname();
   const isStudioRoute = pathname?.startsWith('/studio');
+  const [embeddedPresentationPreview, setEmbeddedPresentationPreview] = useState(false);
+
+  useEffect(() => {
+    if (isStudioRoute) {
+      setEmbeddedPresentationPreview(false);
+      return;
+    }
+
+    const searchParams = new URLSearchParams(window.location.search);
+    const isEmbeddedPreview = window.self !== window.top || Boolean(window.opener);
+    setEmbeddedPresentationPreview(isEmbeddedPreview && searchParams.has('sanity-preview-perspective'));
+  }, [isStudioRoute, pathname]);
 
   useEffect(() => {
     if (isStudioRoute) {
@@ -81,7 +93,7 @@ export function Layout({ children, preview = false }: { children: ReactNode; pre
         {children}
       </main>
       <Footer />
-      {preview ? <SanityVisualEditing /> : null}
+      {preview || embeddedPresentationPreview ? <SanityVisualEditing /> : null}
     </div>
   );
 }
