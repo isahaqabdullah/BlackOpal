@@ -1,8 +1,3 @@
-type Warehouse = {
-  name: string;
-  address: string[];
-};
-
 type Office = {
   label: string;
   name: string;
@@ -44,7 +39,6 @@ const runtimeEnv: Record<string, string | undefined> = {
   VITE_SERVICE_AREA: process.env.NEXT_PUBLIC_SERVICE_AREA ?? process.env.VITE_SERVICE_AREA,
   VITE_MARKET_NAME: process.env.NEXT_PUBLIC_MARKET_NAME ?? process.env.VITE_MARKET_NAME,
   VITE_UTILITY_MARKET_LABEL: process.env.NEXT_PUBLIC_UTILITY_MARKET_LABEL ?? process.env.VITE_UTILITY_MARKET_LABEL,
-  VITE_WAREHOUSES_JSON: process.env.NEXT_PUBLIC_WAREHOUSES_JSON ?? process.env.VITE_WAREHOUSES_JSON,
   VITE_HEADQUARTERS_NAME: process.env.NEXT_PUBLIC_HEADQUARTERS_NAME ?? process.env.VITE_HEADQUARTERS_NAME,
   VITE_HEADQUARTERS_LABEL: process.env.NEXT_PUBLIC_HEADQUARTERS_LABEL ?? process.env.VITE_HEADQUARTERS_LABEL,
   VITE_HEADQUARTERS_DESCRIPTOR:
@@ -73,31 +67,13 @@ const runtimeEnv: Record<string, string | undefined> = {
   VITE_CONTACT_DESCRIPTION: process.env.NEXT_PUBLIC_CONTACT_DESCRIPTION ?? process.env.VITE_CONTACT_DESCRIPTION,
   VITE_ADDITIONAL_OFFICES_TITLE:
     process.env.NEXT_PUBLIC_ADDITIONAL_OFFICES_TITLE ?? process.env.VITE_ADDITIONAL_OFFICES_TITLE,
-  VITE_WAREHOUSE_SUMMARY: process.env.NEXT_PUBLIC_WAREHOUSE_SUMMARY ?? process.env.VITE_WAREHOUSE_SUMMARY,
   VITE_LOGISTICS_SUMMARY: process.env.NEXT_PUBLIC_LOGISTICS_SUMMARY ?? process.env.VITE_LOGISTICS_SUMMARY,
   VITE_PRODUCTION_CENTER_COUNT:
     process.env.NEXT_PUBLIC_PRODUCTION_CENTER_COUNT ?? process.env.VITE_PRODUCTION_CENTER_COUNT,
-  VITE_WAREHOUSE_LOCATION_COUNT:
-    process.env.NEXT_PUBLIC_WAREHOUSE_LOCATION_COUNT ?? process.env.VITE_WAREHOUSE_LOCATION_COUNT,
   VITE_ADDITIONAL_OFFICES_JSON:
     process.env.NEXT_PUBLIC_ADDITIONAL_OFFICES_JSON ?? process.env.VITE_ADDITIONAL_OFFICES_JSON,
   VITE_LEGACY_NAME: process.env.NEXT_PUBLIC_LEGACY_NAME ?? process.env.VITE_LEGACY_NAME,
 };
-
-const defaultWarehouses: Warehouse[] = [
-  {
-    name: 'Florida',
-    address: ['6333 Pelican Creek Circle', 'Riverview, FL 33578'],
-  },
-  {
-    name: 'New Jersey',
-    address: ['1578 Sussex Turnpike', 'Randolph, NJ 07869'],
-  },
-  {
-    name: 'Ohio',
-    address: ['Scippo Creek Rd', 'Circleville, OH 43113'],
-  },
-];
 
 function envValue(name: string, fallback: string) {
   const value = runtimeEnv[name] as string | undefined;
@@ -153,32 +129,6 @@ function phoneHref(phoneDisplay: string) {
   return sanitized ? `tel:${sanitized}` : '';
 }
 
-function parseWarehouses(value: string | undefined): Warehouse[] | undefined {
-  if (!value?.trim()) {
-    return undefined;
-  }
-
-  try {
-    const parsed = JSON.parse(value) as Warehouse[];
-
-    if (
-      Array.isArray(parsed) &&
-      parsed.every(
-        (warehouse) =>
-          typeof warehouse?.name === 'string' &&
-          Array.isArray(warehouse.address) &&
-          warehouse.address.every((line) => typeof line === 'string'),
-      )
-    ) {
-      return parsed;
-    }
-  } catch {
-    // Invalid optional deployment config should not break rendering.
-  }
-
-  return undefined;
-}
-
 function parseOffices(value: string | undefined): Office[] | undefined {
   if (!value?.trim()) {
     return undefined;
@@ -216,7 +166,6 @@ const regionLabel = envValue('VITE_REGION_LABEL', 'U.S.');
 const serviceArea = envValue('VITE_SERVICE_AREA', 'US');
 const marketName = envValue('VITE_MARKET_NAME', 'North American');
 const utilityMarketLabel = envValue('VITE_UTILITY_MARKET_LABEL', regionLabel);
-const warehouses = parseWarehouses(runtimeEnv.VITE_WAREHOUSES_JSON) ?? defaultWarehouses;
 const originStatement = envValue('VITE_ORIGIN_STATEMENT', 'Manufactured and exported from India');
 const originDescription = envValue(
   'VITE_ORIGIN_DESCRIPTION',
@@ -257,9 +206,8 @@ const defaultAdditionalOffices: Office[] = [
   },
 ];
 const additionalOffices = parseOffices(runtimeEnv.VITE_ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices;
-const defaultLogisticsSummary = warehouses.length
-  ? 'Company-owned manufacturing, 35000 metric tons annual capacity, and final quality assurance before shipment support consistent coconut activated carbon supply.'
-  : 'Company-owned manufacturing, controlled particle sizing, and final quality assurance before shipment support consistent coconut activated carbon supply.';
+const defaultLogisticsSummary =
+  'Company-owned manufacturing, 35000 metric tons annual capacity, and final quality assurance before shipment support consistent coconut activated carbon supply.';
 const headquartersLabel = normalizeHeadquartersCopy(envValue('VITE_HEADQUARTERS_LABEL', GROUP_HEADQUARTERS_LABEL));
 const headquartersDescriptor = normalizeHeadquartersCopy(
   envValue('VITE_HEADQUARTERS_DESCRIPTOR', GROUP_HEADQUARTERS_LABEL),
@@ -316,7 +264,7 @@ export const siteConfig = {
   originDescription,
   heroLocationProof: envValue(
     'VITE_HERO_LOCATION_PROOF',
-    warehouses.length ? 'India Manufacturing + Warehouse Network' : 'India Manufacturing + Export Support',
+    'India Manufacturing + Export Support',
   ),
   companyEyebrow: envValue('VITE_COMPANY_EYEBROW', 'Our Company'),
   companyTitle: envValue('VITE_COMPANY_TITLE', 'Controlled from coconut shell selection to final shipment'),
@@ -338,13 +286,7 @@ export const siteConfig = {
   serviceArea,
   marketName,
   utilityMarketLabel,
-  warehouseCount: String(warehouses.length),
   productionCenterCount: envValue('VITE_PRODUCTION_CENTER_COUNT', '3'),
-  warehouseLocationCount: optionalEnvValue('VITE_WAREHOUSE_LOCATION_COUNT', String(warehouses.length)),
-  warehouseSummary: optionalEnvValue(
-    'VITE_WAREHOUSE_SUMMARY',
-    warehouses.map((warehouse) => warehouse.address[warehouse.address.length - 1]).join(' · '),
-  ),
   logisticsSummary: optionalEnvValue(
     'VITE_LOGISTICS_SUMMARY',
     defaultLogisticsSummary,
@@ -365,7 +307,6 @@ export const companyDetails = {
   salesEmail,
   additionalOffices,
   officeNetwork,
-  warehouses,
   websiteContact,
 };
 

@@ -34,8 +34,6 @@ export type HomePageContent = {
   trustEstablishedValue: string;
   trustProductionLabel: string;
   trustProductionValue: string;
-  trustLogisticsLabel: string;
-  trustLogisticsValue: string;
   trustCapacityLabel: string;
   trustCapacityValue: string;
   productSectionKicker: string;
@@ -112,8 +110,6 @@ export const homePageContent: HomePageContent = {
   trustEstablishedValue: 'Since 2010',
   trustProductionLabel: 'Production',
   trustProductionValue: `${siteConfig.productionCenterCount} Production Centers`,
-  trustLogisticsLabel: 'Logistics',
-  trustLogisticsValue: `${siteConfig.warehouseLocationCount} Warehouse Locations`,
   trustCapacityLabel: 'Capacity',
   trustCapacityValue: '35000 metric tons/year',
   productSectionKicker: 'Product Categories',
@@ -137,9 +133,6 @@ export const productionPageContent: ProductionPageContent = {
 export const siteMetrics: SiteMetric[] = [
   { value: '2010', label: 'Year established' },
   { value: siteConfig.productionCenterCount, label: 'Production centers' },
-  ...(siteConfig.warehouseLocationCount === '0'
-    ? []
-    : [{ value: siteConfig.warehouseLocationCount, label: 'Warehouse locations' }]),
   { value: '35000 metric tons', label: 'Annual capacity' },
 ];
 
@@ -559,7 +552,7 @@ export const applications: ApplicationEntry[] = [
       },
     ],
     image:
-      'https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwbWFudWZhY3R1cmluZyUyMHdhcmVob3VzZSUyMGZhY2RvcnklMjBpbnRlcmlvcnxlbnwxfHx8fDE3NzU0NzU0ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      'https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
   },
 ];
 

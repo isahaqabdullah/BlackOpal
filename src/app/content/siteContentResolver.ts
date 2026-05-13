@@ -218,8 +218,6 @@ function normalizeHomePage(value?: Partial<HomePageContent> | null): HomePageCon
     trustEstablishedValue: textValue(value?.trustEstablishedValue, fallback.trustEstablishedValue),
     trustProductionLabel: textValue(value?.trustProductionLabel, fallback.trustProductionLabel),
     trustProductionValue: textValue(value?.trustProductionValue, fallback.trustProductionValue),
-    trustLogisticsLabel: textValue(value?.trustLogisticsLabel, fallback.trustLogisticsLabel),
-    trustLogisticsValue: textValue(value?.trustLogisticsValue, fallback.trustLogisticsValue),
     trustCapacityLabel: textValue(value?.trustCapacityLabel, fallback.trustCapacityLabel),
     trustCapacityValue: textValue(value?.trustCapacityValue, fallback.trustCapacityValue),
     productSectionKicker: textValue(value?.productSectionKicker, fallback.productSectionKicker),

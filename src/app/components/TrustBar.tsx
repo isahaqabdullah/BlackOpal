@@ -1,6 +1,6 @@
 'use client';
 
-import { Award, Calendar, Factory, Warehouse, Globe } from 'lucide-react';
+import { Award, Calendar, Factory, Globe } from 'lucide-react';
 import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
 import { useSiteContent } from '../content/SiteContentProvider';
 
@@ -29,13 +29,6 @@ export function TrustBar() {
       labelPath: 'trustProductionLabel',
       value: homePage.trustProductionValue,
       valuePath: 'trustProductionValue',
-    },
-    {
-      icon: Warehouse,
-      label: homePage.trustLogisticsLabel,
-      labelPath: 'trustLogisticsLabel',
-      value: homePage.trustLogisticsValue,
-      valuePath: 'trustLogisticsValue',
     },
     {
       icon: Globe,

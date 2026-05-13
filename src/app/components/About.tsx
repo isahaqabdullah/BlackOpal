@@ -55,8 +55,8 @@ export function AboutPage() {
           <div className="premium-panel premium-split-grid p-7 md:p-9">
             <div className="premium-image-frame premium-image-animated w-full max-w-[42rem]">
               <img
-                src="https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwbWFudWZhY3R1cmluZyUyMHdhcmVob3VzZSUyMGZhY3RvcnklMjBpbnRlcmlvcnxlbnwxfHx8fDE3NzU0NzU0ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Black Opal manufacturing and warehousing"
+                src="https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                alt="Black Opal manufacturing facility"
                 className="w-full aspect-[5/4] object-cover"
               />
             </div>

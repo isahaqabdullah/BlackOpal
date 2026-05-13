@@ -28,7 +28,7 @@ Modern typography with strong hierarchy
 White/light background with charcoal, deep blue, muted green accents
 Use product/media imagery more selectively
 Strong card-based layout for products and applications
-Use iconography for certifications, scale, warehouses, and industries
+Use iconography for certifications, scale, and industries
 Premium B2B feel, not template-like, not crowded
 Homepage structure
 1. Hero section
@@ -46,13 +46,13 @@ NSF 42 / NSF 61
 Prop 65 Compliant
 35000 metric tons capacity
 2 production centers
-Black Opal Group Head Quarters + warehouse network
+Black Opal Group Head Quarters + office network
 2. Trust bar
 Display:
 Certifications
 Manufacturing scale
 Year established
-Warehouses / logistics footprint
+Office network / export support
 3. Product categories
 Four cards:
 Granular Activated Carbon
@@ -76,7 +76,7 @@ Three to six blocks:
 Coconut shell specialization
 Consistent manufacturing quality
 Application-specific product grades
-Warehousing / supply reliability
+Supply reliability
 Technical support
 Certifications and compliance
 6. Featured product / flagship capability
@@ -106,7 +106,7 @@ Contact
 phone
 email
 headquarters
-warehouse locations
+office locations
 Suggested sitemap for the rebuild
 Instead of one overloaded homepage, split it into:
 Home
@@ -147,7 +147,7 @@ NSF 42 / NSF 61 references
 Prop 65 compliant messaging
 Product family breakdown
 Application sectors
-Established 2010 / 2 production centers / 4 warehouse locations / 35000 metric tons
+Established 2010 / 2 production centers / 35000 metric tons
 Pittsburgh HQ and contact details
 What to improve or add
 The current site would benefit from pages or modules for:
@@ -167,12 +167,10 @@ Company sells coconut shell activated carbon
 Main products: granular, powder, impregnated, catalytic
 Main applications: water treatment, gold recovery, air & gas, oil & gas, catalytic/chloramine removal
 Trust points: NSF 42, NSF 61, Prop 65 compliant
-Scale points: established 2010, 2 production centers, 4 warehouses, 35000 metric tons
-U.S. HQ in Pittsburgh, with multiple warehouse locations
+Scale points: established 2010, 2 production centers, 35000 metric tons
+Black Opal Group Head Quarters in Pittsburgh, with regional office support
 Primary CTA should be quote/inquiry driven
 I can turn this next into a full page-by-page wireframe outline or actual rewritten website copy for the new design.
-
-
 
 
 

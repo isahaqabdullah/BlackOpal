@@ -42,8 +42,6 @@ export const siteContentQuery = `{
     trustEstablishedValue,
     trustProductionLabel,
     trustProductionValue,
-    trustLogisticsLabel,
-    trustLogisticsValue,
     trustCapacityLabel,
     trustCapacityValue,
     productSectionKicker,

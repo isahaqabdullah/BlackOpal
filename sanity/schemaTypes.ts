@@ -123,18 +123,6 @@ export const homePage = {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: 'trustLogisticsLabel',
-      title: 'Trust Bar Logistics Label',
-      type: 'string',
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
-      name: 'trustLogisticsValue',
-      title: 'Trust Bar Logistics Value',
-      type: 'string',
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
       name: 'trustCapacityLabel',
       title: 'Trust Bar Capacity Label',
       type: 'string',

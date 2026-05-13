@@ -22,8 +22,6 @@ export const cmsDocumentsProjection = `{
     trustEstablishedValue,
     trustProductionLabel,
     trustProductionValue,
-    trustLogisticsLabel,
-    trustLogisticsValue,
     trustCapacityLabel,
     trustCapacityValue,
     productSectionKicker,
