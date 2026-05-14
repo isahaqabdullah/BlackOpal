@@ -39,7 +39,7 @@ export function Hero() {
             </span>
             <h2
               data-sanity={homePageDataAttribute('heroTitle')}
-              className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.4rem,5vw,4.7rem)] leading-[0.98] tracking-[-0.03em] mb-6 max-w-xl"
+              className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.25rem,4.6vw,4.35rem)] leading-[0.98] tracking-[-0.03em] mb-6 max-w-xl"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               {homePage.heroTitle}
@@ -71,6 +71,21 @@ export function Hero() {
 
           <div className="relative w-full max-w-[58rem] xl:justify-self-end">
             <div className="pointer-events-none absolute inset-x-[12%] bottom-[-7%] h-24 rounded-full bg-[#c9a24d]/12 blur-3xl" />
+            <span
+              className="premium-reveal premium-reveal-delay-1 mb-4 block text-center text-[13px] uppercase sm:text-[14px]"
+              style={{
+                fontFamily: "'Avenir Next', 'Helvetica Neue', Arial, sans-serif",
+                fontWeight: 600,
+                letterSpacing: '0.34em',
+                backgroundImage: 'linear-gradient(90deg, #bb8432 0%, #f2d17a 45%, #fff2a6 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              FORMERLY INDOCARB AC LLC
+            </span>
             <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1">
               <div className="relative overflow-hidden rounded-[1.15rem]">
                 <video
