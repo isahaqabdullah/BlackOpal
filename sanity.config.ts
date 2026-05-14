@@ -65,9 +65,9 @@ export default defineConfig({
       resolve: {
         mainDocuments: [
           { route: '/', filter: `_type == "homePage" && siteId == ${studioSiteIdLiteral}` },
-          { route: '/about', filter: `_type == "aboutPage" && _id == "aboutPage"` },
+          { route: '/about', filter: `_type == "aboutPage" && siteId == ${studioSiteIdLiteral}` },
           { route: '/production', filter: `_type == "productionPage" && _id == "productionPage"` },
-          { route: '/contact', filter: `_type == "contactPage" && _id == "contactPage"` },
+          { route: '/contact', filter: `_type == "contactPage" && siteId == ${studioSiteIdLiteral}` },
           { route: '/products/:productSlug', filter: `_type == "product" && slug.current == $productSlug` },
           { route: '/applications/:applicationSlug', filter: `_type == "application" && slug.current == $applicationSlug` },
           { route: '/newsroom/:storySlug', filter: `_type == "newsroomItem" && slug.current == $storySlug` },
@@ -89,16 +89,20 @@ export default defineConfig({
             }),
           },
           siteSettings: {
-            select: { title: '_id' },
-            resolve: () => ({
+            select: { siteId: 'siteId' },
+            resolve: (document) => ({
               locations: [
-                documentLocation('Home page chrome', '/'),
-                documentLocation('Products page chrome', '/products'),
-                documentLocation('Applications page chrome', '/applications'),
-                documentLocation('Production page chrome', '/production'),
-                documentLocation('About page chrome', '/about'),
-                documentLocation('Newsroom page chrome', '/newsroom'),
-                documentLocation('Contact page chrome', '/contact'),
+                ...(document?.siteId === studioSiteId
+                  ? [
+                      documentLocation('Home page chrome', '/'),
+                      documentLocation('Products page chrome', '/products'),
+                      documentLocation('Applications page chrome', '/applications'),
+                      documentLocation('Production page chrome', '/production'),
+                      documentLocation('About page chrome', '/about'),
+                      documentLocation('Newsroom page chrome', '/newsroom'),
+                      documentLocation('Contact page chrome', '/contact'),
+                    ]
+                  : []),
               ],
             }),
           },
@@ -114,15 +118,15 @@ export default defineConfig({
             }),
           },
           aboutPage: {
-            select: { title: 'intro.title' },
-            resolve: () => ({
-              locations: [documentLocation('About page', '/about')],
+            select: { title: 'intro.title', siteId: 'siteId' },
+            resolve: (document) => ({
+              locations: document?.siteId === studioSiteId ? [documentLocation('About page', '/about')] : [],
             }),
           },
           contactPage: {
-            select: { title: 'intro.title' },
-            resolve: () => ({
-              locations: [documentLocation('Contact page', '/contact')],
+            select: { title: 'intro.title', siteId: 'siteId' },
+            resolve: (document) => ({
+              locations: document?.siteId === studioSiteId ? [documentLocation('Contact page', '/contact')] : [],
             }),
           },
           product: {

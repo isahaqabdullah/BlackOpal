@@ -5,7 +5,9 @@ import { readSanityConfig, stableStringify } from './sanity-sync-utils.mjs';
 
 const CLI_CONFIG_PATH = '/private/tmp/black-opal-sanity-config/sanity/config.json';
 const SEED_PATH = path.resolve('sanity/seed.ndjson');
-const NEW_DOCUMENT_IDS = ['siteSettings', 'pageCopy', 'aboutPage', 'contactPage'];
+const SITE_IDS = ['black-opal-india', 'black-opal-middle-east'];
+const SITE_SPECIFIC_BASE_IDS = ['siteSettings', 'aboutPage', 'contactPage'];
+const SHARED_DOCUMENT_IDS = ['pageCopy'];
 const EXISTING_DOCUMENT_IDS = ['homePage', 'homePage-black-opal-india', 'homePage-black-opal-middle-east', 'productionPage'];
 
 function readCliAuthToken() {
@@ -31,6 +33,15 @@ function readSeedDocuments() {
 function documentForCreate(document) {
   const { _rev, ...rest } = document;
   return rest;
+}
+
+function fieldsForClone(document) {
+  if (!document) {
+    return {};
+  }
+
+  const { _createdAt, _id, _rev, _updatedAt, ...fields } = document;
+  return fields;
 }
 
 function isMissing(value) {
@@ -86,7 +97,7 @@ async function main() {
   const defaultHomePage = seedById.get('homePage-black-opal-india');
   const results = [];
 
-  for (const id of NEW_DOCUMENT_IDS) {
+  for (const id of SHARED_DOCUMENT_IDS) {
     const document = seedById.get(id);
 
     if (!document) {
@@ -97,6 +108,32 @@ async function main() {
     await client.createIfNotExists(documentForCreate(document), { autoGenerateArrayKeys: true });
     results.push({ id, status: before ? 'exists' : 'created' });
     results.push(await patchMissingFields(client, id, document));
+  }
+
+  for (const baseId of SITE_SPECIFIC_BASE_IDS) {
+    const legacyDocument = await client.getDocument(baseId);
+
+    for (const siteId of SITE_IDS) {
+      const id = `${baseId}-${siteId}`;
+      const seedDocument = seedById.get(id);
+
+      if (!seedDocument) {
+        throw new Error(`Missing ${id} in ${SEED_PATH}`);
+      }
+
+      const before = await client.getDocument(id);
+      const document = {
+        ...documentForCreate(seedDocument),
+        ...fieldsForClone(legacyDocument),
+        _id: id,
+        _type: seedDocument._type,
+        siteId,
+      };
+
+      await client.createIfNotExists(document, { autoGenerateArrayKeys: true });
+      results.push({ id, status: before ? 'exists' : legacyDocument ? 'created-from-shared' : 'created' });
+      results.push(await patchMissingFields(client, id, seedDocument));
+    }
   }
 
   for (const id of EXISTING_DOCUMENT_IDS) {

@@ -125,6 +125,23 @@ export const productionStepEntry = {
   ],
 };
 
+function siteIdField(title = 'Website') {
+  return {
+    name: 'siteId',
+    title,
+    description: 'Controls which deployed website uses this document.',
+    type: 'string',
+    options: {
+      list: [
+        { title: 'India website', value: 'black-opal-india' },
+        { title: 'Middle East website', value: 'black-opal-middle-east' },
+      ],
+      layout: 'radio',
+    },
+    validation: (Rule: any) => Rule.required(),
+  };
+}
+
 export const seoFields = {
   name: 'seoFields',
   title: 'SEO',
@@ -496,6 +513,7 @@ export const siteSettings = {
   title: 'Site Settings',
   type: 'document',
   fields: [
+    siteIdField(),
     {
       name: 'navigation',
       title: 'Navigation',
@@ -539,7 +557,10 @@ export const siteSettings = {
     { name: 'officeNetwork', title: 'Office Network', type: 'array', of: [{ type: 'officeEntry' }] },
   ],
   preview: {
-    prepare: () => ({ title: 'Site Settings' }),
+    select: { siteId: 'siteId' },
+    prepare: ({ siteId }: { siteId?: string }) => ({
+      title: siteId === 'black-opal-middle-east' ? 'Site Settings - Middle East' : 'Site Settings - India',
+    }),
   },
 };
 
@@ -657,6 +678,7 @@ export const aboutPage = {
   title: 'About Page',
   type: 'document',
   fields: [
+    siteIdField(),
     { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
     { name: 'heroImage', title: 'Hero Image', type: 'image', options: { hotspot: true } },
     { name: 'heroImageUrl', title: 'External Hero Image URL', type: 'url' },
@@ -671,7 +693,10 @@ export const aboutPage = {
     { name: 'productionCapabilityCtaLabel', title: 'Production Capability CTA Label', type: 'string' },
   ],
   preview: {
-    prepare: () => ({ title: 'About Page' }),
+    select: { siteId: 'siteId' },
+    prepare: ({ siteId }: { siteId?: string }) => ({
+      title: siteId === 'black-opal-middle-east' ? 'About Page - Middle East' : 'About Page - India',
+    }),
   },
 };
 
@@ -680,6 +705,7 @@ export const contactPage = {
   title: 'Contact Page',
   type: 'document',
   fields: [
+    siteIdField(),
     { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
     { name: 'officesTitle', title: 'Offices Title', type: 'string' },
     { name: 'successTitle', title: 'Success Title', type: 'string' },
@@ -703,7 +729,10 @@ export const contactPage = {
     { name: 'submitLabel', title: 'Submit Label', type: 'string' },
   ],
   preview: {
-    prepare: () => ({ title: 'Contact Page' }),
+    select: { siteId: 'siteId' },
+    prepare: ({ siteId }: { siteId?: string }) => ({
+      title: siteId === 'black-opal-middle-east' ? 'Contact Page - Middle East' : 'Contact Page - India',
+    }),
   },
 };
 

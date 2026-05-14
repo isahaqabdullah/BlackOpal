@@ -199,6 +199,7 @@ export type ProductionStepEntry = {
 export type SiteSettingsContent = {
   _id?: string;
   _type?: 'siteSettings';
+  siteId?: string;
   navigation: {
     logoAlt: string;
     links: LinkEntry[];
@@ -293,6 +294,7 @@ export type PageCopyContent = {
 export type AboutPageContent = {
   _id?: string;
   _type?: 'aboutPage';
+  siteId?: string;
   intro: PageIntroContent;
   heroImage: string;
   heroImageAlt: string;
@@ -309,6 +311,7 @@ export type AboutPageContent = {
 export type ContactPageContent = {
   _id?: string;
   _type?: 'contactPage';
+  siteId?: string;
   intro: PageIntroContent;
   officesTitle: string;
   successTitle: string;
@@ -541,6 +544,7 @@ export const siteMetrics: SiteMetric[] = [
 ];
 
 export const siteSettingsContent: SiteSettingsContent = {
+  siteId: siteConfig.siteId,
   navigation: {
     logoAlt: 'Black Opal Carbons logo',
     links: [
@@ -669,6 +673,7 @@ export const pageCopyContent: PageCopyContent = {
 };
 
 export const aboutPageContent: AboutPageContent = {
+  siteId: siteConfig.siteId,
   intro: {
     label: 'About',
     title: 'Black Opal Carbons',
@@ -717,6 +722,7 @@ export const aboutPageContent: AboutPageContent = {
 };
 
 export const contactPageContent: ContactPageContent = {
+  siteId: siteConfig.siteId,
   intro: {
     label: 'Contact',
     title: siteConfig.contactTitle,

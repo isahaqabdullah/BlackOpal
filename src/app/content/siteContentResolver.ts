@@ -539,6 +539,7 @@ function normalizeSiteSettings(value?: Partial<SiteSettingsContent> | null): Sit
   return {
     _id: id || undefined,
     _type: value?._type === 'siteSettings' ? value._type : undefined,
+    siteId: cleanTextValue(value?.siteId, fallback.siteId),
     navigation: {
       logoAlt: textValue(navigation?.logoAlt, fallback.navigation.logoAlt),
       links: linkEntries(navigation?.links, fallback.navigation.links),
@@ -692,6 +693,7 @@ function normalizeAboutPage(value?: Partial<AboutPageContent> | null): AboutPage
   return {
     _id: id || undefined,
     _type: value?._type === 'aboutPage' ? value._type : undefined,
+    siteId: cleanTextValue(value?.siteId, fallback.siteId),
     intro: pageIntro(value?.intro, fallback.intro),
     heroImage: cleanTextValue(value?.heroImage, fallback.heroImage),
     heroImageAlt: textValue(value?.heroImageAlt, fallback.heroImageAlt),
@@ -716,6 +718,7 @@ function normalizeContactPage(value?: Partial<ContactPageContent> | null): Conta
   return {
     _id: id || undefined,
     _type: value?._type === 'contactPage' ? value._type : undefined,
+    siteId: cleanTextValue(value?.siteId, fallback.siteId),
     intro: pageIntro(value?.intro, fallback.intro),
     officesTitle: textValue(value?.officesTitle, fallback.officesTitle),
     successTitle: textValue(value?.successTitle, fallback.successTitle),

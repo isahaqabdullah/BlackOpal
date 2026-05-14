@@ -60,6 +60,7 @@ export const cmsDocumentsProjection = `{
     featuredCapabilities
   },
   _type == "siteSettings" => {
+    siteId,
     navigation,
     footer,
     pageIntro,
@@ -76,6 +77,7 @@ export const cmsDocumentsProjection = `{
     pressReleasePage
   },
   _type == "aboutPage" => {
+    siteId,
     intro,
     heroImage,
     heroImageUrl,
@@ -109,6 +111,7 @@ export const cmsDocumentsProjection = `{
     contactButtonLabel
   },
   _type == "contactPage" => {
+    siteId,
     intro,
     officesTitle,
     successTitle,

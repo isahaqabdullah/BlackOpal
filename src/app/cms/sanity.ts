@@ -69,9 +69,10 @@ export const siteContentQuery = `{
     featuredCapabilitiesNextLabel,
     featuredCapabilities
   },
-  "siteSettings": *[_type == "siteSettings" && _id == "siteSettings"][0] {
+  "siteSettings": *[_type == "siteSettings" && siteId == $siteId][0] {
     _id,
     _type,
+    siteId,
     navigation,
     footer,
     pageIntro,
@@ -89,9 +90,10 @@ export const siteContentQuery = `{
     newsroomPreview,
     pressReleasePage
   },
-  "aboutPage": *[_type == "aboutPage" && _id == "aboutPage"][0] {
+  "aboutPage": *[_type == "aboutPage" && siteId == $siteId][0] {
     _id,
     _type,
+    siteId,
     "heroImage": coalesce(heroImageUrl, heroImage.asset->url),
     heroImageAlt,
     intro,
@@ -104,9 +106,10 @@ export const siteContentQuery = `{
     brandTransitionCtaLabel,
     productionCapabilityCtaLabel
   },
-  "contactPage": *[_type == "contactPage" && _id == "contactPage"][0] {
+  "contactPage": *[_type == "contactPage" && siteId == $siteId][0] {
     _id,
     _type,
+    siteId,
     intro,
     officesTitle,
     successTitle,

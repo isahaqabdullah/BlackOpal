@@ -19,7 +19,16 @@ Homepage documents are site-specific:
 - `homePage-black-opal-india`
 - `homePage-black-opal-middle-east`
 
-Site settings, page framing copy, about, production, contact, products, applications, and newsroom entries are shared across both websites.
+Nav/footer site settings, About, and Contact documents are site-specific, using IDs like:
+
+- `siteSettings-black-opal-india`
+- `siteSettings-black-opal-middle-east`
+- `aboutPage-black-opal-india`
+- `aboutPage-black-opal-middle-east`
+- `contactPage-black-opal-india`
+- `contactPage-black-opal-middle-east`
+
+Page framing copy, production, products, applications, and newsroom entries are shared across both websites.
 
 ## 1. Log in and create a Sanity project
 
@@ -102,7 +111,7 @@ Run this once to create site-specific homepage documents from the legacy `homePa
 npm run cms:migrate:homepages
 ```
 
-Run this after adding the expanded shared copy schema to create the shared settings/page documents and fill only missing fields on existing homepage and production documents:
+Run this after adding the expanded copy schema to create the shared page-copy document, create the site-specific nav/footer/About/Contact documents, and fill only missing fields on existing homepage and production documents:
 
 ```bash
 npm run cms:migrate:copy

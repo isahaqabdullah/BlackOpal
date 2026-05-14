@@ -162,9 +162,10 @@ const homePageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-mid
   siteId,
 }));
 
-const siteSettingsDocument: SanityDocument = {
-  _id: 'siteSettings',
+const siteSettingsDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-middle-east'].map((siteId) => ({
+  _id: `siteSettings-${siteId}`,
   _type: 'siteSettings',
+  siteId,
   navigation: {
     ...siteSettingsContent.navigation,
     links: linksForSanity(siteSettingsContent.navigation.links),
@@ -180,7 +181,7 @@ const siteSettingsDocument: SanityDocument = {
     ...siteSettingsContent.websiteContact,
   },
   officeNetwork: officesForSanity(siteSettingsContent.officeNetwork),
-};
+}));
 
 const pageCopyDocument: SanityDocument = {
   _id: 'pageCopy',
@@ -204,15 +205,16 @@ const pageCopyDocument: SanityDocument = {
 };
 
 const { heroImage: aboutHeroImage, ...aboutPageSeedContent } = aboutPageContent;
-const aboutPageDocument: SanityDocument = {
-  _id: 'aboutPage',
+const aboutPageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-middle-east'].map((siteId) => ({
+  _id: `aboutPage-${siteId}`,
   _type: 'aboutPage',
   ...aboutPageSeedContent,
+  siteId,
   intro: pageIntroForSanity(aboutPageContent.intro),
   metrics: labelValuesForSanity(aboutPageContent.metrics),
   cards: featureCardsForSanity(aboutPageContent.cards),
   heroImageUrl: aboutHeroImage,
-};
+}));
 
 const { image: productionImage, ...productionPageSeedContent } = productionPageContent;
 const productionPageDocument: SanityDocument = {
@@ -225,12 +227,13 @@ const productionPageDocument: SanityDocument = {
   imageUrl: productionImage,
 };
 
-const contactPageDocument: SanityDocument = {
-  _id: 'contactPage',
+const contactPageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-middle-east'].map((siteId) => ({
+  _id: `contactPage-${siteId}`,
   _type: 'contactPage',
   ...contactPageContent,
+  siteId,
   intro: pageIntroForSanity(contactPageContent.intro),
-};
+}));
 
 const applicationDocuments: SanityDocument[] = applications.map((application, index) => ({
   _id: `application-${application.slug}`,
@@ -263,11 +266,11 @@ const newsroomDocuments: SanityDocument[] = newsroomItems.map((item, index) => (
 
 const documents = [
   ...homePageDocuments,
-  siteSettingsDocument,
+  ...siteSettingsDocuments,
   pageCopyDocument,
-  aboutPageDocument,
+  ...aboutPageDocuments,
   productionPageDocument,
-  contactPageDocument,
+  ...contactPageDocuments,
   ...productDocuments,
   ...applicationDocuments,
   ...newsroomDocuments,
