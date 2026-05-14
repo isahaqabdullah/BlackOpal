@@ -121,7 +121,7 @@ export function FeaturedProduct() {
                   key={slide.title}
                   type="button"
                   onClick={() => setActiveIndex(index)}
-                  aria-label={`Show ${slide.label}`}
+                  aria-label={`${homePage.featuredCapabilitiesShowLabelPrefix} ${slide.label}`}
                   aria-current={index === activeIndex ? 'true' : undefined}
                   className={`rounded-full border px-3 py-2 text-left text-[10px] uppercase tracking-[0.14em] transition-all ${
                     index === activeIndex

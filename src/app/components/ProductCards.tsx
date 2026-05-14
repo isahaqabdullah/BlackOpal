@@ -67,7 +67,7 @@ export function ProductCards() {
                 className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2 rounded-[8px] transition-all"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Grade details <ArrowRight size={14} />
+                {homePage.productCardCtaLabel} <ArrowRight size={14} />
               </Link>
             </div>
           ))}

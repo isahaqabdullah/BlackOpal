@@ -72,7 +72,7 @@ export function ApplicationsGrid() {
                 </p>
                 <span className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-3.5 py-2 rounded-[8px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
-                  Application fit <ArrowRight size={12} />
+                  {homePage.applicationCardCtaLabel} <ArrowRight size={12} />
                 </span>
               </Link>
             );

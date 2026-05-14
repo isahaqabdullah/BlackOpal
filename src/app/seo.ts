@@ -1,12 +1,27 @@
 import {
+  aboutPageContent,
+  contactPageContent,
   homePageContent,
   applicationMap,
   applications,
   newsroomMap,
+  pageCopyContent,
   products,
   productMap,
+  productionPageContent,
+  siteSettingsContent,
 } from './content/siteContent';
-import type { ApplicationEntry, NewsroomItem, ProductEntry } from './content/siteContent';
+import type {
+  AboutPageContent,
+  ApplicationEntry,
+  ContactPageContent,
+  NewsroomItem,
+  PageCopyContent,
+  ProductEntry,
+  ProductionPageContent,
+  SeoFields,
+  SiteSettingsContent,
+} from './content/siteContent';
 import { stegaClean } from '@sanity/client/stega';
 import { companyDetails, siteConfig, siteUrl } from './config/siteConfig';
 
@@ -25,6 +40,11 @@ type SeoEntity =
 
 export type SeoContent = {
   homePage: typeof homePageContent;
+  productionPage: ProductionPageContent;
+  siteSettings: SiteSettingsContent;
+  pageCopy: PageCopyContent;
+  aboutPage: AboutPageContent;
+  contactPage: ContactPageContent;
   products: ProductEntry[];
   applications: ApplicationEntry[];
   productMap: Record<string, ProductEntry>;
@@ -34,6 +54,11 @@ export type SeoContent = {
 
 const fallbackSeoContent: SeoContent = {
   homePage: homePageContent,
+  productionPage: productionPageContent,
+  siteSettings: siteSettingsContent,
+  pageCopy: pageCopyContent,
+  aboutPage: aboutPageContent,
+  contactPage: contactPageContent,
   products,
   applications,
   productMap,
@@ -70,7 +95,7 @@ function cleanSeoText(value: string | undefined) {
   return value ? stegaClean(value).trim() : '';
 }
 
-function applyExplicitSeo(metadata: SeoMetadata, entity?: { seo?: ProductEntry['seo'] }) {
+function applyExplicitSeo(metadata: SeoMetadata, entity?: { seo?: SeoFields }) {
   const seo = entity?.seo;
 
   return {
@@ -96,81 +121,114 @@ const originSeoNote = `Includes ${siteConfig.originDescription} for dependable r
 
 type StaticPageMetadata = Omit<SeoMetadata, 'path' | 'breadcrumbs'> & {
   breadcrumbLabel: string;
+  seo?: SeoFields;
 };
 
-const staticPages: Record<string, StaticPageMetadata> = {
-  '/': {
-    title: siteConfig.homeTitle,
-    description: defaultDescription,
-    imageAlt: `${SITE_NAME} activated carbon supplier`,
-    breadcrumbLabel: 'Home',
-  },
-  '/products': {
-    title: pageTitle('Activated Carbon Products'),
-    description:
-      `Granular, powder, impregnated, and catalytic activated carbon products sit within the Black Opal portfolio. ${originSeoNote}`,
-    imageAlt: `Activated carbon products from ${SITE_NAME}`,
-    breadcrumbLabel: 'Products',
-  },
-  '/applications': {
-    title: pageTitle('Activated Carbon Applications'),
-    description:
-      `Activated carbon solutions for water treatment, gold recovery, air and gas purification, oil and gas, chloramine removal, and specialty industrial processes. ${originSeoNote}`,
-    imageAlt: 'Industrial activated carbon application areas',
-    breadcrumbLabel: 'Applications',
-  },
-  '/production': {
-    title: pageTitle('Activated Carbon Production and Quality Control'),
-    description:
-      `${SITE_NAME} production scale for ${siteConfig.originDescription} is supported by coconut shell raw-material control, particle-size screening, export readiness, and quality assurance.`,
-    imageAlt: 'Coconut shell activated carbon production and quality control',
-    breadcrumbLabel: 'Production',
-  },
-  '/about': {
-    title: pageTitle(`About ${SITE_NAME}`),
-    description:
-      `${SITE_NAME}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} supplies ${siteConfig.originDescription} through company-owned manufacturing and an office network covering India, the Middle East, and Black Opal Group Head Quarters.`,
-    imageAlt: `${SITE_NAME} company profile`,
-    breadcrumbLabel: 'About',
-  },
-  '/newsroom': {
-    title: pageTitle('Newsroom and Resources'),
-    description:
-      `${SITE_NAME} company updates and technical resources cover brand continuity, water treatment, gold recovery, catalytic carbon, and application guidance.`,
-    imageAlt: `${SITE_NAME} newsroom and resources`,
-    breadcrumbLabel: 'Newsroom',
-  },
-  '/contact': {
-    title: pageTitle('Pricing and Technical Recommendations'),
-    description:
-      `${SITE_NAME} pricing, product availability, and technical recommendations connect application requirements with ${siteConfig.originDescription}.`,
-    imageAlt: `Contact ${SITE_NAME} for activated carbon quotes`,
-    breadcrumbLabel: 'Contact',
-  },
-};
+function staticPageMetadata(path: string, content: SeoContent): StaticPageMetadata | undefined {
+  if (path === '/') {
+    return {
+      title: siteConfig.homeTitle,
+      description: defaultDescription,
+      imageAlt: content.homePage.heroLogoAlt,
+      breadcrumbLabel: content.siteSettings.pageIntro.homeLabel,
+      seo: content.homePage.seo,
+    };
+  }
 
-function baseBreadcrumb(path: string, label: string): Breadcrumb[] {
+  if (path === '/products') {
+    const page = content.pageCopy.productsPage;
+    return {
+      title: pageTitle(page.intro.title),
+      description: page.intro.description || page.seo?.seoDescription || defaultDescription,
+      imageAlt: page.intro.title,
+      breadcrumbLabel: page.intro.breadcrumbLabel,
+      seo: page.seo,
+    };
+  }
+
+  if (path === '/applications') {
+    const page = content.pageCopy.applicationsPage;
+    return {
+      title: pageTitle(page.intro.title),
+      description: page.intro.description || page.seo?.seoDescription || defaultDescription,
+      imageAlt: page.intro.title,
+      breadcrumbLabel: page.intro.breadcrumbLabel,
+      seo: page.seo,
+    };
+  }
+
+  if (path === '/production') {
+    const page = content.productionPage;
+    return {
+      title: pageTitle(page.intro.title),
+      description: page.intro.description || page.seo?.seoDescription || defaultDescription,
+      imageAlt: page.imageAlt,
+      breadcrumbLabel: page.intro.breadcrumbLabel,
+      seo: page.seo,
+    };
+  }
+
+  if (path === '/about') {
+    const page = content.aboutPage;
+    return {
+      title: pageTitle(page.intro.title),
+      description: page.intro.description || page.seo?.seoDescription || defaultDescription,
+      imageAlt: page.heroImageAlt,
+      breadcrumbLabel: page.intro.breadcrumbLabel,
+      seo: page.seo,
+    };
+  }
+
+  if (path === '/newsroom') {
+    const page = content.pageCopy.newsroomPage;
+    return {
+      title: pageTitle(page.intro.title),
+      description: page.intro.description || page.seo?.seoDescription || defaultDescription,
+      imageAlt: page.intro.title,
+      breadcrumbLabel: page.intro.breadcrumbLabel,
+      seo: page.seo,
+    };
+  }
+
+  if (path === '/contact') {
+    const page = content.contactPage;
+    return {
+      title: pageTitle(page.intro.title),
+      description: page.intro.description || page.seo?.seoDescription || defaultDescription,
+      imageAlt: page.intro.title,
+      breadcrumbLabel: page.intro.breadcrumbLabel,
+      seo: page.seo,
+    };
+  }
+
+  return undefined;
+}
+
+function baseBreadcrumb(path: string, label: string, content: SeoContent = fallbackSeoContent): Breadcrumb[] {
   return [
-    { name: 'Home', path: '/' },
+    { name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath },
     { name: label, path },
   ];
 }
 
 export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoContent): SeoMetadata {
   const path = normalizePath(pathname);
+  const staticPage = staticPageMetadata(path, content);
 
-  if (path in staticPages) {
-    const metadata = staticPages[path];
-    const { breadcrumbLabel, ...pageMetadata } = metadata;
+  if (staticPage) {
+    const { breadcrumbLabel, seo, ...pageMetadata } = staticPage;
 
     const resolved = {
       ...pageMetadata,
       path,
       image: absoluteUrl(DEFAULT_IMAGE_PATH),
-      breadcrumbs: path === '/' ? [{ name: 'Home', path: '/' }] : baseBreadcrumb(path, breadcrumbLabel),
+      breadcrumbs:
+        path === '/'
+          ? [{ name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath }]
+          : baseBreadcrumb(path, breadcrumbLabel, content),
     };
 
-    return path === '/' ? applyExplicitSeo(resolved, content.homePage) : resolved;
+    return applyExplicitSeo(resolved, { seo });
   }
 
   const productMatch = path.match(/^\/products\/([^/]+)$/);
@@ -185,8 +243,8 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
         image: product.image,
         imageAlt: product.name,
         breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Products', path: '/products' },
+          { name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath },
+          { name: content.pageCopy.productDetailPage.productsBreadcrumbLabel, path: content.pageCopy.productDetailPage.productsPath },
           { name: product.name, path },
         ],
         entity: { type: 'product', item: product },
@@ -206,8 +264,8 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
         image: application.image,
         imageAlt: application.name,
         breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Applications', path: '/applications' },
+          { name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath },
+          { name: content.pageCopy.applicationDetailPage.applicationsBreadcrumbLabel, path: content.pageCopy.applicationDetailPage.applicationsPath },
           { name: application.name, path },
         ],
         entity: { type: 'application', item: application },
@@ -228,8 +286,8 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
         image: absoluteUrl(DEFAULT_IMAGE_PATH),
         imageAlt: story.title,
         breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Newsroom', path: '/newsroom' },
+          { name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath },
+          { name: content.pageCopy.pressReleasePage.newsroomBreadcrumbLabel, path: content.pageCopy.pressReleasePage.newsroomPath },
           { name: story.title, path },
         ],
         entity: { type: 'article', item: story },
@@ -237,15 +295,15 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
     }
   }
 
-  return {
-    title: pageTitle('Page Not Found'),
-    description: `The requested ${SITE_NAME} page could not be found.`,
+  return applyExplicitSeo({
+    title: pageTitle(content.pageCopy.notFoundPage.title),
+    description: content.pageCopy.notFoundPage.description,
     path,
     image: absoluteUrl(DEFAULT_IMAGE_PATH),
-    imageAlt: SITE_NAME,
-    noindex: true,
-    breadcrumbs: [{ name: 'Home', path: '/' }],
-  };
+    imageAlt: content.homePage.heroLogoAlt,
+    noindex: content.pageCopy.notFoundPage.seo?.noIndex ?? true,
+    breadcrumbs: [{ name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath }],
+  }, { seo: content.pageCopy.notFoundPage.seo });
 }
 
 function breadcrumbSchema(breadcrumbs: Breadcrumb[]) {
@@ -260,7 +318,10 @@ function breadcrumbSchema(breadcrumbs: Breadcrumb[]) {
   };
 }
 
-function organizationSchema() {
+function organizationSchema(content: SeoContent) {
+  const websiteContact = content.siteSettings.websiteContact;
+  const [streetAddress = '', addressLine = ''] = websiteContact.address;
+
   return {
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
@@ -268,26 +329,23 @@ function organizationSchema() {
     alternateName: companyDetails.legacyName,
     description: siteConfig.defaultDescription,
     url: siteUrl,
-    email: companyDetails.infoEmail,
-    telephone: companyDetails.phoneDisplay,
+    email: websiteContact.email,
+    telephone: websiteContact.phone,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: companyDetails.headquarters.line1,
-      addressLocality: companyDetails.headquarters.locality,
-      addressRegion: companyDetails.headquarters.region,
-      postalCode: companyDetails.headquarters.postalCode,
-      addressCountry: companyDetails.headquarters.countryCode,
+      streetAddress,
+      addressLocality: addressLine,
     },
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: companyDetails.phoneDisplay,
-        email: companyDetails.salesEmail,
+        telephone: websiteContact.phone,
+        email: websiteContact.email,
         contactType: 'sales',
         areaServed: siteConfig.serviceArea,
       },
     ],
-    location: companyDetails.additionalOffices.map((office) => ({
+    location: content.siteSettings.officeNetwork.map((office) => ({
       '@type': 'Place',
       name: office.name,
       description: office.label,
@@ -355,7 +413,7 @@ function entitySchema(metadata: SeoMetadata) {
 export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbackSeoContent) {
   const pageUrl = absoluteUrl(metadata.path);
   const schemas: Array<Record<string, unknown>> = [
-    organizationSchema(),
+    organizationSchema(content),
     {
       '@type': 'WebSite',
       '@id': `${siteUrl}/#website`,
@@ -386,7 +444,7 @@ export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbac
   if (metadata.path === '/products') {
     schemas.push({
       '@type': 'ItemList',
-      name: 'Activated Carbon Products',
+      name: content.pageCopy.productsPage.intro.title,
       itemListElement: content.products.map((product, index) => ({
         '@type': 'ListItem',
         position: index + 1,
@@ -399,7 +457,7 @@ export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbac
   if (metadata.path === '/applications') {
     schemas.push({
       '@type': 'ItemList',
-      name: 'Activated Carbon Applications',
+      name: content.pageCopy.applicationsPage.intro.title,
       itemListElement: content.applications.map((application, index) => ({
         '@type': 'ListItem',
         position: index + 1,

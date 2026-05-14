@@ -26,11 +26,11 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
       <div className="premium-shell">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
           <nav
-            aria-label="Breadcrumb"
+            aria-label={siteSettings.pageIntro.breadcrumbAriaLabel}
             className="flex flex-wrap items-center gap-2 text-[12px] text-[#8f835f]"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
           >
-            <Link href="/" className="hover:text-[#f2d78b] transition-colors">
+            <Link href={siteSettings.pageIntro.homePath} className="hover:text-[#f2d78b] transition-colors">
               {siteSettings.pageIntro.homeLabel}
             </Link>
             {breadcrumbs.map((crumb, index) => (
@@ -48,7 +48,7 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
           </nav>
 
           <Link
-            href="/"
+            href={siteSettings.pageIntro.backHomePath}
             className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >

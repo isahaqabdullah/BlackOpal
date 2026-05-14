@@ -28,7 +28,7 @@ export function ProductDetailPage() {
         title={product.name}
         description={product.summary}
         breadcrumbs={[
-          { label: copy.productsBreadcrumbLabel, to: '/products' },
+          { label: copy.productsBreadcrumbLabel, to: copy.productsPath },
           { label: product.shortName },
         ]}
       />
@@ -151,14 +151,14 @@ export function ProductDetailPage() {
 
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/products"
+                href={copy.allProductsCtaPath}
                 className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {copy.allProductsCtaLabel}
               </Link>
               <Link
-                href="/contact"
+                href={copy.quoteCtaPath}
                 className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

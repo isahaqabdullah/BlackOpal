@@ -1,7 +1,6 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
-import { companyDetails } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { useProductionPageDataAttribute } from '../cms/visualEditingAttributes';
 import { PageIntro } from './PageIntro';
@@ -10,9 +9,9 @@ const balancedOverviewTitle =
   'From Coconut Shell Charcoal to High-Performance Activated Carbon - Fully Integrated Production';
 
 export function ProductionPage() {
-  const { productionPage } = useSiteContent();
+  const { productionPage, siteSettings } = useSiteContent();
   const productionPageDataAttribute = useProductionPageDataAttribute();
-  const productionContactEmail = companyDetails.websiteContact.email ?? companyDetails.infoEmail;
+  const productionContactEmail = siteSettings.websiteContact.email ?? '';
   const overviewTitleLines =
     productionPage.overviewTitle === balancedOverviewTitle
       ? ['From Coconut Shell Charcoal to', 'High-Performance Activated Carbon -', 'Fully Integrated Production']

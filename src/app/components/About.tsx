@@ -2,10 +2,10 @@
 
 import { Building2, Factory, RefreshCcw, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import { useAboutPageDataAttribute } from '../cms/visualEditingAttributes';
 import type { FeatureIconName } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
-const heroLogo = '/images/black-opal-hero-logo-transparent.png';
 
 const icons: Record<FeatureIconName, typeof Factory> = {
   'building-2': Building2,
@@ -22,6 +22,7 @@ const icons: Record<FeatureIconName, typeof Factory> = {
 export function AboutPage() {
   const { aboutPage, newsroomMap, siteSettings } = useSiteContent();
   const pressRelease = newsroomMap['name-change-press-release'];
+  const aboutPageDataAttribute = useAboutPageDataAttribute(aboutPage._id);
 
   return (
     <div>
@@ -31,7 +32,7 @@ export function AboutPage() {
         description={aboutPage.intro.description}
         titleVisual={
           <span className="premium-brand-logo-frame premium-page-title-logo-frame" aria-hidden="true">
-            <img src={heroLogo} alt="" className="premium-brand-logo premium-page-title-logo" />
+            <img src={aboutPage.titleLogoImage} alt="" className="premium-brand-logo premium-page-title-logo" />
           </span>
         }
         breadcrumbs={[{ label: aboutPage.intro.breadcrumbLabel }]}
@@ -102,23 +103,29 @@ export function AboutPage() {
                 </div>
               </div>
 
-              <div className="premium-compact-grid">
-                {aboutPage.metrics.map((metric) => (
-                  <div key={metric.label}>
-                    <span
-                      className="text-[#e6cb87] text-[clamp(1.25rem,2vw,1.8rem)] block mb-1"
-                      style={{ fontFamily: "'DM Serif Display', serif" }}
-                    >
-                      {metric.value}
-                    </span>
-                    <span
-                      className="text-[#8f835f] text-[11px] tracking-[0.12em] uppercase"
-                      style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
-                    >
-                      {metric.label}
-                    </span>
-                  </div>
-                ))}
+              <div className="premium-compact-grid" data-sanity-edit-target>
+                {aboutPage.metrics.map((metric, index) => {
+                  const metricPath = metric._key ? `metrics[_key=="${metric._key}"]` : `metrics[${index}]`;
+
+                  return (
+                    <div key={metric.label}>
+                      <span
+                        data-sanity={aboutPageDataAttribute(`${metricPath}.value`)}
+                        className="text-[#e6cb87] text-[clamp(1.25rem,2vw,1.8rem)] block mb-1"
+                        style={{ fontFamily: "'DM Serif Display', serif" }}
+                      >
+                        {metric.value}
+                      </span>
+                      <span
+                        data-sanity={aboutPageDataAttribute(`${metricPath}.label`)}
+                        className="text-[#8f835f] text-[11px] tracking-[0.12em] uppercase"
+                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                      >
+                        {metric.label}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -132,27 +139,27 @@ export function AboutPage() {
               const Icon = icons[card.icon] ?? Factory;
 
               return (
-              <div
-                key={card.title}
-                className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
-                style={{ animationDelay: `${120 + index * 90}ms` }}
-              >
-                <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center mb-4">
-                  <Icon size={18} className="text-[#e6cb87]" />
+                <div
+                  key={card.title}
+                  className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
+                  style={{ animationDelay: `${120 + index * 90}ms` }}
+                >
+                  <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center mb-4">
+                    <Icon size={18} className="text-[#e6cb87]" />
+                  </div>
+                  <h3
+                    className="premium-card-heading text-[16px] md:text-[17px] mb-2"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p
+                    className="premium-copy text-[13px] leading-[1.75]"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                  >
+                    {card.desc}
+                  </p>
                 </div>
-                <h3
-                  className="premium-card-heading text-[16px] md:text-[17px] mb-2"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
-                >
-                  {card.title}
-                </h3>
-                <p
-                  className="premium-copy text-[13px] leading-[1.75]"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                >
-                  {card.desc}
-                </p>
-              </div>
               );
             })}
           </div>

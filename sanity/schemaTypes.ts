@@ -109,8 +109,6 @@ export const featuredCapabilityEntry = {
     { name: 'imageSlug', title: 'Product or Application Slug', type: 'string' },
     { name: 'imageUrl', title: 'Image URL', type: 'url' },
     { name: 'imageAlt', title: 'Image Alt Text', type: 'string', validation: (Rule: any) => Rule.required() },
-    { name: 'to', title: 'CTA Path', type: 'string', validation: (Rule: any) => Rule.required() },
-    { name: 'cta', title: 'CTA Label', type: 'string', validation: (Rule: any) => Rule.required() },
   ],
 };
 
@@ -201,6 +199,14 @@ export const homePage = {
     },
     { name: 'seo', title: 'SEO', type: 'seoFields' },
     {
+      name: 'heroLogoImage',
+      title: 'Hero Logo Image URL',
+      description: 'Use a public path like /images/black-opal-hero-logo-transparent.png or a full URL.',
+      type: 'string',
+      validation: (Rule: any) => Rule.required(),
+    },
+    { name: 'heroLogoAlt', title: 'Hero Logo Accessibility Label', type: 'string', validation: (Rule: any) => Rule.required() },
+    {
       name: 'heroKicker',
       title: 'Hero Kicker',
       type: 'string',
@@ -219,9 +225,13 @@ export const homePage = {
       rows: 4,
       validation: (Rule: any) => Rule.required(),
     },
-    { name: 'heroPrimaryCtaLabel', title: 'Hero Primary CTA Label', type: 'string' },
-    { name: 'heroSecondaryCtaLabel', title: 'Hero Secondary CTA Label', type: 'string' },
     { name: 'heroLegacyLabel', title: 'Hero Legacy Label', type: 'string' },
+    {
+      name: 'heroVideoUrl',
+      title: 'Hero Video URL',
+      description: 'Use a public path like /images/axionvideo1.mp4 or a full URL.',
+      type: 'string',
+    },
     { name: 'heroVideoLabel', title: 'Hero Video Accessibility Label', type: 'string' },
     { name: 'heroVideoFallback', title: 'Hero Video Fallback Text', type: 'string' },
     {
@@ -297,6 +307,13 @@ export const homePage = {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      name: 'companyImage',
+      title: 'Company Section Image URL',
+      description: 'Use a public path or full URL.',
+      type: 'string',
+    },
+    { name: 'companyImageAlt', title: 'Company Section Image Alt Text', type: 'string' },
+    {
       name: 'companyEyebrow',
       title: 'Company Eyebrow',
       type: 'string',
@@ -322,37 +339,24 @@ export const homePage = {
       rows: 4,
       validation: (Rule: any) => Rule.required(),
     },
+    { name: 'companyMetrics', title: 'Company Metrics', type: 'array', of: [{ type: 'labelValueEntry' }] },
     {
       name: 'ctaTitle',
-      title: 'CTA Title',
+      title: 'Closing Section Title',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'ctaDescription',
-      title: 'CTA Description',
+      title: 'Closing Section Description',
       type: 'text',
       rows: 3,
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
-      name: 'ctaPrimaryLabel',
-      title: 'CTA Primary Label',
-      type: 'string',
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
-      name: 'ctaSecondaryLabel',
-      title: 'CTA Secondary Label',
-      type: 'string',
       validation: (Rule: any) => Rule.required(),
     },
     { name: 'whyKicker', title: 'Why Section Kicker', type: 'string' },
     { name: 'whyTitle', title: 'Why Section Title', type: 'string' },
     { name: 'whyReasons', title: 'Why Section Cards', type: 'array', of: [{ type: 'featureCardEntry' }] },
     { name: 'featuredCapabilitiesLabel', title: 'Featured Capabilities Label', type: 'string' },
-    { name: 'featuredCapabilitiesPreviousLabel', title: 'Featured Previous Button Label', type: 'string' },
-    { name: 'featuredCapabilitiesNextLabel', title: 'Featured Next Button Label', type: 'string' },
     {
       name: 'featuredCapabilities',
       title: 'Featured Capabilities',
@@ -405,6 +409,7 @@ export const productionPage = {
   title: 'Production Page',
   type: 'document',
   fields: [
+    { name: 'seo', title: 'SEO', type: 'seoFields' },
     { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
     { name: 'glanceLabel', title: 'Glance Section Label', type: 'string' },
     { name: 'glanceItems', title: 'Glance Items', type: 'array', of: [{ type: 'labelValueEntry' }] },
@@ -431,7 +436,6 @@ export const productionPage = {
     { name: 'activationNote', title: 'Activation Note', type: 'text', rows: 3 },
     { name: 'contactTextBeforeEmail', title: 'Contact Text Before Email', type: 'text', rows: 2 },
     { name: 'contactTextAfterEmail', title: 'Contact Text After Email', type: 'string' },
-    { name: 'contactButtonLabel', title: 'Contact Button Label', type: 'string' },
   ],
   preview: {
     prepare: () => ({ title: 'Production Page' }),
@@ -515,45 +519,16 @@ export const siteSettings = {
   fields: [
     siteIdField(),
     {
-      name: 'navigation',
-      title: 'Navigation',
-      type: 'object',
-      fields: [
-        { name: 'logoAlt', title: 'Logo Alt Text', type: 'string' },
-        { name: 'links', title: 'Links', type: 'array', of: [{ type: 'linkEntry' }] },
-        { name: 'ctaLabel', title: 'CTA Label', type: 'string' },
-      ],
-    },
-    {
-      name: 'footer',
-      title: 'Footer',
-      type: 'object',
-      fields: [
-        { name: 'logoAlt', title: 'Logo Alt Text', type: 'string' },
-        { name: 'contactLinkLabel', title: 'Contact Link Label', type: 'string' },
-        { name: 'companyColumnTitle', title: 'Company Column Title', type: 'string' },
-        { name: 'companyLinks', title: 'Company Links', type: 'array', of: [{ type: 'linkEntry' }] },
-        { name: 'productColumnTitle', title: 'Product Column Title', type: 'string' },
-        { name: 'applicationColumnTitle', title: 'Application Column Title', type: 'string' },
-        {
-          name: 'copyrightText',
-          title: 'Copyright Text',
-          description: 'Use {year} where the current year should appear.',
-          type: 'string',
-        },
-        { name: 'bottomLinks', title: 'Bottom Links', type: 'array', of: [{ type: 'linkEntry' }] },
-      ],
-    },
-    {
       name: 'pageIntro',
       title: 'Shared Page Intro Labels',
       type: 'object',
       fields: [
+        { name: 'breadcrumbAriaLabel', title: 'Breadcrumb Accessibility Label', type: 'string' },
         { name: 'homeLabel', title: 'Breadcrumb Home Label', type: 'string' },
-        { name: 'backHomeLabel', title: 'Back Home Button Label', type: 'string' },
+        { name: 'homePath', title: 'Breadcrumb Home Path', type: 'string' },
       ],
     },
-    { name: 'websiteContact', title: 'Footer Contact Office', type: 'officeEntry' },
+    { name: 'websiteContact', title: 'Primary Website Contact', type: 'officeEntry' },
     { name: 'officeNetwork', title: 'Office Network', type: 'array', of: [{ type: 'officeEntry' }] },
   ],
   preview: {
@@ -574,12 +549,11 @@ export const pageCopy = {
       title: 'Products Listing Page',
       type: 'object',
       fields: [
+        { name: 'seo', title: 'SEO', type: 'seoFields' },
         { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
         { name: 'highlightsLabel', title: 'Highlights Label', type: 'string' },
         { name: 'commonUsesLabel', title: 'Common Uses Label', type: 'string' },
         { name: 'referencedGradesLabel', title: 'Referenced Grades Label', type: 'string' },
-        { name: 'detailCtaLabel', title: 'Detail CTA Label', type: 'string' },
-        { name: 'quoteCtaLabel', title: 'Quote CTA Label', type: 'string' },
       ],
     },
     {
@@ -588,13 +562,12 @@ export const pageCopy = {
       type: 'object',
       fields: [
         { name: 'introLabel', title: 'Intro Label', type: 'string' },
+        { name: 'productsPath', title: 'Products Path', type: 'string' },
         { name: 'productsBreadcrumbLabel', title: 'Products Breadcrumb Label', type: 'string' },
         { name: 'overviewLabel', title: 'Overview Label', type: 'string' },
         { name: 'commonUsesLabel', title: 'Common Uses Label', type: 'string' },
-        { name: 'ctaTitle', title: 'CTA Title', type: 'string' },
-        { name: 'ctaDescription', title: 'CTA Description', type: 'text', rows: 3 },
-        { name: 'allProductsCtaLabel', title: 'All Products CTA Label', type: 'string' },
-        { name: 'quoteCtaLabel', title: 'Quote CTA Label', type: 'string' },
+        { name: 'ctaTitle', title: 'Closing Section Title', type: 'string' },
+        { name: 'ctaDescription', title: 'Closing Section Description', type: 'text', rows: 3 },
       ],
     },
     {
@@ -602,12 +575,11 @@ export const pageCopy = {
       title: 'Applications Listing Page',
       type: 'object',
       fields: [
+        { name: 'seo', title: 'SEO', type: 'seoFields' },
         { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
         { name: 'itemLabel', title: 'Item Label', type: 'string' },
         { name: 'keyPointsLabel', title: 'Key Points Label', type: 'string' },
         { name: 'recommendedProductsLabel', title: 'Recommended Products Label', type: 'string' },
-        { name: 'detailCtaLabel', title: 'Detail CTA Label', type: 'string' },
-        { name: 'discussCtaLabel', title: 'Discuss CTA Label', type: 'string' },
       ],
     },
     {
@@ -616,13 +588,13 @@ export const pageCopy = {
       type: 'object',
       fields: [
         { name: 'introLabel', title: 'Intro Label', type: 'string' },
+        { name: 'applicationsPath', title: 'Applications Path', type: 'string' },
         { name: 'applicationsBreadcrumbLabel', title: 'Applications Breadcrumb Label', type: 'string' },
         { name: 'overviewLabel', title: 'Overview Label', type: 'string' },
         { name: 'referencedGradesLabel', title: 'Referenced Grades Label', type: 'string' },
         { name: 'recommendedProductsLabel', title: 'Recommended Products Label', type: 'string' },
         { name: 'recommendedProductsTitle', title: 'Recommended Products Title', type: 'string' },
         { name: 'recommendedProductsDescription', title: 'Recommended Products Description', type: 'text', rows: 3 },
-        { name: 'discussCtaLabel', title: 'Discuss CTA Label', type: 'string' },
       ],
     },
     {
@@ -630,15 +602,14 @@ export const pageCopy = {
       title: 'Newsroom Page',
       type: 'object',
       fields: [
+        { name: 'seo', title: 'SEO', type: 'seoFields' },
         { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
         { name: 'featuredUpdateLabel', title: 'Featured Update Label', type: 'string' },
-        { name: 'brandDetailsCtaLabel', title: 'Brand Details CTA Label', type: 'string' },
         { name: 'whyMattersLabel', title: 'Why It Matters Label', type: 'string' },
         { name: 'whyMattersBody', title: 'Why It Matters Body', type: 'text', rows: 3 },
         { name: 'resourcesTitle', title: 'Resources Title', type: 'string' },
         { name: 'resourcesDescription', title: 'Resources Description', type: 'text', rows: 3 },
         { name: 'resourceLabel', title: 'Resource Label', type: 'string' },
-        { name: 'latestVersionCtaLabel', title: 'Latest Version CTA Label', type: 'string' },
       ],
     },
     {
@@ -649,11 +620,8 @@ export const pageCopy = {
         { name: 'kicker', title: 'Kicker', type: 'string' },
         { name: 'title', title: 'Title', type: 'string' },
         { name: 'description', title: 'Description', type: 'text', rows: 3 },
-        { name: 'resourceCenterCtaLabel', title: 'Resource Center CTA Label', type: 'string' },
         { name: 'pressReleaseLabel', title: 'Press Release Label', type: 'string' },
         { name: 'resourceLabel', title: 'Resource Label', type: 'string' },
-        { name: 'brandUpdateCtaLabel', title: 'Brand Update CTA Label', type: 'string' },
-        { name: 'requestResourceCtaLabel', title: 'Request Resource CTA Label', type: 'string' },
       ],
     },
     {
@@ -662,9 +630,20 @@ export const pageCopy = {
       type: 'object',
       fields: [
         { name: 'introLabel', title: 'Intro Label', type: 'string' },
+        { name: 'newsroomPath', title: 'Newsroom Path', type: 'string' },
         { name: 'newsroomBreadcrumbLabel', title: 'Newsroom Breadcrumb Label', type: 'string' },
         { name: 'keyPointsLabel', title: 'Key Points Label', type: 'string' },
-        { name: 'salesCoordinationCtaLabel', title: 'Sales Coordination CTA Label', type: 'string' },
+      ],
+    },
+    {
+      name: 'notFoundPage',
+      title: 'Not Found Page',
+      type: 'object',
+      fields: [
+        { name: 'seo', title: 'SEO', type: 'seoFields' },
+        { name: 'label', title: 'Label', type: 'string' },
+        { name: 'title', title: 'Title', type: 'string' },
+        { name: 'description', title: 'Description', type: 'text', rows: 3 },
       ],
     },
   ],
@@ -679,7 +658,9 @@ export const aboutPage = {
   type: 'document',
   fields: [
     siteIdField(),
+    { name: 'seo', title: 'SEO', type: 'seoFields' },
     { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
+    { name: 'titleLogoImage', title: 'Page Title Logo Image URL', type: 'string' },
     { name: 'heroImage', title: 'Hero Image', type: 'image', options: { hotspot: true } },
     { name: 'heroImageUrl', title: 'External Hero Image URL', type: 'url' },
     { name: 'heroImageAlt', title: 'Hero Image Alt Text', type: 'string' },
@@ -689,8 +670,6 @@ export const aboutPage = {
     { name: 'metrics', title: 'Metrics', type: 'array', of: [{ type: 'labelValueEntry' }] },
     { name: 'cards', title: 'Feature Cards', type: 'array', of: [{ type: 'featureCardEntry' }] },
     { name: 'brandUpdateLabel', title: 'Brand Update Label', type: 'string' },
-    { name: 'brandTransitionCtaLabel', title: 'Brand Transition CTA Label', type: 'string' },
-    { name: 'productionCapabilityCtaLabel', title: 'Production Capability CTA Label', type: 'string' },
   ],
   preview: {
     select: { siteId: 'siteId' },
@@ -706,6 +685,7 @@ export const contactPage = {
   type: 'document',
   fields: [
     siteIdField(),
+    { name: 'seo', title: 'SEO', type: 'seoFields' },
     { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
     { name: 'officesTitle', title: 'Offices Title', type: 'string' },
     { name: 'successTitle', title: 'Success Title', type: 'string' },
@@ -726,7 +706,6 @@ export const contactPage = {
     { name: 'applicationOptions', title: 'Application Options', type: 'array', of: [{ type: 'string' }] },
     { name: 'messageLabel', title: 'Message Label', type: 'string' },
     { name: 'messagePlaceholder', title: 'Message Placeholder', type: 'text', rows: 2 },
-    { name: 'submitLabel', title: 'Submit Label', type: 'string' },
   ],
   preview: {
     select: { siteId: 'siteId' },

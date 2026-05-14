@@ -107,7 +107,7 @@ export function ApplicationsPage() {
                       <ArrowRight size={14} />
                     </Link>
                     <Link
-                      href="/contact"
+                      href={copy.discussCtaPath}
                       className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >

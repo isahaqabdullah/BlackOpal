@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "cms:build": "node scripts/run-sanity.mjs build sanity-dist --yes",
-    "cms:deploy": "node scripts/run-sanity.mjs build sanity-dist --yes && node scripts/run-sanity.mjs deploy sanity-dist --no-build --yes",
+    "cms:build": "node scripts/run-sanity.mjs build --yes",
+    "cms:deploy": "node scripts/run-sanity.mjs build --yes && node scripts/run-sanity.mjs deploy --no-build --yes",
     "cms:dev": "node scripts/run-sanity.mjs dev",
     "cms:import": "npm run cms:seed && node scripts/run-sanity.mjs dataset import sanity/seed.ndjson production --replace",
     "cms:login": "node scripts/run-sanity.mjs login",

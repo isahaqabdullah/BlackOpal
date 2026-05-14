@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
-const brandLogo = '/images/BlackOpallogo.avif';
 
 export function Navigation() {
   const { siteSettings } = useSiteContent();
@@ -22,7 +21,7 @@ export function Navigation() {
       <div className="premium-shell h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <img
-            src={brandLogo}
+            src={siteSettings.navigation.logoImage}
             alt={siteSettings.navigation.logoAlt}
             className="h-11 w-auto object-contain shrink-0 drop-shadow-[0_8px_24px_rgba(201,162,77,0.16)]"
           />
@@ -44,7 +43,7 @@ export function Navigation() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href={siteSettings.navigation.ctaPath}
             className="premium-primary-btn text-[13px] px-5 py-2.5 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
@@ -53,7 +52,7 @@ export function Navigation() {
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden text-[#f2d78b]" onClick={() => setOpen(!open)} aria-label="Toggle navigation menu">
+        <button className="md:hidden text-[#f2d78b]" onClick={() => setOpen(!open)} aria-label={siteSettings.navigation.mobileMenuLabel}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
@@ -76,7 +75,7 @@ export function Navigation() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href={siteSettings.navigation.ctaPath}
             onClick={() => setOpen(false)}
             className="premium-primary-btn block text-[13px] text-center px-5 py-2.5 rounded-full mt-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}

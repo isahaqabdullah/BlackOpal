@@ -28,7 +28,7 @@ export function ApplicationDetailPage() {
         title={application.name}
         description={application.summary}
         breadcrumbs={[
-          { label: copy.applicationsBreadcrumbLabel, to: '/applications' },
+          { label: copy.applicationsBreadcrumbLabel, to: copy.applicationsPath },
           { label: application.name },
         ]}
       />
@@ -176,7 +176,7 @@ export function ApplicationDetailPage() {
               </div>
 
               <Link
-                href="/contact"
+                href={copy.discussCtaPath}
                 className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full self-start"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

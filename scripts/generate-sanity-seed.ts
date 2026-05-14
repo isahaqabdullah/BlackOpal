@@ -14,7 +14,6 @@ import {
   type FeatureCardEntry,
   type FeaturedCapabilityEntry,
   type LabelValueEntry,
-  type LinkEntry,
   type OfficeEntry,
   type PageIntroContent,
   type ProductionStepEntry,
@@ -37,6 +36,10 @@ function keyFrom(value: string, index: number) {
   return `${normalized || 'item'}-${index}`;
 }
 
+function omitFields<T extends Record<string, unknown>>(source: T, fields: string[]) {
+  return Object.fromEntries(Object.entries(source).filter(([key]) => !fields.includes(key)));
+}
+
 function sectionsForSanity(sections: ContentSection[]) {
   return sections.map((section, index) => ({
     _type: 'contentSection',
@@ -44,15 +47,6 @@ function sectionsForSanity(sections: ContentSection[]) {
     title: section.title,
     body: section.body,
     bullets: section.bullets,
-  }));
-}
-
-function linksForSanity(links: LinkEntry[]) {
-  return links.map((link, index) => ({
-    _type: 'linkEntry',
-    _key: keyFrom(`${link.label}-${link.to}`, index),
-    label: link.label,
-    to: link.to,
   }));
 }
 
@@ -110,8 +104,6 @@ function featuredCapabilitiesForSanity(capabilities: FeaturedCapabilityEntry[]) 
     imageSlug: capability.imageSlug,
     imageUrl: capability.imageUrl,
     imageAlt: capability.imageAlt,
-    to: capability.to,
-    cta: capability.cta,
   }));
 }
 
@@ -152,10 +144,31 @@ const productDocuments: SanityDocument[] = products.map((product, index) => ({
   imageUrl: product.image,
 }));
 
+const homePageButtonFields = [
+  'heroPrimaryCtaPath',
+  'heroPrimaryCtaLabel',
+  'heroSecondaryCtaPath',
+  'heroSecondaryCtaLabel',
+  'productCardCtaLabel',
+  'applicationCardCtaLabel',
+  'companyAboutCtaPath',
+  'companyAboutCtaLabel',
+  'companyProductionCtaPath',
+  'companyProductionCtaLabel',
+  'ctaPrimaryPath',
+  'ctaPrimaryLabel',
+  'ctaSecondaryPath',
+  'ctaSecondaryLabel',
+  'featuredCapabilitiesPreviousLabel',
+  'featuredCapabilitiesNextLabel',
+  'featuredCapabilitiesShowLabelPrefix',
+];
+
 const homePageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-middle-east'].map((siteId) => ({
   _id: `homePage-${siteId}`,
   _type: 'homePage',
-  ...homePageContent,
+  ...omitFields(homePageContent as unknown as Record<string, unknown>, homePageButtonFields),
+  companyMetrics: labelValuesForSanity(homePageContent.companyMetrics),
   whyReasons: featureCardsForSanity(homePageContent.whyReasons),
   featuredCapabilities: featuredCapabilitiesForSanity(homePageContent.featuredCapabilities),
   seo: seoFor('/'),
@@ -166,16 +179,7 @@ const siteSettingsDocuments: SanityDocument[] = ['black-opal-india', 'black-opal
   _id: `siteSettings-${siteId}`,
   _type: 'siteSettings',
   siteId,
-  navigation: {
-    ...siteSettingsContent.navigation,
-    links: linksForSanity(siteSettingsContent.navigation.links),
-  },
-  footer: {
-    ...siteSettingsContent.footer,
-    companyLinks: linksForSanity(siteSettingsContent.footer.companyLinks),
-    bottomLinks: linksForSanity(siteSettingsContent.footer.bottomLinks),
-  },
-  pageIntro: siteSettingsContent.pageIntro,
+  pageIntro: omitFields(siteSettingsContent.pageIntro, ['backHomeLabel', 'backHomePath']),
   websiteContact: {
     _type: 'officeEntry',
     ...siteSettingsContent.websiteContact,
@@ -183,28 +187,61 @@ const siteSettingsDocuments: SanityDocument[] = ['black-opal-india', 'black-opal
   officeNetwork: officesForSanity(siteSettingsContent.officeNetwork),
 }));
 
+const productsPageButtonFields = ['detailCtaLabel', 'quoteCtaPath', 'quoteCtaLabel'];
+const productDetailButtonFields = ['allProductsCtaPath', 'allProductsCtaLabel', 'quoteCtaPath', 'quoteCtaLabel'];
+const applicationsPageButtonFields = ['detailCtaLabel', 'discussCtaPath', 'discussCtaLabel'];
+const applicationDetailButtonFields = ['discussCtaPath', 'discussCtaLabel'];
+const newsroomPageButtonFields = ['brandDetailsCtaLabel', 'latestVersionCtaPath', 'latestVersionCtaLabel'];
+const newsroomPreviewButtonFields = [
+  'resourceCenterCtaPath',
+  'resourceCenterCtaLabel',
+  'brandUpdateCtaLabel',
+  'requestResourceCtaPath',
+  'requestResourceCtaLabel',
+];
+const pressReleaseButtonFields = ['salesCoordinationCtaPath', 'salesCoordinationCtaLabel'];
+const notFoundButtonFields = ['homeCtaPath', 'homeCtaLabel', 'secondaryCtaPath', 'secondaryCtaLabel'];
+
 const pageCopyDocument: SanityDocument = {
   _id: 'pageCopy',
   _type: 'pageCopy',
   productsPage: {
-    ...pageCopyContent.productsPage,
+    ...omitFields(pageCopyContent.productsPage as unknown as Record<string, unknown>, productsPageButtonFields),
     intro: pageIntroForSanity(pageCopyContent.productsPage.intro),
   },
-  productDetailPage: pageCopyContent.productDetailPage,
+  productDetailPage: omitFields(
+    pageCopyContent.productDetailPage as unknown as Record<string, unknown>,
+    productDetailButtonFields,
+  ),
   applicationsPage: {
-    ...pageCopyContent.applicationsPage,
+    ...omitFields(pageCopyContent.applicationsPage as unknown as Record<string, unknown>, applicationsPageButtonFields),
     intro: pageIntroForSanity(pageCopyContent.applicationsPage.intro),
   },
-  applicationDetailPage: pageCopyContent.applicationDetailPage,
+  applicationDetailPage: omitFields(
+    pageCopyContent.applicationDetailPage as unknown as Record<string, unknown>,
+    applicationDetailButtonFields,
+  ),
   newsroomPage: {
-    ...pageCopyContent.newsroomPage,
+    ...omitFields(pageCopyContent.newsroomPage as unknown as Record<string, unknown>, newsroomPageButtonFields),
     intro: pageIntroForSanity(pageCopyContent.newsroomPage.intro),
   },
-  newsroomPreview: pageCopyContent.newsroomPreview,
-  pressReleasePage: pageCopyContent.pressReleasePage,
+  newsroomPreview: omitFields(
+    pageCopyContent.newsroomPreview as unknown as Record<string, unknown>,
+    newsroomPreviewButtonFields,
+  ),
+  pressReleasePage: omitFields(
+    pageCopyContent.pressReleasePage as unknown as Record<string, unknown>,
+    pressReleaseButtonFields,
+  ),
+  notFoundPage: omitFields(pageCopyContent.notFoundPage as unknown as Record<string, unknown>, notFoundButtonFields),
 };
 
-const { heroImage: aboutHeroImage, ...aboutPageSeedContent } = aboutPageContent;
+const { heroImage: aboutHeroImage } = aboutPageContent;
+const aboutPageSeedContent = omitFields(aboutPageContent as unknown as Record<string, unknown>, [
+  'heroImage',
+  'brandTransitionCtaLabel',
+  'productionCapabilityCtaLabel',
+]);
 const aboutPageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-middle-east'].map((siteId) => ({
   _id: `aboutPage-${siteId}`,
   _type: 'aboutPage',
@@ -216,7 +253,11 @@ const aboutPageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-mi
   heroImageUrl: aboutHeroImage,
 }));
 
-const { image: productionImage, ...productionPageSeedContent } = productionPageContent;
+const { image: productionImage } = productionPageContent;
+const productionPageSeedContent = omitFields(productionPageContent as unknown as Record<string, unknown>, [
+  'image',
+  'contactButtonLabel',
+]);
 const productionPageDocument: SanityDocument = {
   _id: 'productionPage',
   _type: 'productionPage',
@@ -227,10 +268,11 @@ const productionPageDocument: SanityDocument = {
   imageUrl: productionImage,
 };
 
+const contactPageSeedContent = omitFields(contactPageContent as unknown as Record<string, unknown>, ['submitLabel']);
 const contactPageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-middle-east'].map((siteId) => ({
   _id: `contactPage-${siteId}`,
   _type: 'contactPage',
-  ...contactPageContent,
+  ...contactPageSeedContent,
   siteId,
   intro: pageIntroForSanity(contactPageContent.intro),
 }));

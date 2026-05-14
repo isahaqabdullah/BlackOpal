@@ -37,7 +37,7 @@ export function CTABand() {
           <div className="premium-reveal premium-reveal-delay-2 flex flex-wrap justify-center gap-3 relative z-10">
             <Link
               data-sanity={homePageDataAttribute('ctaPrimaryLabel')}
-              href="/contact"
+              href={homePage.ctaPrimaryPath}
               className="premium-primary-btn text-[13px] px-8 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
@@ -45,7 +45,7 @@ export function CTABand() {
             </Link>
             <Link
               data-sanity={homePageDataAttribute('ctaSecondaryLabel')}
-              href="/contact"
+              href={homePage.ctaSecondaryPath}
               className="premium-secondary-btn text-[13px] px-8 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >

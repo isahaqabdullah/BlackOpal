@@ -94,13 +94,9 @@ export default defineConfig({
               locations: [
                 ...(document?.siteId === studioSiteId
                   ? [
-                      documentLocation('Home page chrome', '/'),
-                      documentLocation('Products page chrome', '/products'),
-                      documentLocation('Applications page chrome', '/applications'),
-                      documentLocation('Production page chrome', '/production'),
-                      documentLocation('About page chrome', '/about'),
-                      documentLocation('Newsroom page chrome', '/newsroom'),
-                      documentLocation('Contact page chrome', '/contact'),
+                      documentLocation('Contact details', '/contact'),
+                      documentLocation('Office network', '/about'),
+                      documentLocation('Page intro labels', '/products'),
                     ]
                   : []),
               ],

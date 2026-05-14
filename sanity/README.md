@@ -19,7 +19,7 @@ Homepage documents are site-specific:
 - `homePage-black-opal-india`
 - `homePage-black-opal-middle-east`
 
-Nav/footer site settings, About, and Contact documents are site-specific, using IDs like:
+Site settings contact details, About, and Contact documents are site-specific, using IDs like:
 
 - `siteSettings-black-opal-india`
 - `siteSettings-black-opal-middle-east`
@@ -77,7 +77,7 @@ Run the website on the same preview origin configured above:
 npm run dev
 ```
 
-Open Studio, choose `Visual Editor`, and edit homepage, site settings, page framing copy, about, production, contact, product, application, and newsroom entries from the preview. Editors can change the content fields inside those sections while the site updates visually.
+Open Studio, choose `Visual Editor`, and edit homepage metrics and section copy, site settings contact details, page framing copy, about, production, contact, product, application, and newsroom entries from the preview. Nav, footer, and button labels/links are owned by code rather than CMS.
 
 ## 5. Import current site content
 
@@ -111,7 +111,7 @@ Run this once to create site-specific homepage documents from the legacy `homePa
 npm run cms:migrate:homepages
 ```
 
-Run this after adding the expanded copy schema to create the shared page-copy document, create the site-specific nav/footer/About/Contact documents, and fill only missing fields on existing homepage and production documents:
+Run this after adding the expanded copy schema to create the shared page-copy document, create the site-specific settings/About/Contact documents, and fill only missing fields on existing homepage and production documents:
 
 ```bash
 npm run cms:migrate:copy

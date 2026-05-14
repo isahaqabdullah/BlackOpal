@@ -27,7 +27,7 @@ export function PressReleasePage() {
         title={story.title}
         description={story.summary}
         breadcrumbs={[
-          { label: copy.newsroomBreadcrumbLabel, to: '/newsroom' },
+          { label: copy.newsroomBreadcrumbLabel, to: copy.newsroomPath },
           { label: story.title },
         ]}
       />
@@ -70,7 +70,7 @@ export function PressReleasePage() {
               </div>
 
               <Link
-                href="/contact"
+                href={copy.salesCoordinationCtaPath}
                 className="premium-primary-btn inline-block text-[13px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >

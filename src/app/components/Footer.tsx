@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-const brandLogo = '/images/BlackOpallogo.avif';
 import { useSiteContent } from '../content/SiteContentProvider';
 
 export function Footer() {
@@ -35,7 +34,7 @@ export function Footer() {
             <div className="max-w-[28rem]">
               <Link href="/" className="flex items-center mb-5 w-fit">
                 <img
-                  src={brandLogo}
+                  src={siteSettings.footer.logoImage}
                   alt={siteSettings.footer.logoAlt}
                   className="h-12 w-auto object-contain shrink-0 drop-shadow-[0_10px_28px_rgba(201,162,77,0.14)]"
                 />
@@ -57,9 +56,9 @@ export function Footer() {
                     </span>
                   ))}
                 </p>
-                {footerContact.phone ? <p>Phone: {footerContact.phone}</p> : null}
-                {footerContact.email ? <p>Email: {footerContact.email}</p> : null}
-                <Link href="/contact" className="inline-flex text-[#f2d78b] hover:text-[#fff2bf] transition-colors">
+                {footerContact.phone ? <p>{siteSettings.footer.phoneLabel}: {footerContact.phone}</p> : null}
+                {footerContact.email ? <p>{siteSettings.footer.emailLabel}: {footerContact.email}</p> : null}
+                <Link href={siteSettings.footer.contactLinkPath} className="inline-flex text-[#f2d78b] hover:text-[#fff2bf] transition-colors">
                   {siteSettings.footer.contactLinkLabel}
                 </Link>
               </div>

@@ -48,6 +48,34 @@ function isMissing(value) {
   return value === undefined || value === null;
 }
 
+function isPlainObject(value) {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function collectMissingFields(remoteValue, seedValue, set, pathParts = []) {
+  if (!isPlainObject(seedValue)) {
+    return;
+  }
+
+  for (const [key, value] of Object.entries(seedValue)) {
+    if (key.startsWith('_')) {
+      continue;
+    }
+
+    const remoteFieldValue = isPlainObject(remoteValue) ? remoteValue[key] : undefined;
+    const fieldPath = [...pathParts, key];
+
+    if (isMissing(remoteFieldValue)) {
+      set[fieldPath.join('.')] = value;
+      continue;
+    }
+
+    if (isPlainObject(value) && isPlainObject(remoteFieldValue)) {
+      collectMissingFields(remoteFieldValue, value, set, fieldPath);
+    }
+  }
+}
+
 async function patchMissingFields(client, id, seedDocument) {
   const remote = await client.getDocument(id);
 
@@ -56,16 +84,7 @@ async function patchMissingFields(client, id, seedDocument) {
   }
 
   const set = {};
-
-  for (const [key, value] of Object.entries(seedDocument)) {
-    if (key.startsWith('_')) {
-      continue;
-    }
-
-    if (isMissing(remote[key])) {
-      set[key] = value;
-    }
-  }
+  collectMissingFields(remote, seedDocument, set);
 
   if (!Object.keys(set).length) {
     return { id, status: 'unchanged' };

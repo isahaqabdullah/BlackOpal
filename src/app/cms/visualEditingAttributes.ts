@@ -60,6 +60,14 @@ export function homePageDocumentId(fallbackId = 'homePage') {
   return fallbackId;
 }
 
+export function aboutPageDocumentId(fallbackId = 'aboutPage') {
+  if (siteId === 'black-opal-india' || siteId === 'black-opal-middle-east') {
+    return `aboutPage-${siteId}`;
+  }
+
+  return fallbackId;
+}
+
 export function homePageDataAttribute(path: string, documentId = homePageDocumentId(), baseUrl = studioUrl) {
   if (!projectId || !dataset) {
     return undefined;
@@ -74,6 +82,23 @@ export function homePageDataAttribute(path: string, documentId = homePageDocumen
     path,
     projectId,
     type: 'homePage',
+  }).toString();
+}
+
+export function aboutPageDataAttribute(path: string, documentId = aboutPageDocumentId(), baseUrl = studioUrl) {
+  if (!projectId || !dataset) {
+    return undefined;
+  }
+
+  const resolvedDocumentId = documentId || aboutPageDocumentId();
+
+  return createDataAttribute({
+    baseUrl,
+    dataset,
+    id: resolvedDocumentId,
+    path,
+    projectId,
+    type: 'aboutPage',
   }).toString();
 }
 
@@ -102,6 +127,19 @@ export function useHomePageDataAttribute(documentId?: string) {
     }
 
     return homePageDataAttribute(path, documentId, visualEditingContext.studioUrl);
+  };
+}
+
+export function useAboutPageDataAttribute(documentId?: string) {
+  const { source } = useSiteContent();
+  const visualEditingContext = useVisualEditingContext(source);
+
+  return (path: string) => {
+    if (!visualEditingContext.enabled) {
+      return undefined;
+    }
+
+    return aboutPageDataAttribute(path, documentId, visualEditingContext.studioUrl);
   };
 }
 

@@ -20,7 +20,6 @@ import {
   type FeatureCardEntry,
   type HomePageContent,
   type LabelValueEntry,
-  type LinkEntry,
   type NewsroomItem,
   type OfficeEntry,
   type PageCopyContent,
@@ -119,28 +118,6 @@ function pageIntro(value: Partial<PageIntroContent> | undefined, fallback: PageI
   };
 }
 
-function linkEntries(value: unknown, fallback: LinkEntry[] = []) {
-  if (!Array.isArray(value)) {
-    return fallback;
-  }
-
-  const entries = value
-    .map((item): LinkEntry | null => {
-      if (!item || typeof item !== 'object') {
-        return null;
-      }
-
-      const link = item as Partial<LinkEntry>;
-      const label = textValue(link.label);
-      const to = cleanTextValue(link.to);
-
-      return label && to ? { _key: cleanTextValue(link._key) || undefined, label, to } : null;
-    })
-    .filter((item): item is LinkEntry => item !== null);
-
-  return entries.length ? entries : fallback;
-}
-
 function labelValueEntries(value: unknown, fallback: LabelValueEntry[] = []) {
   if (!Array.isArray(value)) {
     return fallback;
@@ -180,7 +157,9 @@ function metricEntries(value: unknown, fallback: SiteMetric[] = []) {
       const label = textValue(entry.label);
       const itemValue = textValue(entry.value);
 
-      return label && itemValue ? { label, value: itemValue } : null;
+      return label && itemValue
+        ? { _key: cleanTextValue(entry._key) || undefined, label, value: itemValue }
+        : null;
     })
     .filter((item): item is SiteMetric => item !== null);
 
@@ -268,8 +247,8 @@ function featuredCapabilities(value: unknown, fallback: FeaturedCapabilityEntry[
       const title = textValue(entry.title, fallbackItem?.title);
       const copy = textValue(entry.copy, fallbackItem?.copy);
       const imageAlt = textValue(entry.imageAlt, fallbackItem?.imageAlt);
-      const to = cleanTextValue(entry.to, fallbackItem?.to);
-      const cta = textValue(entry.cta, fallbackItem?.cta);
+      const to = fallbackItem?.to;
+      const cta = fallbackItem?.cta;
 
       if (
         !label ||
@@ -459,12 +438,17 @@ function normalizeHomePage(value?: Partial<HomePageContent> | null): HomePageCon
     _type: value?._type === 'homePage' ? value._type : undefined,
     seo: normalizeSeo(value?.seo, fallback.seo),
     siteId: cleanTextValue(value?.siteId, fallback.siteId),
+    heroLogoImage: cleanTextValue(value?.heroLogoImage, fallback.heroLogoImage),
+    heroLogoAlt: textValue(value?.heroLogoAlt, fallback.heroLogoAlt),
     heroKicker: textValue(value?.heroKicker, fallback.heroKicker),
     heroTitle: textValue(value?.heroTitle, fallback.heroTitle),
     heroDescription: textValue(value?.heroDescription, fallback.heroDescription),
-    heroPrimaryCtaLabel: textValue(value?.heroPrimaryCtaLabel, fallback.heroPrimaryCtaLabel),
-    heroSecondaryCtaLabel: textValue(value?.heroSecondaryCtaLabel, fallback.heroSecondaryCtaLabel),
+    heroPrimaryCtaPath: fallback.heroPrimaryCtaPath,
+    heroPrimaryCtaLabel: fallback.heroPrimaryCtaLabel,
+    heroSecondaryCtaPath: fallback.heroSecondaryCtaPath,
+    heroSecondaryCtaLabel: fallback.heroSecondaryCtaLabel,
     heroLegacyLabel: textValue(value?.heroLegacyLabel, fallback.heroLegacyLabel),
+    heroVideoUrl: cleanTextValue(value?.heroVideoUrl, fallback.heroVideoUrl),
     heroVideoLabel: textValue(value?.heroVideoLabel, fallback.heroVideoLabel),
     heroVideoFallback: textValue(value?.heroVideoFallback, fallback.heroVideoFallback),
     trustCertificationLabel: textValue(value?.trustCertificationLabel, fallback.trustCertificationLabel),
@@ -479,26 +463,32 @@ function normalizeHomePage(value?: Partial<HomePageContent> | null): HomePageCon
     productSectionTitle: textValue(value?.productSectionTitle, fallback.productSectionTitle),
     applicationSectionKicker: textValue(value?.applicationSectionKicker, fallback.applicationSectionKicker),
     applicationSectionTitle: textValue(value?.applicationSectionTitle, fallback.applicationSectionTitle),
+    productCardCtaLabel: fallback.productCardCtaLabel,
+    applicationCardCtaLabel: fallback.applicationCardCtaLabel,
+    companyImage: cleanTextValue(value?.companyImage, fallback.companyImage),
+    companyImageAlt: textValue(value?.companyImageAlt, fallback.companyImageAlt),
     companyEyebrow: textValue(value?.companyEyebrow, fallback.companyEyebrow),
     companyTitle: textValue(value?.companyTitle, fallback.companyTitle),
     companyBodyPrimary: textValue(value?.companyBodyPrimary, fallback.companyBodyPrimary),
     companyBodySecondary: textValue(value?.companyBodySecondary, fallback.companyBodySecondary),
+    companyMetrics: metricEntries(value?.companyMetrics, fallback.companyMetrics),
+    companyAboutCtaPath: fallback.companyAboutCtaPath,
+    companyAboutCtaLabel: fallback.companyAboutCtaLabel,
+    companyProductionCtaPath: fallback.companyProductionCtaPath,
+    companyProductionCtaLabel: fallback.companyProductionCtaLabel,
     ctaTitle: textValue(value?.ctaTitle, fallback.ctaTitle),
     ctaDescription: textValue(value?.ctaDescription, fallback.ctaDescription),
-    ctaPrimaryLabel: textValue(value?.ctaPrimaryLabel, fallback.ctaPrimaryLabel),
-    ctaSecondaryLabel: textValue(value?.ctaSecondaryLabel, fallback.ctaSecondaryLabel),
+    ctaPrimaryPath: fallback.ctaPrimaryPath,
+    ctaPrimaryLabel: fallback.ctaPrimaryLabel,
+    ctaSecondaryPath: fallback.ctaSecondaryPath,
+    ctaSecondaryLabel: fallback.ctaSecondaryLabel,
     whyKicker: textValue(value?.whyKicker, fallback.whyKicker),
     whyTitle: textValue(value?.whyTitle, fallback.whyTitle),
     whyReasons: featureCards(value?.whyReasons, fallback.whyReasons),
     featuredCapabilitiesLabel: textValue(value?.featuredCapabilitiesLabel, fallback.featuredCapabilitiesLabel),
-    featuredCapabilitiesPreviousLabel: textValue(
-      value?.featuredCapabilitiesPreviousLabel,
-      fallback.featuredCapabilitiesPreviousLabel,
-    ),
-    featuredCapabilitiesNextLabel: textValue(
-      value?.featuredCapabilitiesNextLabel,
-      fallback.featuredCapabilitiesNextLabel,
-    ),
+    featuredCapabilitiesPreviousLabel: fallback.featuredCapabilitiesPreviousLabel,
+    featuredCapabilitiesNextLabel: fallback.featuredCapabilitiesNextLabel,
+    featuredCapabilitiesShowLabelPrefix: fallback.featuredCapabilitiesShowLabelPrefix,
     featuredCapabilities: featuredCapabilities(value?.featuredCapabilities, fallback.featuredCapabilities),
   };
 }
@@ -510,6 +500,7 @@ function normalizeProductionPage(value?: Partial<ProductionPageContent> | null):
   return {
     _id: id || undefined,
     _type: value?._type === 'productionPage' ? value._type : undefined,
+    seo: normalizeSeo(value?.seo, fallback.seo),
     intro: pageIntro(value?.intro, fallback.intro),
     glanceLabel: textValue(value?.glanceLabel, fallback.glanceLabel),
     glanceItems: labelValueEntries(value?.glanceItems, fallback.glanceItems),
@@ -525,39 +516,27 @@ function normalizeProductionPage(value?: Partial<ProductionPageContent> | null):
     activationNote: textValue(value?.activationNote, fallback.activationNote),
     contactTextBeforeEmail: textValue(value?.contactTextBeforeEmail, fallback.contactTextBeforeEmail),
     contactTextAfterEmail: textValue(value?.contactTextAfterEmail, fallback.contactTextAfterEmail),
-    contactButtonLabel: textValue(value?.contactButtonLabel, fallback.contactButtonLabel),
+    contactButtonLabel: fallback.contactButtonLabel,
   };
 }
 
 function normalizeSiteSettings(value?: Partial<SiteSettingsContent> | null): SiteSettingsContent {
   const fallback = fallbackSiteSettingsContent;
   const id = cleanTextValue(value?._id);
-  const navigation = value?.navigation;
-  const footer = value?.footer;
   const pageIntroValue = value?.pageIntro;
 
   return {
     _id: id || undefined,
     _type: value?._type === 'siteSettings' ? value._type : undefined,
     siteId: cleanTextValue(value?.siteId, fallback.siteId),
-    navigation: {
-      logoAlt: textValue(navigation?.logoAlt, fallback.navigation.logoAlt),
-      links: linkEntries(navigation?.links, fallback.navigation.links),
-      ctaLabel: textValue(navigation?.ctaLabel, fallback.navigation.ctaLabel),
-    },
-    footer: {
-      logoAlt: textValue(footer?.logoAlt, fallback.footer.logoAlt),
-      contactLinkLabel: textValue(footer?.contactLinkLabel, fallback.footer.contactLinkLabel),
-      companyColumnTitle: textValue(footer?.companyColumnTitle, fallback.footer.companyColumnTitle),
-      companyLinks: linkEntries(footer?.companyLinks, fallback.footer.companyLinks),
-      productColumnTitle: textValue(footer?.productColumnTitle, fallback.footer.productColumnTitle),
-      applicationColumnTitle: textValue(footer?.applicationColumnTitle, fallback.footer.applicationColumnTitle),
-      copyrightText: textValue(footer?.copyrightText, fallback.footer.copyrightText),
-      bottomLinks: linkEntries(footer?.bottomLinks, fallback.footer.bottomLinks),
-    },
+    navigation: fallback.navigation,
+    footer: fallback.footer,
     pageIntro: {
+      breadcrumbAriaLabel: textValue(pageIntroValue?.breadcrumbAriaLabel, fallback.pageIntro.breadcrumbAriaLabel),
       homeLabel: textValue(pageIntroValue?.homeLabel, fallback.pageIntro.homeLabel),
-      backHomeLabel: textValue(pageIntroValue?.backHomeLabel, fallback.pageIntro.backHomeLabel),
+      homePath: cleanTextValue(pageIntroValue?.homePath, fallback.pageIntro.homePath),
+      backHomeLabel: fallback.pageIntro.backHomeLabel,
+      backHomePath: fallback.pageIntro.backHomePath,
     },
     websiteContact: officeEntry(value?.websiteContact, fallback.websiteContact),
     officeNetwork: officeEntries(value?.officeNetwork, fallback.officeNetwork),
@@ -579,15 +558,18 @@ function normalizePageCopy(value?: Partial<PageCopyContent> | null): PageCopyCon
     _id: id || undefined,
     _type: value?._type === 'pageCopy' ? value._type : undefined,
     productsPage: {
+      seo: normalizeSeo(productsPage?.seo, fallback.productsPage.seo),
       intro: pageIntro(productsPage?.intro, fallback.productsPage.intro),
       highlightsLabel: textValue(productsPage?.highlightsLabel, fallback.productsPage.highlightsLabel),
       commonUsesLabel: textValue(productsPage?.commonUsesLabel, fallback.productsPage.commonUsesLabel),
       referencedGradesLabel: textValue(productsPage?.referencedGradesLabel, fallback.productsPage.referencedGradesLabel),
-      detailCtaLabel: textValue(productsPage?.detailCtaLabel, fallback.productsPage.detailCtaLabel),
-      quoteCtaLabel: textValue(productsPage?.quoteCtaLabel, fallback.productsPage.quoteCtaLabel),
+      detailCtaLabel: fallback.productsPage.detailCtaLabel,
+      quoteCtaPath: fallback.productsPage.quoteCtaPath,
+      quoteCtaLabel: fallback.productsPage.quoteCtaLabel,
     },
     productDetailPage: {
       introLabel: textValue(productDetailPage?.introLabel, fallback.productDetailPage.introLabel),
+      productsPath: cleanTextValue(productDetailPage?.productsPath, fallback.productDetailPage.productsPath),
       productsBreadcrumbLabel: textValue(
         productDetailPage?.productsBreadcrumbLabel,
         fallback.productDetailPage.productsBreadcrumbLabel,
@@ -596,13 +578,13 @@ function normalizePageCopy(value?: Partial<PageCopyContent> | null): PageCopyCon
       commonUsesLabel: textValue(productDetailPage?.commonUsesLabel, fallback.productDetailPage.commonUsesLabel),
       ctaTitle: textValue(productDetailPage?.ctaTitle, fallback.productDetailPage.ctaTitle),
       ctaDescription: textValue(productDetailPage?.ctaDescription, fallback.productDetailPage.ctaDescription),
-      allProductsCtaLabel: textValue(
-        productDetailPage?.allProductsCtaLabel,
-        fallback.productDetailPage.allProductsCtaLabel,
-      ),
-      quoteCtaLabel: textValue(productDetailPage?.quoteCtaLabel, fallback.productDetailPage.quoteCtaLabel),
+      allProductsCtaPath: fallback.productDetailPage.allProductsCtaPath,
+      allProductsCtaLabel: fallback.productDetailPage.allProductsCtaLabel,
+      quoteCtaPath: fallback.productDetailPage.quoteCtaPath,
+      quoteCtaLabel: fallback.productDetailPage.quoteCtaLabel,
     },
     applicationsPage: {
+      seo: normalizeSeo(applicationsPage?.seo, fallback.applicationsPage.seo),
       intro: pageIntro(applicationsPage?.intro, fallback.applicationsPage.intro),
       itemLabel: textValue(applicationsPage?.itemLabel, fallback.applicationsPage.itemLabel),
       keyPointsLabel: textValue(applicationsPage?.keyPointsLabel, fallback.applicationsPage.keyPointsLabel),
@@ -610,11 +592,16 @@ function normalizePageCopy(value?: Partial<PageCopyContent> | null): PageCopyCon
         applicationsPage?.recommendedProductsLabel,
         fallback.applicationsPage.recommendedProductsLabel,
       ),
-      detailCtaLabel: textValue(applicationsPage?.detailCtaLabel, fallback.applicationsPage.detailCtaLabel),
-      discussCtaLabel: textValue(applicationsPage?.discussCtaLabel, fallback.applicationsPage.discussCtaLabel),
+      detailCtaLabel: fallback.applicationsPage.detailCtaLabel,
+      discussCtaPath: fallback.applicationsPage.discussCtaPath,
+      discussCtaLabel: fallback.applicationsPage.discussCtaLabel,
     },
     applicationDetailPage: {
       introLabel: textValue(applicationDetailPage?.introLabel, fallback.applicationDetailPage.introLabel),
+      applicationsPath: cleanTextValue(
+        applicationDetailPage?.applicationsPath,
+        fallback.applicationDetailPage.applicationsPath,
+      ),
       applicationsBreadcrumbLabel: textValue(
         applicationDetailPage?.applicationsBreadcrumbLabel,
         fallback.applicationDetailPage.applicationsBreadcrumbLabel,
@@ -636,52 +623,54 @@ function normalizePageCopy(value?: Partial<PageCopyContent> | null): PageCopyCon
         applicationDetailPage?.recommendedProductsDescription,
         fallback.applicationDetailPage.recommendedProductsDescription,
       ),
-      discussCtaLabel: textValue(
-        applicationDetailPage?.discussCtaLabel,
-        fallback.applicationDetailPage.discussCtaLabel,
-      ),
+      discussCtaPath: fallback.applicationDetailPage.discussCtaPath,
+      discussCtaLabel: fallback.applicationDetailPage.discussCtaLabel,
     },
     newsroomPage: {
+      seo: normalizeSeo(newsroomPage?.seo, fallback.newsroomPage.seo),
       intro: pageIntro(newsroomPage?.intro, fallback.newsroomPage.intro),
       featuredUpdateLabel: textValue(newsroomPage?.featuredUpdateLabel, fallback.newsroomPage.featuredUpdateLabel),
-      brandDetailsCtaLabel: textValue(newsroomPage?.brandDetailsCtaLabel, fallback.newsroomPage.brandDetailsCtaLabel),
+      brandDetailsCtaLabel: fallback.newsroomPage.brandDetailsCtaLabel,
       whyMattersLabel: textValue(newsroomPage?.whyMattersLabel, fallback.newsroomPage.whyMattersLabel),
       whyMattersBody: textValue(newsroomPage?.whyMattersBody, fallback.newsroomPage.whyMattersBody),
       resourcesTitle: textValue(newsroomPage?.resourcesTitle, fallback.newsroomPage.resourcesTitle),
       resourcesDescription: textValue(newsroomPage?.resourcesDescription, fallback.newsroomPage.resourcesDescription),
       resourceLabel: textValue(newsroomPage?.resourceLabel, fallback.newsroomPage.resourceLabel),
-      latestVersionCtaLabel: textValue(newsroomPage?.latestVersionCtaLabel, fallback.newsroomPage.latestVersionCtaLabel),
+      latestVersionCtaPath: fallback.newsroomPage.latestVersionCtaPath,
+      latestVersionCtaLabel: fallback.newsroomPage.latestVersionCtaLabel,
     },
     newsroomPreview: {
       kicker: textValue(newsroomPreview?.kicker, fallback.newsroomPreview.kicker),
       title: textValue(newsroomPreview?.title, fallback.newsroomPreview.title),
       description: textValue(newsroomPreview?.description, fallback.newsroomPreview.description),
-      resourceCenterCtaLabel: textValue(
-        newsroomPreview?.resourceCenterCtaLabel,
-        fallback.newsroomPreview.resourceCenterCtaLabel,
-      ),
+      resourceCenterCtaPath: fallback.newsroomPreview.resourceCenterCtaPath,
+      resourceCenterCtaLabel: fallback.newsroomPreview.resourceCenterCtaLabel,
       pressReleaseLabel: textValue(newsroomPreview?.pressReleaseLabel, fallback.newsroomPreview.pressReleaseLabel),
       resourceLabel: textValue(newsroomPreview?.resourceLabel, fallback.newsroomPreview.resourceLabel),
-      brandUpdateCtaLabel: textValue(
-        newsroomPreview?.brandUpdateCtaLabel,
-        fallback.newsroomPreview.brandUpdateCtaLabel,
-      ),
-      requestResourceCtaLabel: textValue(
-        newsroomPreview?.requestResourceCtaLabel,
-        fallback.newsroomPreview.requestResourceCtaLabel,
-      ),
+      brandUpdateCtaLabel: fallback.newsroomPreview.brandUpdateCtaLabel,
+      requestResourceCtaPath: fallback.newsroomPreview.requestResourceCtaPath,
+      requestResourceCtaLabel: fallback.newsroomPreview.requestResourceCtaLabel,
     },
     pressReleasePage: {
       introLabel: textValue(pressReleasePage?.introLabel, fallback.pressReleasePage.introLabel),
+      newsroomPath: cleanTextValue(pressReleasePage?.newsroomPath, fallback.pressReleasePage.newsroomPath),
       newsroomBreadcrumbLabel: textValue(
         pressReleasePage?.newsroomBreadcrumbLabel,
         fallback.pressReleasePage.newsroomBreadcrumbLabel,
       ),
       keyPointsLabel: textValue(pressReleasePage?.keyPointsLabel, fallback.pressReleasePage.keyPointsLabel),
-      salesCoordinationCtaLabel: textValue(
-        pressReleasePage?.salesCoordinationCtaLabel,
-        fallback.pressReleasePage.salesCoordinationCtaLabel,
-      ),
+      salesCoordinationCtaPath: fallback.pressReleasePage.salesCoordinationCtaPath,
+      salesCoordinationCtaLabel: fallback.pressReleasePage.salesCoordinationCtaLabel,
+    },
+    notFoundPage: {
+      seo: normalizeSeo(value?.notFoundPage?.seo, fallback.notFoundPage.seo),
+      label: textValue(value?.notFoundPage?.label, fallback.notFoundPage.label),
+      title: textValue(value?.notFoundPage?.title, fallback.notFoundPage.title),
+      description: textValue(value?.notFoundPage?.description, fallback.notFoundPage.description),
+      homeCtaPath: fallback.notFoundPage.homeCtaPath,
+      homeCtaLabel: fallback.notFoundPage.homeCtaLabel,
+      secondaryCtaPath: fallback.notFoundPage.secondaryCtaPath,
+      secondaryCtaLabel: fallback.notFoundPage.secondaryCtaLabel,
     },
   };
 }
@@ -694,7 +683,9 @@ function normalizeAboutPage(value?: Partial<AboutPageContent> | null): AboutPage
     _id: id || undefined,
     _type: value?._type === 'aboutPage' ? value._type : undefined,
     siteId: cleanTextValue(value?.siteId, fallback.siteId),
+    seo: normalizeSeo(value?.seo, fallback.seo),
     intro: pageIntro(value?.intro, fallback.intro),
+    titleLogoImage: cleanTextValue(value?.titleLogoImage, fallback.titleLogoImage),
     heroImage: cleanTextValue(value?.heroImage, fallback.heroImage),
     heroImageAlt: textValue(value?.heroImageAlt, fallback.heroImageAlt),
     storyTitle: textValue(value?.storyTitle, fallback.storyTitle),
@@ -703,11 +694,8 @@ function normalizeAboutPage(value?: Partial<AboutPageContent> | null): AboutPage
     metrics: metricEntries(value?.metrics, fallback.metrics),
     cards: featureCards(value?.cards, fallback.cards),
     brandUpdateLabel: textValue(value?.brandUpdateLabel, fallback.brandUpdateLabel),
-    brandTransitionCtaLabel: textValue(value?.brandTransitionCtaLabel, fallback.brandTransitionCtaLabel),
-    productionCapabilityCtaLabel: textValue(
-      value?.productionCapabilityCtaLabel,
-      fallback.productionCapabilityCtaLabel,
-    ),
+    brandTransitionCtaLabel: fallback.brandTransitionCtaLabel,
+    productionCapabilityCtaLabel: fallback.productionCapabilityCtaLabel,
   };
 }
 
@@ -719,6 +707,7 @@ function normalizeContactPage(value?: Partial<ContactPageContent> | null): Conta
     _id: id || undefined,
     _type: value?._type === 'contactPage' ? value._type : undefined,
     siteId: cleanTextValue(value?.siteId, fallback.siteId),
+    seo: normalizeSeo(value?.seo, fallback.seo),
     intro: pageIntro(value?.intro, fallback.intro),
     officesTitle: textValue(value?.officesTitle, fallback.officesTitle),
     successTitle: textValue(value?.successTitle, fallback.successTitle),
@@ -739,7 +728,7 @@ function normalizeContactPage(value?: Partial<ContactPageContent> | null): Conta
     applicationOptions: plainStringArray(value?.applicationOptions, fallback.applicationOptions),
     messageLabel: textValue(value?.messageLabel, fallback.messageLabel),
     messagePlaceholder: textValue(value?.messagePlaceholder, fallback.messagePlaceholder),
-    submitLabel: textValue(value?.submitLabel, fallback.submitLabel),
+    submitLabel: fallback.submitLabel,
   };
 }
 

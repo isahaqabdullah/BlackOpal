@@ -35,7 +35,7 @@ export function NewsroomPreview() {
           </div>
 
           <Link
-            href="/newsroom"
+            href={copy.resourceCenterCtaPath}
             className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
@@ -81,7 +81,7 @@ export function NewsroomPreview() {
                 </Link>
               ) : (
                 <Link
-                  href="/contact"
+                  href={copy.requestResourceCtaPath}
                   className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >

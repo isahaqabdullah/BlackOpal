@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
-const axionVideo = '/images/axionvideo1.mp4';
-const heroLogo = '/images/black-opal-hero-logo-transparent.png';
 
 export function Hero() {
   const { homePage } = useSiteContent();
@@ -22,10 +20,10 @@ export function Hero() {
       <div className="premium-shell pt-14 pb-8 md:pt-20 md:pb-10 relative z-10">
         <h1
           className="premium-brand-title premium-reveal"
-          aria-label="Black Opal Carbons"
+          aria-label={homePage.heroLogoAlt}
         >
           <span className="premium-brand-logo-frame" aria-hidden="true">
-            <img src={heroLogo} alt="" className="premium-brand-logo" />
+            <img src={homePage.heroLogoImage} alt="" className="premium-brand-logo" />
           </span>
         </h1>
         <div className="premium-split-grid premium-hero-grid">
@@ -53,14 +51,14 @@ export function Hero() {
             </p>
             <div className="premium-reveal premium-reveal-delay-3 flex flex-wrap gap-3">
               <Link
-                href="/contact"
+                href={homePage.heroPrimaryCtaPath}
                 className="premium-primary-btn text-[13px] px-7 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {homePage.heroPrimaryCtaLabel}
               </Link>
               <Link
-                href="/contact"
+                href={homePage.heroSecondaryCtaPath}
                 className="premium-secondary-btn text-[13px] px-7 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
@@ -89,7 +87,7 @@ export function Hero() {
             <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1">
               <div className="relative overflow-hidden rounded-[1.15rem]">
                 <video
-                  src={axionVideo}
+                  src={homePage.heroVideoUrl}
                   className="block w-full aspect-video object-cover"
                   autoPlay
                   muted

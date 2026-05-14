@@ -2,6 +2,7 @@ import { companyDetails, siteConfig } from '../config/siteConfig';
 export { companyDetails } from '../config/siteConfig';
 
 export type SiteMetric = {
+  _key?: string;
   value: string;
   label: string;
 };
@@ -25,12 +26,17 @@ export type HomePageContent = {
   _type?: 'homePage';
   siteId?: string;
   seo?: SeoFields;
+  heroLogoImage: string;
+  heroLogoAlt: string;
   heroKicker: string;
   heroTitle: string;
   heroDescription: string;
+  heroPrimaryCtaPath: string;
   heroPrimaryCtaLabel: string;
+  heroSecondaryCtaPath: string;
   heroSecondaryCtaLabel: string;
   heroLegacyLabel: string;
+  heroVideoUrl: string;
   heroVideoLabel: string;
   heroVideoFallback: string;
   trustCertificationLabel: string;
@@ -45,13 +51,24 @@ export type HomePageContent = {
   productSectionTitle: string;
   applicationSectionKicker: string;
   applicationSectionTitle: string;
+  productCardCtaLabel: string;
+  applicationCardCtaLabel: string;
+  companyImage: string;
+  companyImageAlt: string;
   companyEyebrow: string;
   companyTitle: string;
   companyBodyPrimary: string;
   companyBodySecondary: string;
+  companyMetrics: SiteMetric[];
+  companyAboutCtaPath: string;
+  companyAboutCtaLabel: string;
+  companyProductionCtaPath: string;
+  companyProductionCtaLabel: string;
   ctaTitle: string;
   ctaDescription: string;
+  ctaPrimaryPath: string;
   ctaPrimaryLabel: string;
+  ctaSecondaryPath: string;
   ctaSecondaryLabel: string;
   whyKicker: string;
   whyTitle: string;
@@ -59,12 +76,14 @@ export type HomePageContent = {
   featuredCapabilitiesLabel: string;
   featuredCapabilitiesPreviousLabel: string;
   featuredCapabilitiesNextLabel: string;
+  featuredCapabilitiesShowLabelPrefix: string;
   featuredCapabilities: FeaturedCapabilityEntry[];
 };
 
 export type ProductionPageContent = {
   _id?: string;
   _type?: 'productionPage';
+  seo?: SeoFields;
   intro: PageIntroContent;
   glanceLabel: string;
   glanceItems: LabelValueEntry[];
@@ -201,23 +220,33 @@ export type SiteSettingsContent = {
   _type?: 'siteSettings';
   siteId?: string;
   navigation: {
+    logoImage: string;
     logoAlt: string;
     links: LinkEntry[];
+    ctaPath: string;
     ctaLabel: string;
+    mobileMenuLabel: string;
   };
   footer: {
+    logoImage: string;
     logoAlt: string;
+    contactLinkPath: string;
     contactLinkLabel: string;
     companyColumnTitle: string;
     companyLinks: LinkEntry[];
     productColumnTitle: string;
     applicationColumnTitle: string;
+    phoneLabel: string;
+    emailLabel: string;
     copyrightText: string;
     bottomLinks: LinkEntry[];
   };
   pageIntro: {
+    breadcrumbAriaLabel: string;
     homeLabel: string;
+    homePath: string;
     backHomeLabel: string;
+    backHomePath: string;
   };
   websiteContact: OfficeEntry;
   officeNetwork: OfficeEntry[];
@@ -227,42 +256,52 @@ export type PageCopyContent = {
   _id?: string;
   _type?: 'pageCopy';
   productsPage: {
+    seo?: SeoFields;
     intro: PageIntroContent;
     highlightsLabel: string;
     commonUsesLabel: string;
     referencedGradesLabel: string;
     detailCtaLabel: string;
+    quoteCtaPath: string;
     quoteCtaLabel: string;
   };
   productDetailPage: {
     introLabel: string;
+    productsPath: string;
     productsBreadcrumbLabel: string;
     overviewLabel: string;
     commonUsesLabel: string;
     ctaTitle: string;
     ctaDescription: string;
+    allProductsCtaPath: string;
     allProductsCtaLabel: string;
+    quoteCtaPath: string;
     quoteCtaLabel: string;
   };
   applicationsPage: {
+    seo?: SeoFields;
     intro: PageIntroContent;
     itemLabel: string;
     keyPointsLabel: string;
     recommendedProductsLabel: string;
     detailCtaLabel: string;
+    discussCtaPath: string;
     discussCtaLabel: string;
   };
   applicationDetailPage: {
     introLabel: string;
+    applicationsPath: string;
     applicationsBreadcrumbLabel: string;
     overviewLabel: string;
     referencedGradesLabel: string;
     recommendedProductsLabel: string;
     recommendedProductsTitle: string;
     recommendedProductsDescription: string;
+    discussCtaPath: string;
     discussCtaLabel: string;
   };
   newsroomPage: {
+    seo?: SeoFields;
     intro: PageIntroContent;
     featuredUpdateLabel: string;
     brandDetailsCtaLabel: string;
@@ -271,23 +310,38 @@ export type PageCopyContent = {
     resourcesTitle: string;
     resourcesDescription: string;
     resourceLabel: string;
+    latestVersionCtaPath: string;
     latestVersionCtaLabel: string;
   };
   newsroomPreview: {
     kicker: string;
     title: string;
     description: string;
+    resourceCenterCtaPath: string;
     resourceCenterCtaLabel: string;
     pressReleaseLabel: string;
     resourceLabel: string;
     brandUpdateCtaLabel: string;
+    requestResourceCtaPath: string;
     requestResourceCtaLabel: string;
   };
   pressReleasePage: {
     introLabel: string;
+    newsroomPath: string;
     newsroomBreadcrumbLabel: string;
     keyPointsLabel: string;
+    salesCoordinationCtaPath: string;
     salesCoordinationCtaLabel: string;
+  };
+  notFoundPage: {
+    seo?: SeoFields;
+    label: string;
+    title: string;
+    description: string;
+    homeCtaPath: string;
+    homeCtaLabel: string;
+    secondaryCtaPath: string;
+    secondaryCtaLabel: string;
   };
 };
 
@@ -295,7 +349,9 @@ export type AboutPageContent = {
   _id?: string;
   _type?: 'aboutPage';
   siteId?: string;
+  seo?: SeoFields;
   intro: PageIntroContent;
+  titleLogoImage: string;
   heroImage: string;
   heroImageAlt: string;
   storyTitle: string;
@@ -312,6 +368,7 @@ export type ContactPageContent = {
   _id?: string;
   _type?: 'contactPage';
   siteId?: string;
+  seo?: SeoFields;
   intro: PageIntroContent;
   officesTitle: string;
   successTitle: string;
@@ -337,12 +394,17 @@ export type ContactPageContent = {
 
 export const homePageContent: HomePageContent = {
   siteId: siteConfig.siteId,
+  heroLogoImage: '/images/black-opal-hero-logo-transparent.png',
+  heroLogoAlt: siteConfig.siteName,
   heroKicker: siteConfig.heroKicker,
   heroTitle: siteConfig.heroTitle,
   heroDescription: siteConfig.heroDescription,
+  heroPrimaryCtaPath: '/contact',
   heroPrimaryCtaLabel: 'Request a Quote',
+  heroSecondaryCtaPath: '/contact',
   heroSecondaryCtaLabel: 'Talk to Technical Sales',
   heroLegacyLabel: 'FORMERLY INDOCARB AC LLC',
+  heroVideoUrl: '/images/axionvideo1.mp4',
   heroVideoLabel: 'Axion production video',
   heroVideoFallback: 'Your browser does not support the video tag.',
   trustCertificationLabel: 'Certifications',
@@ -357,13 +419,29 @@ export const homePageContent: HomePageContent = {
   productSectionTitle: 'Application-matched grades for every process',
   applicationSectionKicker: 'Applications',
   applicationSectionTitle: 'Industries we serve',
+  productCardCtaLabel: 'Grade details',
+  applicationCardCtaLabel: 'Application fit',
+  companyImage:
+    'https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwbWFudWZhY3R1cmluZyUyMHdhcmVob3VzZSUyMGZhY3RvcnklMjBpbnRlcmlvcnxlbnwxfHx8fDE3NzU0NzU0ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+  companyImageAlt: 'Manufacturing facility',
   companyEyebrow: siteConfig.companyEyebrow,
   companyTitle: siteConfig.companyTitle,
   companyBodyPrimary: siteConfig.companyBodyPrimary,
   companyBodySecondary: siteConfig.companyBodySecondary,
+  companyMetrics: [
+    { value: '2010', label: 'Year established' },
+    { value: siteConfig.productionCenterCount, label: 'Production centers' },
+    { value: '35000 metric tons', label: 'Annual capacity' },
+  ],
+  companyAboutCtaPath: '/about',
+  companyAboutCtaLabel: 'About Black Opal',
+  companyProductionCtaPath: '/production',
+  companyProductionCtaLabel: 'View production',
   ctaTitle: 'Grade selection starts with the process',
   ctaDescription: 'Mesh size, activity, washing, compliance, and delivery requirements shape the final recommendation.',
+  ctaPrimaryPath: '/contact',
   ctaPrimaryLabel: 'Request Quote',
+  ctaSecondaryPath: '/contact',
   ctaSecondaryLabel: 'Send Technical Inquiry',
   whyKicker: `Why ${siteConfig.siteName}`,
   whyTitle: 'High-performance activated carbon backed by quality, innovation, service, and reliability',
@@ -406,6 +484,7 @@ export const homePageContent: HomePageContent = {
   featuredCapabilitiesLabel: 'Featured Capabilities',
   featuredCapabilitiesPreviousLabel: 'Previous featured capability',
   featuredCapabilitiesNextLabel: 'Next featured capability',
+  featuredCapabilitiesShowLabelPrefix: 'Show',
   featuredCapabilities: [
     {
       label: 'Catalytic carbon',
@@ -475,6 +554,12 @@ export const homePageContent: HomePageContent = {
 };
 
 export const productionPageContent: ProductionPageContent = {
+  seo: {
+    seoTitle: 'Activated Carbon Production and Quality Control | Black Opal Carbons',
+    seoDescription:
+      'Black Opal Carbons production scale is supported by coconut shell raw-material control, steam activation, particle-size screening, export readiness, and quality assurance.',
+    noIndex: false,
+  },
   intro: {
     label: 'Production',
     title: '35000 metric tons capacity, steam activation, and mesh-size control',
@@ -538,14 +623,13 @@ export const productionPageContent: ProductionPageContent = {
 };
 
 export const siteMetrics: SiteMetric[] = [
-  { value: '2010', label: 'Year established' },
-  { value: siteConfig.productionCenterCount, label: 'Production centers' },
-  { value: '35000 metric tons', label: 'Annual capacity' },
+  ...homePageContent.companyMetrics,
 ];
 
 export const siteSettingsContent: SiteSettingsContent = {
   siteId: siteConfig.siteId,
   navigation: {
+    logoImage: '/images/BlackOpallogo.avif',
     logoAlt: 'Black Opal Carbons logo',
     links: [
       { label: 'Home', to: '/' },
@@ -556,10 +640,14 @@ export const siteSettingsContent: SiteSettingsContent = {
       { label: 'Newsroom', to: '/newsroom' },
       { label: 'Contact', to: '/contact' },
     ],
+    ctaPath: '/contact',
     ctaLabel: 'Request Quote',
+    mobileMenuLabel: 'Toggle navigation menu',
   },
   footer: {
+    logoImage: '/images/BlackOpallogo.avif',
     logoAlt: 'Black Opal Carbons logo',
+    contactLinkPath: '/contact',
     contactLinkLabel: 'Contact Black Opal',
     companyColumnTitle: 'Company',
     companyLinks: [
@@ -571,6 +659,8 @@ export const siteSettingsContent: SiteSettingsContent = {
     ],
     productColumnTitle: 'Products',
     applicationColumnTitle: 'Applications',
+    phoneLabel: 'Phone',
+    emailLabel: 'Email',
     copyrightText: `© {year} ${siteConfig.siteName}. All rights reserved.`,
     bottomLinks: [
       { label: 'Home', to: '/' },
@@ -578,8 +668,11 @@ export const siteSettingsContent: SiteSettingsContent = {
     ],
   },
   pageIntro: {
+    breadcrumbAriaLabel: 'Breadcrumb',
     homeLabel: 'Home',
+    homePath: '/',
     backHomeLabel: 'Home',
+    backHomePath: '/',
   },
   websiteContact: companyDetails.websiteContact,
   officeNetwork: companyDetails.officeNetwork,
@@ -587,6 +680,12 @@ export const siteSettingsContent: SiteSettingsContent = {
 
 export const pageCopyContent: PageCopyContent = {
   productsPage: {
+    seo: {
+      seoTitle: 'Activated Carbon Products | Black Opal Carbons',
+      seoDescription:
+        'Granular, powder, impregnated, and catalytic activated carbon products sit within the Black Opal portfolio for dependable regional and global supply.',
+      noIndex: false,
+    },
     intro: {
       label: 'Products',
       title: 'Coconut shell activated carbon product families',
@@ -598,20 +697,30 @@ export const pageCopyContent: PageCopyContent = {
     commonUsesLabel: 'Common uses',
     referencedGradesLabel: 'Referenced grades',
     detailCtaLabel: 'Product details',
+    quoteCtaPath: '/contact',
     quoteCtaLabel: 'Request quote',
   },
   productDetailPage: {
     introLabel: 'Product Detail',
+    productsPath: '/products',
     productsBreadcrumbLabel: 'Products',
     overviewLabel: 'Overview',
     commonUsesLabel: 'Common uses',
     ctaTitle: 'Pricing and recommendations shaped by process conditions',
     ctaDescription:
       'Application, volume, and performance targets shape the grade match and availability recommendation.',
+    allProductsCtaPath: '/products',
     allProductsCtaLabel: 'All products',
+    quoteCtaPath: '/contact',
     quoteCtaLabel: 'Request quote',
   },
   applicationsPage: {
+    seo: {
+      seoTitle: 'Activated Carbon Applications | Black Opal Carbons',
+      seoDescription:
+        'Activated carbon solutions for water treatment, gold recovery, air and gas purification, oil and gas, chloramine removal, and specialty industrial processes.',
+      noIndex: false,
+    },
     intro: {
       label: 'Applications',
       title: 'Industrial activated carbon applications',
@@ -623,10 +732,12 @@ export const pageCopyContent: PageCopyContent = {
     keyPointsLabel: 'Key points',
     recommendedProductsLabel: 'Recommended products',
     detailCtaLabel: 'Application details',
+    discussCtaPath: '/contact',
     discussCtaLabel: 'Discuss with sales',
   },
   applicationDetailPage: {
     introLabel: 'Application Detail',
+    applicationsPath: '/applications',
     applicationsBreadcrumbLabel: 'Applications',
     overviewLabel: 'Application overview',
     referencedGradesLabel: 'Referenced grades',
@@ -634,9 +745,16 @@ export const pageCopyContent: PageCopyContent = {
     recommendedProductsTitle: 'Product families commonly tied to this application',
     recommendedProductsDescription:
       'These product families form the usual starting point for grade matching, performance review, and availability planning.',
+    discussCtaPath: '/contact',
     discussCtaLabel: 'Discuss this application',
   },
   newsroomPage: {
+    seo: {
+      seoTitle: 'Newsroom and Resources | Black Opal Carbons',
+      seoDescription:
+        'Black Opal Carbons company updates and technical resources cover brand continuity, water treatment, gold recovery, catalytic carbon, and application guidance.',
+      noIndex: false,
+    },
     intro: {
       label: 'Newsroom',
       title: 'Company updates and product resources',
@@ -651,6 +769,7 @@ export const pageCopyContent: PageCopyContent = {
     resourcesDescription:
       'Access product information and supporting documents for technical review, procurement, and application discussions with the Black Opal sales team.',
     resourceLabel: 'Product resource',
+    latestVersionCtaPath: '/contact',
     latestVersionCtaLabel: 'Latest version',
   },
   newsroomPreview: {
@@ -658,27 +777,53 @@ export const pageCopyContent: PageCopyContent = {
     title: 'Resources and brand updates',
     description:
       'Technical notes and brand notices stay tied to the same products, facilities, and support channels buyers already work with.',
+    resourceCenterCtaPath: '/newsroom',
     resourceCenterCtaLabel: 'Resource center',
     pressReleaseLabel: 'Press release',
     resourceLabel: 'Resource',
     brandUpdateCtaLabel: 'Brand update',
+    requestResourceCtaPath: '/contact',
     requestResourceCtaLabel: 'Request resource',
   },
   pressReleasePage: {
     introLabel: 'Press Release',
+    newsroomPath: '/newsroom',
     newsroomBreadcrumbLabel: 'Newsroom',
     keyPointsLabel: 'Key points',
+    salesCoordinationCtaPath: '/contact',
     salesCoordinationCtaLabel: 'Sales coordination',
+  },
+  notFoundPage: {
+    seo: {
+      seoTitle: 'Page Not Found | Black Opal Carbons',
+      seoDescription: 'The requested Black Opal Carbons page could not be found.',
+      noIndex: true,
+    },
+    label: 'Page not found',
+    title: 'That page could not be found',
+    description:
+      'Core product, application, production, newsroom, and contact routes remain available through the main navigation.',
+    homeCtaPath: '/',
+    homeCtaLabel: 'Home',
+    secondaryCtaPath: '/products',
+    secondaryCtaLabel: 'Product families',
   },
 };
 
 export const aboutPageContent: AboutPageContent = {
   siteId: siteConfig.siteId,
+  seo: {
+    seoTitle: `About ${siteConfig.siteName} | Black Opal Carbons`,
+    seoDescription:
+      `${siteConfig.siteName}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} supplies ${siteConfig.originDescription} through company-owned manufacturing and an office network covering India, the Middle East, and Black Opal Group Head Quarters.`,
+    noIndex: false,
+  },
   intro: {
     label: 'About',
     title: 'Black Opal Carbons',
     breadcrumbLabel: 'About',
   },
+  titleLogoImage: '/images/black-opal-hero-logo-transparent.png',
   heroImage:
     'https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
   heroImageAlt: 'Black Opal manufacturing facility',
@@ -723,6 +868,12 @@ export const aboutPageContent: AboutPageContent = {
 
 export const contactPageContent: ContactPageContent = {
   siteId: siteConfig.siteId,
+  seo: {
+    seoTitle: 'Pricing and Technical Recommendations | Black Opal Carbons',
+    seoDescription:
+      `${siteConfig.siteName} pricing, product availability, and technical recommendations connect application requirements with ${siteConfig.originDescription}.`,
+    noIndex: false,
+  },
   intro: {
     label: 'Contact',
     title: siteConfig.contactTitle,

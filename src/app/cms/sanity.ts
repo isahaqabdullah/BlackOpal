@@ -33,12 +33,13 @@ export const siteContentQuery = `{
       "seoImage": coalesce(seo.seoImage.asset->url, seo.seoImageUrl),
       "noIndex": seo.noIndex
     },
+    heroLogoImage,
+    heroLogoAlt,
     heroKicker,
     heroTitle,
     heroDescription,
-    heroPrimaryCtaLabel,
-    heroSecondaryCtaLabel,
     heroLegacyLabel,
+    heroVideoUrl,
     heroVideoLabel,
     heroVideoFallback,
     trustCertificationLabel,
@@ -53,48 +54,121 @@ export const siteContentQuery = `{
     productSectionTitle,
     applicationSectionKicker,
     applicationSectionTitle,
+    companyImage,
+    companyImageAlt,
     companyEyebrow,
     companyTitle,
     companyBodyPrimary,
     companyBodySecondary,
+    companyMetrics,
     ctaTitle,
     ctaDescription,
-    ctaPrimaryLabel,
-    ctaSecondaryLabel,
     whyKicker,
     whyTitle,
     whyReasons,
     featuredCapabilitiesLabel,
-    featuredCapabilitiesPreviousLabel,
-    featuredCapabilitiesNextLabel,
-    featuredCapabilities
+    featuredCapabilities[] {
+      _key,
+      label,
+      title,
+      copy,
+      highlights,
+      imageSource,
+      imageSlug,
+      imageUrl,
+      imageAlt
+    }
   },
   "siteSettings": *[_type == "siteSettings" && siteId == $siteId][0] {
     _id,
     _type,
     siteId,
-    navigation,
-    footer,
-    pageIntro,
+    pageIntro {
+      breadcrumbAriaLabel,
+      homeLabel,
+      homePath
+    },
     websiteContact,
     officeNetwork
   },
   "pageCopy": *[_type == "pageCopy" && _id == "pageCopy"][0] {
     _id,
     _type,
-    productsPage,
-    productDetailPage,
-    applicationsPage,
-    applicationDetailPage,
-    newsroomPage,
-    newsroomPreview,
-    pressReleasePage
+    productsPage {
+      seo,
+      intro,
+      highlightsLabel,
+      commonUsesLabel,
+      referencedGradesLabel
+    },
+    productDetailPage {
+      introLabel,
+      productsPath,
+      productsBreadcrumbLabel,
+      overviewLabel,
+      commonUsesLabel,
+      ctaTitle,
+      ctaDescription
+    },
+    applicationsPage {
+      seo,
+      intro,
+      itemLabel,
+      keyPointsLabel,
+      recommendedProductsLabel
+    },
+    applicationDetailPage {
+      introLabel,
+      applicationsPath,
+      applicationsBreadcrumbLabel,
+      overviewLabel,
+      referencedGradesLabel,
+      recommendedProductsLabel,
+      recommendedProductsTitle,
+      recommendedProductsDescription
+    },
+    newsroomPage {
+      seo,
+      intro,
+      featuredUpdateLabel,
+      whyMattersLabel,
+      whyMattersBody,
+      resourcesTitle,
+      resourcesDescription,
+      resourceLabel
+    },
+    newsroomPreview {
+      kicker,
+      title,
+      description,
+      pressReleaseLabel,
+      resourceLabel
+    },
+    pressReleasePage {
+      introLabel,
+      newsroomPath,
+      newsroomBreadcrumbLabel,
+      keyPointsLabel
+    },
+    notFoundPage {
+      seo,
+      label,
+      title,
+      description
+    }
   },
   "aboutPage": *[_type == "aboutPage" && siteId == $siteId][0] {
     _id,
     _type,
     siteId,
+    "seo": {
+      "seoTitle": seo.seoTitle,
+      "seoDescription": seo.seoDescription,
+      "seoImage": coalesce(seo.seoImage.asset->url, seo.seoImageUrl),
+      "noIndex": seo.noIndex
+    },
     "heroImage": coalesce(heroImageUrl, heroImage.asset->url),
+    titleLogoImage,
     heroImageAlt,
     intro,
     storyTitle,
@@ -102,14 +176,18 @@ export const siteContentQuery = `{
     officeNetworkLabel,
     metrics,
     cards,
-    brandUpdateLabel,
-    brandTransitionCtaLabel,
-    productionCapabilityCtaLabel
+    brandUpdateLabel
   },
   "contactPage": *[_type == "contactPage" && siteId == $siteId][0] {
     _id,
     _type,
     siteId,
+    "seo": {
+      "seoTitle": seo.seoTitle,
+      "seoDescription": seo.seoDescription,
+      "seoImage": coalesce(seo.seoImage.asset->url, seo.seoImageUrl),
+      "noIndex": seo.noIndex
+    },
     intro,
     officesTitle,
     successTitle,
@@ -129,12 +207,17 @@ export const siteContentQuery = `{
     applicationPlaceholder,
     applicationOptions,
     messageLabel,
-    messagePlaceholder,
-    submitLabel
+    messagePlaceholder
   },
   "productionPage": *[_type == "productionPage" && _id == "productionPage"][0] {
     _id,
     _type,
+    "seo": {
+      "seoTitle": seo.seoTitle,
+      "seoDescription": seo.seoDescription,
+      "seoImage": coalesce(seo.seoImage.asset->url, seo.seoImageUrl),
+      "noIndex": seo.noIndex
+    },
     intro,
     glanceLabel,
     glanceItems,
@@ -149,8 +232,7 @@ export const siteContentQuery = `{
     activationSteps,
     activationNote,
     contactTextBeforeEmail,
-    contactTextAfterEmail,
-    contactButtonLabel
+    contactTextAfterEmail
   },
   "products": *[_type == "product"] | order(coalesce(sortOrder, 999) asc, name asc) {
     _id,

@@ -23,12 +23,13 @@ export const cmsDocumentsProjection = `{
   _type == "homePage" => {
     seo,
     siteId,
+    heroLogoImage,
+    heroLogoAlt,
     heroKicker,
     heroTitle,
     heroDescription,
-    heroPrimaryCtaLabel,
-    heroSecondaryCtaLabel,
     heroLegacyLabel,
+    heroVideoUrl,
     heroVideoLabel,
     heroVideoFallback,
     trustCertificationLabel,
@@ -43,42 +44,110 @@ export const cmsDocumentsProjection = `{
     productSectionTitle,
     applicationSectionKicker,
     applicationSectionTitle,
+    companyImage,
+    companyImageAlt,
     companyEyebrow,
     companyTitle,
     companyBodyPrimary,
     companyBodySecondary,
+    companyMetrics,
     ctaTitle,
     ctaDescription,
-    ctaPrimaryLabel,
-    ctaSecondaryLabel,
     whyKicker,
     whyTitle,
     whyReasons,
     featuredCapabilitiesLabel,
-    featuredCapabilitiesPreviousLabel,
-    featuredCapabilitiesNextLabel,
-    featuredCapabilities
+    featuredCapabilities[] {
+      _key,
+      label,
+      title,
+      copy,
+      highlights,
+      imageSource,
+      imageSlug,
+      imageUrl,
+      imageAlt
+    }
   },
   _type == "siteSettings" => {
     siteId,
-    navigation,
-    footer,
-    pageIntro,
+    pageIntro {
+      breadcrumbAriaLabel,
+      homeLabel,
+      homePath
+    },
     websiteContact,
     officeNetwork
   },
   _type == "pageCopy" => {
-    productsPage,
-    productDetailPage,
-    applicationsPage,
-    applicationDetailPage,
-    newsroomPage,
-    newsroomPreview,
-    pressReleasePage
+    productsPage {
+      seo,
+      intro,
+      highlightsLabel,
+      commonUsesLabel,
+      referencedGradesLabel
+    },
+    productDetailPage {
+      introLabel,
+      productsPath,
+      productsBreadcrumbLabel,
+      overviewLabel,
+      commonUsesLabel,
+      ctaTitle,
+      ctaDescription
+    },
+    applicationsPage {
+      seo,
+      intro,
+      itemLabel,
+      keyPointsLabel,
+      recommendedProductsLabel
+    },
+    applicationDetailPage {
+      introLabel,
+      applicationsPath,
+      applicationsBreadcrumbLabel,
+      overviewLabel,
+      referencedGradesLabel,
+      recommendedProductsLabel,
+      recommendedProductsTitle,
+      recommendedProductsDescription
+    },
+    newsroomPage {
+      seo,
+      intro,
+      featuredUpdateLabel,
+      whyMattersLabel,
+      whyMattersBody,
+      resourcesTitle,
+      resourcesDescription,
+      resourceLabel
+    },
+    newsroomPreview {
+      kicker,
+      title,
+      description,
+      pressReleaseLabel,
+      resourceLabel
+    },
+    pressReleasePage {
+      introLabel,
+      newsroomPath,
+      newsroomBreadcrumbLabel,
+      keyPointsLabel
+    },
+    notFoundPage {
+      seo,
+      label,
+      title,
+      description
+    }
   },
   _type == "aboutPage" => {
     siteId,
+    seo,
     intro,
+    titleLogoImage,
     heroImage,
     heroImageUrl,
     heroImageAlt,
@@ -87,11 +156,10 @@ export const cmsDocumentsProjection = `{
     officeNetworkLabel,
     metrics,
     cards,
-    brandUpdateLabel,
-    brandTransitionCtaLabel,
-    productionCapabilityCtaLabel
+    brandUpdateLabel
   },
   _type == "productionPage" => {
+    seo,
     intro,
     glanceLabel,
     glanceItems,
@@ -107,11 +175,11 @@ export const cmsDocumentsProjection = `{
     activationSteps,
     activationNote,
     contactTextBeforeEmail,
-    contactTextAfterEmail,
-    contactButtonLabel
+    contactTextAfterEmail
   },
   _type == "contactPage" => {
     siteId,
+    seo,
     intro,
     officesTitle,
     successTitle,
@@ -131,8 +199,7 @@ export const cmsDocumentsProjection = `{
     applicationPlaceholder,
     applicationOptions,
     messageLabel,
-    messagePlaceholder,
-    submitLabel
+    messagePlaceholder
   },
   _type == "product" => {
     seo,

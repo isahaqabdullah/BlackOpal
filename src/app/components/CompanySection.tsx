@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { siteMetrics } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
 
@@ -16,8 +15,8 @@ export function CompanySection() {
         <div className="premium-split-grid">
           <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1 w-full max-w-[42rem]">
             <img
-              src="https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwbWFudWZhY3R1cmluZyUyMHdhcmVob3VzZSUyMGZhY3RvcnklMjBpbnRlcmlvcnxlbnwxfHx8fDE3NzU0NzU0ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Manufacturing facility"
+              src={homePage.companyImage}
+              alt={homePage.companyImageAlt}
               className="w-full aspect-[5/4] object-cover"
             />
           </div>
@@ -52,37 +51,43 @@ export function CompanySection() {
               </p>
             </div>
             <div className="premium-compact-grid premium-reveal premium-reveal-delay-3 border-t border-[#c9a24d]/10 pt-6 mb-7">
-              {siteMetrics.map((s, index) => (
-                <div key={s.label} className={index === 0 ? '' : 'xl:border-l xl:border-[#c9a24d]/10 xl:pl-4'}>
-                  <span
-                    className="text-[#e6cb87] text-[clamp(1.3rem,2vw,1.8rem)] block mb-0.5"
-                    style={{ fontFamily: "'DM Serif Display', serif" }}
-                  >
-                    {s.value}
-                  </span>
-                  <span
-                    className="text-[#8f835f] text-[11px] tracking-[0.12em] uppercase"
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
-                  >
-                    {s.label}
-                  </span>
-                </div>
-              ))}
+              {homePage.companyMetrics.map((s, index) => {
+                const metricPath = s._key ? `companyMetrics[_key=="${s._key}"]` : `companyMetrics[${index}]`;
+
+                return (
+                  <div key={s.label} className={index === 0 ? '' : 'xl:border-l xl:border-[#c9a24d]/10 xl:pl-4'}>
+                    <span
+                      data-sanity={homePageDataAttribute(`${metricPath}.value`)}
+                      className="text-[#e6cb87] text-[clamp(1.3rem,2vw,1.8rem)] block mb-0.5"
+                      style={{ fontFamily: "'DM Serif Display', serif" }}
+                    >
+                      {s.value}
+                    </span>
+                    <span
+                      data-sanity={homePageDataAttribute(`${metricPath}.label`)}
+                      className="text-[#8f835f] text-[11px] tracking-[0.12em] uppercase"
+                      style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                    >
+                      {s.label}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/about"
+                href={homePage.companyAboutCtaPath}
                 className="premium-primary-btn text-[13px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                About Black Opal
+                {homePage.companyAboutCtaLabel}
               </Link>
               <Link
-                href="/production"
+                href={homePage.companyProductionCtaPath}
                 className="premium-secondary-btn text-[13px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                View production
+                {homePage.companyProductionCtaLabel}
               </Link>
             </div>
           </div>
