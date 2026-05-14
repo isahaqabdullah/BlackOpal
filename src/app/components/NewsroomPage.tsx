@@ -6,16 +6,18 @@ import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
 export function NewsroomPage() {
-  const { newsroomItems } = useSiteContent();
+  const { newsroomItems, pageCopy } = useSiteContent();
+  const copy = pageCopy.newsroomPage;
   const pressRelease = newsroomItems.find((item) => item.type === 'press-release');
   const resourceItems = newsroomItems.filter((item) => item.type === 'resource');
 
   return (
     <div>
       <PageIntro
-        label="Newsroom"
-        title="Company updates and product resources"
-        breadcrumbs={[{ label: 'Newsroom' }]}
+        label={copy.intro.label}
+        title={copy.intro.title}
+        description={copy.intro.description}
+        breadcrumbs={[{ label: copy.intro.breadcrumbLabel }]}
       />
 
       {pressRelease ? (
@@ -27,7 +29,7 @@ export function NewsroomPage() {
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Featured update
+                  {copy.featuredUpdateLabel}
                 </span>
                 <h2
                   className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.4rem)] leading-[1.06] mb-4"
@@ -58,7 +60,7 @@ export function NewsroomPage() {
                   className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Brand transition details
+                  {copy.brandDetailsCtaLabel}
                   <ArrowRight size={14} />
                 </Link>
               </div>
@@ -68,14 +70,13 @@ export function NewsroomPage() {
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Why it matters
+                  {copy.whyMattersLabel}
                 </span>
                 <p
                   className="premium-copy text-[14px] leading-[1.8]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
-                  The Black Opal brand replaced INDOCARB AC while products, facilities, pricing, and customer support
-                  continuity remained intact.
+                  {copy.whyMattersBody}
                 </p>
               </div>
             </div>
@@ -91,14 +92,13 @@ export function NewsroomPage() {
                 className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.35rem)] leading-[1.06] mb-3"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Product Resources
+                {copy.resourcesTitle}
               </h2>
               <p
                 className="premium-copy text-[14px] leading-[1.8] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
-                Access product information and supporting documents for technical review, procurement, and application
-                discussions with the Black Opal sales team.
+                {copy.resourcesDescription}
               </p>
             </div>
           </div>
@@ -115,7 +115,7 @@ export function NewsroomPage() {
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Product resource
+                  {copy.resourceLabel}
                 </span>
                 <h3
                   className="premium-card-heading text-[18px] mb-3"
@@ -134,7 +134,7 @@ export function NewsroomPage() {
                   className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Latest version
+                  {copy.latestVersionCtaLabel}
                   <ArrowRight size={13} />
                 </Link>
               </div>

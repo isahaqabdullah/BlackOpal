@@ -1,18 +1,24 @@
 'use client';
 
-import { TreePalm, Target, Layers, Truck, Headphones, ShieldCheck } from 'lucide-react';
-import { siteConfig } from '../config/siteConfig';
+import { Building2, Factory, Headphones, Layers, RefreshCcw, ShieldCheck, Target, TreePalm, Truck } from 'lucide-react';
+import { useSiteContent } from '../content/SiteContentProvider';
+import type { FeatureIconName } from '../content/siteContent';
 
-const reasons = [
-  { icon: TreePalm, title: 'Coconut Shell Specialization', desc: 'Selected coconut shells support high hardness, low ash, micropore structure, and attrition resistance for premium activated carbon.' },
-  { icon: Target, title: 'Consistent Quality', desc: 'Quality control starts at raw material selection and continues through activation, sizing, packing, and final assurance.' },
-  { icon: Layers, title: 'Application-Specific Grades', desc: 'Granular, powder, impregnated, and catalytic formats are matched to contaminant profile, contact time, and operating conditions.' },
-  { icon: Truck, title: 'Supply Reliability', desc: siteConfig.logisticsSummary },
-  { icon: Headphones, title: 'Technical Support', desc: 'Sales and technical teams review application conditions, target contaminants, mesh size, activity, and compliance requirements before recommending a grade.' },
-  { icon: ShieldCheck, title: 'Certifications & Compliance', desc: 'NSF 42, NSF 61, and California Prop 65 compliant. Ready for regulated and food-grade applications.' },
-];
+const icons: Record<FeatureIconName, typeof TreePalm> = {
+  'building-2': Building2,
+  factory: Factory,
+  headphones: Headphones,
+  layers: Layers,
+  'refresh-ccw': RefreshCcw,
+  'shield-check': ShieldCheck,
+  target: Target,
+  'tree-palm': TreePalm,
+  truck: Truck,
+};
 
 export function WhyBlackOpal() {
+  const { homePage } = useSiteContent();
+
   return (
     <section className="py-10 md:py-12">
       <div className="premium-shell">
@@ -21,25 +27,28 @@ export function WhyBlackOpal() {
             className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
-            Why {siteConfig.siteName}
+            {homePage.whyKicker}
           </span>
           <h2
             className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em]"
             style={{ fontFamily: "'DM Serif Display', serif" }}
           >
-            High-performance activated carbon backed by quality, innovation, service, and reliability
+            {homePage.whyTitle}
           </h2>
         </div>
 
         <div className="premium-auto-grid gap-y-8">
-          {reasons.map((r, index) => (
+          {homePage.whyReasons.map((r, index) => {
+            const Icon = icons[r.icon] ?? Layers;
+
+            return (
             <div
               key={r.title}
               className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
               style={{ animationDelay: `${120 + index * 90}ms` }}
             >
               <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center mb-4">
-                <r.icon size={18} className="text-[#e6cb87]" />
+                <Icon size={18} className="text-[#e6cb87]" />
               </div>
               <h3
                 className="premium-card-heading text-[16px] md:text-[17px] mb-2 max-w-[18ch]"
@@ -54,7 +63,8 @@ export function WhyBlackOpal() {
                 {r.desc}
               </p>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

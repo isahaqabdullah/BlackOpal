@@ -9,8 +9,9 @@ import { PageIntro } from './PageIntro';
 
 export function ProductDetailPage() {
   const { productSlug } = useParams<{ productSlug: string }>();
-  const { productMap, status } = useSiteContent();
+  const { pageCopy, productMap, status } = useSiteContent();
   const product = productSlug ? productMap[productSlug] : undefined;
+  const copy = pageCopy.productDetailPage;
 
   if (!product && status === 'loading') {
     return null;
@@ -23,11 +24,11 @@ export function ProductDetailPage() {
   return (
     <div>
       <PageIntro
-        label="Product Detail"
+        label={copy.introLabel}
         title={product.name}
         description={product.summary}
         breadcrumbs={[
-          { label: 'Products', to: '/products' },
+          { label: copy.productsBreadcrumbLabel, to: '/products' },
           { label: product.shortName },
         ]}
       />
@@ -44,7 +45,7 @@ export function ProductDetailPage() {
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Overview
+                {copy.overviewLabel}
               </span>
               <p
                 className="premium-copy text-[14px] leading-[1.85] mb-6"
@@ -71,7 +72,7 @@ export function ProductDetailPage() {
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Common uses
+                  {copy.commonUsesLabel}
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {product.commonUses.map((use) => (
@@ -138,13 +139,13 @@ export function ProductDetailPage() {
                 className="premium-heading text-[1.5rem] mb-2"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Pricing and recommendations shaped by process conditions
+                {copy.ctaTitle}
               </h2>
               <p
                 className="premium-copy text-[14px]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
-                Application, volume, and performance targets shape the grade match and availability recommendation.
+                {copy.ctaDescription}
               </p>
             </div>
 
@@ -154,14 +155,14 @@ export function ProductDetailPage() {
                 className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                All products
+                {copy.allProductsCtaLabel}
               </Link>
               <Link
                 href="/contact"
                 className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Request quote
+                {copy.quoteCtaLabel}
                 <ArrowRight size={14} />
               </Link>
             </div>

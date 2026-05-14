@@ -8,8 +8,9 @@ import { PageIntro } from './PageIntro';
 
 export function PressReleasePage() {
   const { storySlug } = useParams<{ storySlug: string }>();
-  const { newsroomMap, status } = useSiteContent();
+  const { newsroomMap, pageCopy, status } = useSiteContent();
   const story = storySlug ? newsroomMap[storySlug] : undefined;
+  const copy = pageCopy.pressReleasePage;
 
   if (!story && status === 'loading') {
     return null;
@@ -22,11 +23,11 @@ export function PressReleasePage() {
   return (
     <div>
       <PageIntro
-        label="Press Release"
+        label={copy.introLabel}
         title={story.title}
         description={story.summary}
         breadcrumbs={[
-          { label: 'Newsroom', to: '/newsroom' },
+          { label: copy.newsroomBreadcrumbLabel, to: '/newsroom' },
           { label: story.title },
         ]}
       />
@@ -53,7 +54,7 @@ export function PressReleasePage() {
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Key points
+                {copy.keyPointsLabel}
               </span>
               <div className="space-y-3 mb-6">
                 {story.bullets?.map((bullet) => (
@@ -73,7 +74,7 @@ export function PressReleasePage() {
                 className="premium-primary-btn inline-block text-[13px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Sales coordination
+                {copy.salesCoordinationCtaLabel}
               </Link>
             </aside>
           </div>

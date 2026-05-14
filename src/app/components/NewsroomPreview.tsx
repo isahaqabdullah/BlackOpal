@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { useSiteContent } from '../content/SiteContentProvider';
 
 export function NewsroomPreview() {
-  const { newsroomItems } = useSiteContent();
+  const { newsroomItems, pageCopy } = useSiteContent();
+  const copy = pageCopy.newsroomPreview;
   const featuredItems = newsroomItems.slice(0, 3);
 
   return (
@@ -17,20 +18,19 @@ export function NewsroomPreview() {
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Newsroom
+              {copy.kicker}
             </span>
             <h2
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.15rem)] leading-[1.04] tracking-[-0.02em] mb-4"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              Resources and brand updates
+              {copy.title}
             </h2>
             <p
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.8]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              Technical notes and brand notices stay tied to the same products, facilities, and support channels buyers
-              already work with.
+              {copy.description}
             </p>
           </div>
 
@@ -39,7 +39,7 @@ export function NewsroomPreview() {
             className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
-            Resource center
+            {copy.resourceCenterCtaLabel}
             <ArrowRight size={14} />
           </Link>
         </div>
@@ -56,7 +56,7 @@ export function NewsroomPreview() {
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                {item.type === 'press-release' ? 'Press release' : 'Resource'}
+                {item.type === 'press-release' ? copy.pressReleaseLabel : copy.resourceLabel}
               </span>
               <h3
                 className="premium-card-heading text-[18px] mb-3"
@@ -76,7 +76,7 @@ export function NewsroomPreview() {
                   className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Brand update
+                  {copy.brandUpdateCtaLabel}
                   <ArrowRight size={13} />
                 </Link>
               ) : (
@@ -85,7 +85,7 @@ export function NewsroomPreview() {
                   className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Request resource
+                  {copy.requestResourceCtaLabel}
                   <ArrowRight size={13} />
                 </Link>
               )}

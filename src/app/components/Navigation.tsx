@@ -4,25 +4,18 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import { useSiteContent } from '../content/SiteContentProvider';
 const brandLogo = '/images/BlackOpallogo.avif';
 
-const links = [
-  { label: 'Home', path: '/' },
-  { label: 'Products', path: '/products' },
-  { label: 'Applications', path: '/applications' },
-  { label: 'Production', path: '/production' },
-  { label: 'About', path: '/about' },
-  { label: 'Newsroom', path: '/newsroom' },
-  { label: 'Contact', path: '/contact' },
-];
-
 export function Navigation() {
+  const { siteSettings } = useSiteContent();
+  const links = siteSettings.navigation.links;
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const isActive = (path: string) =>
-    path === '/'
+  const isActive = (to: string) =>
+    to === '/'
       ? pathname === '/'
-      : pathname === path || pathname.startsWith(`${path}/`);
+      : pathname === to || pathname.startsWith(`${to}/`);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-[#c9a24d]/15 bg-[#050505]/85 backdrop-blur-xl">
@@ -30,7 +23,7 @@ export function Navigation() {
         <Link href="/" className="flex items-center">
           <img
             src={brandLogo}
-            alt="Black Opal Carbons logo"
+            alt={siteSettings.navigation.logoAlt}
             className="h-11 w-auto object-contain shrink-0 drop-shadow-[0_8px_24px_rgba(201,162,77,0.16)]"
           />
         </Link>
@@ -39,11 +32,11 @@ export function Navigation() {
         <div className="hidden md:flex items-center gap-5 xl:gap-6">
           {links.map((l) => (
             <Link
-              key={l.path}
-              href={l.path}
-              data-active={isActive(l.path)}
+              key={l.to}
+              href={l.to}
+              data-active={isActive(l.to)}
               className={`premium-nav-link text-[13px] transition-colors ${
-                isActive(l.path) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
+                isActive(l.to) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
               }`}
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
@@ -55,7 +48,7 @@ export function Navigation() {
             className="premium-primary-btn text-[13px] px-5 py-2.5 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
-            Request Quote
+            {siteSettings.navigation.ctaLabel}
           </Link>
         </div>
 
@@ -70,12 +63,12 @@ export function Navigation() {
         <div className="md:hidden border-t border-[#c9a24d]/15 bg-[#080808]/95 px-6 py-5 space-y-3">
           {links.map((l) => (
             <Link
-              key={l.path}
-              href={l.path}
+              key={l.to}
+              href={l.to}
               onClick={() => setOpen(false)}
-              data-active={isActive(l.path)}
+              data-active={isActive(l.to)}
               className={`premium-nav-link block text-[14px] py-1.5 ${
-                isActive(l.path) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
+                isActive(l.to) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
               }`}
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
@@ -88,7 +81,7 @@ export function Navigation() {
             className="premium-primary-btn block text-[13px] text-center px-5 py-2.5 rounded-full mt-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
-            Request Quote
+            {siteSettings.navigation.ctaLabel}
           </Link>
         </div>
       )}

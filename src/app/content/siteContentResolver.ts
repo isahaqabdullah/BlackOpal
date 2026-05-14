@@ -2,24 +2,44 @@ import { stegaClean } from '@sanity/client/stega';
 import {
   applicationMap as fallbackApplicationMap,
   applications as fallbackApplications,
+  aboutPageContent as fallbackAboutPageContent,
+  contactPageContent as fallbackContactPageContent,
   homePageContent as fallbackHomePageContent,
   newsroomItems as fallbackNewsroomItems,
   newsroomMap as fallbackNewsroomMap,
+  pageCopyContent as fallbackPageCopyContent,
   productMap as fallbackProductMap,
   products as fallbackProducts,
   productionPageContent as fallbackProductionPageContent,
+  siteSettingsContent as fallbackSiteSettingsContent,
+  type AboutPageContent,
   type ApplicationEntry,
+  type ContactPageContent,
   type ContentSection,
+  type FeaturedCapabilityEntry,
+  type FeatureCardEntry,
   type HomePageContent,
+  type LabelValueEntry,
+  type LinkEntry,
   type NewsroomItem,
+  type OfficeEntry,
+  type PageCopyContent,
+  type PageIntroContent,
   type ProductEntry,
+  type ProductionStepEntry,
   type ProductionPageContent,
   type SeoFields,
+  type SiteMetric,
+  type SiteSettingsContent,
 } from './siteContent';
 
 export type SanitySiteContent = {
   homePage?: Partial<HomePageContent> | null;
   productionPage?: Partial<ProductionPageContent> | null;
+  siteSettings?: Partial<SiteSettingsContent> | null;
+  pageCopy?: Partial<PageCopyContent> | null;
+  aboutPage?: Partial<AboutPageContent> | null;
+  contactPage?: Partial<ContactPageContent> | null;
   products?: Partial<ProductEntry>[];
   applications?: Partial<ApplicationEntry>[];
   newsroomItems?: Partial<NewsroomItem>[];
@@ -28,6 +48,10 @@ export type SanitySiteContent = {
 export type ContentInput = {
   homePage: HomePageContent;
   productionPage: ProductionPageContent;
+  siteSettings: SiteSettingsContent;
+  pageCopy: PageCopyContent;
+  aboutPage: AboutPageContent;
+  contactPage: ContactPageContent;
   products: ProductEntry[];
   applications: ApplicationEntry[];
   newsroomItems: NewsroomItem[];
@@ -42,6 +66,10 @@ export type SeoContentInput = ContentInput & {
 export const fallbackContentInput: ContentInput = {
   homePage: fallbackHomePageContent,
   productionPage: fallbackProductionPageContent,
+  siteSettings: fallbackSiteSettingsContent,
+  pageCopy: fallbackPageCopyContent,
+  aboutPage: fallbackAboutPageContent,
+  contactPage: fallbackContactPageContent,
   products: fallbackProducts,
   applications: fallbackApplications,
   newsroomItems: fallbackNewsroomItems,
@@ -76,6 +104,228 @@ function cleanStringArray(value: unknown, fallback: string[] = []) {
     .filter(Boolean);
 
   return values.length ? values : fallback;
+}
+
+function plainStringArray(value: unknown, fallback: string[] = []) {
+  return cleanStringArray(value, fallback);
+}
+
+function pageIntro(value: Partial<PageIntroContent> | undefined, fallback: PageIntroContent): PageIntroContent {
+  return {
+    label: textValue(value?.label, fallback.label),
+    title: textValue(value?.title, fallback.title),
+    description: textValue(value?.description, fallback.description),
+    breadcrumbLabel: textValue(value?.breadcrumbLabel, fallback.breadcrumbLabel),
+  };
+}
+
+function linkEntries(value: unknown, fallback: LinkEntry[] = []) {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
+
+  const entries = value
+    .map((item): LinkEntry | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const link = item as Partial<LinkEntry>;
+      const label = textValue(link.label);
+      const to = cleanTextValue(link.to);
+
+      return label && to ? { _key: cleanTextValue(link._key) || undefined, label, to } : null;
+    })
+    .filter((item): item is LinkEntry => item !== null);
+
+  return entries.length ? entries : fallback;
+}
+
+function labelValueEntries(value: unknown, fallback: LabelValueEntry[] = []) {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
+
+  const entries = value
+    .map((item): LabelValueEntry | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const entry = item as Partial<LabelValueEntry>;
+      const label = textValue(entry.label);
+      const itemValue = textValue(entry.value);
+
+      return label && itemValue
+        ? { _key: cleanTextValue(entry._key) || undefined, label, value: itemValue }
+        : null;
+    })
+    .filter((item): item is LabelValueEntry => item !== null);
+
+  return entries.length ? entries : fallback;
+}
+
+function metricEntries(value: unknown, fallback: SiteMetric[] = []) {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
+
+  const entries = value
+    .map((item): SiteMetric | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const entry = item as Partial<SiteMetric>;
+      const label = textValue(entry.label);
+      const itemValue = textValue(entry.value);
+
+      return label && itemValue ? { label, value: itemValue } : null;
+    })
+    .filter((item): item is SiteMetric => item !== null);
+
+  return entries.length ? entries : fallback;
+}
+
+function officeEntry(value: Partial<OfficeEntry> | undefined, fallback: OfficeEntry): OfficeEntry {
+  return {
+    _key: cleanTextValue(value?._key, fallback._key) || undefined,
+    label: textValue(value?.label, fallback.label),
+    name: textValue(value?.name, fallback.name),
+    address: plainStringArray(value?.address, fallback.address),
+    phone: textValue(value?.phone, fallback.phone),
+    email: textValue(value?.email, fallback.email),
+    note: textValue(value?.note, fallback.note),
+  };
+}
+
+function officeEntries(value: unknown, fallback: OfficeEntry[] = []) {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
+
+  const entries = value
+    .map((item, index): OfficeEntry | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const fallbackItem = fallback[index] ?? fallback[0];
+
+      if (!fallbackItem) {
+        return null;
+      }
+
+      const office = officeEntry(item as Partial<OfficeEntry>, fallbackItem);
+      return office.label && office.name && office.address.length ? office : null;
+    })
+    .filter((item): item is OfficeEntry => item !== null);
+
+  return entries.length ? entries : fallback;
+}
+
+function featureCards(value: unknown, fallback: FeatureCardEntry[] = []) {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
+
+  const entries = value
+    .map((item, index): FeatureCardEntry | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const entry = item as Partial<FeatureCardEntry>;
+      const fallbackItem = fallback[index];
+      const icon = cleanTextValue(entry.icon, fallbackItem?.icon) as FeatureCardEntry['icon'];
+      const title = textValue(entry.title, fallbackItem?.title);
+      const desc = textValue(entry.desc, fallbackItem?.desc);
+
+      return icon && title && desc
+        ? { _key: cleanTextValue(entry._key) || undefined, icon, title, desc }
+        : null;
+    })
+    .filter((item): item is FeatureCardEntry => item !== null);
+
+  return entries.length ? entries : fallback;
+}
+
+function featuredCapabilities(value: unknown, fallback: FeaturedCapabilityEntry[] = []) {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
+
+  const entries = value
+    .map((item, index): FeaturedCapabilityEntry | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const entry = item as Partial<FeaturedCapabilityEntry>;
+      const fallbackItem = fallback[index];
+      const imageSource = cleanTextValue(entry.imageSource, fallbackItem?.imageSource);
+      const label = textValue(entry.label, fallbackItem?.label);
+      const title = textValue(entry.title, fallbackItem?.title);
+      const copy = textValue(entry.copy, fallbackItem?.copy);
+      const imageAlt = textValue(entry.imageAlt, fallbackItem?.imageAlt);
+      const to = cleanTextValue(entry.to, fallbackItem?.to);
+      const cta = textValue(entry.cta, fallbackItem?.cta);
+
+      if (
+        !label ||
+        !title ||
+        !copy ||
+        !imageAlt ||
+        !to ||
+        !cta ||
+        !['application', 'product', 'url'].includes(imageSource)
+      ) {
+        return null;
+      }
+
+      return {
+        _key: cleanTextValue(entry._key) || undefined,
+        label,
+        title,
+        copy,
+        highlights: plainStringArray(entry.highlights, fallbackItem?.highlights),
+        imageSource: imageSource as FeaturedCapabilityEntry['imageSource'],
+        imageSlug: cleanTextValue(entry.imageSlug, fallbackItem?.imageSlug),
+        imageUrl: cleanTextValue(entry.imageUrl, fallbackItem?.imageUrl),
+        imageAlt,
+        to,
+        cta,
+      };
+    })
+    .filter((item): item is FeaturedCapabilityEntry => item !== null);
+
+  return entries.length ? entries : fallback;
+}
+
+function productionSteps(value: unknown, fallback: ProductionStepEntry[] = []) {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
+
+  const entries = value
+    .map((item, index): ProductionStepEntry | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const entry = item as Partial<ProductionStepEntry>;
+      const fallbackItem = fallback[index];
+      const step = textValue(entry.step, fallbackItem?.step);
+      const title = textValue(entry.title, fallbackItem?.title);
+      const body = textValue(entry.body, fallbackItem?.body);
+
+      return step && title && body
+        ? { _key: cleanTextValue(entry._key) || undefined, step, title, body }
+        : null;
+    })
+    .filter((item): item is ProductionStepEntry => item !== null);
+
+  return entries.length ? entries : fallback;
 }
 
 function normalizeSeo(value?: Partial<SeoFields>, fallback?: SeoFields): SeoFields | undefined {
@@ -212,6 +462,11 @@ function normalizeHomePage(value?: Partial<HomePageContent> | null): HomePageCon
     heroKicker: textValue(value?.heroKicker, fallback.heroKicker),
     heroTitle: textValue(value?.heroTitle, fallback.heroTitle),
     heroDescription: textValue(value?.heroDescription, fallback.heroDescription),
+    heroPrimaryCtaLabel: textValue(value?.heroPrimaryCtaLabel, fallback.heroPrimaryCtaLabel),
+    heroSecondaryCtaLabel: textValue(value?.heroSecondaryCtaLabel, fallback.heroSecondaryCtaLabel),
+    heroLegacyLabel: textValue(value?.heroLegacyLabel, fallback.heroLegacyLabel),
+    heroVideoLabel: textValue(value?.heroVideoLabel, fallback.heroVideoLabel),
+    heroVideoFallback: textValue(value?.heroVideoFallback, fallback.heroVideoFallback),
     trustCertificationLabel: textValue(value?.trustCertificationLabel, fallback.trustCertificationLabel),
     trustCertificationValue: textValue(value?.trustCertificationValue, fallback.trustCertificationValue),
     trustEstablishedLabel: textValue(value?.trustEstablishedLabel, fallback.trustEstablishedLabel),
@@ -232,6 +487,19 @@ function normalizeHomePage(value?: Partial<HomePageContent> | null): HomePageCon
     ctaDescription: textValue(value?.ctaDescription, fallback.ctaDescription),
     ctaPrimaryLabel: textValue(value?.ctaPrimaryLabel, fallback.ctaPrimaryLabel),
     ctaSecondaryLabel: textValue(value?.ctaSecondaryLabel, fallback.ctaSecondaryLabel),
+    whyKicker: textValue(value?.whyKicker, fallback.whyKicker),
+    whyTitle: textValue(value?.whyTitle, fallback.whyTitle),
+    whyReasons: featureCards(value?.whyReasons, fallback.whyReasons),
+    featuredCapabilitiesLabel: textValue(value?.featuredCapabilitiesLabel, fallback.featuredCapabilitiesLabel),
+    featuredCapabilitiesPreviousLabel: textValue(
+      value?.featuredCapabilitiesPreviousLabel,
+      fallback.featuredCapabilitiesPreviousLabel,
+    ),
+    featuredCapabilitiesNextLabel: textValue(
+      value?.featuredCapabilitiesNextLabel,
+      fallback.featuredCapabilitiesNextLabel,
+    ),
+    featuredCapabilities: featuredCapabilities(value?.featuredCapabilities, fallback.featuredCapabilities),
   };
 }
 
@@ -242,7 +510,233 @@ function normalizeProductionPage(value?: Partial<ProductionPageContent> | null):
   return {
     _id: id || undefined,
     _type: value?._type === 'productionPage' ? value._type : undefined,
+    intro: pageIntro(value?.intro, fallback.intro),
+    glanceLabel: textValue(value?.glanceLabel, fallback.glanceLabel),
+    glanceItems: labelValueEntries(value?.glanceItems, fallback.glanceItems),
     overviewTitle: textValue(value?.overviewTitle, fallback.overviewTitle),
+    overviewBody: textValue(value?.overviewBody, fallback.overviewBody),
+    image: cleanTextValue(value?.image, fallback.image),
+    imageAlt: textValue(value?.imageAlt, fallback.imageAlt),
+    qualityKicker: textValue(value?.qualityKicker, fallback.qualityKicker),
+    qualityTitle: textValue(value?.qualityTitle, fallback.qualityTitle),
+    qualityParagraphs: plainStringArray(value?.qualityParagraphs, fallback.qualityParagraphs),
+    activationKicker: textValue(value?.activationKicker, fallback.activationKicker),
+    activationSteps: productionSteps(value?.activationSteps, fallback.activationSteps),
+    activationNote: textValue(value?.activationNote, fallback.activationNote),
+    contactTextBeforeEmail: textValue(value?.contactTextBeforeEmail, fallback.contactTextBeforeEmail),
+    contactTextAfterEmail: textValue(value?.contactTextAfterEmail, fallback.contactTextAfterEmail),
+    contactButtonLabel: textValue(value?.contactButtonLabel, fallback.contactButtonLabel),
+  };
+}
+
+function normalizeSiteSettings(value?: Partial<SiteSettingsContent> | null): SiteSettingsContent {
+  const fallback = fallbackSiteSettingsContent;
+  const id = cleanTextValue(value?._id);
+  const navigation = value?.navigation;
+  const footer = value?.footer;
+  const pageIntroValue = value?.pageIntro;
+
+  return {
+    _id: id || undefined,
+    _type: value?._type === 'siteSettings' ? value._type : undefined,
+    navigation: {
+      logoAlt: textValue(navigation?.logoAlt, fallback.navigation.logoAlt),
+      links: linkEntries(navigation?.links, fallback.navigation.links),
+      ctaLabel: textValue(navigation?.ctaLabel, fallback.navigation.ctaLabel),
+    },
+    footer: {
+      logoAlt: textValue(footer?.logoAlt, fallback.footer.logoAlt),
+      contactLinkLabel: textValue(footer?.contactLinkLabel, fallback.footer.contactLinkLabel),
+      companyColumnTitle: textValue(footer?.companyColumnTitle, fallback.footer.companyColumnTitle),
+      companyLinks: linkEntries(footer?.companyLinks, fallback.footer.companyLinks),
+      productColumnTitle: textValue(footer?.productColumnTitle, fallback.footer.productColumnTitle),
+      applicationColumnTitle: textValue(footer?.applicationColumnTitle, fallback.footer.applicationColumnTitle),
+      copyrightText: textValue(footer?.copyrightText, fallback.footer.copyrightText),
+      bottomLinks: linkEntries(footer?.bottomLinks, fallback.footer.bottomLinks),
+    },
+    pageIntro: {
+      homeLabel: textValue(pageIntroValue?.homeLabel, fallback.pageIntro.homeLabel),
+      backHomeLabel: textValue(pageIntroValue?.backHomeLabel, fallback.pageIntro.backHomeLabel),
+    },
+    websiteContact: officeEntry(value?.websiteContact, fallback.websiteContact),
+    officeNetwork: officeEntries(value?.officeNetwork, fallback.officeNetwork),
+  };
+}
+
+function normalizePageCopy(value?: Partial<PageCopyContent> | null): PageCopyContent {
+  const fallback = fallbackPageCopyContent;
+  const id = cleanTextValue(value?._id);
+  const productsPage = value?.productsPage;
+  const productDetailPage = value?.productDetailPage;
+  const applicationsPage = value?.applicationsPage;
+  const applicationDetailPage = value?.applicationDetailPage;
+  const newsroomPage = value?.newsroomPage;
+  const newsroomPreview = value?.newsroomPreview;
+  const pressReleasePage = value?.pressReleasePage;
+
+  return {
+    _id: id || undefined,
+    _type: value?._type === 'pageCopy' ? value._type : undefined,
+    productsPage: {
+      intro: pageIntro(productsPage?.intro, fallback.productsPage.intro),
+      highlightsLabel: textValue(productsPage?.highlightsLabel, fallback.productsPage.highlightsLabel),
+      commonUsesLabel: textValue(productsPage?.commonUsesLabel, fallback.productsPage.commonUsesLabel),
+      referencedGradesLabel: textValue(productsPage?.referencedGradesLabel, fallback.productsPage.referencedGradesLabel),
+      detailCtaLabel: textValue(productsPage?.detailCtaLabel, fallback.productsPage.detailCtaLabel),
+      quoteCtaLabel: textValue(productsPage?.quoteCtaLabel, fallback.productsPage.quoteCtaLabel),
+    },
+    productDetailPage: {
+      introLabel: textValue(productDetailPage?.introLabel, fallback.productDetailPage.introLabel),
+      productsBreadcrumbLabel: textValue(
+        productDetailPage?.productsBreadcrumbLabel,
+        fallback.productDetailPage.productsBreadcrumbLabel,
+      ),
+      overviewLabel: textValue(productDetailPage?.overviewLabel, fallback.productDetailPage.overviewLabel),
+      commonUsesLabel: textValue(productDetailPage?.commonUsesLabel, fallback.productDetailPage.commonUsesLabel),
+      ctaTitle: textValue(productDetailPage?.ctaTitle, fallback.productDetailPage.ctaTitle),
+      ctaDescription: textValue(productDetailPage?.ctaDescription, fallback.productDetailPage.ctaDescription),
+      allProductsCtaLabel: textValue(
+        productDetailPage?.allProductsCtaLabel,
+        fallback.productDetailPage.allProductsCtaLabel,
+      ),
+      quoteCtaLabel: textValue(productDetailPage?.quoteCtaLabel, fallback.productDetailPage.quoteCtaLabel),
+    },
+    applicationsPage: {
+      intro: pageIntro(applicationsPage?.intro, fallback.applicationsPage.intro),
+      itemLabel: textValue(applicationsPage?.itemLabel, fallback.applicationsPage.itemLabel),
+      keyPointsLabel: textValue(applicationsPage?.keyPointsLabel, fallback.applicationsPage.keyPointsLabel),
+      recommendedProductsLabel: textValue(
+        applicationsPage?.recommendedProductsLabel,
+        fallback.applicationsPage.recommendedProductsLabel,
+      ),
+      detailCtaLabel: textValue(applicationsPage?.detailCtaLabel, fallback.applicationsPage.detailCtaLabel),
+      discussCtaLabel: textValue(applicationsPage?.discussCtaLabel, fallback.applicationsPage.discussCtaLabel),
+    },
+    applicationDetailPage: {
+      introLabel: textValue(applicationDetailPage?.introLabel, fallback.applicationDetailPage.introLabel),
+      applicationsBreadcrumbLabel: textValue(
+        applicationDetailPage?.applicationsBreadcrumbLabel,
+        fallback.applicationDetailPage.applicationsBreadcrumbLabel,
+      ),
+      overviewLabel: textValue(applicationDetailPage?.overviewLabel, fallback.applicationDetailPage.overviewLabel),
+      referencedGradesLabel: textValue(
+        applicationDetailPage?.referencedGradesLabel,
+        fallback.applicationDetailPage.referencedGradesLabel,
+      ),
+      recommendedProductsLabel: textValue(
+        applicationDetailPage?.recommendedProductsLabel,
+        fallback.applicationDetailPage.recommendedProductsLabel,
+      ),
+      recommendedProductsTitle: textValue(
+        applicationDetailPage?.recommendedProductsTitle,
+        fallback.applicationDetailPage.recommendedProductsTitle,
+      ),
+      recommendedProductsDescription: textValue(
+        applicationDetailPage?.recommendedProductsDescription,
+        fallback.applicationDetailPage.recommendedProductsDescription,
+      ),
+      discussCtaLabel: textValue(
+        applicationDetailPage?.discussCtaLabel,
+        fallback.applicationDetailPage.discussCtaLabel,
+      ),
+    },
+    newsroomPage: {
+      intro: pageIntro(newsroomPage?.intro, fallback.newsroomPage.intro),
+      featuredUpdateLabel: textValue(newsroomPage?.featuredUpdateLabel, fallback.newsroomPage.featuredUpdateLabel),
+      brandDetailsCtaLabel: textValue(newsroomPage?.brandDetailsCtaLabel, fallback.newsroomPage.brandDetailsCtaLabel),
+      whyMattersLabel: textValue(newsroomPage?.whyMattersLabel, fallback.newsroomPage.whyMattersLabel),
+      whyMattersBody: textValue(newsroomPage?.whyMattersBody, fallback.newsroomPage.whyMattersBody),
+      resourcesTitle: textValue(newsroomPage?.resourcesTitle, fallback.newsroomPage.resourcesTitle),
+      resourcesDescription: textValue(newsroomPage?.resourcesDescription, fallback.newsroomPage.resourcesDescription),
+      resourceLabel: textValue(newsroomPage?.resourceLabel, fallback.newsroomPage.resourceLabel),
+      latestVersionCtaLabel: textValue(newsroomPage?.latestVersionCtaLabel, fallback.newsroomPage.latestVersionCtaLabel),
+    },
+    newsroomPreview: {
+      kicker: textValue(newsroomPreview?.kicker, fallback.newsroomPreview.kicker),
+      title: textValue(newsroomPreview?.title, fallback.newsroomPreview.title),
+      description: textValue(newsroomPreview?.description, fallback.newsroomPreview.description),
+      resourceCenterCtaLabel: textValue(
+        newsroomPreview?.resourceCenterCtaLabel,
+        fallback.newsroomPreview.resourceCenterCtaLabel,
+      ),
+      pressReleaseLabel: textValue(newsroomPreview?.pressReleaseLabel, fallback.newsroomPreview.pressReleaseLabel),
+      resourceLabel: textValue(newsroomPreview?.resourceLabel, fallback.newsroomPreview.resourceLabel),
+      brandUpdateCtaLabel: textValue(
+        newsroomPreview?.brandUpdateCtaLabel,
+        fallback.newsroomPreview.brandUpdateCtaLabel,
+      ),
+      requestResourceCtaLabel: textValue(
+        newsroomPreview?.requestResourceCtaLabel,
+        fallback.newsroomPreview.requestResourceCtaLabel,
+      ),
+    },
+    pressReleasePage: {
+      introLabel: textValue(pressReleasePage?.introLabel, fallback.pressReleasePage.introLabel),
+      newsroomBreadcrumbLabel: textValue(
+        pressReleasePage?.newsroomBreadcrumbLabel,
+        fallback.pressReleasePage.newsroomBreadcrumbLabel,
+      ),
+      keyPointsLabel: textValue(pressReleasePage?.keyPointsLabel, fallback.pressReleasePage.keyPointsLabel),
+      salesCoordinationCtaLabel: textValue(
+        pressReleasePage?.salesCoordinationCtaLabel,
+        fallback.pressReleasePage.salesCoordinationCtaLabel,
+      ),
+    },
+  };
+}
+
+function normalizeAboutPage(value?: Partial<AboutPageContent> | null): AboutPageContent {
+  const fallback = fallbackAboutPageContent;
+  const id = cleanTextValue(value?._id);
+
+  return {
+    _id: id || undefined,
+    _type: value?._type === 'aboutPage' ? value._type : undefined,
+    intro: pageIntro(value?.intro, fallback.intro),
+    heroImage: cleanTextValue(value?.heroImage, fallback.heroImage),
+    heroImageAlt: textValue(value?.heroImageAlt, fallback.heroImageAlt),
+    storyTitle: textValue(value?.storyTitle, fallback.storyTitle),
+    storyParagraphs: plainStringArray(value?.storyParagraphs, fallback.storyParagraphs),
+    officeNetworkLabel: textValue(value?.officeNetworkLabel, fallback.officeNetworkLabel),
+    metrics: metricEntries(value?.metrics, fallback.metrics),
+    cards: featureCards(value?.cards, fallback.cards),
+    brandUpdateLabel: textValue(value?.brandUpdateLabel, fallback.brandUpdateLabel),
+    brandTransitionCtaLabel: textValue(value?.brandTransitionCtaLabel, fallback.brandTransitionCtaLabel),
+    productionCapabilityCtaLabel: textValue(
+      value?.productionCapabilityCtaLabel,
+      fallback.productionCapabilityCtaLabel,
+    ),
+  };
+}
+
+function normalizeContactPage(value?: Partial<ContactPageContent> | null): ContactPageContent {
+  const fallback = fallbackContactPageContent;
+  const id = cleanTextValue(value?._id);
+
+  return {
+    _id: id || undefined,
+    _type: value?._type === 'contactPage' ? value._type : undefined,
+    intro: pageIntro(value?.intro, fallback.intro),
+    officesTitle: textValue(value?.officesTitle, fallback.officesTitle),
+    successTitle: textValue(value?.successTitle, fallback.successTitle),
+    successMessage: textValue(value?.successMessage, fallback.successMessage),
+    firstNameLabel: textValue(value?.firstNameLabel, fallback.firstNameLabel),
+    firstNamePlaceholder: textValue(value?.firstNamePlaceholder, fallback.firstNamePlaceholder),
+    lastNameLabel: textValue(value?.lastNameLabel, fallback.lastNameLabel),
+    lastNamePlaceholder: textValue(value?.lastNamePlaceholder, fallback.lastNamePlaceholder),
+    emailLabel: textValue(value?.emailLabel, fallback.emailLabel),
+    emailPlaceholder: textValue(value?.emailPlaceholder, fallback.emailPlaceholder),
+    companyLabel: textValue(value?.companyLabel, fallback.companyLabel),
+    companyPlaceholder: textValue(value?.companyPlaceholder, fallback.companyPlaceholder),
+    phoneLabel: textValue(value?.phoneLabel, fallback.phoneLabel),
+    subjectLabel: textValue(value?.subjectLabel, fallback.subjectLabel),
+    subjectPlaceholder: textValue(value?.subjectPlaceholder, fallback.subjectPlaceholder),
+    applicationLabel: textValue(value?.applicationLabel, fallback.applicationLabel),
+    applicationPlaceholder: textValue(value?.applicationPlaceholder, fallback.applicationPlaceholder),
+    applicationOptions: plainStringArray(value?.applicationOptions, fallback.applicationOptions),
+    messageLabel: textValue(value?.messageLabel, fallback.messageLabel),
+    messagePlaceholder: textValue(value?.messagePlaceholder, fallback.messagePlaceholder),
+    submitLabel: textValue(value?.submitLabel, fallback.submitLabel),
   };
 }
 
@@ -288,6 +782,10 @@ export function mergeSanityContent(content?: SanitySiteContent | null): ContentI
   return {
     homePage: normalizeHomePage(content.homePage),
     productionPage: normalizeProductionPage(content.productionPage),
+    siteSettings: normalizeSiteSettings(content.siteSettings),
+    pageCopy: normalizePageCopy(content.pageCopy),
+    aboutPage: normalizeAboutPage(content.aboutPage),
+    contactPage: normalizeContactPage(content.contactPage),
     products: mergeBySlug(content.products, fallbackProducts, fallbackProductMap, normalizeProduct),
     applications: mergeBySlug(
       content.applications,

@@ -3,7 +3,17 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { createClient } from '@sanity/client';
 
-export const CMS_DOCUMENT_TYPES = ['homePage', 'productionPage', 'product', 'application', 'newsroomItem'];
+export const CMS_DOCUMENT_TYPES = [
+  'homePage',
+  'siteSettings',
+  'pageCopy',
+  'aboutPage',
+  'productionPage',
+  'contactPage',
+  'product',
+  'application',
+  'newsroomItem',
+];
 export const SITE_IDS = ['black-opal-india', 'black-opal-middle-east'];
 
 export const cmsDocumentsProjection = `{
@@ -16,6 +26,11 @@ export const cmsDocumentsProjection = `{
     heroKicker,
     heroTitle,
     heroDescription,
+    heroPrimaryCtaLabel,
+    heroSecondaryCtaLabel,
+    heroLegacyLabel,
+    heroVideoLabel,
+    heroVideoFallback,
     trustCertificationLabel,
     trustCertificationValue,
     trustEstablishedLabel,
@@ -35,10 +50,86 @@ export const cmsDocumentsProjection = `{
     ctaTitle,
     ctaDescription,
     ctaPrimaryLabel,
-    ctaSecondaryLabel
+    ctaSecondaryLabel,
+    whyKicker,
+    whyTitle,
+    whyReasons,
+    featuredCapabilitiesLabel,
+    featuredCapabilitiesPreviousLabel,
+    featuredCapabilitiesNextLabel,
+    featuredCapabilities
+  },
+  _type == "siteSettings" => {
+    navigation,
+    footer,
+    pageIntro,
+    websiteContact,
+    officeNetwork
+  },
+  _type == "pageCopy" => {
+    productsPage,
+    productDetailPage,
+    applicationsPage,
+    applicationDetailPage,
+    newsroomPage,
+    newsroomPreview,
+    pressReleasePage
+  },
+  _type == "aboutPage" => {
+    intro,
+    heroImage,
+    heroImageUrl,
+    heroImageAlt,
+    storyTitle,
+    storyParagraphs,
+    officeNetworkLabel,
+    metrics,
+    cards,
+    brandUpdateLabel,
+    brandTransitionCtaLabel,
+    productionCapabilityCtaLabel
   },
   _type == "productionPage" => {
-    overviewTitle
+    intro,
+    glanceLabel,
+    glanceItems,
+    overviewTitle,
+    overviewBody,
+    image,
+    imageUrl,
+    imageAlt,
+    qualityKicker,
+    qualityTitle,
+    qualityParagraphs,
+    activationKicker,
+    activationSteps,
+    activationNote,
+    contactTextBeforeEmail,
+    contactTextAfterEmail,
+    contactButtonLabel
+  },
+  _type == "contactPage" => {
+    intro,
+    officesTitle,
+    successTitle,
+    successMessage,
+    firstNameLabel,
+    firstNamePlaceholder,
+    lastNameLabel,
+    lastNamePlaceholder,
+    emailLabel,
+    emailPlaceholder,
+    companyLabel,
+    companyPlaceholder,
+    phoneLabel,
+    subjectLabel,
+    subjectPlaceholder,
+    applicationLabel,
+    applicationPlaceholder,
+    applicationOptions,
+    messageLabel,
+    messagePlaceholder,
+    submitLabel
   },
   _type == "product" => {
     seo,

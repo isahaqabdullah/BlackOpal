@@ -4,81 +4,25 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, Zap } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
-import type { ApplicationEntry, ProductEntry } from '../content/siteContent';
 
 const AUTO_ADVANCE_MS = 5200;
 
-function getCapabilitySlides(
-  productMap: Record<string, ProductEntry>,
-  applicationMap: Record<string, ApplicationEntry>,
-) {
-  return [
-    {
-      label: 'Catalytic carbon',
-      title: 'CATCARB for chloramine and H2S reduction',
-      copy:
-        'Surface-modified coconut shell catalytic carbon for water-treatment systems that need faster chloramine and hydrogen sulfide decomposition.',
-      highlights: [
-        'Built for chloramine-heavy drinking-water programs',
-        'Also suited for hydrogen sulfide decomposition',
-        'Maintains the hardness and attrition resistance expected from premium coconut shell carbon',
-      ],
-      image: productMap.catalytic.image,
-      alt: 'Water treatment facility',
-      to: '/products/catalytic',
-      cta: 'View CATCARB',
-    },
-    {
-      label: 'Gold recovery',
-      title: 'High-hardness carbon for gold circuits',
-      copy:
-        'Microporous GC grades for CIP, CIC, and tank-adsorbed systems where adsorption rate, loading capacity, low dust, and attrition resistance directly affect recovery.',
-      highlights: [
-        'Low platelet content and clean screening for reduced fines',
-        'Strong gold adsorption rates for high-throughput circuits',
-        'Durable coconut shell carbon for repeated mining service',
-      ],
-      image: applicationMap['gold-recovery'].image,
-      alt: 'Gold recovery industrial operation',
-      to: '/applications/gold-recovery',
-      cta: 'Gold recovery grades',
-    },
-    {
-      label: 'Water treatment',
-      title: 'Low-ash carbon for water programs',
-      copy:
-        'Granular, powder, impregnated, and catalytic grades support drinking water, process water, wastewater polishing, taste and odor control, and contaminant-specific filtration.',
-      highlights: [
-        'Low ash, high strength, and consistent particle-size distribution',
-        'NSF 42 and NSF 61 aligned water-treatment grades',
-        'Options for chlorine, chloramine, VOC, pesticide, THM, and odor reduction',
-      ],
-      image: applicationMap['water-treatment'].image,
-      alt: 'Clean drinking water treatment',
-      to: '/applications/water-treatment',
-      cta: 'Water applications',
-    },
-    {
-      label: 'Custom grades',
-      title: 'Tailored mesh, activity, washing, and impregnation',
-      copy:
-        'Product recommendations can be adapted to the operating conditions, mesh-size target, pH or washing requirement, adsorption level, and contaminant profile.',
-      highlights: [
-        'Different mesh sizes and adsorption levels available',
-        'pH-adjusted, washed, impregnated, and specialty variants',
-        'Grade selection matched to application requirements',
-      ],
-      image: productMap.granular.image,
-      alt: 'Activated carbon granules',
-      to: '/products',
-      cta: 'Explore products',
-    },
-  ];
-}
-
 export function FeaturedProduct() {
-  const { applicationMap, productMap } = useSiteContent();
-  const capabilitySlides = getCapabilitySlides(productMap, applicationMap);
+  const { applicationMap, homePage, productMap } = useSiteContent();
+  const capabilitySlides = homePage.featuredCapabilities.map((slide) => {
+    const linkedImage =
+      slide.imageSource === 'product'
+        ? productMap[slide.imageSlug ?? '']?.image
+        : slide.imageSource === 'application'
+          ? applicationMap[slide.imageSlug ?? '']?.image
+          : undefined;
+
+    return {
+      ...slide,
+      image: slide.imageUrl || linkedImage || productMap.granular?.image || '',
+      alt: slide.imageAlt,
+    };
+  });
   const [activeIndex, setActiveIndex] = useState(0);
   const activeSlide = capabilitySlides[activeIndex];
 
@@ -110,7 +54,7 @@ export function FeaturedProduct() {
                   className="text-[11px] tracking-[0.24em] uppercase text-[#e6cb87]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Featured Capabilities
+                  {homePage.featuredCapabilitiesLabel}
                 </span>
               </div>
               <span
@@ -156,7 +100,7 @@ export function FeaturedProduct() {
                 <button
                   type="button"
                   onClick={showPrevious}
-                  aria-label="Previous featured capability"
+                  aria-label={homePage.featuredCapabilitiesPreviousLabel}
                   className="premium-secondary-btn inline-flex h-11 w-11 items-center justify-center rounded-full"
                 >
                   <ArrowLeft size={15} />
@@ -164,7 +108,7 @@ export function FeaturedProduct() {
                 <button
                   type="button"
                   onClick={showNext}
-                  aria-label="Next featured capability"
+                  aria-label={homePage.featuredCapabilitiesNextLabel}
                   className="premium-secondary-btn inline-flex h-11 w-11 items-center justify-center rounded-full"
                 >
                   <ArrowRight size={15} />

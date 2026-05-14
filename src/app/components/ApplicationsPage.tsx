@@ -6,15 +6,16 @@ import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
 export function ApplicationsPage() {
-  const { applications, productMap } = useSiteContent();
+  const { applications, pageCopy, productMap } = useSiteContent();
+  const copy = pageCopy.applicationsPage;
 
   return (
     <div>
       <PageIntro
-        label="Applications"
-        title="Industrial activated carbon applications"
-        description="Water, gold recovery, air, gas, refinery, and specialty industrial programs each place different demands on hardness, pore structure, activity, and purity."
-        breadcrumbs={[{ label: 'Applications' }]}
+        label={copy.intro.label}
+        title={copy.intro.title}
+        description={copy.intro.description}
+        breadcrumbs={[{ label: copy.intro.breadcrumbLabel }]}
       />
 
       <section className="pb-10 md:pb-12">
@@ -32,7 +33,7 @@ export function ApplicationsPage() {
                     className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
-                    Application
+                    {copy.itemLabel}
                   </span>
                   <h2
                     className="premium-heading premium-heading-elevated text-[clamp(1.55rem,2.4vw,2rem)] leading-[1.08] mb-3"
@@ -59,7 +60,7 @@ export function ApplicationsPage() {
                         className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
-                        Key points
+                        {copy.keyPointsLabel}
                       </span>
                       <div className="space-y-2">
                         {application.keyPoints.map((point) => (
@@ -80,7 +81,7 @@ export function ApplicationsPage() {
                         className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
-                        Recommended products
+                        {copy.recommendedProductsLabel}
                       </span>
                       <div className="flex flex-wrap gap-2">
                         {application.recommendedProducts.map((slug) => (
@@ -102,7 +103,7 @@ export function ApplicationsPage() {
                       className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
-                      Application details
+                      {copy.detailCtaLabel}
                       <ArrowRight size={14} />
                     </Link>
                     <Link
@@ -110,7 +111,7 @@ export function ApplicationsPage() {
                       className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
-                      Discuss with sales
+                      {copy.discussCtaLabel}
                     </Link>
                   </div>
                 </div>

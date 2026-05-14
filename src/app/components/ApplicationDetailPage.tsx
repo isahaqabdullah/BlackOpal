@@ -9,8 +9,9 @@ import { PageIntro } from './PageIntro';
 
 export function ApplicationDetailPage() {
   const { applicationSlug } = useParams<{ applicationSlug: string }>();
-  const { applicationMap, productMap, status } = useSiteContent();
+  const { applicationMap, pageCopy, productMap, status } = useSiteContent();
   const application = applicationSlug ? applicationMap[applicationSlug] : undefined;
+  const copy = pageCopy.applicationDetailPage;
 
   if (!application && status === 'loading') {
     return null;
@@ -23,11 +24,11 @@ export function ApplicationDetailPage() {
   return (
     <div>
       <PageIntro
-        label="Application Detail"
+        label={copy.introLabel}
         title={application.name}
         description={application.summary}
         breadcrumbs={[
-          { label: 'Applications', to: '/applications' },
+          { label: copy.applicationsBreadcrumbLabel, to: '/applications' },
           { label: application.name },
         ]}
       />
@@ -40,7 +41,7 @@ export function ApplicationDetailPage() {
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Application overview
+                {copy.overviewLabel}
               </span>
               <p
                 className="premium-copy text-[14px] leading-[1.85] mb-6"
@@ -68,7 +69,7 @@ export function ApplicationDetailPage() {
                     className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
-                    Referenced grades
+                    {copy.referencedGradesLabel}
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {application.grades.map((grade) => (
@@ -141,20 +142,19 @@ export function ApplicationDetailPage() {
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Recommended products
+                  {copy.recommendedProductsLabel}
                 </span>
                 <h2
                   className="premium-heading text-[1.5rem] mb-2"
                   style={{ fontFamily: "'DM Serif Display', serif" }}
                 >
-                  Product families commonly tied to this application
+                  {copy.recommendedProductsTitle}
                 </h2>
                 <p
                   className="premium-copy text-[14px] mb-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
-                  These product families form the usual starting point for grade matching, performance review, and
-                  availability planning.
+                  {copy.recommendedProductsDescription}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {application.recommendedProducts.map((slug) => {
@@ -180,7 +180,7 @@ export function ApplicationDetailPage() {
                 className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full self-start"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Discuss this application
+                {copy.discussCtaLabel}
                 <ArrowRight size={14} />
               </Link>
             </div>

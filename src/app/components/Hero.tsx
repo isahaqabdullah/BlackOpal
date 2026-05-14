@@ -57,14 +57,14 @@ export function Hero() {
                 className="premium-primary-btn text-[13px] px-7 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Request a Quote
+                {homePage.heroPrimaryCtaLabel}
               </Link>
               <Link
                 href="/contact"
                 className="premium-secondary-btn text-[13px] px-7 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Talk to Technical Sales
+                {homePage.heroSecondaryCtaLabel}
               </Link>
             </div>
           </div>
@@ -84,7 +84,7 @@ export function Hero() {
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              FORMERLY INDOCARB AC LLC
+              {homePage.heroLegacyLabel}
             </span>
             <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1">
               <div className="relative overflow-hidden rounded-[1.15rem]">
@@ -96,9 +96,9 @@ export function Hero() {
                   loop
                   playsInline
                   preload="metadata"
-                  aria-label="Axion production video"
+                  aria-label={homePage.heroVideoLabel}
                 >
-                  Your browser does not support the video tag.
+                  {homePage.heroVideoFallback}
                 </video>
 
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(255,255,255,0.06),transparent_34%),linear-gradient(180deg,rgba(5,5,5,0.02),rgba(5,5,5,0.22))]" />

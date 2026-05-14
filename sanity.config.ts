@@ -65,7 +65,9 @@ export default defineConfig({
       resolve: {
         mainDocuments: [
           { route: '/', filter: `_type == "homePage" && siteId == ${studioSiteIdLiteral}` },
+          { route: '/about', filter: `_type == "aboutPage" && _id == "aboutPage"` },
           { route: '/production', filter: `_type == "productionPage" && _id == "productionPage"` },
+          { route: '/contact', filter: `_type == "contactPage" && _id == "contactPage"` },
           { route: '/products/:productSlug', filter: `_type == "product" && slug.current == $productSlug` },
           { route: '/applications/:applicationSlug', filter: `_type == "application" && slug.current == $applicationSlug` },
           { route: '/newsroom/:storySlug', filter: `_type == "newsroomItem" && slug.current == $storySlug` },
@@ -84,6 +86,43 @@ export default defineConfig({
             select: { title: 'overviewTitle' },
             resolve: () => ({
               locations: [documentLocation('Production page', '/production')],
+            }),
+          },
+          siteSettings: {
+            select: { title: '_id' },
+            resolve: () => ({
+              locations: [
+                documentLocation('Home page chrome', '/'),
+                documentLocation('Products page chrome', '/products'),
+                documentLocation('Applications page chrome', '/applications'),
+                documentLocation('Production page chrome', '/production'),
+                documentLocation('About page chrome', '/about'),
+                documentLocation('Newsroom page chrome', '/newsroom'),
+                documentLocation('Contact page chrome', '/contact'),
+              ],
+            }),
+          },
+          pageCopy: {
+            select: { title: '_id' },
+            resolve: () => ({
+              locations: [
+                documentLocation('Products listing', '/products'),
+                documentLocation('Applications listing', '/applications'),
+                documentLocation('Newsroom listing', '/newsroom'),
+                documentLocation('Home page newsroom preview', '/'),
+              ],
+            }),
+          },
+          aboutPage: {
+            select: { title: 'intro.title' },
+            resolve: () => ({
+              locations: [documentLocation('About page', '/about')],
+            }),
+          },
+          contactPage: {
+            select: { title: 'intro.title' },
+            resolve: () => ({
+              locations: [documentLocation('Contact page', '/contact')],
             }),
           },
           product: {

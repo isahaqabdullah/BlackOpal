@@ -1,6 +1,24 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { applications, homePageContent, newsroomItems, products, productionPageContent, type ContentSection } from '../src/app/content/siteContent';
+import {
+  aboutPageContent,
+  applications,
+  contactPageContent,
+  homePageContent,
+  newsroomItems,
+  pageCopyContent,
+  products,
+  productionPageContent,
+  siteSettingsContent,
+  type ContentSection,
+  type FeatureCardEntry,
+  type FeaturedCapabilityEntry,
+  type LabelValueEntry,
+  type LinkEntry,
+  type OfficeEntry,
+  type PageIntroContent,
+  type ProductionStepEntry,
+} from '../src/app/content/siteContent';
 import { resolveSeo } from '../src/app/seo';
 
 type SanityDocument = Record<string, unknown> & {
@@ -26,6 +44,84 @@ function sectionsForSanity(sections: ContentSection[]) {
     title: section.title,
     body: section.body,
     bullets: section.bullets,
+  }));
+}
+
+function linksForSanity(links: LinkEntry[]) {
+  return links.map((link, index) => ({
+    _type: 'linkEntry',
+    _key: keyFrom(`${link.label}-${link.to}`, index),
+    label: link.label,
+    to: link.to,
+  }));
+}
+
+function labelValuesForSanity(items: LabelValueEntry[]) {
+  return items.map((item, index) => ({
+    _type: 'labelValueEntry',
+    _key: keyFrom(`${item.value}-${item.label}`, index),
+    value: item.value,
+    label: item.label,
+  }));
+}
+
+function officesForSanity(offices: OfficeEntry[]) {
+  return offices.map((office, index) => ({
+    _type: 'officeEntry',
+    _key: keyFrom(`${office.label}-${office.name}`, index),
+    label: office.label,
+    name: office.name,
+    address: office.address,
+    phone: office.phone,
+    email: office.email,
+    note: office.note,
+  }));
+}
+
+function featureCardsForSanity(cards: FeatureCardEntry[]) {
+  return cards.map((card, index) => ({
+    _type: 'featureCardEntry',
+    _key: keyFrom(card.title, index),
+    icon: card.icon,
+    title: card.title,
+    desc: card.desc,
+  }));
+}
+
+function pageIntroForSanity(intro: PageIntroContent) {
+  return {
+    _type: 'pageIntro',
+    label: intro.label,
+    title: intro.title,
+    description: intro.description,
+    breadcrumbLabel: intro.breadcrumbLabel,
+  };
+}
+
+function featuredCapabilitiesForSanity(capabilities: FeaturedCapabilityEntry[]) {
+  return capabilities.map((capability, index) => ({
+    _type: 'featuredCapabilityEntry',
+    _key: keyFrom(capability.title, index),
+    label: capability.label,
+    title: capability.title,
+    copy: capability.copy,
+    highlights: capability.highlights,
+    imageSource: capability.imageSource,
+    imageSlug: capability.imageSlug,
+    imageUrl: capability.imageUrl,
+    imageAlt: capability.imageAlt,
+    to: capability.to,
+    cta: capability.cta,
+  }));
+}
+
+function productionStepsForSanity(steps: ProductionStepEntry[]) {
+  return steps.map((step, index) => ({
+    _type: 'productionStepEntry',
+    _key: keyFrom(`${step.step}-${step.title}`, index),
+    step: step.step,
+    title: step.title,
+    body: step.body,
   }));
 }
 
@@ -60,14 +156,80 @@ const homePageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-mid
   _id: `homePage-${siteId}`,
   _type: 'homePage',
   ...homePageContent,
+  whyReasons: featureCardsForSanity(homePageContent.whyReasons),
+  featuredCapabilities: featuredCapabilitiesForSanity(homePageContent.featuredCapabilities),
   seo: seoFor('/'),
   siteId,
 }));
 
+const siteSettingsDocument: SanityDocument = {
+  _id: 'siteSettings',
+  _type: 'siteSettings',
+  navigation: {
+    ...siteSettingsContent.navigation,
+    links: linksForSanity(siteSettingsContent.navigation.links),
+  },
+  footer: {
+    ...siteSettingsContent.footer,
+    companyLinks: linksForSanity(siteSettingsContent.footer.companyLinks),
+    bottomLinks: linksForSanity(siteSettingsContent.footer.bottomLinks),
+  },
+  pageIntro: siteSettingsContent.pageIntro,
+  websiteContact: {
+    _type: 'officeEntry',
+    ...siteSettingsContent.websiteContact,
+  },
+  officeNetwork: officesForSanity(siteSettingsContent.officeNetwork),
+};
+
+const pageCopyDocument: SanityDocument = {
+  _id: 'pageCopy',
+  _type: 'pageCopy',
+  productsPage: {
+    ...pageCopyContent.productsPage,
+    intro: pageIntroForSanity(pageCopyContent.productsPage.intro),
+  },
+  productDetailPage: pageCopyContent.productDetailPage,
+  applicationsPage: {
+    ...pageCopyContent.applicationsPage,
+    intro: pageIntroForSanity(pageCopyContent.applicationsPage.intro),
+  },
+  applicationDetailPage: pageCopyContent.applicationDetailPage,
+  newsroomPage: {
+    ...pageCopyContent.newsroomPage,
+    intro: pageIntroForSanity(pageCopyContent.newsroomPage.intro),
+  },
+  newsroomPreview: pageCopyContent.newsroomPreview,
+  pressReleasePage: pageCopyContent.pressReleasePage,
+};
+
+const { heroImage: aboutHeroImage, ...aboutPageSeedContent } = aboutPageContent;
+const aboutPageDocument: SanityDocument = {
+  _id: 'aboutPage',
+  _type: 'aboutPage',
+  ...aboutPageSeedContent,
+  intro: pageIntroForSanity(aboutPageContent.intro),
+  metrics: labelValuesForSanity(aboutPageContent.metrics),
+  cards: featureCardsForSanity(aboutPageContent.cards),
+  heroImageUrl: aboutHeroImage,
+};
+
+const { image: productionImage, ...productionPageSeedContent } = productionPageContent;
 const productionPageDocument: SanityDocument = {
   _id: 'productionPage',
   _type: 'productionPage',
-  ...productionPageContent,
+  ...productionPageSeedContent,
+  intro: pageIntroForSanity(productionPageContent.intro),
+  glanceItems: labelValuesForSanity(productionPageContent.glanceItems),
+  activationSteps: productionStepsForSanity(productionPageContent.activationSteps),
+  imageUrl: productionImage,
+};
+
+const contactPageDocument: SanityDocument = {
+  _id: 'contactPage',
+  _type: 'contactPage',
+  ...contactPageContent,
+  intro: pageIntroForSanity(contactPageContent.intro),
 };
 
 const applicationDocuments: SanityDocument[] = applications.map((application, index) => ({
@@ -99,7 +261,17 @@ const newsroomDocuments: SanityDocument[] = newsroomItems.map((item, index) => (
   bullets: item.bullets,
 }));
 
-const documents = [...homePageDocuments, productionPageDocument, ...productDocuments, ...applicationDocuments, ...newsroomDocuments];
+const documents = [
+  ...homePageDocuments,
+  siteSettingsDocument,
+  pageCopyDocument,
+  aboutPageDocument,
+  productionPageDocument,
+  contactPageDocument,
+  ...productDocuments,
+  ...applicationDocuments,
+  ...newsroomDocuments,
+];
 const ndjson = `${documents.map((document) => JSON.stringify(document)).join('\n')}\n`;
 
 await mkdir(path.dirname(outputPath), { recursive: true });

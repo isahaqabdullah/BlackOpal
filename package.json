@@ -10,6 +10,7 @@
     "cms:dev": "node scripts/run-sanity.mjs dev",
     "cms:import": "npm run cms:seed && node scripts/run-sanity.mjs dataset import sanity/seed.ndjson production --replace",
     "cms:login": "node scripts/run-sanity.mjs login",
+    "cms:migrate:copy": "node scripts/migrate-sanity-cms-copy.mjs",
     "cms:migrate:homepages": "node scripts/migrate-sanity-homepages.mjs",
     "cms:pull": "node scripts/pull-sanity-content.mjs",
     "cms:push": "node scripts/push-sanity-content.mjs",

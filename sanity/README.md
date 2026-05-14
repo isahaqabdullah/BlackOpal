@@ -5,6 +5,11 @@ This folder contains the schema shape and seed data expected by the website.
 The website reads published Sanity content from these document types:
 
 - `homePage`
+- `siteSettings`
+- `pageCopy`
+- `aboutPage`
+- `productionPage`
+- `contactPage`
 - `product`
 - `application`
 - `newsroomItem`
@@ -14,7 +19,7 @@ Homepage documents are site-specific:
 - `homePage-black-opal-india`
 - `homePage-black-opal-middle-east`
 
-Products, applications, and newsroom entries are shared across both websites.
+Site settings, page framing copy, about, production, contact, products, applications, and newsroom entries are shared across both websites.
 
 ## 1. Log in and create a Sanity project
 
@@ -63,7 +68,7 @@ Run the website on the same preview origin configured above:
 npm run dev
 ```
 
-Open Studio, choose `Visual Editor`, and edit homepage, product, application, and newsroom entries from the preview. Editors can change the content fields inside those sections while the site updates visually.
+Open Studio, choose `Visual Editor`, and edit homepage, site settings, page framing copy, about, production, contact, product, application, and newsroom entries from the preview. Editors can change the content fields inside those sections while the site updates visually.
 
 ## 5. Import current site content
 
@@ -95,6 +100,12 @@ Run this once to create site-specific homepage documents from the legacy `homePa
 
 ```bash
 npm run cms:migrate:homepages
+```
+
+Run this after adding the expanded shared copy schema to create the shared settings/page documents and fill only missing fields on existing homepage and production documents:
+
+```bash
+npm run cms:migrate:copy
 ```
 
 The recommended production Studio entrypoints are embedded on the Vercel sites so Studio and preview share the same origin:

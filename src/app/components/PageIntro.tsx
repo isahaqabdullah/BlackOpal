@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { useSiteContent } from '../content/SiteContentProvider';
 
 type Breadcrumb = {
   label: string;
@@ -18,6 +19,8 @@ type PageIntroProps = {
 };
 
 export function PageIntro({ label, title, titleVisual, description, breadcrumbs = [] }: PageIntroProps) {
+  const { siteSettings } = useSiteContent();
+
   return (
     <section className="pt-10 pb-6 md:pt-12 md:pb-8">
       <div className="premium-shell">
@@ -28,7 +31,7 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
           >
             <Link href="/" className="hover:text-[#f2d78b] transition-colors">
-              Home
+              {siteSettings.pageIntro.homeLabel}
             </Link>
             {breadcrumbs.map((crumb, index) => (
               <span key={`${crumb.label}-${index}`} className="inline-flex items-center gap-2">
@@ -50,7 +53,7 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             <ArrowLeft size={13} />
-            Home
+            {siteSettings.pageIntro.backHomeLabel}
           </Link>
         </div>
 

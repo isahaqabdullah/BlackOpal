@@ -28,6 +28,11 @@ export type HomePageContent = {
   heroKicker: string;
   heroTitle: string;
   heroDescription: string;
+  heroPrimaryCtaLabel: string;
+  heroSecondaryCtaLabel: string;
+  heroLegacyLabel: string;
+  heroVideoLabel: string;
+  heroVideoFallback: string;
   trustCertificationLabel: string;
   trustCertificationValue: string;
   trustEstablishedLabel: string;
@@ -48,12 +53,34 @@ export type HomePageContent = {
   ctaDescription: string;
   ctaPrimaryLabel: string;
   ctaSecondaryLabel: string;
+  whyKicker: string;
+  whyTitle: string;
+  whyReasons: FeatureCardEntry[];
+  featuredCapabilitiesLabel: string;
+  featuredCapabilitiesPreviousLabel: string;
+  featuredCapabilitiesNextLabel: string;
+  featuredCapabilities: FeaturedCapabilityEntry[];
 };
 
 export type ProductionPageContent = {
   _id?: string;
   _type?: 'productionPage';
+  intro: PageIntroContent;
+  glanceLabel: string;
+  glanceItems: LabelValueEntry[];
   overviewTitle: string;
+  overviewBody: string;
+  image: string;
+  imageAlt: string;
+  qualityKicker: string;
+  qualityTitle: string;
+  qualityParagraphs: string[];
+  activationKicker: string;
+  activationSteps: ProductionStepEntry[];
+  activationNote: string;
+  contactTextBeforeEmail: string;
+  contactTextAfterEmail: string;
+  contactButtonLabel: string;
 };
 
 export type ProductEntry = {
@@ -99,11 +126,222 @@ export type NewsroomItem = {
   bullets?: string[];
 };
 
+export type LinkEntry = {
+  _key?: string;
+  label: string;
+  to: string;
+};
+
+export type LabelValueEntry = {
+  _key?: string;
+  value: string;
+  label: string;
+};
+
+export type OfficeEntry = {
+  _key?: string;
+  label: string;
+  name: string;
+  address: string[];
+  phone?: string;
+  email?: string;
+  note?: string;
+};
+
+export type FeatureIconName =
+  | 'building-2'
+  | 'factory'
+  | 'headphones'
+  | 'layers'
+  | 'refresh-ccw'
+  | 'shield-check'
+  | 'target'
+  | 'tree-palm'
+  | 'truck';
+
+export type FeatureCardEntry = {
+  _key?: string;
+  icon: FeatureIconName;
+  title: string;
+  desc: string;
+};
+
+export type PageIntroContent = {
+  label: string;
+  title: string;
+  description?: string;
+  breadcrumbLabel: string;
+};
+
+export type FeaturedCapabilityImageSource = 'application' | 'product' | 'url';
+
+export type FeaturedCapabilityEntry = {
+  _key?: string;
+  label: string;
+  title: string;
+  copy: string;
+  highlights: string[];
+  imageSource: FeaturedCapabilityImageSource;
+  imageSlug?: string;
+  imageUrl?: string;
+  imageAlt: string;
+  to: string;
+  cta: string;
+};
+
+export type ProductionStepEntry = {
+  _key?: string;
+  step: string;
+  title: string;
+  body: string;
+};
+
+export type SiteSettingsContent = {
+  _id?: string;
+  _type?: 'siteSettings';
+  navigation: {
+    logoAlt: string;
+    links: LinkEntry[];
+    ctaLabel: string;
+  };
+  footer: {
+    logoAlt: string;
+    contactLinkLabel: string;
+    companyColumnTitle: string;
+    companyLinks: LinkEntry[];
+    productColumnTitle: string;
+    applicationColumnTitle: string;
+    copyrightText: string;
+    bottomLinks: LinkEntry[];
+  };
+  pageIntro: {
+    homeLabel: string;
+    backHomeLabel: string;
+  };
+  websiteContact: OfficeEntry;
+  officeNetwork: OfficeEntry[];
+};
+
+export type PageCopyContent = {
+  _id?: string;
+  _type?: 'pageCopy';
+  productsPage: {
+    intro: PageIntroContent;
+    highlightsLabel: string;
+    commonUsesLabel: string;
+    referencedGradesLabel: string;
+    detailCtaLabel: string;
+    quoteCtaLabel: string;
+  };
+  productDetailPage: {
+    introLabel: string;
+    productsBreadcrumbLabel: string;
+    overviewLabel: string;
+    commonUsesLabel: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    allProductsCtaLabel: string;
+    quoteCtaLabel: string;
+  };
+  applicationsPage: {
+    intro: PageIntroContent;
+    itemLabel: string;
+    keyPointsLabel: string;
+    recommendedProductsLabel: string;
+    detailCtaLabel: string;
+    discussCtaLabel: string;
+  };
+  applicationDetailPage: {
+    introLabel: string;
+    applicationsBreadcrumbLabel: string;
+    overviewLabel: string;
+    referencedGradesLabel: string;
+    recommendedProductsLabel: string;
+    recommendedProductsTitle: string;
+    recommendedProductsDescription: string;
+    discussCtaLabel: string;
+  };
+  newsroomPage: {
+    intro: PageIntroContent;
+    featuredUpdateLabel: string;
+    brandDetailsCtaLabel: string;
+    whyMattersLabel: string;
+    whyMattersBody: string;
+    resourcesTitle: string;
+    resourcesDescription: string;
+    resourceLabel: string;
+    latestVersionCtaLabel: string;
+  };
+  newsroomPreview: {
+    kicker: string;
+    title: string;
+    description: string;
+    resourceCenterCtaLabel: string;
+    pressReleaseLabel: string;
+    resourceLabel: string;
+    brandUpdateCtaLabel: string;
+    requestResourceCtaLabel: string;
+  };
+  pressReleasePage: {
+    introLabel: string;
+    newsroomBreadcrumbLabel: string;
+    keyPointsLabel: string;
+    salesCoordinationCtaLabel: string;
+  };
+};
+
+export type AboutPageContent = {
+  _id?: string;
+  _type?: 'aboutPage';
+  intro: PageIntroContent;
+  heroImage: string;
+  heroImageAlt: string;
+  storyTitle: string;
+  storyParagraphs: string[];
+  officeNetworkLabel: string;
+  metrics: SiteMetric[];
+  cards: FeatureCardEntry[];
+  brandUpdateLabel: string;
+  brandTransitionCtaLabel: string;
+  productionCapabilityCtaLabel: string;
+};
+
+export type ContactPageContent = {
+  _id?: string;
+  _type?: 'contactPage';
+  intro: PageIntroContent;
+  officesTitle: string;
+  successTitle: string;
+  successMessage: string;
+  firstNameLabel: string;
+  firstNamePlaceholder: string;
+  lastNameLabel: string;
+  lastNamePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  companyLabel: string;
+  companyPlaceholder: string;
+  phoneLabel: string;
+  subjectLabel: string;
+  subjectPlaceholder: string;
+  applicationLabel: string;
+  applicationPlaceholder: string;
+  applicationOptions: string[];
+  messageLabel: string;
+  messagePlaceholder: string;
+  submitLabel: string;
+};
+
 export const homePageContent: HomePageContent = {
   siteId: siteConfig.siteId,
   heroKicker: siteConfig.heroKicker,
   heroTitle: siteConfig.heroTitle,
   heroDescription: siteConfig.heroDescription,
+  heroPrimaryCtaLabel: 'Request a Quote',
+  heroSecondaryCtaLabel: 'Talk to Technical Sales',
+  heroLegacyLabel: 'FORMERLY INDOCARB AC LLC',
+  heroVideoLabel: 'Axion production video',
+  heroVideoFallback: 'Your browser does not support the video tag.',
   trustCertificationLabel: 'Certifications',
   trustCertificationValue: 'NSF 42 · NSF 61 · Prop 65',
   trustEstablishedLabel: 'Established',
@@ -124,10 +362,176 @@ export const homePageContent: HomePageContent = {
   ctaDescription: 'Mesh size, activity, washing, compliance, and delivery requirements shape the final recommendation.',
   ctaPrimaryLabel: 'Request Quote',
   ctaSecondaryLabel: 'Send Technical Inquiry',
+  whyKicker: `Why ${siteConfig.siteName}`,
+  whyTitle: 'High-performance activated carbon backed by quality, innovation, service, and reliability',
+  whyReasons: [
+    {
+      icon: 'tree-palm',
+      title: 'Coconut Shell Specialization',
+      desc:
+        'Selected coconut shells support high hardness, low ash, micropore structure, and attrition resistance for premium activated carbon.',
+    },
+    {
+      icon: 'target',
+      title: 'Consistent Quality',
+      desc:
+        'Quality control starts at raw material selection and continues through activation, sizing, packing, and final assurance.',
+    },
+    {
+      icon: 'layers',
+      title: 'Application-Specific Grades',
+      desc:
+        'Granular, powder, impregnated, and catalytic formats are matched to contaminant profile, contact time, and operating conditions.',
+    },
+    {
+      icon: 'truck',
+      title: 'Supply Reliability',
+      desc: siteConfig.logisticsSummary,
+    },
+    {
+      icon: 'headphones',
+      title: 'Technical Support',
+      desc:
+        'Sales and technical teams review application conditions, target contaminants, mesh size, activity, and compliance requirements before recommending a grade.',
+    },
+    {
+      icon: 'shield-check',
+      title: 'Certifications & Compliance',
+      desc: 'NSF 42, NSF 61, and California Prop 65 compliant. Ready for regulated and food-grade applications.',
+    },
+  ],
+  featuredCapabilitiesLabel: 'Featured Capabilities',
+  featuredCapabilitiesPreviousLabel: 'Previous featured capability',
+  featuredCapabilitiesNextLabel: 'Next featured capability',
+  featuredCapabilities: [
+    {
+      label: 'Catalytic carbon',
+      title: 'CATCARB for chloramine and H2S reduction',
+      copy:
+        'Surface-modified coconut shell catalytic carbon for water-treatment systems that need faster chloramine and hydrogen sulfide decomposition.',
+      highlights: [
+        'Built for chloramine-heavy drinking-water programs',
+        'Also suited for hydrogen sulfide decomposition',
+        'Maintains the hardness and attrition resistance expected from premium coconut shell carbon',
+      ],
+      imageSource: 'product',
+      imageSlug: 'catalytic',
+      imageAlt: 'Water treatment facility',
+      to: '/products/catalytic',
+      cta: 'View CATCARB',
+    },
+    {
+      label: 'Gold recovery',
+      title: 'High-hardness carbon for gold circuits',
+      copy:
+        'Microporous GC grades for CIP, CIC, and tank-adsorbed systems where adsorption rate, loading capacity, low dust, and attrition resistance directly affect recovery.',
+      highlights: [
+        'Low platelet content and clean screening for reduced fines',
+        'Strong gold adsorption rates for high-throughput circuits',
+        'Durable coconut shell carbon for repeated mining service',
+      ],
+      imageSource: 'application',
+      imageSlug: 'gold-recovery',
+      imageAlt: 'Gold recovery industrial operation',
+      to: '/applications/gold-recovery',
+      cta: 'Gold recovery grades',
+    },
+    {
+      label: 'Water treatment',
+      title: 'Low-ash carbon for water programs',
+      copy:
+        'Granular, powder, impregnated, and catalytic grades support drinking water, process water, wastewater polishing, taste and odor control, and contaminant-specific filtration.',
+      highlights: [
+        'Low ash, high strength, and consistent particle-size distribution',
+        'NSF 42 and NSF 61 aligned water-treatment grades',
+        'Options for chlorine, chloramine, VOC, pesticide, THM, and odor reduction',
+      ],
+      imageSource: 'application',
+      imageSlug: 'water-treatment',
+      imageAlt: 'Clean drinking water treatment',
+      to: '/applications/water-treatment',
+      cta: 'Water applications',
+    },
+    {
+      label: 'Custom grades',
+      title: 'Tailored mesh, activity, washing, and impregnation',
+      copy:
+        'Product recommendations can be adapted to the operating conditions, mesh-size target, pH or washing requirement, adsorption level, and contaminant profile.',
+      highlights: [
+        'Different mesh sizes and adsorption levels available',
+        'pH-adjusted, washed, impregnated, and specialty variants',
+        'Grade selection matched to application requirements',
+      ],
+      imageSource: 'product',
+      imageSlug: 'granular',
+      imageAlt: 'Activated carbon granules',
+      to: '/products',
+      cta: 'Explore products',
+    },
+  ],
 };
 
 export const productionPageContent: ProductionPageContent = {
+  intro: {
+    label: 'Production',
+    title: '35000 metric tons capacity, steam activation, and mesh-size control',
+    description: `${siteConfig.originStatement}. Raw material selection, activation, sizing, and final quality assurance are controlled before shipment.`,
+    breadcrumbLabel: 'Production',
+  },
+  glanceLabel: 'Production at a glance',
+  glanceItems: [
+    {
+      value: '35000 metric tons',
+      label: 'Annual capacity',
+    },
+    {
+      value: 'Steam activated',
+      label: 'Two-stage method',
+    },
+    {
+      value: 'Custom mesh',
+      label: 'Application-specific sizing',
+    },
+  ],
   overviewTitle: 'From Coconut Shell Charcoal to High-Performance Activated Carbon - Fully Integrated Production',
+  overviewBody:
+    "Black Opal's India coconut activated carbon facility is the largest in the region, with annual production capacity of 35000 metric tons. The same production flow controls raw material selection, steam activation, particle sizing, packing, and final assurance before shipment.",
+  image: '/images/production-facility.avif',
+  imageAlt: 'Black Opal production facility',
+  qualityKicker: 'Quality program',
+  qualityTitle: 'End-to-End Quality Control',
+  qualityParagraphs: [
+    'Controlled, tested, and verified from raw material preparation to final dispatch.',
+    'Charcoal is sourced from selected outlets only after rigorous quality inspection. State-of-the-art equipment and skilled technicians support control over activation, handling, screening, and packing.',
+    'INDOCARB brand coconut carbon products, now carried under Black Opal Carbons, have been extensively tested and acclaimed by major industry leaders and reputed laboratories around the world.',
+  ],
+  activationKicker: 'Steam activation method',
+  activationSteps: [
+    {
+      step: '01',
+      title: 'Carbonization',
+      body:
+        'Coconut shell lumps are heated without oxygen, usually below 700 C, converting the shell into charcoal with volatile content reduced to less than 20%.',
+    },
+    {
+      step: '02',
+      title: 'Steam activation',
+      body:
+        'The carbonized material is activated in steam at around 1,100 C / 2,012 F, opening and enlarging the internal pore network that gives the carbon its adsorption character.',
+    },
+    {
+      step: '03',
+      title: 'Sizing and finishing',
+      body:
+        'Rotary kiln output is crushed, screened, and cleaned for granular specifications. Powder grades are produced by further grinding the granules with a gentle pulverizing action.',
+    },
+  ],
+  activationNote:
+    'Activation time, temperature, and post-production sizing allow the pore structure and particle size to be matched to water purification, gas treatment, color removal, granular media, and powdered carbon requirements.',
+  contactTextBeforeEmail:
+    'For questions regarding manufacturing, technical specifications, or current product availability, contact Black Opal at ',
+  contactTextAfterEmail: '.',
+  contactButtonLabel: 'Email production team',
 };
 
 export const siteMetrics: SiteMetric[] = [
@@ -135,6 +539,220 @@ export const siteMetrics: SiteMetric[] = [
   { value: siteConfig.productionCenterCount, label: 'Production centers' },
   { value: '35000 metric tons', label: 'Annual capacity' },
 ];
+
+export const siteSettingsContent: SiteSettingsContent = {
+  navigation: {
+    logoAlt: 'Black Opal Carbons logo',
+    links: [
+      { label: 'Home', to: '/' },
+      { label: 'Products', to: '/products' },
+      { label: 'Applications', to: '/applications' },
+      { label: 'Production', to: '/production' },
+      { label: 'About', to: '/about' },
+      { label: 'Newsroom', to: '/newsroom' },
+      { label: 'Contact', to: '/contact' },
+    ],
+    ctaLabel: 'Request Quote',
+  },
+  footer: {
+    logoAlt: 'Black Opal Carbons logo',
+    contactLinkLabel: 'Contact Black Opal',
+    companyColumnTitle: 'Company',
+    companyLinks: [
+      { label: 'Home', to: '/' },
+      { label: 'About', to: '/about' },
+      { label: 'Production', to: '/production' },
+      { label: 'Newsroom', to: '/newsroom' },
+      { label: 'Contact', to: '/contact' },
+    ],
+    productColumnTitle: 'Products',
+    applicationColumnTitle: 'Applications',
+    copyrightText: `© {year} ${siteConfig.siteName}. All rights reserved.`,
+    bottomLinks: [
+      { label: 'Home', to: '/' },
+      { label: 'Contact', to: '/contact' },
+    ],
+  },
+  pageIntro: {
+    homeLabel: 'Home',
+    backHomeLabel: 'Home',
+  },
+  websiteContact: companyDetails.websiteContact,
+  officeNetwork: companyDetails.officeNetwork,
+};
+
+export const pageCopyContent: PageCopyContent = {
+  productsPage: {
+    intro: {
+      label: 'Products',
+      title: 'Coconut shell activated carbon product families',
+      description:
+        'Granular, powder, impregnated, and catalytic grades cover fixed-bed filtration, fast-response dosing, targeted gas treatment, chloramine reduction, and specialty process duties.',
+      breadcrumbLabel: 'Products',
+    },
+    highlightsLabel: 'Highlights',
+    commonUsesLabel: 'Common uses',
+    referencedGradesLabel: 'Referenced grades',
+    detailCtaLabel: 'Product details',
+    quoteCtaLabel: 'Request quote',
+  },
+  productDetailPage: {
+    introLabel: 'Product Detail',
+    productsBreadcrumbLabel: 'Products',
+    overviewLabel: 'Overview',
+    commonUsesLabel: 'Common uses',
+    ctaTitle: 'Pricing and recommendations shaped by process conditions',
+    ctaDescription:
+      'Application, volume, and performance targets shape the grade match and availability recommendation.',
+    allProductsCtaLabel: 'All products',
+    quoteCtaLabel: 'Request quote',
+  },
+  applicationsPage: {
+    intro: {
+      label: 'Applications',
+      title: 'Industrial activated carbon applications',
+      description:
+        'Water, gold recovery, air, gas, refinery, and specialty industrial programs each place different demands on hardness, pore structure, activity, and purity.',
+      breadcrumbLabel: 'Applications',
+    },
+    itemLabel: 'Application',
+    keyPointsLabel: 'Key points',
+    recommendedProductsLabel: 'Recommended products',
+    detailCtaLabel: 'Application details',
+    discussCtaLabel: 'Discuss with sales',
+  },
+  applicationDetailPage: {
+    introLabel: 'Application Detail',
+    applicationsBreadcrumbLabel: 'Applications',
+    overviewLabel: 'Application overview',
+    referencedGradesLabel: 'Referenced grades',
+    recommendedProductsLabel: 'Recommended products',
+    recommendedProductsTitle: 'Product families commonly tied to this application',
+    recommendedProductsDescription:
+      'These product families form the usual starting point for grade matching, performance review, and availability planning.',
+    discussCtaLabel: 'Discuss this application',
+  },
+  newsroomPage: {
+    intro: {
+      label: 'Newsroom',
+      title: 'Company updates and product resources',
+      breadcrumbLabel: 'Newsroom',
+    },
+    featuredUpdateLabel: 'Featured update',
+    brandDetailsCtaLabel: 'Brand transition details',
+    whyMattersLabel: 'Why it matters',
+    whyMattersBody:
+      'The Black Opal brand replaced INDOCARB AC while products, facilities, pricing, and customer support continuity remained intact.',
+    resourcesTitle: 'Product Resources',
+    resourcesDescription:
+      'Access product information and supporting documents for technical review, procurement, and application discussions with the Black Opal sales team.',
+    resourceLabel: 'Product resource',
+    latestVersionCtaLabel: 'Latest version',
+  },
+  newsroomPreview: {
+    kicker: 'Newsroom',
+    title: 'Resources and brand updates',
+    description:
+      'Technical notes and brand notices stay tied to the same products, facilities, and support channels buyers already work with.',
+    resourceCenterCtaLabel: 'Resource center',
+    pressReleaseLabel: 'Press release',
+    resourceLabel: 'Resource',
+    brandUpdateCtaLabel: 'Brand update',
+    requestResourceCtaLabel: 'Request resource',
+  },
+  pressReleasePage: {
+    introLabel: 'Press Release',
+    newsroomBreadcrumbLabel: 'Newsroom',
+    keyPointsLabel: 'Key points',
+    salesCoordinationCtaLabel: 'Sales coordination',
+  },
+};
+
+export const aboutPageContent: AboutPageContent = {
+  intro: {
+    label: 'About',
+    title: 'Black Opal Carbons',
+    breadcrumbLabel: 'About',
+  },
+  heroImage:
+    'https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+  heroImageAlt: 'Black Opal manufacturing facility',
+  storyTitle: 'Reliability, consistency, and service since 2010',
+  storyParagraphs: [
+    'The group was established in 2010 as a joint venture between the largest privately owned coconut shell activated carbon manufacturer in South India and highly experienced activated carbon entrepreneurs with more than 50 years of combined field experience.',
+    'Over the years, Black Opal Carbons has become one of the most recognized brands in the activated carbon industry, with a reputation built on quality, innovation, service, and reliability.',
+    'Company-owned and operated manufacturing facilities give the group direct control over raw material selection, activation, processing, and final quality assurance. That operating model supports higher standards, dependable supply, and consistent product performance.',
+    'The state-of-the-art factory in South India has an annual production capacity of 35000 metric tons of coconut activated carbon for export markets. The team is committed to value-added products and services, open communication, and customer support focused on satisfaction 24 hours a day, 7 days a week.',
+  ],
+  officeNetworkLabel: 'Office network',
+  metrics: siteMetrics,
+  cards: [
+    {
+      icon: 'factory',
+      title: 'Joint venture roots',
+      desc:
+        'The group was established in 2010 as a joint venture between a leading South India coconut shell activated carbon manufacturer and experienced activated carbon entrepreneurs.',
+    },
+    {
+      icon: 'building-2',
+      title: companyDetails.marketBaseTitle,
+      desc: companyDetails.marketBaseDescription,
+    },
+    {
+      icon: 'shield-check',
+      title: 'Quality and reliability',
+      desc:
+        'Company-owned and operated manufacturing facilities support tighter quality control, stronger reliability, and more consistent coconut activated carbon performance.',
+    },
+    {
+      icon: 'refresh-ccw',
+      title: 'Brand transition',
+      desc:
+        'The INDOCARB AC transition to Black Opal Carbons preserved the products, facilities, pricing structure, and support team customers already worked with.',
+    },
+  ],
+  brandUpdateLabel: 'Brand update',
+  brandTransitionCtaLabel: 'Brand transition',
+  productionCapabilityCtaLabel: 'Production capability',
+};
+
+export const contactPageContent: ContactPageContent = {
+  intro: {
+    label: 'Contact',
+    title: siteConfig.contactTitle,
+    description: siteConfig.contactDescription,
+    breadcrumbLabel: 'Contact',
+  },
+  officesTitle: siteConfig.additionalOfficesTitle,
+  successTitle: 'Thank you for your enquiry',
+  successMessage:
+    'Thank you for your enquiry. The Black Opal team will review the details and respond with the next step.',
+  firstNameLabel: 'First Name *',
+  firstNamePlaceholder: 'First name',
+  lastNameLabel: 'Last Name *',
+  lastNamePlaceholder: 'Last name',
+  emailLabel: 'Email *',
+  emailPlaceholder: 'you@company.com',
+  companyLabel: 'Company *',
+  companyPlaceholder: 'Company name',
+  phoneLabel: 'Phone',
+  subjectLabel: 'Subject *',
+  subjectPlaceholder: 'Quote request, enquiry, technical support',
+  applicationLabel: 'Application / Use Case *',
+  applicationPlaceholder: 'Select application',
+  applicationOptions: [
+    'Water Treatment',
+    'Gold Recovery',
+    'Air & Gas',
+    'Oil & Gas',
+    'Catalytic / Chloramine Removal',
+    'Other Applications',
+  ],
+  messageLabel: 'Message *',
+  messagePlaceholder:
+    'Tell Black Opal what product family, application, volume, and performance target you need.',
+  submitLabel: 'Send enquiry',
+};
 
 export const products: ProductEntry[] = [
   {

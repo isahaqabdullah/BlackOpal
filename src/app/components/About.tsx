@@ -2,52 +2,39 @@
 
 import { Building2, Factory, RefreshCcw, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
-import { companyDetails, siteMetrics } from '../content/siteContent';
+import type { FeatureIconName } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 const heroLogo = '/images/black-opal-hero-logo-transparent.png';
 
-const aboutCards = [
-  {
-    icon: Factory,
-    title: 'Joint venture roots',
-    desc:
-      'The group was established in 2010 as a joint venture between a leading South India coconut shell activated carbon manufacturer and experienced activated carbon entrepreneurs.',
-  },
-  {
-    icon: Building2,
-    title: companyDetails.marketBaseTitle,
-    desc: companyDetails.marketBaseDescription,
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Quality and reliability',
-    desc:
-      'Company-owned and operated manufacturing facilities support tighter quality control, stronger reliability, and more consistent coconut activated carbon performance.',
-  },
-  {
-    icon: RefreshCcw,
-    title: 'Brand transition',
-    desc:
-      'The INDOCARB AC transition to Black Opal Carbons preserved the products, facilities, pricing structure, and support team customers already worked with.',
-  },
-];
+const icons: Record<FeatureIconName, typeof Factory> = {
+  'building-2': Building2,
+  factory: Factory,
+  headphones: Building2,
+  layers: Building2,
+  'refresh-ccw': RefreshCcw,
+  'shield-check': ShieldCheck,
+  target: Building2,
+  'tree-palm': Factory,
+  truck: Building2,
+};
 
 export function AboutPage() {
-  const { newsroomMap } = useSiteContent();
+  const { aboutPage, newsroomMap, siteSettings } = useSiteContent();
   const pressRelease = newsroomMap['name-change-press-release'];
 
   return (
     <div>
       <PageIntro
-        label="About"
-        title="Black Opal Carbons"
+        label={aboutPage.intro.label}
+        title={aboutPage.intro.title}
+        description={aboutPage.intro.description}
         titleVisual={
           <span className="premium-brand-logo-frame premium-page-title-logo-frame" aria-hidden="true">
             <img src={heroLogo} alt="" className="premium-brand-logo premium-page-title-logo" />
           </span>
         }
-        breadcrumbs={[{ label: 'About' }]}
+        breadcrumbs={[{ label: aboutPage.intro.breadcrumbLabel }]}
       />
 
       <section className="pb-10 md:pb-12">
@@ -55,8 +42,8 @@ export function AboutPage() {
           <div className="premium-panel premium-split-grid p-7 md:p-9">
             <div className="premium-image-frame premium-image-animated w-full max-w-[42rem]">
               <img
-                src="https://images.unsplash.com/photo-1554070211-e3953a3de374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                alt="Black Opal manufacturing facility"
+                src={aboutPage.heroImage}
+                alt={aboutPage.heroImageAlt}
                 className="w-full aspect-[5/4] object-cover"
               />
             </div>
@@ -65,32 +52,15 @@ export function AboutPage() {
                 className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.35rem)] leading-[1.06] mb-5"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Reliability, consistency, and service since 2010
+                {aboutPage.storyTitle}
               </h2>
               <div
                 className="space-y-4 premium-copy text-[14px] leading-[1.85] mb-8"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
-                <p>
-                  The group was established in 2010 as a joint venture between the largest privately owned coconut shell
-                  activated carbon manufacturer in South India and highly experienced activated carbon entrepreneurs
-                  with more than 50 years of combined field experience.
-                </p>
-                <p>
-                  Over the years, Black Opal Carbons has become one of the most recognized brands in the activated
-                  carbon industry, with a reputation built on quality, innovation, service, and reliability.
-                </p>
-                <p>
-                  Company-owned and operated manufacturing facilities give the group direct control over raw material
-                  selection, activation, processing, and final quality assurance. That operating model supports higher
-                  standards, dependable supply, and consistent product performance.
-                </p>
-                <p>
-                  The state-of-the-art factory in South India has an annual production capacity of 35000 metric tons of
-                  coconut activated carbon for export markets. The team is committed to value-added products and
-                  services, open communication, and customer support focused on satisfaction 24 hours a day, 7 days a
-                  week.
-                </p>
+                {aboutPage.storyParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
               </div>
 
               <div className="border-y border-[#c9a24d]/10 py-5 mb-8">
@@ -98,10 +68,10 @@ export function AboutPage() {
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Office network
+                  {aboutPage.officeNetworkLabel}
                 </span>
                 <div className="grid gap-3 lg:grid-cols-3">
-                  {companyDetails.officeNetwork.map((office) => (
+                  {siteSettings.officeNetwork.map((office) => (
                     <address
                       key={`${office.label}-${office.name}`}
                       className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
@@ -133,7 +103,7 @@ export function AboutPage() {
               </div>
 
               <div className="premium-compact-grid">
-                {siteMetrics.map((metric) => (
+                {aboutPage.metrics.map((metric) => (
                   <div key={metric.label}>
                     <span
                       className="text-[#e6cb87] text-[clamp(1.25rem,2vw,1.8rem)] block mb-1"
@@ -158,14 +128,17 @@ export function AboutPage() {
       <section className="py-10 md:py-12">
         <div className="premium-shell">
           <div className="premium-auto-grid">
-            {aboutCards.map((card, index) => (
+            {aboutPage.cards.map((card, index) => {
+              const Icon = icons[card.icon] ?? Factory;
+
+              return (
               <div
                 key={card.title}
                 className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
                 style={{ animationDelay: `${120 + index * 90}ms` }}
               >
                 <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center mb-4">
-                  <card.icon size={18} className="text-[#e6cb87]" />
+                  <Icon size={18} className="text-[#e6cb87]" />
                 </div>
                 <h3
                   className="premium-card-heading text-[16px] md:text-[17px] mb-2"
@@ -180,7 +153,8 @@ export function AboutPage() {
                   {card.desc}
                 </p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -193,7 +167,7 @@ export function AboutPage() {
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Brand update
+                {aboutPage.brandUpdateLabel}
               </span>
               <h2
                 className="premium-heading text-[1.6rem] mb-3"
@@ -213,14 +187,14 @@ export function AboutPage() {
                   className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Brand transition
+                  {aboutPage.brandTransitionCtaLabel}
                 </Link>
                 <Link
                   href="/production"
                   className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Production capability
+                  {aboutPage.productionCapabilityCtaLabel}
                 </Link>
               </div>
             </div>

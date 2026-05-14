@@ -6,15 +6,16 @@ import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
 export function ProductsPage() {
-  const { products } = useSiteContent();
+  const { pageCopy, products } = useSiteContent();
+  const copy = pageCopy.productsPage;
 
   return (
     <div>
       <PageIntro
-        label="Products"
-        title="Coconut shell activated carbon product families"
-        description="Granular, powder, impregnated, and catalytic grades cover fixed-bed filtration, fast-response dosing, targeted gas treatment, chloramine reduction, and specialty process duties."
-        breadcrumbs={[{ label: 'Products' }]}
+        label={copy.intro.label}
+        title={copy.intro.title}
+        description={copy.intro.description}
+        breadcrumbs={[{ label: copy.intro.breadcrumbLabel }]}
       />
 
       <section className="pb-10 md:pb-12">
@@ -59,7 +60,7 @@ export function ProductsPage() {
                         className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
-                        Highlights
+                        {copy.highlightsLabel}
                       </span>
                       <div className="space-y-2">
                         {product.highlights.map((highlight) => (
@@ -80,7 +81,7 @@ export function ProductsPage() {
                         className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
-                        Common uses
+                        {copy.commonUsesLabel}
                       </span>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {product.commonUses.map((use) => (
@@ -100,7 +101,7 @@ export function ProductsPage() {
                             className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                           >
-                            Referenced grades
+                            {copy.referencedGradesLabel}
                           </span>
                           <div className="flex flex-wrap gap-2">
                             {product.grades.map((grade) => (
@@ -124,7 +125,7 @@ export function ProductsPage() {
                       className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
-                      Product details
+                      {copy.detailCtaLabel}
                       <ArrowRight size={14} />
                     </Link>
                     <Link
@@ -132,7 +133,7 @@ export function ProductsPage() {
                       className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
-                      Request quote
+                      {copy.quoteCtaLabel}
                     </Link>
                   </div>
                 </div>

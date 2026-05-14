@@ -2,11 +2,11 @@
 
 import { Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
-import { companyDetails } from '../content/siteContent';
-import { siteConfig } from '../config/siteConfig';
+import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
 export function ContactPage() {
+  const { contactPage, siteSettings } = useSiteContent();
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -19,10 +19,10 @@ export function ContactPage() {
   return (
     <div>
       <PageIntro
-        label="Contact"
-        title={siteConfig.contactTitle}
-        description={siteConfig.contactDescription}
-        breadcrumbs={[{ label: 'Contact' }]}
+        label={contactPage.intro.label}
+        title={contactPage.intro.title}
+        description={contactPage.intro.description}
+        breadcrumbs={[{ label: contactPage.intro.breadcrumbLabel }]}
       />
 
       <section className="pb-12 md:pb-14">
@@ -34,10 +34,10 @@ export function ContactPage() {
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  {siteConfig.additionalOfficesTitle}
+                  {contactPage.officesTitle}
                 </span>
                 <div className="grid gap-3">
-                  {companyDetails.officeNetwork.map((office) => (
+                  {siteSettings.officeNetwork.map((office) => (
                     <address
                       key={`${office.label}-${office.name}`}
                       className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
@@ -98,14 +98,13 @@ export function ContactPage() {
                     className="premium-heading text-[18px] mb-2"
                     style={{ fontFamily: "'DM Serif Display', serif" }}
                   >
-                    Thank you for your enquiry
+                    {contactPage.successTitle}
                   </h3>
                   <p
                     className="premium-copy text-[14px]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
-                    Thank you for your enquiry. The Black Opal team will review the details and respond with the next
-                    step.
+                    {contactPage.successMessage}
                   </p>
                 </div>
               ) : (
@@ -116,57 +115,54 @@ export function ContactPage() {
                 >
                   <div className="premium-form-grid">
                     <div>
-                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">First Name *</label>
-                      <input type="text" required className={inputClass} placeholder="First name" />
+                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">{contactPage.firstNameLabel}</label>
+                      <input type="text" required className={inputClass} placeholder={contactPage.firstNamePlaceholder} />
                     </div>
                     <div>
-                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">Last Name *</label>
-                      <input type="text" required className={inputClass} placeholder="Last name" />
-                    </div>
-                  </div>
-
-                  <div className="premium-form-grid">
-                    <div>
-                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">Email *</label>
-                      <input type="email" required className={inputClass} placeholder="you@company.com" />
-                    </div>
-                    <div>
-                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">Company *</label>
-                      <input type="text" required className={inputClass} placeholder="Company name" />
+                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">{contactPage.lastNameLabel}</label>
+                      <input type="text" required className={inputClass} placeholder={contactPage.lastNamePlaceholder} />
                     </div>
                   </div>
 
                   <div className="premium-form-grid">
                     <div>
-                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">Phone</label>
-                      <input type="tel" className={inputClass} placeholder={companyDetails.phoneDisplay} />
+                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">{contactPage.emailLabel}</label>
+                      <input type="email" required className={inputClass} placeholder={contactPage.emailPlaceholder} />
                     </div>
                     <div>
-                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">Subject *</label>
-                      <input type="text" required className={inputClass} placeholder="Quote request, enquiry, technical support" />
+                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">{contactPage.companyLabel}</label>
+                      <input type="text" required className={inputClass} placeholder={contactPage.companyPlaceholder} />
+                    </div>
+                  </div>
+
+                  <div className="premium-form-grid">
+                    <div>
+                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">{contactPage.phoneLabel}</label>
+                      <input type="tel" className={inputClass} placeholder={siteSettings.websiteContact.phone} />
+                    </div>
+                    <div>
+                      <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">{contactPage.subjectLabel}</label>
+                      <input type="text" required className={inputClass} placeholder={contactPage.subjectPlaceholder} />
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">Application / Use Case *</label>
+                    <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">{contactPage.applicationLabel}</label>
                     <select required className={`${inputClass} appearance-none`}>
-                      <option value="">Select application</option>
-                      <option>Water Treatment</option>
-                      <option>Gold Recovery</option>
-                      <option>Air &amp; Gas</option>
-                      <option>Oil &amp; Gas</option>
-                      <option>Catalytic / Chloramine Removal</option>
-                      <option>Other Applications</option>
+                      <option value="">{contactPage.applicationPlaceholder}</option>
+                      {contactPage.applicationOptions.map((option) => (
+                        <option key={option}>{option}</option>
+                      ))}
                     </select>
                   </div>
 
                   <div>
-                    <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">Message *</label>
+                    <label className="text-[12px] text-[#b8ab8b] mb-1.5 block">{contactPage.messageLabel}</label>
                     <textarea
                       rows={5}
                       required
                       className={`${inputClass} resize-none`}
-                      placeholder="Tell Black Opal what product family, application, volume, and performance target you need."
+                      placeholder={contactPage.messagePlaceholder}
                     />
                   </div>
 
@@ -175,7 +171,7 @@ export function ContactPage() {
                     className="premium-primary-btn text-[13px] px-10 py-3 rounded-full"
                     style={{ fontWeight: 500 }}
                   >
-                    Send enquiry
+                    {contactPage.submitLabel}
                   </button>
                 </form>
               )}

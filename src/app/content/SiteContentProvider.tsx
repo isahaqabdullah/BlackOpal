@@ -6,7 +6,17 @@ import {
   mapBySlug,
   type ContentInput,
 } from './siteContentResolver';
-import type { ApplicationEntry, HomePageContent, NewsroomItem, ProductEntry, ProductionPageContent } from './siteContent';
+import type {
+  AboutPageContent,
+  ApplicationEntry,
+  ContactPageContent,
+  HomePageContent,
+  NewsroomItem,
+  PageCopyContent,
+  ProductEntry,
+  ProductionPageContent,
+  SiteSettingsContent,
+} from './siteContent';
 
 export type ContentStatus = 'loading' | 'ready' | 'error';
 export type ContentSource = 'static' | 'sanity' | 'sanity-preview';
@@ -14,6 +24,10 @@ export type ContentSource = 'static' | 'sanity' | 'sanity-preview';
 export type SiteContent = {
   homePage: HomePageContent;
   productionPage: ProductionPageContent;
+  siteSettings: SiteSettingsContent;
+  pageCopy: PageCopyContent;
+  aboutPage: AboutPageContent;
+  contactPage: ContactPageContent;
   products: ProductEntry[];
   applications: ApplicationEntry[];
   newsroomItems: NewsroomItem[];
