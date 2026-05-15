@@ -18,11 +18,11 @@ type Headquarters = {
   countryCode: string;
 };
 
-const DEFAULT_SITE_URL = 'https://black-opal-middle-east.vercel.app';
-const DEFAULT_SITE_NAME = 'Black Opal Carbons';
+const DEFAULT_SITE_URL = 'https://black-opal-india.vercel.app';
+const DEFAULT_SITE_NAME = 'Black Opal Private Limited';
 const GROUP_HEADQUARTERS_LABEL = 'Black Opal Group Head Quarters';
 const DEFAULT_DESCRIPTION =
-  'Black Opal Carbons supplies coconut shell activated carbon manufactured and exported from India and the Middle East for water treatment, gold recovery, air and gas purification, and industrial buyers.';
+  'Black Opal Private Limited manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas purification, and industrial buyers across Europe, the Middle East, and Asia.';
 const runtimeEnv: Record<string, string | undefined> = {
   SITE_ID: process.env.NEXT_PUBLIC_SITE_ID,
   SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
@@ -175,32 +175,39 @@ function parseOffices(value: string | undefined): Office[] | undefined {
 
 const siteName = envValue('SITE_NAME', DEFAULT_SITE_NAME);
 const siteUrl = envValue('SITE_URL', DEFAULT_SITE_URL).replace(/\/+$/, '');
-const siteId = envValue('SITE_ID', 'black-opal-middle-east');
-const regionLabel = envValue('REGION_LABEL', 'Middle East');
-const serviceArea = envValue('SERVICE_AREA', 'Middle East, Europe, Asia');
-const marketName = envValue('MARKET_NAME', 'Middle East, Europe and Asia');
+const siteId = envValue('SITE_ID', 'black-opal-india');
+const regionLabel = envValue('REGION_LABEL', 'India');
+const serviceArea = envValue('SERVICE_AREA', 'Europe, Middle East, Asia');
+const marketName = envValue('MARKET_NAME', 'Europe, Middle East and Asia');
 const utilityMarketLabel = envValue('UTILITY_MARKET_LABEL', regionLabel);
-const originStatement = envValue('ORIGIN_STATEMENT', 'Manufactured and exported from India and the Middle East');
+const originStatement = envValue('ORIGIN_STATEMENT', 'Manufactured and exported from India');
 const originDescription = envValue(
   'ORIGIN_DESCRIPTION',
-  'coconut shell activated carbon manufactured and exported from India and the Middle East',
+  'coconut shell activated carbon manufactured and exported from India',
 );
 
 const headquarters: Headquarters = {
   name: envValue('HEADQUARTERS_NAME', siteName),
-  line1: envValue('ADDRESS_LINE_1', 'Smart Station, 1st Floor, Incubator Bldg. I Masdar City'),
-  line2: envValue('ADDRESS_LINE_2', 'Abu Dhabi, UAE'),
-  locality: envValue('ADDRESS_LOCALITY', 'Abu Dhabi'),
-  region: envValue('ADDRESS_REGION', 'Abu Dhabi'),
-  postalCode: envValue('POSTAL_CODE', '00000'),
-  country: envValue('ADDRESS_COUNTRY', 'United Arab Emirates'),
-  countryCode: envValue('ADDRESS_COUNTRY_CODE', 'AE'),
+  line1: envValue('ADDRESS_LINE_1', 'XV/100, Nr. DYSP office'),
+  line2: envValue('ADDRESS_LINE_2', 'Kalathil Road, Aluva, Kerala, India'),
+  locality: envValue('ADDRESS_LOCALITY', 'Aluva'),
+  region: envValue('ADDRESS_REGION', 'Kerala'),
+  postalCode: envValue('POSTAL_CODE', '683101'),
+  country: envValue('ADDRESS_COUNTRY', 'India'),
+  countryCode: envValue('ADDRESS_COUNTRY_CODE', 'IN'),
 };
 
-const phoneDisplay = envValue('PHONE_DISPLAY', '+971 50 240 4708');
+const phoneDisplay = envValue('PHONE_DISPLAY', '+91 9995994799');
 const fax = optionalEnvValue('FAX');
-const infoEmail = envValue('INFO_EMAIL', 'info@blackopalcarbonsme.com');
-const salesEmail = envValue('SALES_EMAIL', 'info@blackopalcarbonsme.com');
+const infoEmail = envValue('INFO_EMAIL', 'info@blackopal.co.in');
+const salesEmail = envValue('SALES_EMAIL', 'info@blackopal.co.in');
+const groupHeadquartersOffice: Office = {
+  label: GROUP_HEADQUARTERS_LABEL,
+  name: 'Black Opal Carbons',
+  address: ['651 Holiday Dr, STE 400', 'Pittsburgh, PA 15220, USA'],
+  phone: '+1 (412) 928-4970',
+  email: 'info@blackopalcarbons.com',
+};
 const defaultAdditionalOffices: Office[] = [
   {
     label: 'India office',
@@ -218,6 +225,7 @@ const defaultAdditionalOffices: Office[] = [
     email: 'info@blackopalcarbonsme.com',
     note: 'Regional office for Middle East customer coordination.',
   },
+  groupHeadquartersOffice,
 ];
 const additionalOffices = parseOffices(runtimeEnv.ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices;
 const defaultLogisticsSummary =
@@ -237,23 +245,19 @@ const normalizedRegion = regionLabel.toLowerCase().replace(/[^a-z0-9]/g, '');
 const regionalContact = additionalOffices.find((office) =>
   office.label.toLowerCase().replace(/[^a-z0-9]/g, '').includes(normalizedRegion),
 );
-const websiteContact: Office = regionalContact ?? {
+const configuredContact: Office = {
   label: headquartersLabel,
   name: headquarters.name,
   address: [headquarters.line1, headquarters.line2],
   phone: phoneDisplay,
   email: infoEmail,
 };
+const websiteContact: Office = regionalContact ?? configuredContact;
 const officeNetwork = orderOfficeNetwork(
   dedupeOffices([
+    configuredContact,
     ...additionalOffices,
-    {
-      label: headquartersLabel,
-      name: headquarters.name,
-      address: [headquarters.line1, headquarters.line2],
-      phone: phoneDisplay,
-      email: infoEmail,
-    },
+    groupHeadquartersOffice,
   ]),
   siteId,
 );
@@ -278,7 +282,7 @@ export const siteConfig = {
   originDescription,
   heroLocationProof: envValue(
     'HERO_LOCATION_PROOF',
-    'India Manufacturing + Middle East Export',
+    'India Manufacturing + Export Support',
   ),
   companyEyebrow: envValue('COMPANY_EYEBROW', 'Our Company'),
   companyTitle: envValue('COMPANY_TITLE', 'Controlled from coconut shell selection to final shipment'),

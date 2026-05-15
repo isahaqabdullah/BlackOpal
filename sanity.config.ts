@@ -11,7 +11,7 @@ const projectId =
 const dataset =
   process.env.SANITY_STUDIO_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 const studioSiteId =
-  process.env.SANITY_STUDIO_SITE_ID || process.env.NEXT_PUBLIC_SITE_ID || 'black-opal-middle-east';
+  process.env.SANITY_STUDIO_SITE_ID || process.env.NEXT_PUBLIC_SITE_ID || 'black-opal-india';
 const previewOrigin =
   process.env.SANITY_STUDIO_PREVIEW_ORIGIN || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const studioSiteIdLiteral = JSON.stringify(studioSiteId);
