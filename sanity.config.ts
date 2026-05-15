@@ -1,6 +1,6 @@
 import { defineConfig } from 'sanity';
 import { presentationTool } from 'sanity/presentation';
-import { structureTool } from 'sanity/structure';
+import { structureTool, type StructureResolver } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './sanity/schemaTypes';
 
@@ -15,6 +15,7 @@ const studioSiteId =
 const previewOrigin =
   process.env.SANITY_STUDIO_PREVIEW_ORIGIN || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const studioSiteIdLiteral = JSON.stringify(studioSiteId);
+const studioSiteLabel = studioSiteId === 'black-opal-middle-east' ? 'Middle East' : 'India';
 
 function originFor(value: string | undefined) {
   if (!value) {
@@ -37,11 +38,50 @@ const allowOrigins = Array.from(
     [
       originFor(previewOrigin),
       originFor(process.env.NEXT_PUBLIC_SITE_URL),
+      'https://black-opal-india.vercel.app',
+      'https://black-opal-middle-east.vercel.app',
       'http://localhost:3000',
       'http://127.0.0.1:3000',
     ].filter((origin): origin is string => Boolean(origin)),
   ),
 );
+
+const structure: StructureResolver = (S) => {
+  const singletonDocument = (schemaType: string, title: string, documentId: string) =>
+    S.listItem()
+      .title(title)
+      .schemaType(schemaType)
+      .child(S.document().schemaType(schemaType).documentId(documentId).title(title));
+
+  return S.list()
+    .title('Content')
+    .items([
+      S.listItem()
+        .title(`Site-specific: ${studioSiteLabel}`)
+        .child(
+          S.list()
+            .title(`Site-specific: ${studioSiteLabel}`)
+            .items([
+              singletonDocument('homePage', `Home Page - ${studioSiteLabel}`, `homePage-${studioSiteId}`),
+              singletonDocument('aboutPage', `About Page - ${studioSiteLabel}`, `aboutPage-${studioSiteId}`),
+              singletonDocument('siteSettings', `Page Intro Labels - ${studioSiteLabel}`, `siteSettings-${studioSiteId}`),
+            ]),
+        ),
+      S.listItem()
+        .title('Shared page copy')
+        .child(
+          S.list()
+            .title('Shared page copy')
+            .items([
+              singletonDocument('pageCopy', 'Products, Applications, and Newsroom Copy', 'pageCopy'),
+              singletonDocument('productionPage', 'Production Page', 'productionPage'),
+            ]),
+        ),
+      S.documentTypeListItem('product').title('Products'),
+      S.documentTypeListItem('application').title('Applications'),
+      S.documentTypeListItem('newsroomItem').title('Newsroom Items'),
+    ]);
+};
 
 export default defineConfig({
   name: 'black-opal-cms',
@@ -49,7 +89,7 @@ export default defineConfig({
   projectId,
   dataset,
   plugins: [
-    structureTool(),
+    structureTool({ structure }),
     presentationTool({
       title: 'Visual Editor',
       previewUrl: {
