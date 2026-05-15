@@ -5,7 +5,6 @@ import Link from 'next/link';
 import {
   useAboutPageDataAttribute,
   useSanityDataAttribute,
-  useSiteSettingsDataAttribute,
 } from '../cms/visualEditingAttributes';
 import type { FeatureIconName } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
@@ -27,7 +26,6 @@ export function AboutPage() {
   const { aboutPage, newsroomMap, siteSettings } = useSiteContent();
   const pressRelease = newsroomMap['name-change-press-release'];
   const aboutPageDataAttribute = useAboutPageDataAttribute(aboutPage._id);
-  const siteSettingsDataAttribute = useSiteSettingsDataAttribute(siteSettings._id);
   const sanityDataAttribute = useSanityDataAttribute();
 
   return (
@@ -93,33 +91,26 @@ export function AboutPage() {
                   {aboutPage.officeNetworkLabel}
                 </span>
                 <div className="grid gap-3 lg:grid-cols-3">
-                  {siteSettings.officeNetwork.map((office, index) => {
-                    const officePath = office._key ? `officeNetwork[_key=="${office._key}"]` : `officeNetwork[${index}]`;
-
-                    return (
+                  {siteSettings.officeNetwork.map((office) => (
                     <address
                       key={`${office.label}-${office.name}`}
-                      data-sanity-edit-target
                       className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
                     >
                       <span
-                        data-sanity={siteSettingsDataAttribute(`${officePath}.label`)}
                         className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
                         {office.label}
                       </span>
                       <h3
-                        data-sanity={siteSettingsDataAttribute(`${officePath}.name`)}
                         className="premium-card-heading text-[14px] mb-1"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
                       >
                         {office.name}
                       </h3>
-                      {office.address.map((line, lineIndex) => (
+                      {office.address.map((line) => (
                         <p
                           key={`${office.label}-${line}`}
-                          data-sanity={siteSettingsDataAttribute(`${officePath}.address[${lineIndex}]`)}
                           className="premium-copy text-[12px] leading-[1.65]"
                           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                         >
@@ -127,8 +118,7 @@ export function AboutPage() {
                         </p>
                       ))}
                     </address>
-                    );
-                  })}
+                  ))}
                 </div>
               </div>
 

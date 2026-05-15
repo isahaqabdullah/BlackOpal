@@ -9,7 +9,6 @@ export const CMS_DOCUMENT_TYPES = [
   'pageCopy',
   'aboutPage',
   'productionPage',
-  'contactPage',
   'product',
   'application',
   'newsroomItem',
@@ -75,9 +74,7 @@ export const cmsDocumentsProjection = `{
       breadcrumbAriaLabel,
       homeLabel,
       homePath
-    },
-    websiteContact,
-    officeNetwork
+    }
   },
   _type == "pageCopy" => {
     productsPage {
@@ -177,30 +174,6 @@ export const cmsDocumentsProjection = `{
     contactTextBeforeEmail,
     contactTextAfterEmail
   },
-  _type == "contactPage" => {
-    siteId,
-    seo,
-    intro,
-    officesTitle,
-    successTitle,
-    successMessage,
-    firstNameLabel,
-    firstNamePlaceholder,
-    lastNameLabel,
-    lastNamePlaceholder,
-    emailLabel,
-    emailPlaceholder,
-    companyLabel,
-    companyPlaceholder,
-    phoneLabel,
-    subjectLabel,
-    subjectPlaceholder,
-    applicationLabel,
-    applicationPlaceholder,
-    applicationOptions,
-    messageLabel,
-    messagePlaceholder
-  },
   _type == "product" => {
     seo,
     sortOrder,
@@ -286,9 +259,9 @@ export function readSanityEnv() {
 
 export function readSanityConfig() {
   const env = readSanityEnv();
-  const projectId = env.SANITY_STUDIO_PROJECT_ID || env.NEXT_PUBLIC_SANITY_PROJECT_ID || env.VITE_SANITY_PROJECT_ID;
-  const dataset = env.SANITY_STUDIO_DATASET || env.NEXT_PUBLIC_SANITY_DATASET || env.VITE_SANITY_DATASET || 'production';
-  const apiVersion = env.NEXT_PUBLIC_SANITY_API_VERSION || env.VITE_SANITY_API_VERSION || env.SANITY_API_VERSION || '2026-04-15';
+  const projectId = env.SANITY_STUDIO_PROJECT_ID || env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+  const dataset = env.SANITY_STUDIO_DATASET || env.NEXT_PUBLIC_SANITY_DATASET || 'production';
+  const apiVersion = env.NEXT_PUBLIC_SANITY_API_VERSION || env.SANITY_API_VERSION || '2026-04-15';
   const readToken = env.SANITY_API_READ_TOKEN || env.SANITY_API_TOKEN;
   const writeToken = env.SANITY_API_WRITE_TOKEN || env.SANITY_API_TOKEN;
 

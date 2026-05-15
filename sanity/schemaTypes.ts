@@ -29,20 +29,6 @@ export const labelValueEntry = {
   ],
 };
 
-export const officeEntry = {
-  name: 'officeEntry',
-  title: 'Office',
-  type: 'object',
-  fields: [
-    { name: 'label', title: 'Label', type: 'string', validation: (Rule: any) => Rule.required() },
-    { name: 'name', title: 'Name', type: 'string', validation: (Rule: any) => Rule.required() },
-    { name: 'address', title: 'Address Lines', type: 'array', of: [{ type: 'string' }] },
-    { name: 'phone', title: 'Phone', type: 'string' },
-    { name: 'email', title: 'Email', type: 'string' },
-    { name: 'note', title: 'Note', type: 'text', rows: 2 },
-  ],
-};
-
 export const featureCardEntry = {
   name: 'featureCardEntry',
   title: 'Feature Card',
@@ -528,8 +514,6 @@ export const siteSettings = {
         { name: 'homePath', title: 'Breadcrumb Home Path', type: 'string' },
       ],
     },
-    { name: 'websiteContact', title: 'Primary Website Contact', type: 'officeEntry' },
-    { name: 'officeNetwork', title: 'Office Network', type: 'array', of: [{ type: 'officeEntry' }] },
   ],
   preview: {
     select: { siteId: 'siteId' },
@@ -679,47 +663,10 @@ export const aboutPage = {
   },
 };
 
-export const contactPage = {
-  name: 'contactPage',
-  title: 'Contact Page',
-  type: 'document',
-  fields: [
-    siteIdField(),
-    { name: 'seo', title: 'SEO', type: 'seoFields' },
-    { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
-    { name: 'officesTitle', title: 'Offices Title', type: 'string' },
-    { name: 'successTitle', title: 'Success Title', type: 'string' },
-    { name: 'successMessage', title: 'Success Message', type: 'text', rows: 3 },
-    { name: 'firstNameLabel', title: 'First Name Label', type: 'string' },
-    { name: 'firstNamePlaceholder', title: 'First Name Placeholder', type: 'string' },
-    { name: 'lastNameLabel', title: 'Last Name Label', type: 'string' },
-    { name: 'lastNamePlaceholder', title: 'Last Name Placeholder', type: 'string' },
-    { name: 'emailLabel', title: 'Email Label', type: 'string' },
-    { name: 'emailPlaceholder', title: 'Email Placeholder', type: 'string' },
-    { name: 'companyLabel', title: 'Company Label', type: 'string' },
-    { name: 'companyPlaceholder', title: 'Company Placeholder', type: 'string' },
-    { name: 'phoneLabel', title: 'Phone Label', type: 'string' },
-    { name: 'subjectLabel', title: 'Subject Label', type: 'string' },
-    { name: 'subjectPlaceholder', title: 'Subject Placeholder', type: 'string' },
-    { name: 'applicationLabel', title: 'Application Label', type: 'string' },
-    { name: 'applicationPlaceholder', title: 'Application Placeholder', type: 'string' },
-    { name: 'applicationOptions', title: 'Application Options', type: 'array', of: [{ type: 'string' }] },
-    { name: 'messageLabel', title: 'Message Label', type: 'string' },
-    { name: 'messagePlaceholder', title: 'Message Placeholder', type: 'text', rows: 2 },
-  ],
-  preview: {
-    select: { siteId: 'siteId' },
-    prepare: ({ siteId }: { siteId?: string }) => ({
-      title: siteId === 'black-opal-middle-east' ? 'Contact Page - Middle East' : 'Contact Page - India',
-    }),
-  },
-};
-
 export const schemaTypes = [
   contentSection,
   linkEntry,
   labelValueEntry,
-  officeEntry,
   featureCardEntry,
   pageIntro,
   featuredCapabilityEntry,
@@ -730,7 +677,6 @@ export const schemaTypes = [
   pageCopy,
   aboutPage,
   productionPage,
-  contactPage,
   product,
   application,
   newsroomItem,

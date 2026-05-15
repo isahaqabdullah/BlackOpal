@@ -18,61 +18,61 @@ type Headquarters = {
   countryCode: string;
 };
 
-const DEFAULT_SITE_URL = 'https://black-opal-india.vercel.app';
+const DEFAULT_SITE_URL = 'https://black-opal-middle-east.vercel.app';
 const DEFAULT_SITE_NAME = 'Black Opal Carbons';
 const GROUP_HEADQUARTERS_LABEL = 'Black Opal Group Head Quarters';
 const DEFAULT_DESCRIPTION =
-  'Black Opal Carbons supplies coconut shell activated carbon manufactured and exported from India for water treatment, gold recovery, air and gas purification, oil and gas, and industrial applications.';
+  'Black Opal Carbons supplies coconut shell activated carbon manufactured and exported from India and the Middle East for water treatment, gold recovery, air and gas purification, and industrial buyers.';
 const runtimeEnv: Record<string, string | undefined> = {
-  VITE_SITE_ID: process.env.NEXT_PUBLIC_SITE_ID ?? process.env.VITE_SITE_ID,
-  VITE_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL ?? process.env.VITE_SITE_URL,
-  VITE_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME ?? process.env.VITE_SITE_NAME,
-  VITE_HOME_TITLE: process.env.NEXT_PUBLIC_HOME_TITLE ?? process.env.VITE_HOME_TITLE,
-  VITE_SITE_DESCRIPTION: process.env.NEXT_PUBLIC_SITE_DESCRIPTION ?? process.env.VITE_SITE_DESCRIPTION,
-  VITE_ORIGIN_STATEMENT: process.env.NEXT_PUBLIC_ORIGIN_STATEMENT ?? process.env.VITE_ORIGIN_STATEMENT,
-  VITE_ORIGIN_DESCRIPTION: process.env.NEXT_PUBLIC_ORIGIN_DESCRIPTION ?? process.env.VITE_ORIGIN_DESCRIPTION,
-  VITE_HERO_KICKER: process.env.NEXT_PUBLIC_HERO_KICKER ?? process.env.VITE_HERO_KICKER,
-  VITE_HERO_TITLE: process.env.NEXT_PUBLIC_HERO_TITLE ?? process.env.VITE_HERO_TITLE,
-  VITE_HERO_DESCRIPTION: process.env.NEXT_PUBLIC_HERO_DESCRIPTION ?? process.env.VITE_HERO_DESCRIPTION,
-  VITE_HERO_LOCATION_PROOF: process.env.NEXT_PUBLIC_HERO_LOCATION_PROOF ?? process.env.VITE_HERO_LOCATION_PROOF,
-  VITE_REGION_LABEL: process.env.NEXT_PUBLIC_REGION_LABEL ?? process.env.VITE_REGION_LABEL,
-  VITE_SERVICE_AREA: process.env.NEXT_PUBLIC_SERVICE_AREA ?? process.env.VITE_SERVICE_AREA,
-  VITE_MARKET_NAME: process.env.NEXT_PUBLIC_MARKET_NAME ?? process.env.VITE_MARKET_NAME,
-  VITE_UTILITY_MARKET_LABEL: process.env.NEXT_PUBLIC_UTILITY_MARKET_LABEL ?? process.env.VITE_UTILITY_MARKET_LABEL,
-  VITE_HEADQUARTERS_NAME: process.env.NEXT_PUBLIC_HEADQUARTERS_NAME ?? process.env.VITE_HEADQUARTERS_NAME,
-  VITE_HEADQUARTERS_LABEL: process.env.NEXT_PUBLIC_HEADQUARTERS_LABEL ?? process.env.VITE_HEADQUARTERS_LABEL,
-  VITE_HEADQUARTERS_DESCRIPTOR:
-    process.env.NEXT_PUBLIC_HEADQUARTERS_DESCRIPTOR ?? process.env.VITE_HEADQUARTERS_DESCRIPTOR,
-  VITE_ADDRESS_LINE_1: process.env.NEXT_PUBLIC_ADDRESS_LINE_1 ?? process.env.VITE_ADDRESS_LINE_1,
-  VITE_ADDRESS_LINE_2: process.env.NEXT_PUBLIC_ADDRESS_LINE_2 ?? process.env.VITE_ADDRESS_LINE_2,
-  VITE_ADDRESS_LOCALITY: process.env.NEXT_PUBLIC_ADDRESS_LOCALITY ?? process.env.VITE_ADDRESS_LOCALITY,
-  VITE_ADDRESS_REGION: process.env.NEXT_PUBLIC_ADDRESS_REGION ?? process.env.VITE_ADDRESS_REGION,
-  VITE_POSTAL_CODE: process.env.NEXT_PUBLIC_POSTAL_CODE ?? process.env.VITE_POSTAL_CODE,
-  VITE_ADDRESS_COUNTRY: process.env.NEXT_PUBLIC_ADDRESS_COUNTRY ?? process.env.VITE_ADDRESS_COUNTRY,
-  VITE_ADDRESS_COUNTRY_CODE: process.env.NEXT_PUBLIC_ADDRESS_COUNTRY_CODE ?? process.env.VITE_ADDRESS_COUNTRY_CODE,
-  VITE_PHONE_DISPLAY: process.env.NEXT_PUBLIC_PHONE_DISPLAY ?? process.env.VITE_PHONE_DISPLAY,
-  VITE_PHONE_HREF: process.env.NEXT_PUBLIC_PHONE_HREF ?? process.env.VITE_PHONE_HREF,
-  VITE_FAX: process.env.NEXT_PUBLIC_FAX ?? process.env.VITE_FAX,
-  VITE_INFO_EMAIL: process.env.NEXT_PUBLIC_INFO_EMAIL ?? process.env.VITE_INFO_EMAIL,
-  VITE_SALES_EMAIL: process.env.NEXT_PUBLIC_SALES_EMAIL ?? process.env.VITE_SALES_EMAIL,
-  VITE_MARKET_BASE_TITLE: process.env.NEXT_PUBLIC_MARKET_BASE_TITLE ?? process.env.VITE_MARKET_BASE_TITLE,
-  VITE_MARKET_BASE_DESCRIPTION:
-    process.env.NEXT_PUBLIC_MARKET_BASE_DESCRIPTION ?? process.env.VITE_MARKET_BASE_DESCRIPTION,
-  VITE_COMPANY_EYEBROW: process.env.NEXT_PUBLIC_COMPANY_EYEBROW ?? process.env.VITE_COMPANY_EYEBROW,
-  VITE_COMPANY_TITLE: process.env.NEXT_PUBLIC_COMPANY_TITLE ?? process.env.VITE_COMPANY_TITLE,
-  VITE_COMPANY_BODY_PRIMARY: process.env.NEXT_PUBLIC_COMPANY_BODY_PRIMARY ?? process.env.VITE_COMPANY_BODY_PRIMARY,
-  VITE_COMPANY_BODY_SECONDARY:
-    process.env.NEXT_PUBLIC_COMPANY_BODY_SECONDARY ?? process.env.VITE_COMPANY_BODY_SECONDARY,
-  VITE_CONTACT_TITLE: process.env.NEXT_PUBLIC_CONTACT_TITLE ?? process.env.VITE_CONTACT_TITLE,
-  VITE_CONTACT_DESCRIPTION: process.env.NEXT_PUBLIC_CONTACT_DESCRIPTION ?? process.env.VITE_CONTACT_DESCRIPTION,
-  VITE_ADDITIONAL_OFFICES_TITLE:
-    process.env.NEXT_PUBLIC_ADDITIONAL_OFFICES_TITLE ?? process.env.VITE_ADDITIONAL_OFFICES_TITLE,
-  VITE_LOGISTICS_SUMMARY: process.env.NEXT_PUBLIC_LOGISTICS_SUMMARY ?? process.env.VITE_LOGISTICS_SUMMARY,
-  VITE_PRODUCTION_CENTER_COUNT:
-    process.env.NEXT_PUBLIC_PRODUCTION_CENTER_COUNT ?? process.env.VITE_PRODUCTION_CENTER_COUNT,
-  VITE_ADDITIONAL_OFFICES_JSON:
-    process.env.NEXT_PUBLIC_ADDITIONAL_OFFICES_JSON ?? process.env.VITE_ADDITIONAL_OFFICES_JSON,
-  VITE_LEGACY_NAME: process.env.NEXT_PUBLIC_LEGACY_NAME ?? process.env.VITE_LEGACY_NAME,
+  SITE_ID: process.env.NEXT_PUBLIC_SITE_ID,
+  SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME,
+  HOME_TITLE: process.env.NEXT_PUBLIC_HOME_TITLE,
+  SITE_DESCRIPTION: process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
+  ORIGIN_STATEMENT: process.env.NEXT_PUBLIC_ORIGIN_STATEMENT,
+  ORIGIN_DESCRIPTION: process.env.NEXT_PUBLIC_ORIGIN_DESCRIPTION,
+  HERO_KICKER: process.env.NEXT_PUBLIC_HERO_KICKER,
+  HERO_TITLE: process.env.NEXT_PUBLIC_HERO_TITLE,
+  HERO_DESCRIPTION: process.env.NEXT_PUBLIC_HERO_DESCRIPTION,
+  HERO_LOCATION_PROOF: process.env.NEXT_PUBLIC_HERO_LOCATION_PROOF,
+  REGION_LABEL: process.env.NEXT_PUBLIC_REGION_LABEL,
+  SERVICE_AREA: process.env.NEXT_PUBLIC_SERVICE_AREA,
+  MARKET_NAME: process.env.NEXT_PUBLIC_MARKET_NAME,
+  UTILITY_MARKET_LABEL: process.env.NEXT_PUBLIC_UTILITY_MARKET_LABEL,
+  HEADQUARTERS_NAME: process.env.NEXT_PUBLIC_HEADQUARTERS_NAME,
+  HEADQUARTERS_LABEL: process.env.NEXT_PUBLIC_HEADQUARTERS_LABEL,
+  HEADQUARTERS_DESCRIPTOR:
+    process.env.NEXT_PUBLIC_HEADQUARTERS_DESCRIPTOR,
+  ADDRESS_LINE_1: process.env.NEXT_PUBLIC_ADDRESS_LINE_1,
+  ADDRESS_LINE_2: process.env.NEXT_PUBLIC_ADDRESS_LINE_2,
+  ADDRESS_LOCALITY: process.env.NEXT_PUBLIC_ADDRESS_LOCALITY,
+  ADDRESS_REGION: process.env.NEXT_PUBLIC_ADDRESS_REGION,
+  POSTAL_CODE: process.env.NEXT_PUBLIC_POSTAL_CODE,
+  ADDRESS_COUNTRY: process.env.NEXT_PUBLIC_ADDRESS_COUNTRY,
+  ADDRESS_COUNTRY_CODE: process.env.NEXT_PUBLIC_ADDRESS_COUNTRY_CODE,
+  PHONE_DISPLAY: process.env.NEXT_PUBLIC_PHONE_DISPLAY,
+  PHONE_HREF: process.env.NEXT_PUBLIC_PHONE_HREF,
+  FAX: process.env.NEXT_PUBLIC_FAX,
+  INFO_EMAIL: process.env.NEXT_PUBLIC_INFO_EMAIL,
+  SALES_EMAIL: process.env.NEXT_PUBLIC_SALES_EMAIL,
+  MARKET_BASE_TITLE: process.env.NEXT_PUBLIC_MARKET_BASE_TITLE,
+  MARKET_BASE_DESCRIPTION:
+    process.env.NEXT_PUBLIC_MARKET_BASE_DESCRIPTION,
+  COMPANY_EYEBROW: process.env.NEXT_PUBLIC_COMPANY_EYEBROW,
+  COMPANY_TITLE: process.env.NEXT_PUBLIC_COMPANY_TITLE,
+  COMPANY_BODY_PRIMARY: process.env.NEXT_PUBLIC_COMPANY_BODY_PRIMARY,
+  COMPANY_BODY_SECONDARY:
+    process.env.NEXT_PUBLIC_COMPANY_BODY_SECONDARY,
+  CONTACT_TITLE: process.env.NEXT_PUBLIC_CONTACT_TITLE,
+  CONTACT_DESCRIPTION: process.env.NEXT_PUBLIC_CONTACT_DESCRIPTION,
+  ADDITIONAL_OFFICES_TITLE:
+    process.env.NEXT_PUBLIC_ADDITIONAL_OFFICES_TITLE,
+  LOGISTICS_SUMMARY: process.env.NEXT_PUBLIC_LOGISTICS_SUMMARY,
+  PRODUCTION_CENTER_COUNT:
+    process.env.NEXT_PUBLIC_PRODUCTION_CENTER_COUNT,
+  ADDITIONAL_OFFICES_JSON:
+    process.env.NEXT_PUBLIC_ADDITIONAL_OFFICES_JSON,
+  LEGACY_NAME: process.env.NEXT_PUBLIC_LEGACY_NAME,
 };
 
 function envValue(name: string, fallback: string) {
@@ -119,6 +119,20 @@ function orderOfficeNetwork(offices: Office[], activeSiteId: string) {
     .map(({ office }) => office);
 }
 
+function dedupeOffices(offices: Office[]) {
+  const seen = new Set<string>();
+
+  return offices.filter((office) => {
+    const signature = `${office.label}|${office.name}|${office.address.join('|')}`.toLowerCase();
+    if (seen.has(signature)) {
+      return false;
+    }
+
+    seen.add(signature);
+    return true;
+  });
+}
+
 function optionalEnvValue(name: string, fallback = '') {
   const value = runtimeEnv[name] as string | undefined;
   return value?.trim() || fallback;
@@ -159,34 +173,34 @@ function parseOffices(value: string | undefined): Office[] | undefined {
   return undefined;
 }
 
-const siteName = envValue('VITE_SITE_NAME', DEFAULT_SITE_NAME);
-const siteUrl = envValue('VITE_SITE_URL', DEFAULT_SITE_URL).replace(/\/+$/, '');
-const siteId = envValue('VITE_SITE_ID', 'black-opal-india');
-const regionLabel = envValue('VITE_REGION_LABEL', 'U.S.');
-const serviceArea = envValue('VITE_SERVICE_AREA', 'US');
-const marketName = envValue('VITE_MARKET_NAME', 'North American');
-const utilityMarketLabel = envValue('VITE_UTILITY_MARKET_LABEL', regionLabel);
-const originStatement = envValue('VITE_ORIGIN_STATEMENT', 'Manufactured and exported from India');
+const siteName = envValue('SITE_NAME', DEFAULT_SITE_NAME);
+const siteUrl = envValue('SITE_URL', DEFAULT_SITE_URL).replace(/\/+$/, '');
+const siteId = envValue('SITE_ID', 'black-opal-middle-east');
+const regionLabel = envValue('REGION_LABEL', 'Middle East');
+const serviceArea = envValue('SERVICE_AREA', 'Middle East, Europe, Asia');
+const marketName = envValue('MARKET_NAME', 'Middle East, Europe and Asia');
+const utilityMarketLabel = envValue('UTILITY_MARKET_LABEL', regionLabel);
+const originStatement = envValue('ORIGIN_STATEMENT', 'Manufactured and exported from India and the Middle East');
 const originDescription = envValue(
-  'VITE_ORIGIN_DESCRIPTION',
-  'coconut shell activated carbon manufactured and exported from India',
+  'ORIGIN_DESCRIPTION',
+  'coconut shell activated carbon manufactured and exported from India and the Middle East',
 );
 
 const headquarters: Headquarters = {
-  name: envValue('VITE_HEADQUARTERS_NAME', siteName),
-  line1: envValue('VITE_ADDRESS_LINE_1', '651 Holiday Dr, STE 400'),
-  line2: envValue('VITE_ADDRESS_LINE_2', 'Pittsburgh, PA 15220, USA'),
-  locality: envValue('VITE_ADDRESS_LOCALITY', 'Pittsburgh'),
-  region: envValue('VITE_ADDRESS_REGION', 'PA'),
-  postalCode: envValue('VITE_POSTAL_CODE', '15220'),
-  country: envValue('VITE_ADDRESS_COUNTRY', 'United States'),
-  countryCode: envValue('VITE_ADDRESS_COUNTRY_CODE', 'US'),
+  name: envValue('HEADQUARTERS_NAME', siteName),
+  line1: envValue('ADDRESS_LINE_1', 'Smart Station, 1st Floor, Incubator Bldg. I Masdar City'),
+  line2: envValue('ADDRESS_LINE_2', 'Abu Dhabi, UAE'),
+  locality: envValue('ADDRESS_LOCALITY', 'Abu Dhabi'),
+  region: envValue('ADDRESS_REGION', 'Abu Dhabi'),
+  postalCode: envValue('POSTAL_CODE', '00000'),
+  country: envValue('ADDRESS_COUNTRY', 'United Arab Emirates'),
+  countryCode: envValue('ADDRESS_COUNTRY_CODE', 'AE'),
 };
 
-const phoneDisplay = envValue('VITE_PHONE_DISPLAY', '+1 (412) 928-4970');
-const fax = optionalEnvValue('VITE_FAX', '+1 (412) 365-5634');
-const infoEmail = envValue('VITE_INFO_EMAIL', 'info@blackopalcarbons.com');
-const salesEmail = envValue('VITE_SALES_EMAIL', 'sales@blackopalcarbons.com');
+const phoneDisplay = envValue('PHONE_DISPLAY', '+971 50 240 4708');
+const fax = optionalEnvValue('FAX');
+const infoEmail = envValue('INFO_EMAIL', 'info@blackopalcarbonsme.com');
+const salesEmail = envValue('SALES_EMAIL', 'info@blackopalcarbonsme.com');
 const defaultAdditionalOffices: Office[] = [
   {
     label: 'India office',
@@ -205,17 +219,17 @@ const defaultAdditionalOffices: Office[] = [
     note: 'Regional office for Middle East customer coordination.',
   },
 ];
-const additionalOffices = parseOffices(runtimeEnv.VITE_ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices;
+const additionalOffices = parseOffices(runtimeEnv.ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices;
 const defaultLogisticsSummary =
   'Company-owned manufacturing, 35000 metric tons annual capacity, and final quality assurance before shipment support consistent coconut activated carbon supply.';
-const headquartersLabel = normalizeHeadquartersCopy(envValue('VITE_HEADQUARTERS_LABEL', GROUP_HEADQUARTERS_LABEL));
+const headquartersLabel = normalizeHeadquartersCopy(envValue('HEADQUARTERS_LABEL', GROUP_HEADQUARTERS_LABEL));
 const headquartersDescriptor = normalizeHeadquartersCopy(
-  envValue('VITE_HEADQUARTERS_DESCRIPTOR', GROUP_HEADQUARTERS_LABEL),
+  envValue('HEADQUARTERS_DESCRIPTOR', GROUP_HEADQUARTERS_LABEL),
 );
-const marketBaseTitle = envValue('VITE_MARKET_BASE_TITLE', 'Manufacturing base and office network');
+const marketBaseTitle = envValue('MARKET_BASE_TITLE', 'Manufacturing base and office network');
 const marketBaseDescription = normalizeHeadquartersCopy(
   envValue(
-    'VITE_MARKET_BASE_DESCRIPTION',
+    'MARKET_BASE_DESCRIPTION',
     "Black Opal's state-of-the-art factory in India anchors 35000 metric tons of annual coconut activated carbon capacity. Black Opal Group Head Quarters, India office, and Middle East office keep customers connected to the team for enquiries, technical support, and service.",
   ),
 );
@@ -231,7 +245,7 @@ const websiteContact: Office = regionalContact ?? {
   email: infoEmail,
 };
 const officeNetwork = orderOfficeNetwork(
-  [
+  dedupeOffices([
     ...additionalOffices,
     {
       label: headquartersLabel,
@@ -240,7 +254,7 @@ const officeNetwork = orderOfficeNetwork(
       phone: phoneDisplay,
       email: infoEmail,
     },
-  ],
+  ]),
   siteId,
 );
 
@@ -248,60 +262,60 @@ export const siteConfig = {
   siteName,
   siteUrl,
   siteId,
-  homeTitle: envValue('VITE_HOME_TITLE', `Coconut Shell Activated Carbon Supplier | ${siteName}`),
-  defaultDescription: envValue('VITE_SITE_DESCRIPTION', DEFAULT_DESCRIPTION.replace(DEFAULT_SITE_NAME, siteName)),
+  homeTitle: envValue('HOME_TITLE', `Coconut Shell Activated Carbon Supplier | ${siteName}`),
+  defaultDescription: envValue('SITE_DESCRIPTION', DEFAULT_DESCRIPTION.replace(DEFAULT_SITE_NAME, siteName)),
   defaultImagePath: '/og-image.svg',
-  heroKicker: envValue('VITE_HERO_KICKER', 'NSF 42 / NSF 61 CERTIFIED - PROP 65 COMPLIANT'),
+  heroKicker: envValue('HERO_KICKER', 'NSF 42 / NSF 61 CERTIFIED - PROP 65 COMPLIANT'),
   heroTitle: envValue(
-    'VITE_HERO_TITLE',
+    'HERO_TITLE',
     'Coconut Shell Activated Carbon for Water, Air, Gas & Industrial Applications',
   ),
   heroDescription: envValue(
-    'VITE_HERO_DESCRIPTION',
+    'HERO_DESCRIPTION',
     `${originStatement}, Black Opal coconut shell activated carbon supports demanding water, air, gas, gold recovery, and industrial purification systems.`,
   ),
   originStatement,
   originDescription,
   heroLocationProof: envValue(
-    'VITE_HERO_LOCATION_PROOF',
-    'India Manufacturing + Export Support',
+    'HERO_LOCATION_PROOF',
+    'India Manufacturing + Middle East Export',
   ),
-  companyEyebrow: envValue('VITE_COMPANY_EYEBROW', 'Our Company'),
-  companyTitle: envValue('VITE_COMPANY_TITLE', 'Controlled from coconut shell selection to final shipment'),
+  companyEyebrow: envValue('COMPANY_EYEBROW', 'Our Company'),
+  companyTitle: envValue('COMPANY_TITLE', 'Controlled from coconut shell selection to final shipment'),
   companyBodyPrimary: envValue(
-    'VITE_COMPANY_BODY_PRIMARY',
+    'COMPANY_BODY_PRIMARY',
     'Black Opal works from selected coconut shell feedstock through controlled activation, sizing, and final quality checks so each grade is built for repeatable adsorption performance.',
   ),
   companyBodySecondary: envValue(
-    'VITE_COMPANY_BODY_SECONDARY',
+    'COMPANY_BODY_SECONDARY',
     'Grades can be customised by mesh size, adsorption level, pH adjustment, washing, and impregnation requirements instead of forcing every application into the same carbon.',
   ),
-  contactTitle: envValue('VITE_CONTACT_TITLE', 'Pricing, availability, and technical recommendations'),
+  contactTitle: envValue('CONTACT_TITLE', 'Pricing, availability, and technical recommendations'),
   contactDescription: envValue(
-    'VITE_CONTACT_DESCRIPTION',
+    'CONTACT_DESCRIPTION',
     `Grade matching, availability, and logistics coordination start with the application conditions and expected volume.`,
   ),
-  additionalOfficesTitle: envValue('VITE_ADDITIONAL_OFFICES_TITLE', 'Office network'),
+  additionalOfficesTitle: envValue('ADDITIONAL_OFFICES_TITLE', 'Office network'),
   regionLabel,
   serviceArea,
   marketName,
   utilityMarketLabel,
-  productionCenterCount: envValue('VITE_PRODUCTION_CENTER_COUNT', '3'),
+  productionCenterCount: envValue('PRODUCTION_CENTER_COUNT', '3'),
   logisticsSummary: optionalEnvValue(
-    'VITE_LOGISTICS_SUMMARY',
+    'LOGISTICS_SUMMARY',
     defaultLogisticsSummary,
   ),
 };
 
 export const companyDetails = {
-  legacyName: optionalEnvValue('VITE_LEGACY_NAME', 'INDOCARB AC'),
+  legacyName: optionalEnvValue('LEGACY_NAME', 'INDOCARB AC'),
   headquarters,
   headquartersLabel,
   headquartersDescriptor,
   marketBaseTitle,
   marketBaseDescription,
   phoneDisplay,
-  phoneHref: envValue('VITE_PHONE_HREF', phoneHref(phoneDisplay)),
+  phoneHref: envValue('PHONE_HREF', phoneHref(phoneDisplay)),
   fax,
   infoEmail,
   salesEmail,

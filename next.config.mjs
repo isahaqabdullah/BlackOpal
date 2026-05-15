@@ -50,7 +50,7 @@ const publicEnvKeys = [
 
 const env = Object.fromEntries(
   publicEnvKeys
-    .map((key) => [`NEXT_PUBLIC_${key}`, process.env[`NEXT_PUBLIC_${key}`] ?? process.env[`VITE_${key}`]])
+    .map((key) => [`NEXT_PUBLIC_${key}`, process.env[`NEXT_PUBLIC_${key}`]])
     .filter((entry) => entry[1] !== undefined),
 );
 

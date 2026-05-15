@@ -2,7 +2,7 @@
 
 import { ArrowRight } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
-import { useProductionPageDataAttribute, useSiteSettingsDataAttribute } from '../cms/visualEditingAttributes';
+import { useProductionPageDataAttribute } from '../cms/visualEditingAttributes';
 import { PageIntro } from './PageIntro';
 
 const balancedOverviewTitle =
@@ -11,7 +11,6 @@ const balancedOverviewTitle =
 export function ProductionPage() {
   const { productionPage, siteSettings } = useSiteContent();
   const productionPageDataAttribute = useProductionPageDataAttribute();
-  const siteSettingsDataAttribute = useSiteSettingsDataAttribute(siteSettings._id);
   const productionContactEmail = siteSettings.websiteContact.email ?? '';
   const overviewTitleLines =
     productionPage.overviewTitle === balancedOverviewTitle
@@ -209,7 +208,6 @@ export function ProductionPage() {
                 {productionPage.contactTextBeforeEmail}
               </span>
               <a
-                data-sanity={siteSettingsDataAttribute('websiteContact.email')}
                 href={`mailto:${productionContactEmail}`}
                 className="text-[#f2d78b] hover:text-[#f7efdb]"
               >

@@ -38,7 +38,6 @@ export type SanitySiteContent = {
   siteSettings?: Partial<SiteSettingsContent> | null;
   pageCopy?: Partial<PageCopyContent> | null;
   aboutPage?: Partial<AboutPageContent> | null;
-  contactPage?: Partial<ContactPageContent> | null;
   products?: Partial<ProductEntry>[];
   applications?: Partial<ApplicationEntry>[];
   newsroomItems?: Partial<NewsroomItem>[];
@@ -538,8 +537,8 @@ function normalizeSiteSettings(value?: Partial<SiteSettingsContent> | null): Sit
       backHomeLabel: fallback.pageIntro.backHomeLabel,
       backHomePath: fallback.pageIntro.backHomePath,
     },
-    websiteContact: officeEntry(value?.websiteContact, fallback.websiteContact),
-    officeNetwork: officeEntries(value?.officeNetwork, fallback.officeNetwork),
+    websiteContact: fallback.websiteContact,
+    officeNetwork: fallback.officeNetwork,
   };
 }
 
@@ -699,37 +698,8 @@ function normalizeAboutPage(value?: Partial<AboutPageContent> | null): AboutPage
   };
 }
 
-function normalizeContactPage(value?: Partial<ContactPageContent> | null): ContactPageContent {
-  const fallback = fallbackContactPageContent;
-  const id = cleanTextValue(value?._id);
-
-  return {
-    _id: id || undefined,
-    _type: value?._type === 'contactPage' ? value._type : undefined,
-    siteId: cleanTextValue(value?.siteId, fallback.siteId),
-    seo: normalizeSeo(value?.seo, fallback.seo),
-    intro: pageIntro(value?.intro, fallback.intro),
-    officesTitle: textValue(value?.officesTitle, fallback.officesTitle),
-    successTitle: textValue(value?.successTitle, fallback.successTitle),
-    successMessage: textValue(value?.successMessage, fallback.successMessage),
-    firstNameLabel: textValue(value?.firstNameLabel, fallback.firstNameLabel),
-    firstNamePlaceholder: textValue(value?.firstNamePlaceholder, fallback.firstNamePlaceholder),
-    lastNameLabel: textValue(value?.lastNameLabel, fallback.lastNameLabel),
-    lastNamePlaceholder: textValue(value?.lastNamePlaceholder, fallback.lastNamePlaceholder),
-    emailLabel: textValue(value?.emailLabel, fallback.emailLabel),
-    emailPlaceholder: textValue(value?.emailPlaceholder, fallback.emailPlaceholder),
-    companyLabel: textValue(value?.companyLabel, fallback.companyLabel),
-    companyPlaceholder: textValue(value?.companyPlaceholder, fallback.companyPlaceholder),
-    phoneLabel: textValue(value?.phoneLabel, fallback.phoneLabel),
-    subjectLabel: textValue(value?.subjectLabel, fallback.subjectLabel),
-    subjectPlaceholder: textValue(value?.subjectPlaceholder, fallback.subjectPlaceholder),
-    applicationLabel: textValue(value?.applicationLabel, fallback.applicationLabel),
-    applicationPlaceholder: textValue(value?.applicationPlaceholder, fallback.applicationPlaceholder),
-    applicationOptions: plainStringArray(value?.applicationOptions, fallback.applicationOptions),
-    messageLabel: textValue(value?.messageLabel, fallback.messageLabel),
-    messagePlaceholder: textValue(value?.messagePlaceholder, fallback.messagePlaceholder),
-    submitLabel: fallback.submitLabel,
-  };
+function normalizeContactPage(): ContactPageContent {
+  return fallbackContactPageContent;
 }
 
 function mergeBySlug<T extends { slug: string }>(
@@ -777,7 +747,7 @@ export function mergeSanityContent(content?: SanitySiteContent | null): ContentI
     siteSettings: normalizeSiteSettings(content.siteSettings),
     pageCopy: normalizePageCopy(content.pageCopy),
     aboutPage: normalizeAboutPage(content.aboutPage),
-    contactPage: normalizeContactPage(content.contactPage),
+    contactPage: normalizeContactPage(),
     products: mergeBySlug(content.products, fallbackProducts, fallbackProductMap, normalizeProduct),
     applications: mergeBySlug(
       content.applications,

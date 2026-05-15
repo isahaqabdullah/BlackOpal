@@ -6,16 +6,15 @@ type SanityClientOptions = {
   studioUrl?: string;
 };
 
-function envValue(nextName: string, viteName?: string) {
-  return process.env[nextName]?.trim() || (viteName ? process.env[viteName]?.trim() : '');
+function envValue(nextName: string) {
+  return process.env[nextName]?.trim() || '';
 }
 
-export const sanityProjectId = envValue('NEXT_PUBLIC_SANITY_PROJECT_ID', 'VITE_SANITY_PROJECT_ID');
-export const sanityDataset = envValue('NEXT_PUBLIC_SANITY_DATASET', 'VITE_SANITY_DATASET') || 'production';
-export const sanityApiVersion = envValue('NEXT_PUBLIC_SANITY_API_VERSION', 'VITE_SANITY_API_VERSION') || '2026-04-15';
-export const configuredSiteId = envValue('NEXT_PUBLIC_SITE_ID', 'VITE_SITE_ID') || 'black-opal-india';
-export const sanityStudioUrl =
-  envValue('NEXT_PUBLIC_SANITY_STUDIO_URL', 'VITE_SANITY_STUDIO_URL') || 'http://localhost:3333';
+export const sanityProjectId = envValue('NEXT_PUBLIC_SANITY_PROJECT_ID');
+export const sanityDataset = envValue('NEXT_PUBLIC_SANITY_DATASET') || 'production';
+export const sanityApiVersion = envValue('NEXT_PUBLIC_SANITY_API_VERSION') || '2026-04-15';
+export const configuredSiteId = envValue('NEXT_PUBLIC_SITE_ID') || 'black-opal-middle-east';
+export const sanityStudioUrl = envValue('NEXT_PUBLIC_SANITY_STUDIO_URL') || 'http://localhost:3333';
 
 export const isSanityConfigured = Boolean(sanityProjectId && sanityDataset);
 
@@ -87,9 +86,7 @@ export const siteContentQuery = `{
       breadcrumbAriaLabel,
       homeLabel,
       homePath
-    },
-    websiteContact,
-    officeNetwork
+    }
   },
   "pageCopy": *[_type == "pageCopy" && _id == "pageCopy"][0] {
     _id,
@@ -177,37 +174,6 @@ export const siteContentQuery = `{
     metrics,
     cards,
     brandUpdateLabel
-  },
-  "contactPage": *[_type == "contactPage" && siteId == $siteId][0] {
-    _id,
-    _type,
-    siteId,
-    "seo": {
-      "seoTitle": seo.seoTitle,
-      "seoDescription": seo.seoDescription,
-      "seoImage": coalesce(seo.seoImage.asset->url, seo.seoImageUrl),
-      "noIndex": seo.noIndex
-    },
-    intro,
-    officesTitle,
-    successTitle,
-    successMessage,
-    firstNameLabel,
-    firstNamePlaceholder,
-    lastNameLabel,
-    lastNamePlaceholder,
-    emailLabel,
-    emailPlaceholder,
-    companyLabel,
-    companyPlaceholder,
-    phoneLabel,
-    subjectLabel,
-    subjectPlaceholder,
-    applicationLabel,
-    applicationPlaceholder,
-    applicationOptions,
-    messageLabel,
-    messagePlaceholder
   },
   "productionPage": *[_type == "productionPage" && _id == "productionPage"][0] {
     _id,

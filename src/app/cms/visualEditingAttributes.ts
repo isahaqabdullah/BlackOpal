@@ -5,10 +5,10 @@ import { createDataAttribute } from '@sanity/visual-editing/create-data-attribut
 import { useSiteContent } from '../content/SiteContentProvider';
 import { getSanityPresentationContext } from './presentationContext';
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim() || process.env.VITE_SANITY_PROJECT_ID?.trim();
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET?.trim() || process.env.VITE_SANITY_DATASET?.trim();
-const studioUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_URL?.trim() || process.env.VITE_SANITY_STUDIO_URL?.trim();
-const siteId = process.env.NEXT_PUBLIC_SITE_ID?.trim() || process.env.VITE_SITE_ID?.trim();
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim();
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET?.trim();
+const studioUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_URL?.trim();
+const siteId = process.env.NEXT_PUBLIC_SITE_ID?.trim();
 
 type VisualEditingContext = {
   enabled: boolean;
@@ -20,7 +20,6 @@ type SanityDocumentType =
   | 'siteSettings'
   | 'pageCopy'
   | 'aboutPage'
-  | 'contactPage'
   | 'productionPage'
   | 'product'
   | 'application'
@@ -82,14 +81,6 @@ export function siteSettingsDocumentId(fallbackId = 'siteSettings') {
   return fallbackId;
 }
 
-export function contactPageDocumentId(fallbackId = 'contactPage') {
-  if (siteId === 'black-opal-india' || siteId === 'black-opal-middle-east') {
-    return `contactPage-${siteId}`;
-  }
-
-  return fallbackId;
-}
-
 export function documentDataAttribute(
   type: SanityDocumentType,
   documentId: string,
@@ -124,10 +115,6 @@ export function productionPageDataAttribute(path: string, documentId = 'producti
 
 export function siteSettingsDataAttribute(path: string, documentId = siteSettingsDocumentId(), baseUrl = studioUrl) {
   return documentDataAttribute('siteSettings', documentId || siteSettingsDocumentId(), path, baseUrl);
-}
-
-export function contactPageDataAttribute(path: string, documentId = contactPageDocumentId(), baseUrl = studioUrl) {
-  return documentDataAttribute('contactPage', documentId || contactPageDocumentId(), path, baseUrl);
 }
 
 export function useHomePageDataAttribute(documentId?: string) {
@@ -191,18 +178,5 @@ export function useProductionPageDataAttribute(documentId?: string) {
     }
 
     return productionPageDataAttribute(path, documentId, visualEditingContext.studioUrl);
-  };
-}
-
-export function useContactPageDataAttribute(documentId?: string) {
-  const { source } = useSiteContent();
-  const visualEditingContext = useVisualEditingContext(source);
-
-  return (path: string) => {
-    if (!visualEditingContext.enabled) {
-      return undefined;
-    }
-
-    return contactPageDataAttribute(path, documentId, visualEditingContext.studioUrl);
   };
 }

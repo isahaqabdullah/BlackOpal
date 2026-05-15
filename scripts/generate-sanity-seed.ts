@@ -3,7 +3,6 @@ import path from 'node:path';
 import {
   aboutPageContent,
   applications,
-  contactPageContent,
   homePageContent,
   newsroomItems,
   pageCopyContent,
@@ -14,7 +13,6 @@ import {
   type FeatureCardEntry,
   type FeaturedCapabilityEntry,
   type LabelValueEntry,
-  type OfficeEntry,
   type PageIntroContent,
   type ProductionStepEntry,
 } from '../src/app/content/siteContent';
@@ -56,19 +54,6 @@ function labelValuesForSanity(items: LabelValueEntry[]) {
     _key: keyFrom(`${item.value}-${item.label}`, index),
     value: item.value,
     label: item.label,
-  }));
-}
-
-function officesForSanity(offices: OfficeEntry[]) {
-  return offices.map((office, index) => ({
-    _type: 'officeEntry',
-    _key: keyFrom(`${office.label}-${office.name}`, index),
-    label: office.label,
-    name: office.name,
-    address: office.address,
-    phone: office.phone,
-    email: office.email,
-    note: office.note,
   }));
 }
 
@@ -180,11 +165,6 @@ const siteSettingsDocuments: SanityDocument[] = ['black-opal-india', 'black-opal
   _type: 'siteSettings',
   siteId,
   pageIntro: omitFields(siteSettingsContent.pageIntro, ['backHomeLabel', 'backHomePath']),
-  websiteContact: {
-    _type: 'officeEntry',
-    ...siteSettingsContent.websiteContact,
-  },
-  officeNetwork: officesForSanity(siteSettingsContent.officeNetwork),
 }));
 
 const productsPageButtonFields = ['detailCtaLabel', 'quoteCtaPath', 'quoteCtaLabel'];
@@ -268,15 +248,6 @@ const productionPageDocument: SanityDocument = {
   imageUrl: productionImage,
 };
 
-const contactPageSeedContent = omitFields(contactPageContent as unknown as Record<string, unknown>, ['submitLabel']);
-const contactPageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-middle-east'].map((siteId) => ({
-  _id: `contactPage-${siteId}`,
-  _type: 'contactPage',
-  ...contactPageSeedContent,
-  siteId,
-  intro: pageIntroForSanity(contactPageContent.intro),
-}));
-
 const applicationDocuments: SanityDocument[] = applications.map((application, index) => ({
   _id: `application-${application.slug}`,
   _type: 'application',
@@ -312,7 +283,6 @@ const documents = [
   pageCopyDocument,
   ...aboutPageDocuments,
   productionPageDocument,
-  ...contactPageDocuments,
   ...productDocuments,
   ...applicationDocuments,
   ...newsroomDocuments,

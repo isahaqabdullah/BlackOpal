@@ -7,14 +7,13 @@ import { schemaTypes } from './sanity/schemaTypes';
 const projectId =
   process.env.SANITY_STUDIO_PROJECT_ID ||
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||
-  process.env.VITE_SANITY_PROJECT_ID ||
   'replace-with-project-id';
 const dataset =
-  process.env.SANITY_STUDIO_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET || process.env.VITE_SANITY_DATASET || 'production';
+  process.env.SANITY_STUDIO_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 const studioSiteId =
-  process.env.SANITY_STUDIO_SITE_ID || process.env.NEXT_PUBLIC_SITE_ID || process.env.VITE_SITE_ID || 'black-opal-india';
+  process.env.SANITY_STUDIO_SITE_ID || process.env.NEXT_PUBLIC_SITE_ID || 'black-opal-middle-east';
 const previewOrigin =
-  process.env.SANITY_STUDIO_PREVIEW_ORIGIN || process.env.NEXT_PUBLIC_SITE_URL || process.env.VITE_SITE_URL || 'http://localhost:3000';
+  process.env.SANITY_STUDIO_PREVIEW_ORIGIN || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const studioSiteIdLiteral = JSON.stringify(studioSiteId);
 
 function originFor(value: string | undefined) {
@@ -38,7 +37,6 @@ const allowOrigins = Array.from(
     [
       originFor(previewOrigin),
       originFor(process.env.NEXT_PUBLIC_SITE_URL),
-      originFor(process.env.VITE_SITE_URL),
       'http://localhost:3000',
       'http://127.0.0.1:3000',
     ].filter((origin): origin is string => Boolean(origin)),
@@ -67,7 +65,6 @@ export default defineConfig({
           { route: '/', filter: `_type == "homePage" && siteId == ${studioSiteIdLiteral}` },
           { route: '/about', filter: `_type == "aboutPage" && siteId == ${studioSiteIdLiteral}` },
           { route: '/production', filter: `_type == "productionPage" && _id == "productionPage"` },
-          { route: '/contact', filter: `_type == "contactPage" && siteId == ${studioSiteIdLiteral}` },
           { route: '/products', filter: `_type == "pageCopy" && _id == "pageCopy"` },
           { route: '/products/:productSlug', filter: `_type == "product" && slug.current == $productSlug` },
           { route: '/applications', filter: `_type == "pageCopy" && _id == "pageCopy"` },
@@ -97,8 +94,6 @@ export default defineConfig({
               locations: [
                 ...(document?.siteId === studioSiteId
                   ? [
-                      documentLocation('Contact details', '/contact'),
-                      documentLocation('Office network', '/about'),
                       documentLocation('Page intro labels', '/products'),
                     ]
                   : []),
@@ -123,12 +118,6 @@ export default defineConfig({
             select: { title: 'intro.title', siteId: 'siteId' },
             resolve: (document) => ({
               locations: document?.siteId === studioSiteId ? [documentLocation('About page', '/about')] : [],
-            }),
-          },
-          contactPage: {
-            select: { title: 'intro.title', siteId: 'siteId' },
-            resolve: (document) => ({
-              locations: document?.siteId === studioSiteId ? [documentLocation('Contact page', '/contact')] : [],
             }),
           },
           product: {

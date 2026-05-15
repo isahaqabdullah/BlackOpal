@@ -6,7 +6,7 @@ import { readSanityConfig, stableStringify } from './sanity-sync-utils.mjs';
 const CLI_CONFIG_PATH = '/private/tmp/black-opal-sanity-config/sanity/config.json';
 const SEED_PATH = path.resolve('sanity/seed.ndjson');
 const SITE_IDS = ['black-opal-india', 'black-opal-middle-east'];
-const SITE_SPECIFIC_BASE_IDS = ['siteSettings', 'aboutPage', 'contactPage'];
+const SITE_SPECIFIC_BASE_IDS = ['siteSettings', 'aboutPage'];
 const SHARED_DOCUMENT_IDS = ['pageCopy'];
 const EXISTING_DOCUMENT_IDS = ['homePage', 'homePage-black-opal-india', 'homePage-black-opal-middle-east', 'productionPage'];
 
