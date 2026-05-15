@@ -21,8 +21,8 @@ export const isSanityConfigured = Boolean(sanityProjectId && sanityDataset);
 export const siteContentQuery = `{
   "homePage": *[
     _type == "homePage" &&
-    (siteId == $siteId || (!defined(siteId) && _id == "homePage"))
-  ] | order(select(siteId == $siteId => 0, 1))[0] {
+    (_id == $homePageId || siteId == $siteId || (!defined(siteId) && _id == "homePage"))
+  ] | order(select(_id == $homePageId => 0, siteId == $siteId => 1, 2))[0] {
     _id,
     _type,
     siteId,
@@ -78,7 +78,10 @@ export const siteContentQuery = `{
       imageAlt
     }
   },
-  "siteSettings": *[_type == "siteSettings" && siteId == $siteId][0] {
+  "siteSettings": *[
+    _type == "siteSettings" &&
+    (_id == $siteSettingsId || siteId == $siteId)
+  ] | order(select(_id == $siteSettingsId => 0, siteId == $siteId => 1, 2))[0] {
     _id,
     _type,
     siteId,
@@ -154,7 +157,10 @@ export const siteContentQuery = `{
       description
     }
   },
-  "aboutPage": *[_type == "aboutPage" && siteId == $siteId][0] {
+  "aboutPage": *[
+    _type == "aboutPage" &&
+    (_id == $aboutPageId || siteId == $siteId)
+  ] | order(select(_id == $aboutPageId => 0, siteId == $siteId => 1, 2))[0] {
     _id,
     _type,
     siteId,
@@ -310,7 +316,12 @@ export async function fetchSanitySiteContent({
 
   const data = (await client.fetch<SanitySiteContent>(
     siteContentQuery,
-    { siteId: configuredSiteId },
+    {
+      siteId: configuredSiteId,
+      homePageId: `homePage-${configuredSiteId}`,
+      siteSettingsId: `siteSettings-${configuredSiteId}`,
+      aboutPageId: `aboutPage-${configuredSiteId}`,
+    },
     {
       filterResponse: false,
       resultSourceMap: preview ? 'withKeyArraySelector' : false,
