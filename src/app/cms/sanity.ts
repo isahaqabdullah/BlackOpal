@@ -320,7 +320,7 @@ export function createSanityClient({ preview = false, studioUrl = sanityStudioUr
     projectId: sanityProjectId!,
     dataset: sanityDataset,
     apiVersion: sanityApiVersion,
-    useCdn: !preview,
+    useCdn: false,
     token,
     perspective: preview ? 'previewDrafts' : 'published',
     stega: preview
@@ -348,7 +348,7 @@ export async function fetchSanitySiteContent({
     {
       filterResponse: false,
       resultSourceMap: preview ? 'withKeyArraySelector' : false,
-      ...(preview ? { cache: 'no-store' as const } : { next: { tags: ['sanity-content'], revalidate: 3600 } }),
+      cache: 'no-store' as const,
     },
   )) as unknown;
 
