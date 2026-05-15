@@ -49,6 +49,7 @@ const allowOrigins = Array.from(
 const structure: StructureResolver = (S) => {
   const singletonDocument = (schemaType: string, title: string, documentId: string) =>
     S.listItem()
+      .id(documentId)
       .title(title)
       .schemaType(schemaType)
       .child(S.document().schemaType(schemaType).documentId(documentId).title(title));
@@ -56,27 +57,11 @@ const structure: StructureResolver = (S) => {
   return S.list()
     .title('Content')
     .items([
-      S.listItem()
-        .title(`Site-specific: ${studioSiteLabel}`)
-        .child(
-          S.list()
-            .title(`Site-specific: ${studioSiteLabel}`)
-            .items([
-              singletonDocument('homePage', `Home Page - ${studioSiteLabel}`, `homePage-${studioSiteId}`),
-              singletonDocument('aboutPage', `About Page - ${studioSiteLabel}`, `aboutPage-${studioSiteId}`),
-              singletonDocument('siteSettings', `Page Intro Labels - ${studioSiteLabel}`, `siteSettings-${studioSiteId}`),
-            ]),
-        ),
-      S.listItem()
-        .title('Shared page copy')
-        .child(
-          S.list()
-            .title('Shared page copy')
-            .items([
-              singletonDocument('pageCopy', 'Products, Applications, and Newsroom Copy', 'pageCopy'),
-              singletonDocument('productionPage', 'Production Page', 'productionPage'),
-            ]),
-        ),
+      singletonDocument('homePage', `Home Page - ${studioSiteLabel}`, `homePage-${studioSiteId}`),
+      singletonDocument('aboutPage', `About Page - ${studioSiteLabel}`, `aboutPage-${studioSiteId}`),
+      singletonDocument('siteSettings', `Page Intro Labels - ${studioSiteLabel}`, `siteSettings-${studioSiteId}`),
+      singletonDocument('pageCopy', 'Products, Applications, and Newsroom Copy', 'pageCopy'),
+      singletonDocument('productionPage', 'Production Page', 'productionPage'),
       S.documentTypeListItem('product').title('Products'),
       S.documentTypeListItem('application').title('Applications'),
       S.documentTypeListItem('newsroomItem').title('Newsroom Items'),
