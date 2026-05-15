@@ -3,11 +3,13 @@
 import type { ReactNode } from 'react';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { useSiteSettingsDataAttribute } from '../cms/visualEditingAttributes';
 import { useSiteContent } from '../content/SiteContentProvider';
 
 type Breadcrumb = {
   label: string;
   to?: string;
+  dataSanity?: string;
 };
 
 type PageIntroProps = {
@@ -16,10 +18,16 @@ type PageIntroProps = {
   titleVisual?: ReactNode;
   description?: string;
   breadcrumbs?: Breadcrumb[];
+  dataSanity?: {
+    label?: string;
+    title?: string;
+    description?: string;
+  };
 };
 
-export function PageIntro({ label, title, titleVisual, description, breadcrumbs = [] }: PageIntroProps) {
+export function PageIntro({ label, title, titleVisual, description, breadcrumbs = [], dataSanity }: PageIntroProps) {
   const { siteSettings } = useSiteContent();
+  const siteSettingsDataAttribute = useSiteSettingsDataAttribute(siteSettings._id);
 
   return (
     <section className="pt-10 pb-6 md:pt-12 md:pb-8">
@@ -31,17 +39,21 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
           >
             <Link href={siteSettings.pageIntro.homePath} className="hover:text-[#f2d78b] transition-colors">
-              {siteSettings.pageIntro.homeLabel}
+              <span data-sanity={siteSettingsDataAttribute('pageIntro.homeLabel')}>
+                {siteSettings.pageIntro.homeLabel}
+              </span>
             </Link>
             {breadcrumbs.map((crumb, index) => (
               <span key={`${crumb.label}-${index}`} className="inline-flex items-center gap-2">
                 <ChevronRight size={12} className="text-[#6f654c]" />
                 {crumb.to ? (
                   <Link href={crumb.to} className="hover:text-[#f2d78b] transition-colors">
-                    {crumb.label}
+                    <span data-sanity={crumb.dataSanity}>{crumb.label}</span>
                   </Link>
                 ) : (
-                  <span className="text-[#d7c7a2]">{crumb.label}</span>
+                  <span data-sanity={crumb.dataSanity} className="text-[#d7c7a2]">
+                    {crumb.label}
+                  </span>
                 )}
               </span>
             ))}
@@ -58,12 +70,14 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
         </div>
 
         <span
+          data-sanity={dataSanity?.label}
           className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
         >
           {label}
         </span>
         <h1
+          data-sanity={dataSanity?.title}
           className={`premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] max-w-4xl${description ? ' mb-5' : ''}${titleVisual ? ' premium-page-title-visual' : ''}`}
           aria-label={titleVisual ? title : undefined}
           style={{ fontFamily: "'DM Serif Display', serif" }}
@@ -72,6 +86,7 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
         </h1>
         {description ? (
           <p
+            data-sanity={dataSanity?.description}
             className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.85] max-w-3xl"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >

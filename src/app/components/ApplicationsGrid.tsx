@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Droplets, Gem, Wind, Fuel, FlaskConical, Cog, ArrowRight } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
-import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
+import { useHomePageDataAttribute, useSanityDataAttribute } from '../cms/visualEditingAttributes';
 
 const iconMap = {
   'water-treatment': Droplets,
@@ -22,6 +22,7 @@ export function ApplicationsGrid() {
   const { applications, homePage } = useSiteContent();
   const homePageDocumentId = homePage._id;
   const homePageDataAttribute = useHomePageDataAttribute(homePageDocumentId);
+  const sanityDataAttribute = useSanityDataAttribute();
 
   return (
     <section className="py-10 md:py-12">
@@ -59,12 +60,14 @@ export function ApplicationsGrid() {
                   <Icon size={18} className="text-[#e6cb87]" />
                 </div>
                 <h3
+                  data-sanity={sanityDataAttribute('application', a._id, 'name')}
                   className="premium-card-heading text-[16px] md:text-[17px] mb-2 max-w-[16ch]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
                 >
                   {a.name}
                 </h3>
                 <p
+                  data-sanity={sanityDataAttribute('application', a._id, 'summary')}
                   className="premium-copy text-[13px] leading-[1.7] mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >

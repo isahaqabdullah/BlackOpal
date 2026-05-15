@@ -2,7 +2,11 @@
 
 import { Building2, Factory, RefreshCcw, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
-import { useAboutPageDataAttribute } from '../cms/visualEditingAttributes';
+import {
+  useAboutPageDataAttribute,
+  useSanityDataAttribute,
+  useSiteSettingsDataAttribute,
+} from '../cms/visualEditingAttributes';
 import type { FeatureIconName } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
@@ -23,6 +27,8 @@ export function AboutPage() {
   const { aboutPage, newsroomMap, siteSettings } = useSiteContent();
   const pressRelease = newsroomMap['name-change-press-release'];
   const aboutPageDataAttribute = useAboutPageDataAttribute(aboutPage._id);
+  const siteSettingsDataAttribute = useSiteSettingsDataAttribute(siteSettings._id);
+  const sanityDataAttribute = useSanityDataAttribute();
 
   return (
     <div>
@@ -32,10 +38,20 @@ export function AboutPage() {
         description={aboutPage.intro.description}
         titleVisual={
           <span className="premium-brand-logo-frame premium-page-title-logo-frame" aria-hidden="true">
-            <img src={aboutPage.titleLogoImage} alt="" className="premium-brand-logo premium-page-title-logo" />
+            <img
+              data-sanity={aboutPageDataAttribute('titleLogoImage')}
+              src={aboutPage.titleLogoImage}
+              alt=""
+              className="premium-brand-logo premium-page-title-logo"
+            />
           </span>
         }
-        breadcrumbs={[{ label: aboutPage.intro.breadcrumbLabel }]}
+        breadcrumbs={[{ label: aboutPage.intro.breadcrumbLabel, dataSanity: aboutPageDataAttribute('intro.breadcrumbLabel') }]}
+        dataSanity={{
+          label: aboutPageDataAttribute('intro.label'),
+          title: aboutPageDataAttribute('intro.title'),
+          description: aboutPageDataAttribute('intro.description'),
+        }}
       />
 
       <section className="pb-10 md:pb-12">
@@ -43,6 +59,7 @@ export function AboutPage() {
           <div className="premium-panel premium-split-grid p-7 md:p-9">
             <div className="premium-image-frame premium-image-animated w-full max-w-[42rem]">
               <img
+                data-sanity={aboutPageDataAttribute('heroImageUrl')}
                 src={aboutPage.heroImage}
                 alt={aboutPage.heroImageAlt}
                 className="w-full aspect-[5/4] object-cover"
@@ -50,6 +67,7 @@ export function AboutPage() {
             </div>
             <div>
               <h2
+                data-sanity={aboutPageDataAttribute('storyTitle')}
                 className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.35rem)] leading-[1.06] mb-5"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
@@ -59,39 +77,49 @@ export function AboutPage() {
                 className="space-y-4 premium-copy text-[14px] leading-[1.85] mb-8"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
-                {aboutPage.storyParagraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                {aboutPage.storyParagraphs.map((paragraph, paragraphIndex) => (
+                  <p key={paragraph} data-sanity={aboutPageDataAttribute(`storyParagraphs[${paragraphIndex}]`)}>
+                    {paragraph}
+                  </p>
                 ))}
               </div>
 
               <div className="border-y border-[#c9a24d]/10 py-5 mb-8">
                 <span
+                  data-sanity={aboutPageDataAttribute('officeNetworkLabel')}
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {aboutPage.officeNetworkLabel}
                 </span>
                 <div className="grid gap-3 lg:grid-cols-3">
-                  {siteSettings.officeNetwork.map((office) => (
+                  {siteSettings.officeNetwork.map((office, index) => {
+                    const officePath = office._key ? `officeNetwork[_key=="${office._key}"]` : `officeNetwork[${index}]`;
+
+                    return (
                     <address
                       key={`${office.label}-${office.name}`}
+                      data-sanity-edit-target
                       className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
                     >
                       <span
+                        data-sanity={siteSettingsDataAttribute(`${officePath}.label`)}
                         className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
                         {office.label}
                       </span>
                       <h3
+                        data-sanity={siteSettingsDataAttribute(`${officePath}.name`)}
                         className="premium-card-heading text-[14px] mb-1"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
                       >
                         {office.name}
                       </h3>
-                      {office.address.map((line) => (
+                      {office.address.map((line, lineIndex) => (
                         <p
                           key={`${office.label}-${line}`}
+                          data-sanity={siteSettingsDataAttribute(`${officePath}.address[${lineIndex}]`)}
                           className="premium-copy text-[12px] leading-[1.65]"
                           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                         >
@@ -99,7 +127,8 @@ export function AboutPage() {
                         </p>
                       ))}
                     </address>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
@@ -141,6 +170,7 @@ export function AboutPage() {
               return (
                 <div
                   key={card.title}
+                  data-sanity-edit-target
                   className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
                   style={{ animationDelay: `${120 + index * 90}ms` }}
                 >
@@ -148,12 +178,14 @@ export function AboutPage() {
                     <Icon size={18} className="text-[#e6cb87]" />
                   </div>
                   <h3
+                    data-sanity={aboutPageDataAttribute(`${card._key ? `cards[_key=="${card._key}"]` : `cards[${index}]`}.title`)}
                     className="premium-card-heading text-[16px] md:text-[17px] mb-2"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
                   >
                     {card.title}
                   </h3>
                   <p
+                    data-sanity={aboutPageDataAttribute(`${card._key ? `cards[_key=="${card._key}"]` : `cards[${index}]`}.desc`)}
                     className="premium-copy text-[13px] leading-[1.75]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
@@ -171,18 +203,21 @@ export function AboutPage() {
           <div className="premium-shell">
             <div className="premium-panel-soft p-6 md:p-7">
               <span
+                data-sanity={aboutPageDataAttribute('brandUpdateLabel')}
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {aboutPage.brandUpdateLabel}
               </span>
               <h2
+                data-sanity={sanityDataAttribute('newsroomItem', pressRelease._id, 'title')}
                 className="premium-heading text-[1.6rem] mb-3"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
                 {pressRelease.title}
               </h2>
               <p
+                data-sanity={sanityDataAttribute('newsroomItem', pressRelease._id, 'summary')}
                 className="premium-copy text-[14px] leading-[1.8] mb-5 max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >

@@ -23,7 +23,12 @@ export function Hero() {
           aria-label={homePage.heroLogoAlt}
         >
           <span className="premium-brand-logo-frame" aria-hidden="true">
-            <img src={homePage.heroLogoImage} alt="" className="premium-brand-logo" />
+            <img
+              data-sanity={homePageDataAttribute('heroLogoImage')}
+              src={homePage.heroLogoImage}
+              alt=""
+              className="premium-brand-logo"
+            />
           </span>
         </h1>
         <div className="premium-split-grid premium-hero-grid">
@@ -70,6 +75,7 @@ export function Hero() {
           <div className="relative w-full max-w-[58rem] xl:justify-self-end">
             <div className="pointer-events-none absolute inset-x-[12%] bottom-[-7%] h-24 rounded-full bg-[#c9a24d]/12 blur-3xl" />
             <span
+              data-sanity={homePageDataAttribute('heroLegacyLabel')}
               className="premium-reveal premium-reveal-delay-1 mb-4 block text-center text-[13px] uppercase sm:text-[14px]"
               style={{
                 fontFamily: "'Avenir Next', 'Helvetica Neue', Arial, sans-serif",
@@ -87,6 +93,7 @@ export function Hero() {
             <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1">
               <div className="relative overflow-hidden rounded-[1.15rem]">
                 <video
+                  data-sanity={homePageDataAttribute('heroVideoUrl')}
                   src={homePage.heroVideoUrl}
                   className="block w-full aspect-video object-cover"
                   autoPlay

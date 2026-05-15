@@ -1,10 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { useSanityDataAttribute, useSiteSettingsDataAttribute } from '../cms/visualEditingAttributes';
 import { useSiteContent } from '../content/SiteContentProvider';
 
 export function Footer() {
   const { applications, products, siteSettings } = useSiteContent();
+  const siteSettingsDataAttribute = useSiteSettingsDataAttribute(siteSettings._id);
+  const sanityDataAttribute = useSanityDataAttribute();
   const footerContact = siteSettings.websiteContact;
   const currentYear = String(new Date().getFullYear());
   const columns = [
@@ -41,23 +44,36 @@ export function Footer() {
               </Link>
               <div className="space-y-2.5 text-[13px] text-[#b8ab8b]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
                 <span
+                  data-sanity={siteSettingsDataAttribute('websiteContact.label')}
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {footerContact.label}
                 </span>
                 <p>
-                  <span className="text-[#f7efdb]">{footerContact.name}</span>
+                  <span data-sanity={siteSettingsDataAttribute('websiteContact.name')} className="text-[#f7efdb]">
+                    {footerContact.name}
+                  </span>
                   <br />
-                  {footerContact.address.map((line) => (
-                    <span key={line}>
+                  {footerContact.address.map((line, index) => (
+                    <span key={line} data-sanity={siteSettingsDataAttribute(`websiteContact.address[${index}]`)}>
                       {line}
                       <br />
                     </span>
                   ))}
                 </p>
-                {footerContact.phone ? <p>{siteSettings.footer.phoneLabel}: {footerContact.phone}</p> : null}
-                {footerContact.email ? <p>{siteSettings.footer.emailLabel}: {footerContact.email}</p> : null}
+                {footerContact.phone ? (
+                  <p>
+                    {siteSettings.footer.phoneLabel}:{' '}
+                    <span data-sanity={siteSettingsDataAttribute('websiteContact.phone')}>{footerContact.phone}</span>
+                  </p>
+                ) : null}
+                {footerContact.email ? (
+                  <p>
+                    {siteSettings.footer.emailLabel}:{' '}
+                    <span data-sanity={siteSettingsDataAttribute('websiteContact.email')}>{footerContact.email}</span>
+                  </p>
+                ) : null}
                 <Link href={siteSettings.footer.contactLinkPath} className="inline-flex text-[#f2d78b] hover:text-[#fff2bf] transition-colors">
                   {siteSettings.footer.contactLinkLabel}
                 </Link>
@@ -65,7 +81,7 @@ export function Footer() {
             </div>
 
             {/* Link columns */}
-            {columns.map((col) => (
+            {columns.map((col, columnIndex) => (
               <div key={col.title}>
                 <span
                   className="text-[#8f835f] text-[10px] tracking-[0.24em] uppercase block mb-4"
@@ -78,6 +94,22 @@ export function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.to}
+                        data-sanity={
+                          columnIndex === 1
+                            ? sanityDataAttribute(
+                                'product',
+                                products.find((product) => `/products/${product.slug}` === link.to)?._id,
+                                'name',
+                              )
+                            : columnIndex === 2
+                              ? sanityDataAttribute(
+                                  'application',
+                                  applications.find((application) => `/applications/${application.slug}` === link.to)
+                                    ?._id,
+                                  'name',
+                                )
+                              : undefined
+                        }
                         className="text-[13px] text-[#b8ab8b] hover:text-[#f2d78b] transition-colors"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                       >

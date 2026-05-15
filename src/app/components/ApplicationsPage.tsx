@@ -2,12 +2,15 @@
 
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { usePageCopyDataAttribute, useSanityDataAttribute } from '../cms/visualEditingAttributes';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
 export function ApplicationsPage() {
   const { applications, pageCopy, productMap } = useSiteContent();
   const copy = pageCopy.applicationsPage;
+  const pageCopyDataAttribute = usePageCopyDataAttribute();
+  const sanityDataAttribute = useSanityDataAttribute();
 
   return (
     <div>
@@ -15,7 +18,12 @@ export function ApplicationsPage() {
         label={copy.intro.label}
         title={copy.intro.title}
         description={copy.intro.description}
-        breadcrumbs={[{ label: copy.intro.breadcrumbLabel }]}
+        breadcrumbs={[{ label: copy.intro.breadcrumbLabel, dataSanity: pageCopyDataAttribute('applicationsPage.intro.breadcrumbLabel') }]}
+        dataSanity={{
+          label: pageCopyDataAttribute('applicationsPage.intro.label'),
+          title: pageCopyDataAttribute('applicationsPage.intro.title'),
+          description: pageCopyDataAttribute('applicationsPage.intro.description'),
+        }}
       />
 
       <section className="pb-10 md:pb-12">
@@ -30,24 +38,28 @@ export function ApplicationsPage() {
               <div className="premium-split-grid items-start">
                 <div>
                   <span
+                    data-sanity={pageCopyDataAttribute('applicationsPage.itemLabel')}
                     className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
                     {copy.itemLabel}
                   </span>
                   <h2
+                    data-sanity={sanityDataAttribute('application', application._id, 'name')}
                     className="premium-heading premium-heading-elevated text-[clamp(1.55rem,2.4vw,2rem)] leading-[1.08] mb-3"
                     style={{ fontFamily: "'DM Serif Display', serif" }}
                   >
                     {application.name}
                   </h2>
                   <p
+                    data-sanity={sanityDataAttribute('application', application._id, 'summary')}
                     className="premium-copy text-[14px] leading-[1.8] mb-5 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {application.summary}
                   </p>
                   <p
+                    data-sanity={sanityDataAttribute('application', application._id, 'intro')}
                     className="premium-copy text-[13px] leading-[1.8] mb-6 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
@@ -57,15 +69,17 @@ export function ApplicationsPage() {
                   <div className="premium-form-grid gap-8">
                     <div>
                       <span
+                        data-sanity={pageCopyDataAttribute('applicationsPage.keyPointsLabel')}
                         className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
                         {copy.keyPointsLabel}
                       </span>
                       <div className="space-y-2">
-                        {application.keyPoints.map((point) => (
+                        {application.keyPoints.map((point, pointIndex) => (
                           <div
                             key={point}
+                            data-sanity={sanityDataAttribute('application', application._id, `keyPoints[${pointIndex}]`)}
                             className="flex items-start gap-3 text-[13px] text-[#d7c7a2]"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                           >
@@ -78,15 +92,21 @@ export function ApplicationsPage() {
 
                     <div>
                       <span
+                        data-sanity={pageCopyDataAttribute('applicationsPage.recommendedProductsLabel')}
                         className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
                         {copy.recommendedProductsLabel}
                       </span>
                       <div className="flex flex-wrap gap-2">
-                        {application.recommendedProducts.map((slug) => (
+                        {application.recommendedProducts.map((slug, productIndex) => (
                           <span
                             key={slug}
+                            data-sanity={sanityDataAttribute(
+                              'application',
+                              application._id,
+                              `recommendedProducts[${productIndex}]`,
+                            )}
                             className="premium-link-btn text-[12px] px-3 py-1.5 rounded-full"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                           >
@@ -117,7 +137,12 @@ export function ApplicationsPage() {
                 </div>
 
                 <div className="premium-image-frame w-full max-w-[38rem] xl:justify-self-end">
-                  <img src={application.image} alt={application.name} className="w-full aspect-[4/3] object-cover" />
+                  <img
+                    data-sanity={sanityDataAttribute('application', application._id, 'imageUrl')}
+                    src={application.image}
+                    alt={application.name}
+                    className="w-full aspect-[4/3] object-cover"
+                  />
                 </div>
               </div>
             </div>

@@ -2,12 +2,15 @@
 
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { usePageCopyDataAttribute, useSanityDataAttribute } from '../cms/visualEditingAttributes';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
 export function ProductsPage() {
   const { pageCopy, products } = useSiteContent();
   const copy = pageCopy.productsPage;
+  const pageCopyDataAttribute = usePageCopyDataAttribute();
+  const sanityDataAttribute = useSanityDataAttribute();
 
   return (
     <div>
@@ -15,7 +18,12 @@ export function ProductsPage() {
         label={copy.intro.label}
         title={copy.intro.title}
         description={copy.intro.description}
-        breadcrumbs={[{ label: copy.intro.breadcrumbLabel }]}
+        breadcrumbs={[{ label: copy.intro.breadcrumbLabel, dataSanity: pageCopyDataAttribute('productsPage.intro.breadcrumbLabel') }]}
+        dataSanity={{
+          label: pageCopyDataAttribute('productsPage.intro.label'),
+          title: pageCopyDataAttribute('productsPage.intro.title'),
+          description: pageCopyDataAttribute('productsPage.intro.description'),
+        }}
       />
 
       <section className="pb-10 md:pb-12">
@@ -30,24 +38,28 @@ export function ProductsPage() {
               <div className="premium-split-grid items-start">
                 <div>
                   <span
+                    data-sanity={sanityDataAttribute('product', product._id, 'shortName')}
                     className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
                     {product.shortName}
                   </span>
                   <h2
+                    data-sanity={sanityDataAttribute('product', product._id, 'name')}
                     className="premium-heading premium-heading-elevated text-[clamp(1.55rem,2.4vw,2rem)] leading-[1.08] mb-3"
                     style={{ fontFamily: "'DM Serif Display', serif" }}
                   >
                     {product.name}
                   </h2>
                   <p
+                    data-sanity={sanityDataAttribute('product', product._id, 'summary')}
                     className="premium-copy text-[14px] leading-[1.8] mb-5 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {product.summary}
                   </p>
                   <p
+                    data-sanity={sanityDataAttribute('product', product._id, 'intro')}
                     className="premium-copy text-[13px] leading-[1.8] mb-6 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
@@ -57,15 +69,17 @@ export function ProductsPage() {
                   <div className="premium-form-grid gap-8">
                     <div>
                       <span
+                        data-sanity={pageCopyDataAttribute('productsPage.highlightsLabel')}
                         className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
                         {copy.highlightsLabel}
                       </span>
                       <div className="space-y-2">
-                        {product.highlights.map((highlight) => (
+                        {product.highlights.map((highlight, highlightIndex) => (
                           <div
                             key={highlight}
+                            data-sanity={sanityDataAttribute('product', product._id, `highlights[${highlightIndex}]`)}
                             className="flex items-start gap-3 text-[13px] text-[#d7c7a2]"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                           >
@@ -78,15 +92,17 @@ export function ProductsPage() {
 
                     <div>
                       <span
+                        data-sanity={pageCopyDataAttribute('productsPage.commonUsesLabel')}
                         className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
                         {copy.commonUsesLabel}
                       </span>
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {product.commonUses.map((use) => (
+                        {product.commonUses.map((use, useIndex) => (
                           <span
                             key={use}
+                            data-sanity={sanityDataAttribute('product', product._id, `commonUses[${useIndex}]`)}
                             className="premium-link-btn text-[12px] px-3 py-1.5 rounded-full"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                           >
@@ -98,15 +114,17 @@ export function ProductsPage() {
                       {product.grades?.length ? (
                         <>
                           <span
+                            data-sanity={pageCopyDataAttribute('productsPage.referencedGradesLabel')}
                             className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                           >
                             {copy.referencedGradesLabel}
                           </span>
                           <div className="flex flex-wrap gap-2">
-                            {product.grades.map((grade) => (
+                            {product.grades.map((grade, gradeIndex) => (
                               <span
                                 key={grade}
+                                data-sanity={sanityDataAttribute('product', product._id, `grades[${gradeIndex}]`)}
                                 className="premium-secondary-btn text-[12px] px-3 py-1.5 rounded-full"
                                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                               >
@@ -139,7 +157,12 @@ export function ProductsPage() {
                 </div>
 
                 <div className="premium-image-frame w-full max-w-[38rem] xl:justify-self-end">
-                  <img src={product.image} alt={product.name} className="w-full aspect-[4/3] object-cover" />
+                  <img
+                    data-sanity={sanityDataAttribute('product', product._id, 'imageUrl')}
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full aspect-[4/3] object-cover"
+                  />
                 </div>
               </div>
             </div>

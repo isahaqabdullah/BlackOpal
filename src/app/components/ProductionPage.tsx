@@ -2,7 +2,7 @@
 
 import { ArrowRight } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
-import { useProductionPageDataAttribute } from '../cms/visualEditingAttributes';
+import { useProductionPageDataAttribute, useSiteSettingsDataAttribute } from '../cms/visualEditingAttributes';
 import { PageIntro } from './PageIntro';
 
 const balancedOverviewTitle =
@@ -11,6 +11,7 @@ const balancedOverviewTitle =
 export function ProductionPage() {
   const { productionPage, siteSettings } = useSiteContent();
   const productionPageDataAttribute = useProductionPageDataAttribute();
+  const siteSettingsDataAttribute = useSiteSettingsDataAttribute(siteSettings._id);
   const productionContactEmail = siteSettings.websiteContact.email ?? '';
   const overviewTitleLines =
     productionPage.overviewTitle === balancedOverviewTitle
@@ -23,7 +24,17 @@ export function ProductionPage() {
         label={productionPage.intro.label}
         title={productionPage.intro.title}
         description={productionPage.intro.description}
-        breadcrumbs={[{ label: productionPage.intro.breadcrumbLabel }]}
+        breadcrumbs={[
+          {
+            label: productionPage.intro.breadcrumbLabel,
+            dataSanity: productionPageDataAttribute('intro.breadcrumbLabel'),
+          },
+        ]}
+        dataSanity={{
+          label: productionPageDataAttribute('intro.label'),
+          title: productionPageDataAttribute('intro.title'),
+          description: productionPageDataAttribute('intro.description'),
+        }}
       />
 
       <section className="pb-10 md:pb-12">
@@ -31,6 +42,7 @@ export function ProductionPage() {
           <div className="premium-panel premium-split-grid p-7 md:p-9">
             <div>
               <span
+                data-sanity={productionPageDataAttribute('glanceLabel')}
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
@@ -38,22 +50,28 @@ export function ProductionPage() {
               </span>
 
               <div className="grid gap-5 sm:grid-cols-3 border-y border-[#c9a24d]/12 py-5 mb-6">
-                {productionPage.glanceItems.map((item) => (
+                {productionPage.glanceItems.map((item, index) => {
+                  const itemPath = item._key ? `glanceItems[_key=="${item._key}"]` : `glanceItems[${index}]`;
+
+                  return (
                   <div key={item.label} className="sm:border-l sm:first:border-l-0 sm:border-[#c9a24d]/12 sm:pl-5">
                     <span
+                      data-sanity={productionPageDataAttribute(`${itemPath}.value`)}
                       className="text-[#e6cb87] text-[clamp(1.25rem,2vw,1.75rem)] leading-tight block mb-1"
                       style={{ fontFamily: "'DM Serif Display', serif" }}
                     >
                       {item.value}
                     </span>
                     <span
+                      data-sanity={productionPageDataAttribute(`${itemPath}.label`)}
                       className="text-[#8f835f] text-[10px] tracking-[0.14em] uppercase"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
                       {item.label}
                     </span>
                   </div>
-                ))}
+                  );
+                })}
               </div>
 
               <h2
@@ -68,6 +86,7 @@ export function ProductionPage() {
                 ))}
               </h2>
               <p
+                data-sanity={productionPageDataAttribute('overviewBody')}
                 className="premium-copy text-[14px] leading-[1.85] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
@@ -77,6 +96,7 @@ export function ProductionPage() {
 
             <div className="premium-image-frame premium-image-animated w-full max-w-[42rem] xl:justify-self-end">
               <img
+                data-sanity={productionPageDataAttribute('imageUrl')}
                 src={productionPage.image}
                 alt={productionPage.imageAlt}
                 className="w-full aspect-[4/3] object-cover"
@@ -92,12 +112,14 @@ export function ProductionPage() {
             <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
               <div>
                 <span
+                  data-sanity={productionPageDataAttribute('qualityKicker')}
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {productionPage.qualityKicker}
                 </span>
                 <h2
+                  data-sanity={productionPageDataAttribute('qualityTitle')}
                   className="premium-heading premium-heading-elevated text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.08] mb-4"
                   style={{ fontFamily: "'DM Serif Display', serif" }}
                 >
@@ -107,49 +129,64 @@ export function ProductionPage() {
                   className="space-y-4 premium-copy text-[14px] leading-[1.85]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
-                  {productionPage.qualityParagraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                  {productionPage.qualityParagraphs.map((paragraph, paragraphIndex) => (
+                    <p
+                      key={paragraph}
+                      data-sanity={productionPageDataAttribute(`qualityParagraphs[${paragraphIndex}]`)}
+                    >
+                      {paragraph}
+                    </p>
                   ))}
                 </div>
               </div>
 
               <div>
                 <span
+                  data-sanity={productionPageDataAttribute('activationKicker')}
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {productionPage.activationKicker}
                 </span>
                 <div className="border-y border-[#c9a24d]/12">
-                  {productionPage.activationSteps.map((step) => (
-                    <div
-                      key={step.title}
-                      className="grid gap-4 border-b border-[#c9a24d]/10 py-5 last:border-b-0 sm:grid-cols-[3rem_1fr]"
-                    >
-                      <span
-                        className="text-[#e6cb87] text-[1.5rem] leading-none"
-                        style={{ fontFamily: "'DM Serif Display', serif" }}
+                  {productionPage.activationSteps.map((step, index) => {
+                    const stepPath = step._key ? `activationSteps[_key=="${step._key}"]` : `activationSteps[${index}]`;
+
+                    return (
+                      <div
+                        key={step.title}
+                        data-sanity-edit-target
+                        className="grid gap-4 border-b border-[#c9a24d]/10 py-5 last:border-b-0 sm:grid-cols-[3rem_1fr]"
                       >
-                        {step.step}
-                      </span>
-                      <div>
-                        <h3
-                          className="premium-card-heading text-[16px] mb-2"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                        <span
+                          data-sanity={productionPageDataAttribute(`${stepPath}.step`)}
+                          className="text-[#e6cb87] text-[1.5rem] leading-none"
+                          style={{ fontFamily: "'DM Serif Display', serif" }}
                         >
-                          {step.title}
-                        </h3>
-                        <p
-                          className="premium-copy text-[13px] leading-[1.75]"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                        >
-                          {step.body}
-                        </p>
+                          {step.step}
+                        </span>
+                        <div>
+                          <h3
+                            data-sanity={productionPageDataAttribute(`${stepPath}.title`)}
+                            className="premium-card-heading text-[16px] mb-2"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                          >
+                            {step.title}
+                          </h3>
+                          <p
+                            data-sanity={productionPageDataAttribute(`${stepPath}.body`)}
+                            className="premium-copy text-[13px] leading-[1.75]"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                          >
+                            {step.body}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
                 <p
+                  data-sanity={productionPageDataAttribute('activationNote')}
                   className="premium-copy text-[13px] leading-[1.75] mt-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
@@ -168,11 +205,19 @@ export function ProductionPage() {
               className="premium-copy text-[14px] leading-[1.75] max-w-2xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              {productionPage.contactTextBeforeEmail}
-              <a href={`mailto:${productionContactEmail}`} className="text-[#f2d78b] hover:text-[#f7efdb]">
+              <span data-sanity={productionPageDataAttribute('contactTextBeforeEmail')}>
+                {productionPage.contactTextBeforeEmail}
+              </span>
+              <a
+                data-sanity={siteSettingsDataAttribute('websiteContact.email')}
+                href={`mailto:${productionContactEmail}`}
+                className="text-[#f2d78b] hover:text-[#f7efdb]"
+              >
                 {productionContactEmail}
               </a>
-              {productionPage.contactTextAfterEmail}
+              <span data-sanity={productionPageDataAttribute('contactTextAfterEmail')}>
+                {productionPage.contactTextAfterEmail}
+              </span>
             </p>
             <a
               href={`mailto:${productionContactEmail}`}

@@ -2,6 +2,7 @@
 
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { usePageCopyDataAttribute, useSanityDataAttribute } from '../cms/visualEditingAttributes';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
@@ -10,6 +11,8 @@ export function NewsroomPage() {
   const copy = pageCopy.newsroomPage;
   const pressRelease = newsroomItems.find((item) => item.type === 'press-release');
   const resourceItems = newsroomItems.filter((item) => item.type === 'resource');
+  const pageCopyDataAttribute = usePageCopyDataAttribute();
+  const sanityDataAttribute = useSanityDataAttribute();
 
   return (
     <div>
@@ -17,7 +20,12 @@ export function NewsroomPage() {
         label={copy.intro.label}
         title={copy.intro.title}
         description={copy.intro.description}
-        breadcrumbs={[{ label: copy.intro.breadcrumbLabel }]}
+        breadcrumbs={[{ label: copy.intro.breadcrumbLabel, dataSanity: pageCopyDataAttribute('newsroomPage.intro.breadcrumbLabel') }]}
+        dataSanity={{
+          label: pageCopyDataAttribute('newsroomPage.intro.label'),
+          title: pageCopyDataAttribute('newsroomPage.intro.title'),
+          description: pageCopyDataAttribute('newsroomPage.intro.description'),
+        }}
       />
 
       {pressRelease ? (
@@ -26,27 +34,31 @@ export function NewsroomPage() {
             <div data-sanity-edit-target className="premium-panel premium-split-grid p-7 md:p-9">
               <div>
                 <span
+                  data-sanity={pageCopyDataAttribute('newsroomPage.featuredUpdateLabel')}
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {copy.featuredUpdateLabel}
                 </span>
                 <h2
+                  data-sanity={sanityDataAttribute('newsroomItem', pressRelease._id, 'title')}
                   className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.4rem)] leading-[1.06] mb-4"
                   style={{ fontFamily: "'DM Serif Display', serif" }}
                 >
                   {pressRelease.title}
                 </h2>
                 <p
+                  data-sanity={sanityDataAttribute('newsroomItem', pressRelease._id, 'summary')}
                   className="premium-copy text-[14px] leading-[1.85] mb-6"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {pressRelease.summary}
                 </p>
                 <div className="space-y-3 mb-6">
-                  {pressRelease.bullets?.map((bullet) => (
+                  {pressRelease.bullets?.map((bullet, bulletIndex) => (
                     <div
                       key={bullet}
+                      data-sanity={sanityDataAttribute('newsroomItem', pressRelease._id, `bullets[${bulletIndex}]`)}
                       className="flex items-start gap-3 text-[13px] text-[#d7c7a2]"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                     >
@@ -67,12 +79,14 @@ export function NewsroomPage() {
 
               <div className="premium-panel-soft p-6 md:p-7 self-start">
                 <span
+                  data-sanity={pageCopyDataAttribute('newsroomPage.whyMattersLabel')}
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {copy.whyMattersLabel}
                 </span>
                 <p
+                  data-sanity={pageCopyDataAttribute('newsroomPage.whyMattersBody')}
                   className="premium-copy text-[14px] leading-[1.8]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
@@ -89,12 +103,14 @@ export function NewsroomPage() {
           <div className="mb-10">
             <div>
               <h2
+                data-sanity={pageCopyDataAttribute('newsroomPage.resourcesTitle')}
                 className="premium-heading premium-heading-elevated text-[clamp(1.7rem,2.8vw,2.35rem)] leading-[1.06] mb-3"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
                 {copy.resourcesTitle}
               </h2>
               <p
+                data-sanity={pageCopyDataAttribute('newsroomPage.resourcesDescription')}
                 className="premium-copy text-[14px] leading-[1.8] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
@@ -112,18 +128,21 @@ export function NewsroomPage() {
                 style={{ animationDelay: `${120 + index * 90}ms` }}
               >
                 <span
+                  data-sanity={pageCopyDataAttribute('newsroomPage.resourceLabel')}
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {copy.resourceLabel}
                 </span>
                 <h3
+                  data-sanity={sanityDataAttribute('newsroomItem', item._id, 'title')}
                   className="premium-card-heading text-[18px] mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
                 >
                   {item.title}
                 </h3>
                 <p
+                  data-sanity={sanityDataAttribute('newsroomItem', item._id, 'summary')}
                   className="premium-copy text-[13px] leading-[1.75] mb-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >

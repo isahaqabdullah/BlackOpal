@@ -3,12 +3,14 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, Zap } from 'lucide-react';
+import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
 import { useSiteContent } from '../content/SiteContentProvider';
 
 const AUTO_ADVANCE_MS = 5200;
 
 export function FeaturedProduct() {
   const { applicationMap, homePage, productMap } = useSiteContent();
+  const homePageDataAttribute = useHomePageDataAttribute(homePage._id);
   const capabilitySlides = homePage.featuredCapabilities.map((slide) => {
     const linkedImage =
       slide.imageSource === 'product'
@@ -25,6 +27,9 @@ export function FeaturedProduct() {
   });
   const [activeIndex, setActiveIndex] = useState(0);
   const activeSlide = capabilitySlides[activeIndex];
+  const activeSlidePath = activeSlide?._key
+    ? `featuredCapabilities[_key=="${activeSlide._key}"]`
+    : `featuredCapabilities[${activeIndex}]`;
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -51,6 +56,7 @@ export function FeaturedProduct() {
               <div className="flex items-center gap-2">
                 <Zap size={16} className="text-[#e6cb87]" />
                 <span
+                  data-sanity={homePageDataAttribute('featuredCapabilitiesLabel')}
                   className="text-[11px] tracking-[0.24em] uppercase text-[#e6cb87]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
@@ -65,21 +71,24 @@ export function FeaturedProduct() {
               </span>
             </div>
             <h2
+              data-sanity={homePageDataAttribute(`${activeSlidePath}.title`)}
               className="premium-heading premium-heading-elevated text-[clamp(2rem,3.9vw,3.45rem)] leading-[1.02] mb-6"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               {activeSlide.title}
             </h2>
             <p
+              data-sanity={homePageDataAttribute(`${activeSlidePath}.copy`)}
               className="premium-copy text-[15px] leading-[1.85] mb-6 max-w-lg"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               {activeSlide.copy}
             </p>
             <ul className="space-y-2.5 mb-8">
-              {activeSlide.highlights.map((item) => (
+              {activeSlide.highlights.map((item, highlightIndex) => (
                 <li
                   key={item}
+                  data-sanity={homePageDataAttribute(`${activeSlidePath}.highlights[${highlightIndex}]`)}
                   className="flex items-start gap-2.5 text-[13px] text-[#d7c7a2]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                 >
@@ -119,6 +128,9 @@ export function FeaturedProduct() {
               {capabilitySlides.map((slide, index) => (
                 <button
                   key={slide.title}
+                  data-sanity={homePageDataAttribute(
+                    `${slide._key ? `featuredCapabilities[_key=="${slide._key}"]` : `featuredCapabilities[${index}]`}.label`,
+                  )}
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   aria-label={`${homePage.featuredCapabilitiesShowLabelPrefix} ${slide.label}`}
@@ -141,6 +153,7 @@ export function FeaturedProduct() {
             className="premium-image-frame premium-image-animated w-full max-w-[42rem] xl:justify-self-end"
           >
             <img
+              data-sanity={homePageDataAttribute(`${activeSlidePath}.${activeSlide.imageUrl ? 'imageUrl' : 'imageSlug'}`)}
               src={activeSlide.image}
               alt={activeSlide.alt}
               className="w-full aspect-[4/3] object-cover"

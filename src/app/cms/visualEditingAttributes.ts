@@ -14,6 +14,17 @@ type VisualEditingContext = {
   studioUrl?: string;
 };
 
+type SanityDocumentType =
+  | 'homePage'
+  | 'siteSettings'
+  | 'pageCopy'
+  | 'aboutPage'
+  | 'contactPage'
+  | 'productionPage'
+  | 'product'
+  | 'application'
+  | 'newsroomItem';
+
 function getEmbeddedPresentationContext(): VisualEditingContext {
   if (typeof window === 'undefined') {
     return { enabled: false };
@@ -68,41 +79,28 @@ export function aboutPageDocumentId(fallbackId = 'aboutPage') {
   return fallbackId;
 }
 
-export function homePageDataAttribute(path: string, documentId = homePageDocumentId(), baseUrl = studioUrl) {
-  if (!projectId || !dataset) {
-    return undefined;
+export function siteSettingsDocumentId(fallbackId = 'siteSettings') {
+  if (siteId === 'black-opal-india' || siteId === 'black-opal-middle-east') {
+    return `siteSettings-${siteId}`;
   }
 
-  const resolvedDocumentId = documentId || homePageDocumentId();
-
-  return createDataAttribute({
-    baseUrl,
-    dataset,
-    id: resolvedDocumentId,
-    path,
-    projectId,
-    type: 'homePage',
-  }).toString();
+  return fallbackId;
 }
 
-export function aboutPageDataAttribute(path: string, documentId = aboutPageDocumentId(), baseUrl = studioUrl) {
-  if (!projectId || !dataset) {
-    return undefined;
+export function contactPageDocumentId(fallbackId = 'contactPage') {
+  if (siteId === 'black-opal-india' || siteId === 'black-opal-middle-east') {
+    return `contactPage-${siteId}`;
   }
 
-  const resolvedDocumentId = documentId || aboutPageDocumentId();
-
-  return createDataAttribute({
-    baseUrl,
-    dataset,
-    id: resolvedDocumentId,
-    path,
-    projectId,
-    type: 'aboutPage',
-  }).toString();
+  return fallbackId;
 }
 
-export function productionPageDataAttribute(path: string, documentId = 'productionPage', baseUrl = studioUrl) {
+export function documentDataAttribute(
+  type: SanityDocumentType,
+  documentId: string,
+  path: string,
+  baseUrl = studioUrl,
+) {
   if (!projectId || !dataset) {
     return undefined;
   }
@@ -113,8 +111,28 @@ export function productionPageDataAttribute(path: string, documentId = 'producti
     id: documentId,
     path,
     projectId,
-    type: 'productionPage',
+    type,
   }).toString();
+}
+
+export function homePageDataAttribute(path: string, documentId = homePageDocumentId(), baseUrl = studioUrl) {
+  return documentDataAttribute('homePage', documentId || homePageDocumentId(), path, baseUrl);
+}
+
+export function aboutPageDataAttribute(path: string, documentId = aboutPageDocumentId(), baseUrl = studioUrl) {
+  return documentDataAttribute('aboutPage', documentId || aboutPageDocumentId(), path, baseUrl);
+}
+
+export function productionPageDataAttribute(path: string, documentId = 'productionPage', baseUrl = studioUrl) {
+  return documentDataAttribute('productionPage', documentId, path, baseUrl);
+}
+
+export function siteSettingsDataAttribute(path: string, documentId = siteSettingsDocumentId(), baseUrl = studioUrl) {
+  return documentDataAttribute('siteSettings', documentId || siteSettingsDocumentId(), path, baseUrl);
+}
+
+export function contactPageDataAttribute(path: string, documentId = contactPageDocumentId(), baseUrl = studioUrl) {
+  return documentDataAttribute('contactPage', documentId || contactPageDocumentId(), path, baseUrl);
 }
 
 export function useHomePageDataAttribute(documentId?: string) {
@@ -128,6 +146,31 @@ export function useHomePageDataAttribute(documentId?: string) {
 
     return homePageDataAttribute(path, documentId, visualEditingContext.studioUrl);
   };
+}
+
+export function useSanityDataAttribute() {
+  const { source } = useSiteContent();
+  const visualEditingContext = useVisualEditingContext(source);
+
+  return (type: SanityDocumentType, documentId: string | undefined, path: string) => {
+    if (!visualEditingContext.enabled || !documentId) {
+      return undefined;
+    }
+
+    return documentDataAttribute(type, documentId, path, visualEditingContext.studioUrl);
+  };
+}
+
+export function useSiteSettingsDataAttribute(documentId?: string) {
+  const dataAttribute = useSanityDataAttribute();
+
+  return (path: string) => dataAttribute('siteSettings', documentId || siteSettingsDocumentId(), path);
+}
+
+export function usePageCopyDataAttribute() {
+  const dataAttribute = useSanityDataAttribute();
+
+  return (path: string) => dataAttribute('pageCopy', 'pageCopy', path);
 }
 
 export function useAboutPageDataAttribute(documentId?: string) {
@@ -153,5 +196,18 @@ export function useProductionPageDataAttribute(documentId?: string) {
     }
 
     return productionPageDataAttribute(path, documentId, visualEditingContext.studioUrl);
+  };
+}
+
+export function useContactPageDataAttribute(documentId?: string) {
+  const { source } = useSiteContent();
+  const visualEditingContext = useVisualEditingContext(source);
+
+  return (path: string) => {
+    if (!visualEditingContext.enabled) {
+      return undefined;
+    }
+
+    return contactPageDataAttribute(path, documentId, visualEditingContext.studioUrl);
   };
 }

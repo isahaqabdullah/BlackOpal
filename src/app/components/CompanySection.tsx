@@ -15,6 +15,7 @@ export function CompanySection() {
         <div className="premium-split-grid">
           <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1 w-full max-w-[42rem]">
             <img
+              data-sanity={homePageDataAttribute('companyImage')}
               src={homePage.companyImage}
               alt={homePage.companyImageAlt}
               className="w-full aspect-[5/4] object-cover"

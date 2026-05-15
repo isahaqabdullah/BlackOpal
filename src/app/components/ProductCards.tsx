@@ -3,12 +3,13 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
-import { useHomePageDataAttribute } from '../cms/visualEditingAttributes';
+import { useHomePageDataAttribute, useSanityDataAttribute } from '../cms/visualEditingAttributes';
 
 export function ProductCards() {
   const { homePage, products } = useSiteContent();
   const homePageDocumentId = homePage._id;
   const homePageDataAttribute = useHomePageDataAttribute(homePageDocumentId);
+  const sanityDataAttribute = useSanityDataAttribute();
 
   return (
     <section className="py-10 md:py-12">
@@ -39,21 +40,24 @@ export function ProductCards() {
               style={{ animationDelay: `${120 + index * 90}ms` }}
             >
               <h3
+                data-sanity={sanityDataAttribute('product', p._id, 'name')}
                 className="premium-card-heading text-[18px] md:text-[19px] mb-3 max-w-[16ch]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
               >
                 {p.name}
               </h3>
               <p
+                data-sanity={sanityDataAttribute('product', p._id, 'summary')}
                 className="premium-copy text-[14px] leading-[1.75] mb-5"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {p.summary}
               </p>
               <ul className="space-y-1.5 mb-6">
-                {p.commonUses.slice(0, 3).map((u) => (
+                {p.commonUses.slice(0, 3).map((u, useIndex) => (
                   <li
                     key={u}
+                    data-sanity={sanityDataAttribute('product', p._id, `commonUses[${useIndex}]`)}
                     className="text-[13px] text-[#d7c7a2] flex items-center gap-2"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                   >
