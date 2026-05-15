@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { createDataAttribute } from '@sanity/visual-editing/create-data-attribute';
 import { useSiteContent } from '../content/SiteContentProvider';
+import { getSanityPresentationContext } from './presentationContext';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim() || process.env.VITE_SANITY_PROJECT_ID?.trim();
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET?.trim() || process.env.VITE_SANITY_DATASET?.trim();
@@ -26,19 +27,14 @@ type SanityDocumentType =
   | 'newsroomItem';
 
 function getEmbeddedPresentationContext(): VisualEditingContext {
-  if (typeof window === 'undefined') {
-    return { enabled: false };
-  }
-
-  const searchParams = new URLSearchParams(window.location.search);
-
-  if (!searchParams.has('sanity-preview-perspective')) {
+  const presentationContext = getSanityPresentationContext();
+  if (!presentationContext.enabled) {
     return { enabled: false };
   }
 
   return {
     enabled: true,
-    studioUrl: `${window.location.origin}/studio`,
+    studioUrl: presentationContext.studioUrl,
   };
 }
 

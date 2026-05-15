@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Navigation } from './Navigation';
 import { Footer } from './Footer';
 import { SanityVisualEditing } from '../cms/SanityVisualEditing';
+import { getSanityPresentationContext, SANITY_PREVIEW_PERSPECTIVE_PARAM } from '../cms/presentationContext';
 
 export function Layout({ children, preview = false }: { children: ReactNode; preview?: boolean }) {
   const pathname = usePathname();
@@ -18,9 +19,57 @@ export function Layout({ children, preview = false }: { children: ReactNode; pre
       return;
     }
 
-    const searchParams = new URLSearchParams(window.location.search);
-    setEmbeddedPresentationPreview(searchParams.has('sanity-preview-perspective'));
+    setEmbeddedPresentationPreview(getSanityPresentationContext().enabled);
   }, [isStudioRoute, pathname]);
+
+  useEffect(() => {
+    if (isStudioRoute) {
+      return;
+    }
+
+    const handlePreviewNavigation = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      const target = event.target instanceof Element ? event.target : null;
+      const anchor = target?.closest<HTMLAnchorElement>('a[href]');
+      if (!anchor) {
+        return;
+      }
+
+      const context = getSanityPresentationContext();
+      if (!context.enabled) {
+        return;
+      }
+
+      const rawHref = anchor.getAttribute('href');
+      if (!rawHref || rawHref.startsWith('#')) {
+        return;
+      }
+
+      let nextUrl: URL;
+      try {
+        nextUrl = new URL(rawHref, window.location.href);
+      } catch {
+        return;
+      }
+
+      if (nextUrl.origin !== window.location.origin || nextUrl.searchParams.has(SANITY_PREVIEW_PERSPECTIVE_PARAM)) {
+        return;
+      }
+
+      event.preventDefault();
+      nextUrl.searchParams.set(SANITY_PREVIEW_PERSPECTIVE_PARAM, context.perspective || 'drafts');
+      window.location.assign(nextUrl.toString());
+    };
+
+    document.addEventListener('click', handlePreviewNavigation, true);
+
+    return () => {
+      document.removeEventListener('click', handlePreviewNavigation, true);
+    };
+  }, [isStudioRoute]);
 
   useEffect(() => {
     if (isStudioRoute) {
