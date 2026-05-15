@@ -68,8 +68,11 @@ export default defineConfig({
           { route: '/about', filter: `_type == "aboutPage" && siteId == ${studioSiteIdLiteral}` },
           { route: '/production', filter: `_type == "productionPage" && _id == "productionPage"` },
           { route: '/contact', filter: `_type == "contactPage" && siteId == ${studioSiteIdLiteral}` },
+          { route: '/products', filter: `_type == "pageCopy" && _id == "pageCopy"` },
           { route: '/products/:productSlug', filter: `_type == "product" && slug.current == $productSlug` },
+          { route: '/applications', filter: `_type == "pageCopy" && _id == "pageCopy"` },
           { route: '/applications/:applicationSlug', filter: `_type == "application" && slug.current == $applicationSlug` },
+          { route: '/newsroom', filter: `_type == "pageCopy" && _id == "pageCopy"` },
           { route: '/newsroom/:storySlug', filter: `_type == "newsroomItem" && slug.current == $storySlug` },
         ],
         locations: {
@@ -107,8 +110,11 @@ export default defineConfig({
             resolve: () => ({
               locations: [
                 documentLocation('Products listing', '/products'),
+                documentLocation('Product detail template', '/products/granular'),
                 documentLocation('Applications listing', '/applications'),
+                documentLocation('Application detail template', '/applications/water-treatment'),
                 documentLocation('Newsroom listing', '/newsroom'),
+                documentLocation('Newsroom detail template', '/newsroom/name-change-press-release'),
                 documentLocation('Home page newsroom preview', '/'),
               ],
             }),

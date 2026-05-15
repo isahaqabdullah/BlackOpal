@@ -31,9 +31,8 @@ function getEmbeddedPresentationContext(): VisualEditingContext {
   }
 
   const searchParams = new URLSearchParams(window.location.search);
-  const isEmbeddedPreview = window.self !== window.top || Boolean(window.opener);
 
-  if (!isEmbeddedPreview || !searchParams.has('sanity-preview-perspective')) {
+  if (!searchParams.has('sanity-preview-perspective')) {
     return { enabled: false };
   }
 

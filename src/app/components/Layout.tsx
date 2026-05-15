@@ -19,8 +19,7 @@ export function Layout({ children, preview = false }: { children: ReactNode; pre
     }
 
     const searchParams = new URLSearchParams(window.location.search);
-    const isEmbeddedPreview = window.self !== window.top || Boolean(window.opener);
-    setEmbeddedPresentationPreview(isEmbeddedPreview && searchParams.has('sanity-preview-perspective'));
+    setEmbeddedPresentationPreview(searchParams.has('sanity-preview-perspective'));
   }, [isStudioRoute, pathname]);
 
   useEffect(() => {
