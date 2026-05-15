@@ -18,6 +18,7 @@ type PageIntroProps = {
   titleVisual?: ReactNode;
   description?: string;
   breadcrumbs?: Breadcrumb[];
+  enableBreadcrumbEditing?: boolean;
   dataSanity?: {
     label?: string;
     title?: string;
@@ -25,7 +26,15 @@ type PageIntroProps = {
   };
 };
 
-export function PageIntro({ label, title, titleVisual, description, breadcrumbs = [], dataSanity }: PageIntroProps) {
+export function PageIntro({
+  label,
+  title,
+  titleVisual,
+  description,
+  breadcrumbs = [],
+  enableBreadcrumbEditing = true,
+  dataSanity,
+}: PageIntroProps) {
   const { siteSettings } = useSiteContent();
   const siteSettingsDataAttribute = useSiteSettingsDataAttribute(siteSettings._id);
 
@@ -39,7 +48,7 @@ export function PageIntro({ label, title, titleVisual, description, breadcrumbs 
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
           >
             <Link href={siteSettings.pageIntro.homePath} className="hover:text-[#f2d78b] transition-colors">
-              <span data-sanity={siteSettingsDataAttribute('pageIntro.homeLabel')}>
+              <span data-sanity={enableBreadcrumbEditing ? siteSettingsDataAttribute('pageIntro.homeLabel') : undefined}>
                 {siteSettings.pageIntro.homeLabel}
               </span>
             </Link>

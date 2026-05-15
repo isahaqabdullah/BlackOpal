@@ -41,7 +41,7 @@
   NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
   NEXT_PUBLIC_SANITY_DATASET=production
   NEXT_PUBLIC_SANITY_API_VERSION=2026-04-15
-  NEXT_PUBLIC_SANITY_STUDIO_URL=http://localhost:3333
+  NEXT_PUBLIC_SANITY_STUDIO_URL=http://localhost:3000/studio
   SANITY_REVALIDATE_SECRET=shared_webhook_secret
   ```
 
@@ -82,14 +82,13 @@
 
   `SANITY_STUDIO_HOSTNAME=black-opal-india-cms` deploys to `https://black-opal-india-cms.sanity.studio`. For the embedded Studio flow, set each Vercel project’s `NEXT_PUBLIC_SANITY_STUDIO_URL` to its matching same-domain Studio URL, for example `https://black-opal-india.vercel.app/studio`.
 
-  For visual editing, run the website and Studio together:
+  For visual editing, run the website and embedded Studio together:
 
   ```bash
   npm run dev
-  npm run cms:dev
   ```
 
-  Then open Sanity Studio at `http://localhost:3000/studio`, choose `Visual Editor`, and edit the existing homepage, product, application, and newsroom fields while the site preview updates. `npm run cms:dev` is still useful when you specifically want to test the separately hosted Studio build at `http://localhost:3333`.
+  Then open Sanity Studio at `http://localhost:3000/studio`, choose `Visual Editor`, and edit the existing homepage, product, application, and newsroom fields while the site preview updates. `npm run cms:dev` is still useful only when you specifically want to test the separately hosted Studio build at `http://localhost:3333`.
 
   To update live pages after Sanity publishes, create one Sanity webhook per Vercel project that sends document payloads to:
 

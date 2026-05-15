@@ -14,7 +14,7 @@ export const sanityProjectId = envValue('NEXT_PUBLIC_SANITY_PROJECT_ID');
 export const sanityDataset = envValue('NEXT_PUBLIC_SANITY_DATASET') || 'production';
 export const sanityApiVersion = envValue('NEXT_PUBLIC_SANITY_API_VERSION') || '2026-04-15';
 export const configuredSiteId = envValue('NEXT_PUBLIC_SITE_ID') || 'black-opal-india';
-export const sanityStudioUrl = envValue('NEXT_PUBLIC_SANITY_STUDIO_URL') || 'http://localhost:3333';
+export const sanityStudioUrl = envValue('NEXT_PUBLIC_SANITY_STUDIO_URL') || 'http://localhost:3000/studio';
 
 export const isSanityConfigured = Boolean(sanityProjectId && sanityDataset);
 

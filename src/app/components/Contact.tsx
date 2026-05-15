@@ -23,6 +23,7 @@ export function ContactPage() {
         title={contactPage.intro.title}
         description={contactPage.intro.description}
         breadcrumbs={[{ label: contactPage.intro.breadcrumbLabel }]}
+        enableBreadcrumbEditing={false}
       />
 
       <section className="pb-12 md:pb-14">

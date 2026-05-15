@@ -50,7 +50,7 @@ SANITY_API_WRITE_TOKEN=server_side_write_token_for_cms_push
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_API_VERSION=2026-04-15
-NEXT_PUBLIC_SANITY_STUDIO_URL=http://localhost:3333
+NEXT_PUBLIC_SANITY_STUDIO_URL=http://localhost:3000/studio
 SANITY_REVALIDATE_SECRET=shared_webhook_secret
 ```
 
@@ -68,7 +68,7 @@ Studio runs at `http://localhost:3333` by default.
 
 ## 4. Use the Visual Editor
 
-Run the website on the same preview origin configured above:
+Run the website and embedded Studio on the same origin:
 
 ```bash
 npm run dev

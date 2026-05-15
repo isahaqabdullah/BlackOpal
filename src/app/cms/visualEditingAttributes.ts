@@ -7,7 +7,7 @@ import { getSanityPresentationContext } from './presentationContext';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim();
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET?.trim();
-const studioUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_URL?.trim();
+const configuredStudioUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_URL?.trim();
 const siteId = process.env.NEXT_PUBLIC_SITE_ID?.trim();
 
 type VisualEditingContext = {
@@ -51,7 +51,10 @@ function useVisualEditingContext(source: string): VisualEditingContext {
   return useMemo(
     () => ({
       enabled: isHydrated && (embeddedPresentationContext.enabled || source === 'sanity-preview'),
-      studioUrl: embeddedPresentationContext.studioUrl || studioUrl,
+      studioUrl:
+        embeddedPresentationContext.studioUrl ||
+        configuredStudioUrl ||
+        (isHydrated ? `${window.location.origin}/studio` : undefined),
     }),
     [embeddedPresentationContext.enabled, embeddedPresentationContext.studioUrl, isHydrated, source],
   );
@@ -85,7 +88,7 @@ export function documentDataAttribute(
   type: SanityDocumentType,
   documentId: string,
   path: string,
-  baseUrl = studioUrl,
+  baseUrl = configuredStudioUrl,
 ) {
   if (!projectId || !dataset) {
     return undefined;
@@ -101,19 +104,19 @@ export function documentDataAttribute(
   }).toString();
 }
 
-export function homePageDataAttribute(path: string, documentId = homePageDocumentId(), baseUrl = studioUrl) {
+export function homePageDataAttribute(path: string, documentId = homePageDocumentId(), baseUrl = configuredStudioUrl) {
   return documentDataAttribute('homePage', documentId || homePageDocumentId(), path, baseUrl);
 }
 
-export function aboutPageDataAttribute(path: string, documentId = aboutPageDocumentId(), baseUrl = studioUrl) {
+export function aboutPageDataAttribute(path: string, documentId = aboutPageDocumentId(), baseUrl = configuredStudioUrl) {
   return documentDataAttribute('aboutPage', documentId || aboutPageDocumentId(), path, baseUrl);
 }
 
-export function productionPageDataAttribute(path: string, documentId = 'productionPage', baseUrl = studioUrl) {
+export function productionPageDataAttribute(path: string, documentId = 'productionPage', baseUrl = configuredStudioUrl) {
   return documentDataAttribute('productionPage', documentId, path, baseUrl);
 }
 
-export function siteSettingsDataAttribute(path: string, documentId = siteSettingsDocumentId(), baseUrl = studioUrl) {
+export function siteSettingsDataAttribute(path: string, documentId = siteSettingsDocumentId(), baseUrl = configuredStudioUrl) {
   return documentDataAttribute('siteSettings', documentId || siteSettingsDocumentId(), path, baseUrl);
 }
 
