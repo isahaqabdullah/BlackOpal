@@ -1,5 +1,7 @@
 import { draftMode } from 'next/headers';
+import { headers } from 'next/headers';
 import { fetchSanitySiteContent, sanityStudioUrl } from './sanity';
+import { SANITY_PREVIEW_PERSPECTIVE_HEADER } from './presentationContext';
 import {
   fallbackContentInput,
   mergeSanityContent,
@@ -8,19 +10,30 @@ import {
   type SeoContentInput,
 } from '../content/siteContentResolver';
 
-export async function getDraftModeEnabled() {
+async function getPreviewState() {
   const draft = await draftMode();
-  return draft.isEnabled;
+  const requestHeaders = await headers();
+  const signedPreviewPerspective = requestHeaders.get(SANITY_PREVIEW_PERSPECTIVE_HEADER);
+
+  return {
+    draftMode: draft.isEnabled,
+    preview: draft.isEnabled || Boolean(signedPreviewPerspective),
+  };
 }
 
-export async function getSiteContent(): Promise<{ content: ContentInput; preview: boolean }> {
-  const preview = await getDraftModeEnabled();
+export async function getDraftModeEnabled() {
+  return (await getPreviewState()).preview;
+}
+
+export async function getSiteContent(): Promise<{ content: ContentInput; draftMode: boolean; preview: boolean }> {
+  const { draftMode: draftModeEnabled, preview } = await getPreviewState();
 
   try {
     const sanityContent = await fetchSanitySiteContent({ preview, studioUrl: sanityStudioUrl });
 
     return {
       content: mergeSanityContent(sanityContent),
+      draftMode: draftModeEnabled,
       preview,
     };
   } catch (error) {
@@ -30,6 +43,7 @@ export async function getSiteContent(): Promise<{ content: ContentInput; preview
 
     return {
       content: fallbackContentInput,
+      draftMode: false,
       preview: false,
     };
   }

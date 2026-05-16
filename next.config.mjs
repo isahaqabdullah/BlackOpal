@@ -57,6 +57,9 @@ const env = Object.fromEntries(
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env,
+  experimental: {
+    prefetchInlining: true,
+  },
   reactStrictMode: true,
   poweredByHeader: false,
 };

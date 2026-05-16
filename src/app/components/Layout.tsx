@@ -6,7 +6,11 @@ import { usePathname } from 'next/navigation';
 import { Navigation } from './Navigation';
 import { Footer } from './Footer';
 import { SanityVisualEditing } from '../cms/SanityVisualEditing';
-import { getSanityPresentationContext, SANITY_PREVIEW_PERSPECTIVE_PARAM } from '../cms/presentationContext';
+import {
+  getSanityPresentationContext,
+  SANITY_PREVIEW_PERSPECTIVE_PARAM,
+  SANITY_PREVIEW_TOKEN_PARAM,
+} from '../cms/presentationContext';
 
 export function Layout({ children, preview = false }: { children: ReactNode; preview?: boolean }) {
   const pathname = usePathname();
@@ -61,6 +65,9 @@ export function Layout({ children, preview = false }: { children: ReactNode; pre
 
       event.preventDefault();
       nextUrl.searchParams.set(SANITY_PREVIEW_PERSPECTIVE_PARAM, context.perspective || 'drafts');
+      if (context.previewToken) {
+        nextUrl.searchParams.set(SANITY_PREVIEW_TOKEN_PARAM, context.previewToken);
+      }
       window.location.assign(nextUrl.toString());
     };
 

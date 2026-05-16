@@ -5,6 +5,7 @@ import { Layout } from './components/Layout';
 import { SanityLive } from './cms/live';
 import { getSiteContent } from './cms/siteContent';
 import { SiteContentProvider } from './content/SiteContentProvider';
+import { refreshAction } from './cms/refreshAction';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -14,7 +15,7 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  const { content, preview } = await getSiteContent();
+  const { content, draftMode, preview } = await getSiteContent();
 
   return (
     <html lang="en-US">
@@ -22,7 +23,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <SiteContentProvider initialContent={content} initialSource={preview ? 'sanity-preview' : 'sanity'}>
           <Layout preview={preview}>{children}</Layout>
         </SiteContentProvider>
-        <SanityLive />
+        {draftMode ? <SanityLive revalidateSyncTags={refreshAction} /> : null}
       </body>
     </html>
   );
