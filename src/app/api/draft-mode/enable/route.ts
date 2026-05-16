@@ -9,18 +9,22 @@ import {
   SANITY_PREVIEW_TOKEN_PARAM,
 } from '../../../cms/presentationContext';
 import { createPreviewToken } from '../../../cms/previewToken';
+import { draftModeCorsHeaders, draftModeOptionsResponse } from '../cors';
+
+export const OPTIONS = draftModeOptionsResponse;
 
 export async function GET(request: Request) {
+  const headers = draftModeCorsHeaders(request);
   const client = createSanityClient({ preview: true, studioUrl: sanityStudioUrl });
 
   if (!client) {
-    return new Response('Sanity is not configured.', { status: 500 });
+    return new Response('Sanity is not configured.', { status: 500, headers });
   }
 
   const { isValid, redirectTo = '/', studioPreviewPerspective } = await validatePreviewUrl(client, request.url);
 
   if (!isValid) {
-    return new Response('Invalid secret', { status: 401 });
+    return new Response('Invalid secret', { status: 401, headers });
   }
 
   const draft = await draftMode();
@@ -60,5 +64,5 @@ export async function GET(request: Request) {
     redirectUrl.searchParams.set(SANITY_PREVIEW_TOKEN_PARAM, previewToken);
   }
 
-  return NextResponse.redirect(redirectUrl);
+  return NextResponse.redirect(redirectUrl, { headers });
 }
