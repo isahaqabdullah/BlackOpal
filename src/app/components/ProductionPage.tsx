@@ -205,8 +205,9 @@ export function ProductionPage() {
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               <span data-sanity={productionPageDataAttribute('contactTextBeforeEmail')}>
-                {productionPage.contactTextBeforeEmail}
+                {productionPage.contactTextBeforeEmail.trimEnd()}
               </span>
+              {' '}
               <a
                 href={`mailto:${productionContactEmail}`}
                 className="text-[#f2d78b] hover:text-[#f7efdb]"
