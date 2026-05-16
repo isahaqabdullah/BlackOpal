@@ -1,22 +1,29 @@
 import { createClient } from '@sanity/client';
 import type { SanitySiteContent } from '../content/siteContentResolver';
+import { sanityFetch } from './live';
+import {
+  configuredSiteId,
+  isSanityConfigured,
+  readSanityServerToken,
+  sanityApiVersion,
+  sanityDataset,
+  sanityProjectId,
+  sanityStudioUrl,
+} from './sanityConfig';
+
+export {
+  configuredSiteId,
+  isSanityConfigured,
+  sanityApiVersion,
+  sanityDataset,
+  sanityProjectId,
+  sanityStudioUrl,
+};
 
 type SanityClientOptions = {
   preview?: boolean;
   studioUrl?: string;
 };
-
-function envValue(nextName: string) {
-  return process.env[nextName]?.trim() || '';
-}
-
-export const sanityProjectId = envValue('NEXT_PUBLIC_SANITY_PROJECT_ID');
-export const sanityDataset = envValue('NEXT_PUBLIC_SANITY_DATASET') || 'production';
-export const sanityApiVersion = envValue('NEXT_PUBLIC_SANITY_API_VERSION') || '2026-04-15';
-export const configuredSiteId = envValue('NEXT_PUBLIC_SITE_ID') || 'black-opal-india';
-export const sanityStudioUrl = envValue('NEXT_PUBLIC_SANITY_STUDIO_URL') || 'http://localhost:3000/studio';
-
-export const isSanityConfigured = Boolean(sanityProjectId && sanityDataset);
 
 export const siteContentQuery = `{
   "homePage": *[
@@ -273,16 +280,12 @@ export const siteContentQuery = `{
   }
 }`;
 
-function readToken() {
-  return process.env.SANITY_API_READ_TOKEN || process.env.SANITY_API_TOKEN;
-}
-
 export function createSanityClient({ preview = false, studioUrl = sanityStudioUrl }: SanityClientOptions = {}) {
   if (!isSanityConfigured) {
     return null;
   }
 
-  const token = preview ? readToken() : undefined;
+  const token = preview ? readSanityServerToken() : undefined;
 
   if (preview && !token) {
     throw new Error('Missing SANITY_API_READ_TOKEN for draft preview.');
@@ -308,26 +311,22 @@ export async function fetchSanitySiteContent({
   preview = false,
   studioUrl,
 }: SanityClientOptions = {}): Promise<SanitySiteContent | null> {
-  const client = createSanityClient({ preview, studioUrl });
-
-  if (!client) {
+  if (!isSanityConfigured) {
     return null;
   }
 
-  const data = (await client.fetch<SanitySiteContent>(
-    siteContentQuery,
-    {
+  const { data } = await sanityFetch({
+    query: siteContentQuery,
+    params: {
       siteId: configuredSiteId,
       homePageId: `homePage-${configuredSiteId}`,
       siteSettingsId: `siteSettings-${configuredSiteId}`,
       aboutPageId: `aboutPage-${configuredSiteId}`,
     },
-    {
-      filterResponse: false,
-      resultSourceMap: preview ? 'withKeyArraySelector' : false,
-      cache: 'no-store' as const,
-    },
-  )) as unknown;
+    perspective: preview ? 'drafts' : 'published',
+    stega: preview,
+    requestTag: 'black-opal.site-content',
+  });
 
-  return (data as { result?: SanitySiteContent }).result || (data as SanitySiteContent);
+  return data as SanitySiteContent;
 }
