@@ -14,7 +14,11 @@ const studioSiteId =
   process.env.SANITY_STUDIO_SITE_ID || process.env.NEXT_PUBLIC_SITE_ID || 'black-opal-india';
 const previewOrigin =
   process.env.SANITY_STUDIO_PREVIEW_ORIGIN || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-const studioSiteIdLiteral = JSON.stringify(studioSiteId);
+const homePageDocumentId = `homePage-${studioSiteId}`;
+const aboutPageDocumentId = `aboutPage-${studioSiteId}`;
+const siteSettingsDocumentId = `siteSettings-${studioSiteId}`;
+const homePageDocumentIdLiteral = JSON.stringify(homePageDocumentId);
+const aboutPageDocumentIdLiteral = JSON.stringify(aboutPageDocumentId);
 const studioSiteLabel = studioSiteId === 'black-opal-middle-east' ? 'Middle East' : 'India';
 
 function originFor(value: string | undefined) {
@@ -57,9 +61,9 @@ const structure: StructureResolver = (S) => {
   return S.list()
     .title('Content')
     .items([
-      singletonDocument('homePage', `Home Page - ${studioSiteLabel}`, `homePage-${studioSiteId}`),
-      singletonDocument('aboutPage', `About Page - ${studioSiteLabel}`, `aboutPage-${studioSiteId}`),
-      singletonDocument('siteSettings', `Page Intro Labels - ${studioSiteLabel}`, `siteSettings-${studioSiteId}`),
+      singletonDocument('homePage', `Home Page - ${studioSiteLabel}`, homePageDocumentId),
+      singletonDocument('aboutPage', `About Page - ${studioSiteLabel}`, aboutPageDocumentId),
+      singletonDocument('siteSettings', `Page Intro Labels - ${studioSiteLabel}`, siteSettingsDocumentId),
       singletonDocument('pageCopy', 'Products, Applications, and Newsroom Copy', 'pageCopy'),
       singletonDocument('productionPage', 'Production Page', 'productionPage'),
       S.documentTypeListItem('product').title('Products'),
@@ -87,8 +91,8 @@ export default defineConfig({
       allowOrigins,
       resolve: {
         mainDocuments: [
-          { route: '/', filter: `_type == "homePage" && siteId == ${studioSiteIdLiteral}` },
-          { route: '/about', filter: `_type == "aboutPage" && siteId == ${studioSiteIdLiteral}` },
+          { route: '/', filter: `_type == "homePage" && _id == ${homePageDocumentIdLiteral}` },
+          { route: '/about', filter: `_type == "aboutPage" && _id == ${aboutPageDocumentIdLiteral}` },
           { route: '/production', filter: `_type == "productionPage" && _id == "productionPage"` },
           { route: '/products', filter: `_type == "pageCopy" && _id == "pageCopy"` },
           { route: '/products/:productSlug', filter: `_type == "product" && slug.current == $productSlug` },
@@ -99,10 +103,10 @@ export default defineConfig({
         ],
         locations: {
           homePage: {
-            select: { title: 'heroTitle', siteId: 'siteId' },
+            select: { id: '_id', title: 'heroTitle', siteId: 'siteId' },
             resolve: (document) => ({
               locations:
-                document?.siteId === studioSiteId
+                document?.id === homePageDocumentId
                   ? [documentLocation(document.title || 'Home page', '/')]
                   : [],
             }),
@@ -114,10 +118,10 @@ export default defineConfig({
             }),
           },
           siteSettings: {
-            select: { siteId: 'siteId' },
+            select: { id: '_id', siteId: 'siteId' },
             resolve: (document) => ({
               locations: [
-                ...(document?.siteId === studioSiteId
+                ...(document?.id === siteSettingsDocumentId
                   ? [
                       documentLocation('Page intro labels', '/products'),
                     ]
@@ -140,9 +144,9 @@ export default defineConfig({
             }),
           },
           aboutPage: {
-            select: { title: 'intro.title', siteId: 'siteId' },
+            select: { id: '_id', title: 'intro.title', siteId: 'siteId' },
             resolve: (document) => ({
-              locations: document?.siteId === studioSiteId ? [documentLocation('About page', '/about')] : [],
+              locations: document?.id === aboutPageDocumentId ? [documentLocation('About page', '/about')] : [],
             }),
           },
           product: {
