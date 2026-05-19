@@ -26,8 +26,11 @@ function readEnvFile(filePath) {
   );
 }
 
+const sanityConfigHome = '/private/tmp/black-opal-sanity-config';
+const sanityCliConfigPath = path.join(sanityConfigHome, 'sanity', 'config.json');
+
 function readSanityAuthToken() {
-  const configPath = '/private/tmp/black-opal-sanity-config/sanity/config.json';
+  const configPath = sanityCliConfigPath;
 
   if (!existsSync(configPath)) {
     return undefined;
@@ -45,7 +48,8 @@ const env = {
   ...readEnvFile(path.resolve('.env.local')),
   ...process.env,
   SANITY_AUTH_TOKEN: process.env.SANITY_AUTH_TOKEN || readSanityAuthToken(),
-  XDG_CONFIG_HOME: '/private/tmp/black-opal-sanity-config',
+  SANITY_CLI_CONFIG_PATH: process.env.SANITY_CLI_CONFIG_PATH || sanityCliConfigPath,
+  XDG_CONFIG_HOME: sanityConfigHome,
 };
 
 function normalizeStudioHost(value) {
