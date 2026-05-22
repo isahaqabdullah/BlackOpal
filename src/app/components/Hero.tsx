@@ -107,6 +107,13 @@ export function Hero() {
                 </video>
 
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(255,255,255,0.06),transparent_34%),linear-gradient(180deg,rgba(5,5,5,0.02),rgba(5,5,5,0.22))]" />
+                <div className="premium-video-brand-mark" aria-hidden="true">
+                  <img
+                    src="/images/black-opal-hero-logo-transparent.png"
+                    alt=""
+                    className="premium-video-brand-logo"
+                  />
+                </div>
               </div>
             </div>
           </div>

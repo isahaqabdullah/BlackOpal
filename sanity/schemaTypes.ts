@@ -215,7 +215,7 @@ export const homePage = {
     {
       name: 'heroVideoUrl',
       title: 'Hero Video URL',
-      description: 'Use a public path like /images/axionvideo1.mp4 or a full URL.',
+      description: 'Use a public path like /images/blackopal-home-page-video.mp4 or a full URL.',
       type: 'string',
     },
     { name: 'heroVideoLabel', title: 'Hero Video Accessibility Label', type: 'string' },

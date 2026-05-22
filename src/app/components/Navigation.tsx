@@ -23,7 +23,7 @@ export function Navigation() {
           <img
             src={siteSettings.navigation.logoImage}
             alt={siteSettings.navigation.logoAlt}
-            className="h-11 w-auto object-contain shrink-0 drop-shadow-[0_8px_24px_rgba(201,162,77,0.16)]"
+            className="premium-nav-logo object-contain shrink-0 drop-shadow-[0_8px_24px_rgba(201,162,77,0.16)]"
           />
         </Link>
 

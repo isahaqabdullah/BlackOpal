@@ -1,0 +1,11 @@
+node_modules
+.next
+.env.local
+.env.*.local
+.sanity
+.tmp
+sanity-dist
+dist
+output
+.DS_Store
+public/.DS_Store

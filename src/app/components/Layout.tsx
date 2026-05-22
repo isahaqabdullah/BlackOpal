@@ -91,7 +91,7 @@ export function Layout({ children, preview = false }: { children: ReactNode; pre
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion || typeof window.IntersectionObserver === 'undefined') {
       revealElements.forEach((element) => {
         element.classList.add('premium-reveal-visible');
       });
