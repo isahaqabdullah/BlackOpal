@@ -883,7 +883,7 @@ export const contactPageContent: ContactPageContent = {
   officesTitle: siteConfig.additionalOfficesTitle,
   successTitle: 'Thank you for your enquiry',
   successMessage:
-    'Thank you for your enquiry. The Black Opal team will review the details and respond with the next step.',
+    'Thank you for your enquiry. The Black Opal team will review the details and respond promptly.',
   firstNameLabel: 'First Name *',
   firstNamePlaceholder: 'First name',
   lastNameLabel: 'Last Name *',
