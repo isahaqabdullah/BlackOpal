@@ -24,6 +24,7 @@ import type {
 } from './content/siteContent';
 import { stegaClean } from '@sanity/client/stega';
 import { companyDetails, siteConfig, siteUrl } from './config/siteConfig';
+import { formatPhoneNumbers } from './utils/phone';
 
 const SITE_NAME = siteConfig.siteName;
 const DEFAULT_IMAGE_PATH = siteConfig.defaultImagePath;
@@ -321,6 +322,8 @@ function breadcrumbSchema(breadcrumbs: Breadcrumb[]) {
 function organizationSchema(content: SeoContent) {
   const websiteContact = content.siteSettings.websiteContact;
   const [streetAddress = '', addressLine = ''] = websiteContact.address;
+  const phoneNumbers = formatPhoneNumbers(websiteContact.phone).map((phone) => phone.display);
+  const telephone = phoneNumbers.length > 1 ? phoneNumbers : phoneNumbers[0] ?? websiteContact.phone;
 
   return {
     '@type': 'Organization',
@@ -330,7 +333,7 @@ function organizationSchema(content: SeoContent) {
     description: siteConfig.defaultDescription,
     url: siteUrl,
     email: websiteContact.email,
-    telephone: websiteContact.phone,
+    telephone,
     address: {
       '@type': 'PostalAddress',
       streetAddress,
@@ -339,7 +342,7 @@ function organizationSchema(content: SeoContent) {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: websiteContact.phone,
+        telephone,
         email: websiteContact.email,
         contactType: 'sales',
         areaServed: siteConfig.serviceArea,

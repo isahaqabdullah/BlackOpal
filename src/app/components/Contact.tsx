@@ -3,6 +3,7 @@
 import { Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { useSiteContent } from '../content/SiteContentProvider';
+import { firstPhoneNumber, formatPhoneNumbers } from '../utils/phone';
 import { PageIntro } from './PageIntro';
 
 export function ContactPage() {
@@ -67,56 +68,61 @@ export function ContactPage() {
                   {contactPage.officesTitle}
                 </span>
                 <div className="grid gap-3">
-                  {siteSettings.officeNetwork.map((office) => (
-                    <address
-                      key={`${office.label}-${office.name}`}
-                      className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
-                    >
-                      <span
-                        className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
-                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                  {siteSettings.officeNetwork.map((office) => {
+                    const phones = formatPhoneNumbers(office.phone);
+
+                    return (
+                      <address
+                        key={`${office.label}-${office.name}`}
+                        className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
                       >
-                        {office.label}
-                      </span>
-                      <h3
-                        className="premium-card-heading text-[15px] mb-1"
-                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
-                      >
-                        {office.name}
-                      </h3>
-                      {office.address.map((line) => (
-                        <p
-                          key={`${office.label}-${line}`}
-                          className="premium-copy text-[13px] leading-[1.7]"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        <span
+                          className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                         >
-                          {line}
-                        </p>
-                      ))}
-                      <div className="mt-4 space-y-2">
-                        {office.phone ? (
-                          <a
-                            href={`tel:${office.phone.replace(/[^+\d]/g, '')}`}
-                            className="flex items-center gap-2 text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                          {office.label}
+                        </span>
+                        <h3
+                          className="premium-card-heading text-[15px] mb-1"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                        >
+                          {office.name}
+                        </h3>
+                        {office.address.map((line) => (
+                          <p
+                            key={`${office.label}-${line}`}
+                            className="premium-copy text-[13px] leading-[1.7]"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                           >
-                            <Phone size={14} className="shrink-0 text-[#e6cb87]" />
-                            <span className="text-[13px] leading-[1.5]">{office.phone}</span>
-                          </a>
-                        ) : null}
-                        {office.email ? (
-                          <a
-                            href={`mailto:${office.email}`}
-                            className="flex items-center gap-2 text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                          >
-                            <Mail size={14} className="shrink-0 text-[#e6cb87]" />
-                            <span className="text-[13px] leading-[1.5] break-all">{office.email}</span>
-                          </a>
-                        ) : null}
-                      </div>
-                    </address>
-                  ))}
+                            {line}
+                          </p>
+                        ))}
+                        <div className="mt-4 space-y-2">
+                          {phones.map((phone) => (
+                            <a
+                              key={phone.href}
+                              href={phone.href}
+                              className="flex items-center gap-2 text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
+                              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                            >
+                              <Phone size={14} className="shrink-0 text-[#e6cb87]" />
+                              <span className="text-[13px] leading-[1.5]">{phone.display}</span>
+                            </a>
+                          ))}
+                          {office.email ? (
+                            <a
+                              href={`mailto:${office.email}`}
+                              className="flex items-center gap-2 text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
+                              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                            >
+                              <Mail size={14} className="shrink-0 text-[#e6cb87]" />
+                              <span className="text-[13px] leading-[1.5] break-all">{office.email}</span>
+                            </a>
+                          ) : null}
+                        </div>
+                      </address>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -229,7 +235,7 @@ export function ContactPage() {
                         name="phone"
                         autoComplete="tel"
                         className={inputClass}
-                        placeholder={siteSettings.websiteContact.phone}
+                        placeholder={firstPhoneNumber(siteSettings.websiteContact.phone)?.display}
                       />
                     </div>
                     <div>

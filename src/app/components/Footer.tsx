@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { useSiteContent } from '../content/SiteContentProvider';
+import { formatPhoneNumbers } from '../utils/phone';
 
 export function Footer() {
   const { applications, products, siteSettings } = useSiteContent();
   const footerContact = siteSettings.websiteContact;
+  const footerPhones = formatPhoneNumbers(footerContact.phone);
   const currentYear = String(new Date().getFullYear());
   const columns = [
     {
@@ -56,11 +58,21 @@ export function Footer() {
                     </span>
                   ))}
                 </p>
-                {footerContact.phone ? (
-                  <p>
-                    {siteSettings.footer.phoneLabel}:{' '}
-                    <span>{footerContact.phone}</span>
-                  </p>
+                {footerPhones.length ? (
+                  <div>
+                    <span>{siteSettings.footer.phoneLabel}:</span>
+                    <div className="mt-1 flex flex-col gap-1">
+                      {footerPhones.map((phone) => (
+                        <a
+                          key={phone.href}
+                          href={phone.href}
+                          className="w-fit text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
+                        >
+                          {phone.display}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 ) : null}
                 {footerContact.email ? (
                   <p>
