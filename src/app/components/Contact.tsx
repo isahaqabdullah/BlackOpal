@@ -236,32 +236,16 @@ export function ContactPage() {
                       <label
                         className="text-[12px] text-[#b8ab8b] mb-1.5 block"
                       >
-                        Region
+                        {contactPage.subjectLabel}
                       </label>
                       <input
                         type="text"
-                        name="region"
+                        name="subject"
                         required
-                        autoComplete="country-name"
                         className={inputClass}
-                        placeholder="Country or region"
+                        placeholder={contactPage.subjectPlaceholder}
                       />
                     </div>
-                  </div>
-
-                  <div>
-                    <label
-                      className="text-[12px] text-[#b8ab8b] mb-1.5 block"
-                    >
-                      {contactPage.subjectLabel}
-                    </label>
-                    <input
-                      type="text"
-                      name="subject"
-                      required
-                      className={inputClass}
-                      placeholder={contactPage.subjectPlaceholder}
-                    />
                   </div>
 
                   <div>
