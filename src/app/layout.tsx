@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import '../styles/index.css';
 import { Layout } from './components/Layout';
 import { SanityLive } from './cms/live';
@@ -12,6 +12,14 @@ export const revalidate = 0;
 
 export const viewport: Viewport = {
   themeColor: '#050505',
+};
+
+export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
