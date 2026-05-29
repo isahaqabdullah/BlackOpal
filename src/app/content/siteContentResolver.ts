@@ -437,7 +437,7 @@ function normalizeHomePage(value?: Partial<HomePageContent> | null): HomePageCon
     _type: value?._type === 'homePage' ? value._type : undefined,
     seo: normalizeSeo(value?.seo, fallback.seo),
     siteId: cleanTextValue(value?.siteId, fallback.siteId),
-    heroLogoImage: cleanTextValue(value?.heroLogoImage, fallback.heroLogoImage),
+    heroLogoImage: fallback.heroLogoImage,
     heroLogoAlt: textValue(value?.heroLogoAlt, fallback.heroLogoAlt),
     heroKicker: textValue(value?.heroKicker, fallback.heroKicker),
     heroTitle: textValue(value?.heroTitle, fallback.heroTitle),

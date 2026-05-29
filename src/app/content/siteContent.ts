@@ -394,7 +394,7 @@ export type ContactPageContent = {
 
 export const homePageContent: HomePageContent = {
   siteId: siteConfig.siteId,
-  heroLogoImage: '/images/black-opal-hero-logo-transparent.png',
+  heroLogoImage: '/images/black-opal-hero-logo-gap.png',
   heroLogoAlt: siteConfig.siteName,
   heroKicker: siteConfig.heroKicker,
   heroTitle: siteConfig.heroTitle,
