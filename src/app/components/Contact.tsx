@@ -3,7 +3,7 @@
 import { Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { useSiteContent } from '../content/SiteContentProvider';
-import { firstPhoneNumber, formatPhoneNumbers } from '../utils/phone';
+import { formatPhoneNumbers } from '../utils/phone';
 import { PageIntro } from './PageIntro';
 
 export function ContactPage() {
@@ -235,7 +235,6 @@ export function ContactPage() {
                         name="phone"
                         autoComplete="tel"
                         className={inputClass}
-                        placeholder={firstPhoneNumber(siteSettings.websiteContact.phone)?.display}
                       />
                     </div>
                     <div>
