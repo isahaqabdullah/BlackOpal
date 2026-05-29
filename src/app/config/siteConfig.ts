@@ -241,10 +241,6 @@ const marketBaseDescription = normalizeHeadquartersCopy(
     "Black Opal's state-of-the-art factory in India anchors 35000 metric tons of annual coconut activated carbon capacity. Black Opal Group Head Quarters, India office, and Middle East office keep customers connected to the team for enquiries, technical support, and service.",
   ),
 );
-const normalizedRegion = regionLabel.toLowerCase().replace(/[^a-z0-9]/g, '');
-const regionalContact = additionalOffices.find((office) =>
-  office.label.toLowerCase().replace(/[^a-z0-9]/g, '').includes(normalizedRegion),
-);
 const configuredContact: Office = {
   label: headquartersLabel,
   name: headquarters.name,
@@ -252,7 +248,13 @@ const configuredContact: Office = {
   phone: phoneDisplay,
   email: infoEmail,
 };
-const websiteContact: Office = regionalContact ?? configuredContact;
+const normalizedRegion = regionLabel.toLowerCase().replace(/[^a-z0-9]/g, '');
+const regionalContact = additionalOffices.find((office) =>
+  office.label.toLowerCase().replace(/[^a-z0-9]/g, '').includes(normalizedRegion),
+);
+const configuredContactMatchesRegion =
+  normalizedRegion && officeKind(configuredContact).toLowerCase().includes(normalizedRegion);
+const websiteContact: Office = configuredContactMatchesRegion ? configuredContact : regionalContact ?? configuredContact;
 const officeNetwork = orderOfficeNetwork(
   dedupeOffices([
     configuredContact,
