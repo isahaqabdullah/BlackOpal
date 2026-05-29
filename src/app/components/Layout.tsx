@@ -80,9 +80,11 @@ export function Layout({ children, preview = false }: { children: ReactNode; pre
 
   useEffect(() => {
     if (isStudioRoute) {
+      document.documentElement.classList.remove('premium-reveal-ready');
       return;
     }
 
+    document.documentElement.classList.add('premium-reveal-ready');
     window.scrollTo(0, 0);
 
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>('main .premium-reveal'));

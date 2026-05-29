@@ -315,14 +315,23 @@ export async function fetchSanitySiteContent({
     return null;
   }
 
+  const params = {
+    siteId: configuredSiteId,
+    homePageId: `homePage-${configuredSiteId}`,
+    siteSettingsId: `siteSettings-${configuredSiteId}`,
+    aboutPageId: `aboutPage-${configuredSiteId}`,
+  };
+
+  if (process.env.NODE_ENV !== 'production') {
+    const client = createSanityClient({ preview, studioUrl });
+    return client?.fetch<SanitySiteContent>(siteContentQuery, params, {
+      tag: 'black-opal.site-content',
+    }) ?? null;
+  }
+
   const { data } = await sanityFetch({
     query: siteContentQuery,
-    params: {
-      siteId: configuredSiteId,
-      homePageId: `homePage-${configuredSiteId}`,
-      siteSettingsId: `siteSettings-${configuredSiteId}`,
-      aboutPageId: `aboutPage-${configuredSiteId}`,
-    },
+    params,
     perspective: preview ? 'drafts' : 'published',
     stega: preview,
     requestTag: 'black-opal.site-content',

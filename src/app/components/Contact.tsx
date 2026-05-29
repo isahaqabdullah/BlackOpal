@@ -8,10 +8,39 @@ import { PageIntro } from './PageIntro';
 export function ContactPage() {
   const { contactPage, siteSettings } = useSiteContent();
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    setIsSubmitting(true);
+    setSubmissionError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      const result = (await response.json().catch(() => null)) as { error?: string } | null;
+
+      if (!response.ok) {
+        throw new Error(result?.error || 'Message could not be sent. Please email us directly.');
+      }
+
+      form.reset();
+      setSubmitted(true);
+    } catch (error) {
+      setSubmissionError(error instanceof Error ? error.message : 'Message could not be sent. Please email us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass = 'premium-input w-full px-4 py-3 text-[14px] transition-colors';
@@ -114,6 +143,14 @@ export function ContactPage() {
                   className="premium-panel space-y-5 p-6 md:p-7"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                 >
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden="true"
+                  />
                   <div className="premium-form-grid">
                     <div>
                       <label
@@ -123,7 +160,9 @@ export function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="firstName"
                         required
+                        autoComplete="given-name"
                         className={inputClass}
                         placeholder={contactPage.firstNamePlaceholder}
                       />
@@ -136,7 +175,9 @@ export function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="lastName"
                         required
+                        autoComplete="family-name"
                         className={inputClass}
                         placeholder={contactPage.lastNamePlaceholder}
                       />
@@ -152,7 +193,9 @@ export function ContactPage() {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         required
+                        autoComplete="email"
                         className={inputClass}
                         placeholder={contactPage.emailPlaceholder}
                       />
@@ -165,7 +208,9 @@ export function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="company"
                         required
+                        autoComplete="organization"
                         className={inputClass}
                         placeholder={contactPage.companyPlaceholder}
                       />
@@ -181,6 +226,8 @@ export function ContactPage() {
                       </label>
                       <input
                         type="tel"
+                        name="phone"
+                        autoComplete="tel"
                         className={inputClass}
                         placeholder={siteSettings.websiteContact.phone}
                       />
@@ -193,6 +240,7 @@ export function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="subject"
                         required
                         className={inputClass}
                         placeholder={contactPage.subjectPlaceholder}
@@ -207,6 +255,7 @@ export function ContactPage() {
                       {contactPage.applicationLabel}
                     </label>
                     <select
+                      name="application"
                       required
                       className={`${inputClass} appearance-none`}
                     >
@@ -226,6 +275,7 @@ export function ContactPage() {
                       {contactPage.messageLabel}
                     </label>
                     <textarea
+                      name="message"
                       rows={5}
                       required
                       className={`${inputClass} resize-none`}
@@ -233,12 +283,23 @@ export function ContactPage() {
                     />
                   </div>
 
+                  {submissionError ? (
+                    <p
+                      id="contact-form-error"
+                      className="text-[13px] leading-[1.6] text-[#f1a69d]"
+                      role="alert"
+                    >
+                      {submissionError}
+                    </p>
+                  ) : null}
+
                   <button
                     type="submit"
+                    disabled={isSubmitting}
                     className="premium-primary-btn text-[13px] px-10 py-3 rounded-full"
                     style={{ fontWeight: 500 }}
                   >
-                    {contactPage.submitLabel}
+                    {isSubmitting ? 'Sending...' : contactPage.submitLabel}
                   </button>
                 </form>
               )}

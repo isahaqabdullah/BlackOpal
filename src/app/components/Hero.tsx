@@ -8,6 +8,10 @@ export function Hero() {
   const { homePage } = useSiteContent();
   const homePageDocumentId = homePage._id;
   const homePageDataAttribute = useHomePageDataAttribute(homePageDocumentId);
+  const heroLogoImage =
+    homePage.heroLogoImage === '/images/black-opal-hero-logo-transparent.png'
+      ? '/images/black-opal-hero-logo-gap.png'
+      : homePage.heroLogoImage;
 
   return (
     <section className="relative overflow-hidden border-b border-[#c9a24d]/10">
@@ -25,10 +29,13 @@ export function Hero() {
           <span className="premium-brand-logo-frame" aria-hidden="true">
             <img
               data-sanity={homePageDataAttribute('heroLogoImage')}
-              src={homePage.heroLogoImage}
+              src={heroLogoImage}
               alt=""
               className="premium-brand-logo"
             />
+          </span>
+          <span className="premium-brand-company" aria-hidden="true">
+            A Black Opal Group Company
           </span>
         </h1>
         <div className="premium-split-grid premium-hero-grid">
