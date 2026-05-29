@@ -8,6 +8,7 @@ type ContactSubmission = {
   email: string;
   company: string;
   phone: string;
+  region: string;
   subject: string;
   application: string;
   message: string;
@@ -19,6 +20,7 @@ const requiredFields: Array<keyof Omit<ContactSubmission, 'phone' | 'website'>> 
   'lastName',
   'email',
   'company',
+  'region',
   'subject',
   'application',
   'message',
@@ -37,6 +39,7 @@ function readSubmission(value: unknown): ContactSubmission {
     email: textValue(input.email, 160),
     company: textValue(input.company, 160),
     phone: textValue(input.phone, 80),
+    region: textValue(input.region, 160),
     subject: textValue(input.subject, 180),
     application: textValue(input.application, 160),
     message: textValue(input.message, 3000),
@@ -77,6 +80,7 @@ function buildTextEmail(submission: ContactSubmission) {
     `Name: ${submission.firstName} ${submission.lastName}`,
     `Email: ${submission.email}`,
     `Company: ${submission.company}`,
+    `Region: ${submission.region}`,
     submission.phone ? `Phone: ${submission.phone}` : '',
     `Subject: ${submission.subject}`,
     `Application: ${submission.application}`,
@@ -102,6 +106,7 @@ function buildHtmlEmail(submission: ContactSubmission) {
           ${detailRow('Name', senderName)}
           ${detailRow('Email', submission.email)}
           ${detailRow('Company', submission.company)}
+          ${detailRow('Region', submission.region)}
           ${detailRow('Phone', submission.phone)}
           ${detailRow('Application', submission.application)}
         </table>
