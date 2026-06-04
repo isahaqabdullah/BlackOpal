@@ -18,18 +18,15 @@ export function Hero() {
       </div>
 
       <div className="premium-shell pt-14 pb-8 md:pt-20 md:pb-10 relative z-10">
-        <h1
-          className="premium-brand-title premium-reveal"
-          aria-label={homePage.heroLogoAlt}
-        >
-          <span className="premium-brand-logo-frame" aria-hidden="true">
+        <div className="premium-brand-title premium-reveal">
+          <span className="premium-brand-logo-frame">
             <img
               src={homePage.heroLogoImage}
-              alt=""
+              alt={homePage.heroLogoAlt}
               className="premium-brand-logo"
             />
           </span>
-        </h1>
+        </div>
         <div className="premium-split-grid premium-hero-grid">
           <div data-sanity-edit-target>
             <span
@@ -39,13 +36,13 @@ export function Hero() {
             >
               {homePage.heroKicker}
             </span>
-            <h2
+            <h1
               data-sanity={homePageDataAttribute('heroTitle')}
-              className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.25rem,4.6vw,4.35rem)] leading-[0.98] tracking-[-0.03em] mb-6 max-w-xl"
+              className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.25rem,4.6vw,4.35rem)] leading-[0.98] tracking-normal mb-6 max-w-xl"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               {homePage.heroTitle}
-            </h2>
+            </h1>
             <p
               data-sanity={homePageDataAttribute('heroDescription')}
               className="premium-copy premium-hero-copy premium-reveal premium-reveal-delay-2 text-[16px] md:text-[18px] leading-[1.72] mb-9 max-w-2xl"
