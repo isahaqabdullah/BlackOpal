@@ -29,9 +29,6 @@ export function Hero() {
               className="premium-brand-logo"
             />
           </span>
-          <span className="premium-brand-company" aria-hidden="true">
-            A Black Opal Group Company
-          </span>
         </h1>
         <div className="premium-split-grid premium-hero-grid">
           <div data-sanity-edit-target>

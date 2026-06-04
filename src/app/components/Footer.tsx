@@ -9,10 +9,16 @@ export function Footer() {
   const footerContact = siteSettings.websiteContact;
   const footerPhones = formatPhoneNumbers(footerContact.phone);
   const currentYear = String(new Date().getFullYear());
+  const companyLinks = siteSettings.footer.companyLinks.some((link) => link.to === '/activated-carbon-suppliers')
+    ? siteSettings.footer.companyLinks
+    : [
+        ...siteSettings.footer.companyLinks,
+        { label: 'Activated carbon suppliers', to: '/activated-carbon-suppliers' },
+      ];
   const columns = [
     {
       title: siteSettings.footer.companyColumnTitle,
-      links: siteSettings.footer.companyLinks,
+      links: companyLinks,
     },
     {
       title: siteSettings.footer.productColumnTitle,

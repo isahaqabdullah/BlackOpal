@@ -11,6 +11,12 @@ import {
   productionPageContent,
   siteSettingsContent,
 } from './content/siteContent';
+import {
+  supplierLandingPageMap,
+  supplierLandingPagePath,
+  supplierLandingPages,
+  type SupplierLandingPage,
+} from './content/supplierLandingPages';
 import type {
   AboutPageContent,
   ApplicationEntry,
@@ -37,7 +43,8 @@ type Breadcrumb = {
 type SeoEntity =
   | { type: 'product'; item: ProductEntry }
   | { type: 'application'; item: ApplicationEntry }
-  | { type: 'article'; item: NewsroomItem };
+  | { type: 'article'; item: NewsroomItem }
+  | { type: 'supplierLanding'; item: SupplierLandingPage };
 
 export type SeoContent = {
   homePage: typeof homePageContent;
@@ -147,6 +154,16 @@ function staticPageMetadata(path: string, content: SeoContent): StaticPageMetada
     };
   }
 
+  if (path === '/activated-carbon-suppliers') {
+    return {
+      title: pageTitle('Coconut Shell Activated Carbon Supplier'),
+      description:
+        'Black Opal Carbons supplies high-performance coconut shell activated carbon, including granular, powder, impregnated, and catalytic grades, for water, gold recovery, air, gas, refinery, and specialty applications.',
+      imageAlt: 'Coconut shell activated carbon supplier',
+      breadcrumbLabel: 'Activated carbon suppliers',
+    };
+  }
+
   if (path === '/applications') {
     const page = content.pageCopy.applicationsPage;
     return {
@@ -230,6 +247,27 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
     };
 
     return applyExplicitSeo(resolved, { seo });
+  }
+
+  const supplierLandingMatch = path.match(/^\/activated-carbon-suppliers\/([^/]+)$/);
+  if (supplierLandingMatch) {
+    const page = supplierLandingPageMap[supplierLandingMatch[1]];
+
+    if (page) {
+      return {
+        title: pageTitle(page.seoTitle),
+        description: page.seoDescription,
+        path,
+        image: absoluteUrl(DEFAULT_IMAGE_PATH),
+        imageAlt: page.title,
+        breadcrumbs: [
+          { name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath },
+          { name: 'Activated carbon suppliers', path: '/activated-carbon-suppliers' },
+          { name: page.breadcrumbLabel, path },
+        ],
+        entity: { type: 'supplierLanding', item: page },
+      };
+    }
   }
 
   const productMatch = path.match(/^\/products\/([^/]+)$/);
@@ -360,7 +398,7 @@ function organizationSchema(content: SeoContent) {
   };
 }
 
-function entitySchema(metadata: SeoMetadata) {
+function entitySchema(metadata: SeoMetadata, content: SeoContent = fallbackSeoContent) {
   const url = absoluteUrl(metadata.path);
 
   if (metadata.entity?.type === 'product') {
@@ -410,6 +448,47 @@ function entitySchema(metadata: SeoMetadata) {
     };
   }
 
+  if (metadata.entity?.type === 'supplierLanding') {
+    const page = metadata.entity.item;
+    const offeredProducts = page.productSlugs
+      .map((slug) => content.productMap[slug])
+      .filter((product): product is ProductEntry => Boolean(product));
+
+    return {
+      '@type': 'Service',
+      name: page.title,
+      description: metadata.description,
+      serviceType: page.serviceType,
+      category: 'Activated Carbon',
+      url,
+      provider: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      areaServed: page.areaServed || siteConfig.serviceArea,
+      audience: {
+        '@type': 'BusinessAudience',
+        audienceType: 'Industrial buyers, distributors, EPC teams, and procurement teams',
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: `${page.label} product match`,
+        itemListElement: offeredProducts.map((product) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: product.name,
+            description: product.summary,
+            category: 'Activated Carbon',
+            brand: {
+              '@id': `${siteUrl}/#organization`,
+            },
+            url: absoluteUrl(`/products/${product.slug}`),
+          },
+        })),
+      },
+    };
+  }
+
   return null;
 }
 
@@ -439,7 +518,7 @@ export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbac
     breadcrumbSchema(metadata.breadcrumbs),
   ];
 
-  const entity = entitySchema(metadata);
+  const entity = entitySchema(metadata, content);
   if (entity) {
     schemas.push(entity);
   }
@@ -453,6 +532,49 @@ export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbac
         position: index + 1,
         name: product.name,
         url: absoluteUrl(`/products/${product.slug}`),
+      })),
+    });
+  }
+
+  if (metadata.path === '/activated-carbon-suppliers') {
+    schemas.push({
+      '@type': 'Service',
+      name: 'Activated carbon supplier and export support',
+      description: metadata.description,
+      serviceType: 'Activated carbon supply',
+      category: 'Activated Carbon',
+      url: absoluteUrl(metadata.path),
+      provider: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      areaServed: siteConfig.serviceArea,
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Activated carbon product families',
+        itemListElement: content.products.map((product) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: product.name,
+            description: product.summary,
+            category: 'Activated Carbon',
+            brand: {
+              '@id': `${siteUrl}/#organization`,
+            },
+            url: absoluteUrl(`/products/${product.slug}`),
+          },
+        })),
+      },
+    });
+
+    schemas.push({
+      '@type': 'ItemList',
+      name: 'High-intent activated carbon supplier pages',
+      itemListElement: supplierLandingPages.map((page, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: page.title,
+        url: absoluteUrl(supplierLandingPagePath(page.slug)),
       })),
     });
   }

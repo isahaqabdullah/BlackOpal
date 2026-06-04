@@ -1,0 +1,962 @@
+{
+  "ok": true,
+  "frames_root": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames",
+  "errors": [],
+  "warnings": [],
+  "rows": [
+    {
+      "state": "idle",
+      "expected_frames": 6,
+      "actual_frames": 6,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/idle/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18991,
+          "bbox": [
+            36,
+            5,
+            156,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 114
+        },
+        {
+          "index": 1,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/idle/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18661,
+          "bbox": [
+            37,
+            5,
+            155,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 134
+        },
+        {
+          "index": 2,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/idle/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18649,
+          "bbox": [
+            36,
+            5,
+            156,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 153
+        },
+        {
+          "index": 3,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/idle/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 20336,
+          "bbox": [
+            25,
+            5,
+            167,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 127
+        },
+        {
+          "index": 4,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/idle/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18683,
+          "bbox": [
+            36,
+            5,
+            156,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 96
+        },
+        {
+          "index": 5,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/idle/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19082,
+          "bbox": [
+            36,
+            5,
+            156,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 137
+        }
+      ]
+    },
+    {
+      "state": "running-right",
+      "expected_frames": 8,
+      "actual_frames": 8,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-right/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17820,
+          "bbox": [
+            31,
+            5,
+            160,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 225
+        },
+        {
+          "index": 1,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-right/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16644,
+          "bbox": [
+            32,
+            5,
+            159,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 219
+        },
+        {
+          "index": 2,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-right/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17333,
+          "bbox": [
+            36,
+            5,
+            156,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 274
+        },
+        {
+          "index": 3,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-right/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16235,
+          "bbox": [
+            36,
+            5,
+            156,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 149
+        },
+        {
+          "index": 4,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-right/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17555,
+          "bbox": [
+            34,
+            5,
+            158,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 299
+        },
+        {
+          "index": 5,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-right/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16659,
+          "bbox": [
+            38,
+            5,
+            153,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 232
+        },
+        {
+          "index": 6,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-right/06.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18398,
+          "bbox": [
+            31,
+            5,
+            160,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 239
+        },
+        {
+          "index": 7,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-right/07.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16201,
+          "bbox": [
+            42,
+            5,
+            150,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 249
+        }
+      ]
+    },
+    {
+      "state": "running-left",
+      "expected_frames": 8,
+      "actual_frames": 8,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-left/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16201,
+          "bbox": [
+            42,
+            5,
+            150,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 249
+        },
+        {
+          "index": 1,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-left/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18398,
+          "bbox": [
+            31,
+            5,
+            160,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 239
+        },
+        {
+          "index": 2,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-left/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16659,
+          "bbox": [
+            38,
+            5,
+            153,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 232
+        },
+        {
+          "index": 3,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-left/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17555,
+          "bbox": [
+            34,
+            5,
+            158,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 299
+        },
+        {
+          "index": 4,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-left/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16235,
+          "bbox": [
+            36,
+            5,
+            156,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 149
+        },
+        {
+          "index": 5,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-left/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17333,
+          "bbox": [
+            36,
+            5,
+            156,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 274
+        },
+        {
+          "index": 6,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-left/06.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16644,
+          "bbox": [
+            32,
+            5,
+            159,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 219
+        },
+        {
+          "index": 7,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running-left/07.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17820,
+          "bbox": [
+            31,
+            5,
+            160,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 225
+        }
+      ]
+    },
+    {
+      "state": "waving",
+      "expected_frames": 4,
+      "actual_frames": 4,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waving/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18747,
+          "bbox": [
+            36,
+            5,
+            155,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 137
+        },
+        {
+          "index": 1,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waving/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19338,
+          "bbox": [
+            30,
+            5,
+            162,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 86
+        },
+        {
+          "index": 2,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waving/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 20043,
+          "bbox": [
+            25,
+            5,
+            167,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 171
+        },
+        {
+          "index": 3,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waving/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18740,
+          "bbox": [
+            36,
+            5,
+            155,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 105
+        }
+      ]
+    },
+    {
+      "state": "jumping",
+      "expected_frames": 5,
+      "actual_frames": 5,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/jumping/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 25168,
+          "bbox": [
+            18,
+            5,
+            173,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 194
+        },
+        {
+          "index": 1,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/jumping/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 21522,
+          "bbox": [
+            17,
+            5,
+            174,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 145
+        },
+        {
+          "index": 2,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/jumping/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19803,
+          "bbox": [
+            21,
+            5,
+            171,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 127
+        },
+        {
+          "index": 3,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/jumping/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 20579,
+          "bbox": [
+            23,
+            5,
+            169,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 278
+        },
+        {
+          "index": 4,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/jumping/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 20068,
+          "bbox": [
+            33,
+            5,
+            159,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 104
+        }
+      ]
+    },
+    {
+      "state": "failed",
+      "expected_frames": 8,
+      "actual_frames": 8,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/failed/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15734,
+          "bbox": [
+            45,
+            5,
+            146,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 120
+        },
+        {
+          "index": 1,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/failed/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15490,
+          "bbox": [
+            46,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 138
+        },
+        {
+          "index": 2,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/failed/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16437,
+          "bbox": [
+            45,
+            5,
+            147,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 137
+        },
+        {
+          "index": 3,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/failed/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17873,
+          "bbox": [
+            42,
+            5,
+            150,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 165
+        },
+        {
+          "index": 4,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/failed/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16781,
+          "bbox": [
+            40,
+            5,
+            152,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 170
+        },
+        {
+          "index": 5,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/failed/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15685,
+          "bbox": [
+            44,
+            5,
+            147,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 131
+        },
+        {
+          "index": 6,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/failed/06.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15571,
+          "bbox": [
+            45,
+            5,
+            146,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 162
+        },
+        {
+          "index": 7,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/failed/07.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15759,
+          "bbox": [
+            45,
+            5,
+            146,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 172
+        }
+      ]
+    },
+    {
+      "state": "waiting",
+      "expected_frames": 6,
+      "actual_frames": 6,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waiting/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19476,
+          "bbox": [
+            34,
+            5,
+            158,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 110
+        },
+        {
+          "index": 1,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waiting/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19879,
+          "bbox": [
+            33,
+            5,
+            158,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 185
+        },
+        {
+          "index": 2,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waiting/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 20274,
+          "bbox": [
+            27,
+            5,
+            164,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 212
+        },
+        {
+          "index": 3,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waiting/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18682,
+          "bbox": [
+            38,
+            5,
+            154,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 193
+        },
+        {
+          "index": 4,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waiting/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19443,
+          "bbox": [
+            34,
+            5,
+            157,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 132
+        },
+        {
+          "index": 5,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/waiting/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19240,
+          "bbox": [
+            34,
+            5,
+            157,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 144
+        }
+      ]
+    },
+    {
+      "state": "running",
+      "expected_frames": 6,
+      "actual_frames": 6,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16589,
+          "bbox": [
+            40,
+            5,
+            151,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 116
+        },
+        {
+          "index": 1,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17325,
+          "bbox": [
+            40,
+            5,
+            151,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 124
+        },
+        {
+          "index": 2,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16297,
+          "bbox": [
+            41,
+            5,
+            151,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 93
+        },
+        {
+          "index": 3,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17270,
+          "bbox": [
+            40,
+            5,
+            151,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 114
+        },
+        {
+          "index": 4,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16556,
+          "bbox": [
+            40,
+            5,
+            151,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 85
+        },
+        {
+          "index": 5,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/running/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16462,
+          "bbox": [
+            41,
+            5,
+            151,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 151
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "expected_frames": 6,
+      "actual_frames": 6,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/review/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19519,
+          "bbox": [
+            34,
+            5,
+            157,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 196
+        },
+        {
+          "index": 1,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/review/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19630,
+          "bbox": [
+            31,
+            5,
+            160,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 158
+        },
+        {
+          "index": 2,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/review/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19102,
+          "bbox": [
+            29,
+            5,
+            162,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 161
+        },
+        {
+          "index": 3,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/review/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 22382,
+          "bbox": [
+            18,
+            5,
+            173,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 178
+        },
+        {
+          "index": 4,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/review/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18724,
+          "bbox": [
+            36,
+            5,
+            156,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 151
+        },
+        {
+          "index": 5,
+          "file": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/frames/review/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19083,
+          "bbox": [
+            33,
+            5,
+            158,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 158
+        }
+      ]
+    }
+  ]
+}

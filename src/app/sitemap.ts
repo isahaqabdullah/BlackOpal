@@ -1,11 +1,14 @@
 import type { MetadataRoute } from 'next';
 import { getPublishedSeoContent } from './cms/siteContent';
+import { supplierLandingPagePaths } from './content/supplierLandingPages';
 import { absoluteUrl } from './seo';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const content = await getPublishedSeoContent();
   const routes = [
     '/',
+    '/activated-carbon-suppliers',
+    ...supplierLandingPagePaths,
     '/products',
     ...content.products.map((product) => `/products/${product.slug}`),
     '/applications',

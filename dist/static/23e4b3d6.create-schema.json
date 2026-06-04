@@ -1,0 +1,2032 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "body",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "bullets",
+        "type": "array"
+      }
+    ],
+    "name": "contentSection",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "to",
+        "type": "string",
+        "title": "Path or URL"
+      }
+    ],
+    "name": "linkEntry",
+    "type": "object",
+    "title": "Link"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "value",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "label",
+        "type": "string"
+      }
+    ],
+    "name": "labelValueEntry",
+    "type": "object",
+    "title": "Label + Value"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Building",
+              "value": "building-2"
+            },
+            {
+              "title": "Factory",
+              "value": "factory"
+            },
+            {
+              "title": "Headphones",
+              "value": "headphones"
+            },
+            {
+              "title": "Layers",
+              "value": "layers"
+            },
+            {
+              "title": "Refresh",
+              "value": "refresh-ccw"
+            },
+            {
+              "title": "Shield Check",
+              "value": "shield-check"
+            },
+            {
+              "title": "Target",
+              "value": "target"
+            },
+            {
+              "title": "Tree Palm",
+              "value": "tree-palm"
+            },
+            {
+              "title": "Truck",
+              "value": "truck"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "building-2",
+                  "factory",
+                  "headphones",
+                  "layers",
+                  "refresh-ccw",
+                  "shield-check",
+                  "target",
+                  "tree-palm",
+                  "truck"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "icon",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "desc",
+        "type": "text",
+        "title": "Description"
+      }
+    ],
+    "name": "featureCardEntry",
+    "type": "object",
+    "title": "Feature Card"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "breadcrumbLabel",
+        "type": "string"
+      }
+    ],
+    "name": "pageIntro",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "copy",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "highlights",
+        "type": "array"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Application image",
+              "value": "application"
+            },
+            {
+              "title": "Product image",
+              "value": "product"
+            },
+            {
+              "title": "URL",
+              "value": "url"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "application",
+                  "product",
+                  "url"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "imageSource",
+        "type": "string"
+      },
+      {
+        "name": "imageSlug",
+        "type": "string",
+        "title": "Product or Application Slug"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "imageUrl",
+        "type": "url",
+        "title": "Image URL"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "imageAlt",
+        "type": "string",
+        "title": "Image Alt Text"
+      }
+    ],
+    "name": "featuredCapabilityEntry",
+    "type": "object",
+    "title": "Featured Capability"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "step",
+        "type": "string",
+        "title": "Step Number"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "body",
+        "type": "text"
+      }
+    ],
+    "name": "productionStepEntry",
+    "type": "object",
+    "title": "Production Step"
+  },
+  {
+    "fields": [
+      {
+        "name": "seoTitle",
+        "type": "string",
+        "title": "SEO Title"
+      },
+      {
+        "rows": 3,
+        "name": "seoDescription",
+        "type": "text",
+        "title": "SEO Description"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "seoImage",
+        "type": "image",
+        "title": "SEO Image"
+      },
+      {
+        "initialValue": false,
+        "name": "noIndex",
+        "type": "boolean",
+        "title": "Hide from search engines"
+      }
+    ],
+    "name": "seoFields",
+    "type": "object",
+    "title": "SEO"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "list": [
+            {
+              "title": "India website",
+              "value": "black-opal-india"
+            },
+            {
+              "title": "Middle East website",
+              "value": "black-opal-middle-east"
+            }
+          ],
+          "layout": "radio"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "black-opal-india",
+                  "black-opal-middle-east"
+                ]
+              },
+              {
+                "flag": "custom"
+              }
+            ]
+          }
+        ],
+        "description": "Locks this homepage to one deployed website. This is not a preview switcher; use the matching India or Middle East Studio to preview that site.",
+        "readOnly": "conditional",
+        "name": "siteId",
+        "type": "string",
+        "title": "Website"
+      },
+      {
+        "name": "seo",
+        "type": "seoFields",
+        "title": "SEO"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "description": "Use a public path like /images/black-opal-hero-logo-transparent.png or a full URL.",
+        "name": "heroLogoImage",
+        "type": "string",
+        "title": "Hero Logo Image URL"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "heroLogoAlt",
+        "type": "string",
+        "title": "Hero Logo Accessibility Label"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "heroKicker",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "heroTitle",
+        "type": "string"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "heroDescription",
+        "type": "text"
+      },
+      {
+        "name": "heroLegacyLabel",
+        "type": "string"
+      },
+      {
+        "description": "Use a public path like /images/axionvideo1.mp4 or a full URL.",
+        "name": "heroVideoUrl",
+        "type": "string",
+        "title": "Hero Video URL"
+      },
+      {
+        "name": "heroVideoLabel",
+        "type": "string",
+        "title": "Hero Video Accessibility Label"
+      },
+      {
+        "name": "heroVideoFallback",
+        "type": "string",
+        "title": "Hero Video Fallback Text"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "trustCertificationLabel",
+        "type": "string",
+        "title": "Trust Bar Certification Label"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "trustCertificationValue",
+        "type": "string",
+        "title": "Trust Bar Certification Value"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "trustEstablishedLabel",
+        "type": "string",
+        "title": "Trust Bar Established Label"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "trustEstablishedValue",
+        "type": "string",
+        "title": "Trust Bar Established Value"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "trustProductionLabel",
+        "type": "string",
+        "title": "Trust Bar Production Label"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "trustProductionValue",
+        "type": "string",
+        "title": "Trust Bar Production Value"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "trustCapacityLabel",
+        "type": "string",
+        "title": "Trust Bar Capacity Label"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "trustCapacityValue",
+        "type": "string",
+        "title": "Trust Bar Capacity Value"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "productSectionKicker",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "productSectionTitle",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "applicationSectionKicker",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "applicationSectionTitle",
+        "type": "string"
+      },
+      {
+        "description": "Use a public path or full URL.",
+        "name": "companyImage",
+        "type": "string",
+        "title": "Company Section Image URL"
+      },
+      {
+        "name": "companyImageAlt",
+        "type": "string",
+        "title": "Company Section Image Alt Text"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "companyEyebrow",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "companyTitle",
+        "type": "string"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "companyBodyPrimary",
+        "type": "text"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "companyBodySecondary",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "labelValueEntry",
+            "title": "Label + Value"
+          }
+        ],
+        "name": "companyMetrics",
+        "type": "array"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "ctaTitle",
+        "type": "string",
+        "title": "Closing Section Title"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "ctaDescription",
+        "type": "text",
+        "title": "Closing Section Description"
+      },
+      {
+        "name": "whyKicker",
+        "type": "string",
+        "title": "Why Section Kicker"
+      },
+      {
+        "name": "whyTitle",
+        "type": "string",
+        "title": "Why Section Title"
+      },
+      {
+        "of": [
+          {
+            "type": "featureCardEntry",
+            "title": "Feature Card"
+          }
+        ],
+        "name": "whyReasons",
+        "type": "array",
+        "title": "Why Section Cards"
+      },
+      {
+        "name": "featuredCapabilitiesLabel",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "featuredCapabilityEntry",
+            "title": "Featured Capability"
+          }
+        ],
+        "name": "featuredCapabilities",
+        "type": "array"
+      }
+    ],
+    "name": "homePage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "list": [
+            {
+              "title": "India website",
+              "value": "black-opal-india"
+            },
+            {
+              "title": "Middle East website",
+              "value": "black-opal-middle-east"
+            }
+          ],
+          "layout": "radio"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "black-opal-india",
+                  "black-opal-middle-east"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "description": "Controls which deployed website uses this document.",
+        "name": "siteId",
+        "type": "string",
+        "title": "Website"
+      },
+      {
+        "fields": [
+          {
+            "name": "breadcrumbAriaLabel",
+            "type": "string",
+            "title": "Breadcrumb Accessibility Label"
+          },
+          {
+            "name": "homeLabel",
+            "type": "string",
+            "title": "Breadcrumb Home Label"
+          },
+          {
+            "name": "homePath",
+            "type": "string",
+            "title": "Breadcrumb Home Path"
+          }
+        ],
+        "name": "pageIntro",
+        "type": "object",
+        "title": "Shared Page Intro Labels"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "name": "seo",
+            "type": "seoFields",
+            "title": "SEO"
+          },
+          {
+            "name": "intro",
+            "type": "pageIntro",
+            "title": "Page Intro"
+          },
+          {
+            "name": "highlightsLabel",
+            "type": "string"
+          },
+          {
+            "name": "commonUsesLabel",
+            "type": "string"
+          },
+          {
+            "name": "referencedGradesLabel",
+            "type": "string"
+          }
+        ],
+        "name": "productsPage",
+        "type": "object",
+        "title": "Products Listing Page"
+      },
+      {
+        "fields": [
+          {
+            "name": "introLabel",
+            "type": "string"
+          },
+          {
+            "name": "productsPath",
+            "type": "string"
+          },
+          {
+            "name": "productsBreadcrumbLabel",
+            "type": "string"
+          },
+          {
+            "name": "overviewLabel",
+            "type": "string"
+          },
+          {
+            "name": "commonUsesLabel",
+            "type": "string"
+          },
+          {
+            "name": "ctaTitle",
+            "type": "string",
+            "title": "Closing Section Title"
+          },
+          {
+            "rows": 3,
+            "name": "ctaDescription",
+            "type": "text",
+            "title": "Closing Section Description"
+          }
+        ],
+        "name": "productDetailPage",
+        "type": "object"
+      },
+      {
+        "fields": [
+          {
+            "name": "seo",
+            "type": "seoFields",
+            "title": "SEO"
+          },
+          {
+            "name": "intro",
+            "type": "pageIntro",
+            "title": "Page Intro"
+          },
+          {
+            "name": "itemLabel",
+            "type": "string"
+          },
+          {
+            "name": "keyPointsLabel",
+            "type": "string"
+          },
+          {
+            "name": "recommendedProductsLabel",
+            "type": "string"
+          }
+        ],
+        "name": "applicationsPage",
+        "type": "object",
+        "title": "Applications Listing Page"
+      },
+      {
+        "fields": [
+          {
+            "name": "introLabel",
+            "type": "string"
+          },
+          {
+            "name": "applicationsPath",
+            "type": "string"
+          },
+          {
+            "name": "applicationsBreadcrumbLabel",
+            "type": "string"
+          },
+          {
+            "name": "overviewLabel",
+            "type": "string"
+          },
+          {
+            "name": "referencedGradesLabel",
+            "type": "string"
+          },
+          {
+            "name": "recommendedProductsLabel",
+            "type": "string"
+          },
+          {
+            "name": "recommendedProductsTitle",
+            "type": "string"
+          },
+          {
+            "rows": 3,
+            "name": "recommendedProductsDescription",
+            "type": "text"
+          }
+        ],
+        "name": "applicationDetailPage",
+        "type": "object"
+      },
+      {
+        "fields": [
+          {
+            "name": "seo",
+            "type": "seoFields",
+            "title": "SEO"
+          },
+          {
+            "name": "intro",
+            "type": "pageIntro",
+            "title": "Page Intro"
+          },
+          {
+            "name": "featuredUpdateLabel",
+            "type": "string"
+          },
+          {
+            "name": "whyMattersLabel",
+            "type": "string",
+            "title": "Why It Matters Label"
+          },
+          {
+            "rows": 3,
+            "name": "whyMattersBody",
+            "type": "text",
+            "title": "Why It Matters Body"
+          },
+          {
+            "name": "resourcesTitle",
+            "type": "string"
+          },
+          {
+            "rows": 3,
+            "name": "resourcesDescription",
+            "type": "text"
+          },
+          {
+            "name": "resourceLabel",
+            "type": "string"
+          }
+        ],
+        "name": "newsroomPage",
+        "type": "object"
+      },
+      {
+        "fields": [
+          {
+            "name": "kicker",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "rows": 3,
+            "name": "description",
+            "type": "text"
+          },
+          {
+            "name": "pressReleaseLabel",
+            "type": "string"
+          },
+          {
+            "name": "resourceLabel",
+            "type": "string"
+          }
+        ],
+        "name": "newsroomPreview",
+        "type": "object",
+        "title": "Homepage Newsroom Preview"
+      },
+      {
+        "fields": [
+          {
+            "name": "introLabel",
+            "type": "string"
+          },
+          {
+            "name": "newsroomPath",
+            "type": "string"
+          },
+          {
+            "name": "newsroomBreadcrumbLabel",
+            "type": "string"
+          },
+          {
+            "name": "keyPointsLabel",
+            "type": "string"
+          }
+        ],
+        "name": "pressReleasePage",
+        "type": "object"
+      },
+      {
+        "fields": [
+          {
+            "name": "seo",
+            "type": "seoFields",
+            "title": "SEO"
+          },
+          {
+            "name": "label",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "rows": 3,
+            "name": "description",
+            "type": "text"
+          }
+        ],
+        "name": "notFoundPage",
+        "type": "object"
+      }
+    ],
+    "name": "pageCopy",
+    "type": "document",
+    "title": "Page Framing Copy"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "list": [
+            {
+              "title": "India website",
+              "value": "black-opal-india"
+            },
+            {
+              "title": "Middle East website",
+              "value": "black-opal-middle-east"
+            }
+          ],
+          "layout": "radio"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "black-opal-india",
+                  "black-opal-middle-east"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "description": "Controls which deployed website uses this document.",
+        "name": "siteId",
+        "type": "string",
+        "title": "Website"
+      },
+      {
+        "name": "seo",
+        "type": "seoFields",
+        "title": "SEO"
+      },
+      {
+        "name": "intro",
+        "type": "pageIntro",
+        "title": "Page Intro"
+      },
+      {
+        "name": "titleLogoImage",
+        "type": "string",
+        "title": "Page Title Logo Image URL"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "heroImage",
+        "type": "image"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "heroImageUrl",
+        "type": "url",
+        "title": "External Hero Image URL"
+      },
+      {
+        "name": "heroImageAlt",
+        "type": "string",
+        "title": "Hero Image Alt Text"
+      },
+      {
+        "name": "storyTitle",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "text"
+          }
+        ],
+        "name": "storyParagraphs",
+        "type": "array"
+      },
+      {
+        "name": "officeNetworkLabel",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "labelValueEntry",
+            "title": "Label + Value"
+          }
+        ],
+        "name": "metrics",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "type": "featureCardEntry",
+            "title": "Feature Card"
+          }
+        ],
+        "name": "cards",
+        "type": "array",
+        "title": "Feature Cards"
+      },
+      {
+        "name": "brandUpdateLabel",
+        "type": "string"
+      }
+    ],
+    "name": "aboutPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "seo",
+        "type": "seoFields",
+        "title": "SEO"
+      },
+      {
+        "name": "intro",
+        "type": "pageIntro",
+        "title": "Page Intro"
+      },
+      {
+        "name": "glanceLabel",
+        "type": "string",
+        "title": "Glance Section Label"
+      },
+      {
+        "of": [
+          {
+            "type": "labelValueEntry",
+            "title": "Label + Value"
+          }
+        ],
+        "name": "glanceItems",
+        "type": "array"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "overviewTitle",
+        "type": "string"
+      },
+      {
+        "rows": 4,
+        "name": "overviewBody",
+        "type": "text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Production Image"
+      },
+      {
+        "description": "Optional fallback for existing remote or public images. Sanity image uploads are preferred.",
+        "name": "imageUrl",
+        "type": "string",
+        "title": "External Production Image URL"
+      },
+      {
+        "name": "imageAlt",
+        "type": "string",
+        "title": "Production Image Alt Text"
+      },
+      {
+        "name": "qualityKicker",
+        "type": "string",
+        "title": "Quality Section Kicker"
+      },
+      {
+        "name": "qualityTitle",
+        "type": "string",
+        "title": "Quality Section Title"
+      },
+      {
+        "of": [
+          {
+            "type": "text"
+          }
+        ],
+        "name": "qualityParagraphs",
+        "type": "array"
+      },
+      {
+        "name": "activationKicker",
+        "type": "string",
+        "title": "Activation Section Kicker"
+      },
+      {
+        "of": [
+          {
+            "type": "productionStepEntry",
+            "title": "Production Step"
+          }
+        ],
+        "name": "activationSteps",
+        "type": "array"
+      },
+      {
+        "rows": 3,
+        "name": "activationNote",
+        "type": "text"
+      },
+      {
+        "rows": 2,
+        "name": "contactTextBeforeEmail",
+        "type": "text"
+      },
+      {
+        "name": "contactTextAfterEmail",
+        "type": "string"
+      }
+    ],
+    "name": "productionPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "sortOrder",
+        "type": "number"
+      },
+      {
+        "name": "seo",
+        "type": "seoFields",
+        "title": "SEO"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "shortName",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "name"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "summary",
+        "type": "text"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "intro",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "highlights",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "commonUses",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "grades",
+        "type": "array",
+        "title": "Referenced Grades"
+      },
+      {
+        "of": [
+          {
+            "type": "contentSection"
+          }
+        ],
+        "name": "sections",
+        "type": "array"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "description": "Optional fallback for existing remote images. Sanity image uploads are preferred.",
+        "name": "imageUrl",
+        "type": "url",
+        "title": "External Image URL"
+      }
+    ],
+    "name": "product",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "sortOrder",
+        "type": "number"
+      },
+      {
+        "name": "seo",
+        "type": "seoFields",
+        "title": "SEO"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "name"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "summary",
+        "type": "text"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "intro",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "keyPoints",
+        "type": "array"
+      },
+      {
+        "description": "Use product slugs like granular, powder, impregnated, or catalytic.",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "recommendedProducts",
+        "type": "array",
+        "title": "Recommended Product Slugs"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "grades",
+        "type": "array",
+        "title": "Referenced Grades"
+      },
+      {
+        "of": [
+          {
+            "type": "contentSection"
+          }
+        ],
+        "name": "sections",
+        "type": "array"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "description": "Optional fallback for existing remote images. Sanity image uploads are preferred.",
+        "name": "imageUrl",
+        "type": "url",
+        "title": "External Image URL"
+      }
+    ],
+    "name": "application",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "publishedAt",
+        "type": "datetime"
+      },
+      {
+        "name": "seo",
+        "type": "seoFields",
+        "title": "SEO"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "title"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Press Release",
+              "value": "press-release"
+            },
+            {
+              "title": "Resource",
+              "value": "resource"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "press-release",
+                  "resource"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "type",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "summary",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "text"
+          }
+        ],
+        "name": "detail",
+        "type": "array",
+        "title": "Detail Paragraphs"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "bullets",
+        "type": "array"
+      }
+    ],
+    "name": "newsroomItem",
+    "type": "document"
+  }
+]

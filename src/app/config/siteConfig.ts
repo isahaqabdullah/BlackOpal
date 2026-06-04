@@ -18,11 +18,11 @@ type Headquarters = {
   countryCode: string;
 };
 
-const DEFAULT_SITE_URL = 'https://black-opal-india.vercel.app';
+const DEFAULT_SITE_URL = 'https://www.blackopalcarbonsme.com';
 const DEFAULT_SITE_NAME = 'Black Opal Private Limited';
 const GROUP_HEADQUARTERS_LABEL = 'Black Opal Group Head Quarters';
 const DEFAULT_DESCRIPTION =
-  'Black Opal Private Limited manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas purification, and industrial buyers across Europe, the Middle East, and Asia.';
+  'Black Opal Private Limited manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas purification, and industrial buyers across global export markets.';
 const runtimeEnv: Record<string, string | undefined> = {
   SITE_ID: process.env.NEXT_PUBLIC_SITE_ID,
   SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
@@ -177,8 +177,8 @@ const siteName = envValue('SITE_NAME', DEFAULT_SITE_NAME);
 const siteUrl = envValue('SITE_URL', DEFAULT_SITE_URL).replace(/\/+$/, '');
 const siteId = envValue('SITE_ID', 'black-opal-india');
 const regionLabel = envValue('REGION_LABEL', 'India');
-const serviceArea = envValue('SERVICE_AREA', 'Europe, Middle East, Asia');
-const marketName = envValue('MARKET_NAME', 'Europe, Middle East and Asia');
+const serviceArea = envValue('SERVICE_AREA', 'Global export markets');
+const marketName = envValue('MARKET_NAME', 'global export markets');
 const utilityMarketLabel = envValue('UTILITY_MARKET_LABEL', regionLabel);
 const originStatement = envValue('ORIGIN_STATEMENT', 'Manufactured and exported from India');
 const originDescription = envValue(

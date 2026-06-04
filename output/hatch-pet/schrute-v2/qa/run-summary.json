@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "run_dir": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2",
+  "spritesheet": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/final/spritesheet.webp",
+  "validation": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/final/validation.json",
+  "contact_sheet": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/qa/contact-sheet.png",
+  "review": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/qa/review.json",
+  "videos": "/Users/isq/Documents/Black Opal Carbons/output/hatch-pet/schrute-v2/qa/videos",
+  "package": null
+}

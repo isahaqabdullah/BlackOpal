@@ -19,12 +19,13 @@ export function Navigation() {
   return (
     <nav className="sticky top-0 z-50 border-b border-[#c9a24d]/15 bg-[#050505]/85 backdrop-blur-xl">
       <div className="premium-shell h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="premium-nav-brand" aria-label={siteSettings.navigation.logoAlt}>
           <img
             src={siteSettings.navigation.logoImage}
-            alt={siteSettings.navigation.logoAlt}
-            className="premium-nav-logo object-contain shrink-0 drop-shadow-[0_8px_24px_rgba(201,162,77,0.16)]"
+            alt=""
+            className="premium-nav-logo object-contain shrink-0"
           />
+          <span className="premium-nav-company">A Black Opal Group Company</span>
         </Link>
 
         {/* Desktop */}
