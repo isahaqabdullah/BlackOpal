@@ -394,7 +394,7 @@ export type ContactPageContent = {
 
 export const homePageContent: HomePageContent = {
   siteId: siteConfig.siteId,
-  heroLogoImage: '/images/black-opal-hero-logo-thick.png',
+  heroLogoImage: '/images/black-opal-hero-logo-user-clean.png',
   heroLogoAlt: siteConfig.siteName,
   heroKicker: siteConfig.heroKicker,
   heroTitle: siteConfig.heroTitle,
@@ -629,7 +629,7 @@ export const siteMetrics: SiteMetric[] = [
 export const siteSettingsContent: SiteSettingsContent = {
   siteId: siteConfig.siteId,
   navigation: {
-    logoImage: '/images/black-opal-nav-logo-transparent.png',
+    logoImage: '/images/black-opal-nav-logo-clean.png',
     logoAlt: 'Black Opal Carbons logo',
     links: [
       { label: 'Home', to: '/' },
