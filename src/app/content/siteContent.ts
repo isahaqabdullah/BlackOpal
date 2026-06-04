@@ -47,10 +47,6 @@ export type HomePageContent = {
   trustProductionValue: string;
   trustCapacityLabel: string;
   trustCapacityValue: string;
-  supplierSectionKicker: string;
-  supplierSectionTitle: string;
-  supplierSectionDescription: string;
-  supplierSectionLinks: LinkEntry[];
   productSectionKicker: string;
   productSectionTitle: string;
   applicationSectionKicker: string;
@@ -419,19 +415,6 @@ export const homePageContent: HomePageContent = {
   trustProductionValue: `${siteConfig.productionCenterCount} Production Centers`,
   trustCapacityLabel: 'Capacity',
   trustCapacityValue: '35000 metric tons/year',
-  supplierSectionKicker: 'Supplier programs',
-  supplierSectionTitle: 'Coconut shell activated carbon supplier for global buyers',
-  supplierSectionDescription:
-    'For bulk buyers, distributors, treatment plants, mining operations, and industrial projects, Black Opal supports coconut shell activated carbon sourcing with grade matching, packing, documentation, and export coordination.',
-  supplierSectionLinks: [
-    { label: 'Activated carbon suppliers', to: '/activated-carbon-suppliers' },
-    { label: 'Global activated carbon supplier', to: '/activated-carbon-suppliers/global-activated-carbon-supplier' },
-    { label: 'Bulk activated carbon supplier', to: '/activated-carbon-suppliers/bulk-activated-carbon-supplier' },
-    {
-      label: 'Coconut shell activated carbon supplier',
-      to: '/activated-carbon-suppliers/coconut-shell-activated-carbon-supplier',
-    },
-  ],
   productSectionKicker: 'Product Categories',
   productSectionTitle: 'Application-matched grades for every process',
   applicationSectionKicker: 'Applications',
@@ -458,8 +441,8 @@ export const homePageContent: HomePageContent = {
   ctaDescription: 'Mesh size, activity, washing, compliance, and delivery requirements shape the final recommendation.',
   ctaPrimaryPath: '/contact',
   ctaPrimaryLabel: 'Request Quote',
-  ctaSecondaryPath: '/contact',
-  ctaSecondaryLabel: 'Send Technical Inquiry',
+  ctaSecondaryPath: '/activated-carbon-suppliers/bulk-activated-carbon-supplier',
+  ctaSecondaryLabel: 'Bulk supply capability',
   whyKicker: `Why ${siteConfig.siteName}`,
   whyTitle: 'High-performance activated carbon backed by quality, innovation, service, and reliability',
   whyReasons: [
