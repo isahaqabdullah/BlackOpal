@@ -17,6 +17,29 @@
 
   Use `.env.india.example` and `.env.me.example` as starting points for the India and Middle East deployments. Until the final production domains are attached, use `https://black-opal-india.vercel.app` and `https://black-opal-middle-east.vercel.app` for `NEXT_PUBLIC_SITE_URL`.
 
+  ## Google Search Console
+
+  The site is ready for Search Console verification and indexing. Each deployed domain renders `robots.txt`, `sitemap.xml`, canonical metadata, Open Graph tags, and JSON-LD.
+
+  Recommended production setup:
+
+  1. Open [Google Search Console](https://search.google.com/search-console).
+  2. Add a **Domain property** for the root domain, for example `blackopalcarbonsme.com`, and verify it with the DNS TXT record Google provides. This covers `www`, non-`www`, `http`, and `https`.
+  3. Add a **URL-prefix property** for the live canonical URL, for example `https://www.blackopalcarbonsme.com/`, as a backup. Choose the **HTML file** method and place the file in `public/` so it is served from the site root. The current verification file is:
+
+     ```text
+     https://www.blackopalcarbonsme.com/googleb703361b80b41a8d.html
+     ```
+
+  4. Redeploy the matching Vercel project, confirm the verification file URL opens, then click **Verify** in Search Console.
+  5. In Search Console, submit the sitemap:
+
+     ```text
+     https://www.blackopalcarbonsme.com/sitemap.xml
+     ```
+
+  6. Use **URL Inspection** for the homepage and the priority SEO landing pages, then request indexing after the production deployment is live.
+
   ## Sanity CMS
 
   The site can load homepage, product, application, and newsroom entries from Sanity. If Sanity env vars are not set, it keeps using the checked-in static content in `src/app/content/siteContent.ts`.
