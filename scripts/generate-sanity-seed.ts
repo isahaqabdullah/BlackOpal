@@ -13,6 +13,7 @@ import {
   type FeatureCardEntry,
   type FeaturedCapabilityEntry,
   type LabelValueEntry,
+  type LinkEntry,
   type PageIntroContent,
   type ProductionStepEntry,
 } from '../src/app/content/siteContent';
@@ -54,6 +55,15 @@ function labelValuesForSanity(items: LabelValueEntry[]) {
     _key: keyFrom(`${item.value}-${item.label}`, index),
     value: item.value,
     label: item.label,
+  }));
+}
+
+function linksForSanity(items: LinkEntry[]) {
+  return items.map((item, index) => ({
+    _type: 'linkEntry',
+    _key: keyFrom(`${item.label}-${item.to}`, index),
+    label: item.label,
+    to: item.to,
   }));
 }
 
@@ -154,6 +164,7 @@ const homePageDocuments: SanityDocument[] = ['black-opal-india', 'black-opal-mid
   _type: 'homePage',
   ...omitFields(homePageContent as unknown as Record<string, unknown>, homePageButtonFields),
   companyMetrics: labelValuesForSanity(homePageContent.companyMetrics),
+  supplierSectionLinks: linksForSanity(homePageContent.supplierSectionLinks),
   whyReasons: featureCardsForSanity(homePageContent.whyReasons),
   featuredCapabilities: featuredCapabilitiesForSanity(homePageContent.featuredCapabilities),
   seo: seoFor('/'),

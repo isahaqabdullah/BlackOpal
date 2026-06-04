@@ -39,6 +39,14 @@ export const cmsDocumentsProjection = `{
     trustProductionValue,
     trustCapacityLabel,
     trustCapacityValue,
+    supplierSectionKicker,
+    supplierSectionTitle,
+    supplierSectionDescription,
+    supplierSectionLinks[] {
+      _key,
+      label,
+      to
+    },
     productSectionKicker,
     productSectionTitle,
     applicationSectionKicker,

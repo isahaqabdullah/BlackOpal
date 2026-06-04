@@ -20,6 +20,7 @@ import {
   type FeatureCardEntry,
   type HomePageContent,
   type LabelValueEntry,
+  type LinkEntry,
   type NewsroomItem,
   type OfficeEntry,
   type PageCopyContent,
@@ -161,6 +162,29 @@ function metricEntries(value: unknown, fallback: SiteMetric[] = []) {
         : null;
     })
     .filter((item): item is SiteMetric => item !== null);
+
+  return entries.length ? entries : fallback;
+}
+
+function linkEntries(value: unknown, fallback: LinkEntry[] = []) {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
+
+  const entries = value
+    .map((item, index): LinkEntry | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const entry = item as Partial<LinkEntry>;
+      const fallbackItem = fallback[index];
+      const label = textValue(entry.label, fallbackItem?.label);
+      const to = cleanTextValue(entry.to, fallbackItem?.to);
+
+      return label && to ? { _key: cleanTextValue(entry._key) || undefined, label, to } : null;
+    })
+    .filter((item): item is LinkEntry => item !== null);
 
   return entries.length ? entries : fallback;
 }
@@ -458,6 +482,10 @@ function normalizeHomePage(value?: Partial<HomePageContent> | null): HomePageCon
     trustProductionValue: textValue(value?.trustProductionValue, fallback.trustProductionValue),
     trustCapacityLabel: textValue(value?.trustCapacityLabel, fallback.trustCapacityLabel),
     trustCapacityValue: textValue(value?.trustCapacityValue, fallback.trustCapacityValue),
+    supplierSectionKicker: textValue(value?.supplierSectionKicker, fallback.supplierSectionKicker),
+    supplierSectionTitle: textValue(value?.supplierSectionTitle, fallback.supplierSectionTitle),
+    supplierSectionDescription: textValue(value?.supplierSectionDescription, fallback.supplierSectionDescription),
+    supplierSectionLinks: linkEntries(value?.supplierSectionLinks, fallback.supplierSectionLinks),
     productSectionKicker: textValue(value?.productSectionKicker, fallback.productSectionKicker),
     productSectionTitle: textValue(value?.productSectionTitle, fallback.productSectionTitle),
     applicationSectionKicker: textValue(value?.applicationSectionKicker, fallback.applicationSectionKicker),

@@ -2,6 +2,7 @@
 
 import { Hero } from './Hero';
 import { TrustBar } from './TrustBar';
+import { SupplierSection } from './SupplierSection';
 import { ProductCards } from './ProductCards';
 import { ApplicationsGrid } from './ApplicationsGrid';
 import { WhyBlackOpal } from './WhyBlackOpal';
@@ -15,6 +16,7 @@ export function HomePage() {
     <>
       <Hero />
       <TrustBar />
+      <SupplierSection />
       <ProductCards />
       <ApplicationsGrid />
       <WhyBlackOpal />

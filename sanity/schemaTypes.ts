@@ -268,6 +268,10 @@ export const homePage = {
       type: 'string',
       validation: (Rule: any) => Rule.required(),
     },
+    { name: 'supplierSectionKicker', title: 'Supplier Section Kicker', type: 'string' },
+    { name: 'supplierSectionTitle', title: 'Supplier Section Title', type: 'string' },
+    { name: 'supplierSectionDescription', title: 'Supplier Section Description', type: 'text', rows: 4 },
+    { name: 'supplierSectionLinks', title: 'Supplier Section Links', type: 'array', of: [{ type: 'linkEntry' }] },
     {
       name: 'productSectionKicker',
       title: 'Product Section Kicker',
