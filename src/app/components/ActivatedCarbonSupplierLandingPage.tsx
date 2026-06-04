@@ -40,7 +40,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
         title={page.title}
         description={page.description}
         breadcrumbs={[
-          { label: 'Activated carbon suppliers', to: '/activated-carbon-suppliers' },
+          { label: 'Activated carbon supply', to: '/activated-carbon-suppliers' },
           { label: page.breadcrumbLabel },
         ]}
         enableBreadcrumbEditing={false}
@@ -55,7 +55,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Supplier intent
+                  Supply capability
                 </span>
                 <h2
                   className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.05rem)] leading-[1.05] mb-5"
@@ -84,7 +84,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                     className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
-                    Supplier overview
+                    Supply overview
                   </Link>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Global buying signals
+                  Manufacturing and export support
                 </span>
                 <div className="space-y-3">
                   {page.highlights.map((highlight) => (
@@ -124,20 +124,20 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Procurement fit
+              Bulk program fit
             </span>
             <h2
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(1.9rem,3vw,2.6rem)] leading-[1.08] mb-4"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              What serious buyers should compare
+              Built for repeat industrial supply
             </h2>
             <p
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              These pages are written for real supplier evaluation: application fit, carbon specification, shipment
-              context, and repeat purchase reliability.
+              Black Opal supports procurement teams that need stable lots, clear specifications, practical packing,
+              export documentation, and continuity across repeat shipments.
             </p>
           </div>
 
@@ -180,13 +180,13 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                RFQ details
+                Specification inputs
               </span>
               <h2
                 className="premium-heading premium-heading-elevated text-[clamp(1.85rem,3vw,2.5rem)] leading-[1.08] mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Details that make supplier pricing accurate
+                Details that shape the right carbon recommendation
               </h2>
               <div className="space-y-3">
                 {page.specificationNotes.map((note) => (
@@ -257,13 +257,13 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                 className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Application context
+                Application fit
               </span>
               <h2
                 className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(1.9rem,3vw,2.6rem)] leading-[1.08] mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Related activated carbon applications
+                Where this supply capability is used
               </h2>
             </div>
 
@@ -310,7 +310,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Supplier response
+                  Talk to Black Opal
                 </span>
                 <h2
                   className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.2vw,2.75rem)] leading-[1.08] mb-4"
@@ -401,13 +401,13 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Related supplier pages
+              Related supply capabilities
             </span>
             <h2
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(1.9rem,3vw,2.6rem)] leading-[1.08] mb-4"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              More ways buyers search for activated carbon suppliers
+              Explore product and application supply paths
             </h2>
           </div>
 
@@ -441,7 +441,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   className="inline-flex items-center gap-2 text-[#f2d78b] text-[13px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  View supplier page
+                  View capability
                   <ArrowRight size={14} />
                 </span>
               </Link>

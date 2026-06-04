@@ -51,10 +51,10 @@ export function ActivatedCarbonSuppliersPage() {
   return (
     <div>
       <PageIntro
-        label="Activated Carbon Suppliers"
-        title="Premium coconut shell activated carbon supplier"
+        label="Activated Carbon Supply"
+        title="Premium coconut shell activated carbon supply"
         description="Black Opal Carbons supplies high-performance coconut shell activated carbon for water treatment, gold recovery, air and gas purification, oil and gas, catalytic carbon, and specialty industrial applications."
-        breadcrumbs={[{ label: 'Activated carbon suppliers' }]}
+        breadcrumbs={[{ label: 'Activated carbon supply' }]}
         enableBreadcrumbEditing={false}
       />
 
@@ -199,20 +199,20 @@ export function ActivatedCarbonSuppliersPage() {
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Supplier search paths
+              Supply capabilities
             </span>
             <h2
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(1.9rem,3vw,2.6rem)] leading-[1.08] mb-4"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              High-intent activated carbon supplier pages
+              Product and application supply paths
             </h2>
             <p
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              Buyers often search by product format, application, and procurement type. These pages connect those
-              searches to the relevant Black Opal carbon families and buying context.
+              Black Opal supports buyers by product format, application environment, and procurement model. These
+              pages connect the relevant carbon families with the buying context behind each requirement.
             </p>
           </div>
 
@@ -246,7 +246,7 @@ export function ActivatedCarbonSuppliersPage() {
                   className="inline-flex items-center gap-2 text-[#f2d78b] text-[13px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  View supplier page
+                  View capability
                   <ArrowRight size={14} />
                 </span>
               </Link>

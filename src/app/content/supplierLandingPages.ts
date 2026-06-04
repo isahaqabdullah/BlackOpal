@@ -32,9 +32,9 @@ export function supplierLandingPagePath(slug: string) {
 export const supplierLandingPages: SupplierLandingPage[] = [
   {
     slug: 'global-activated-carbon-supplier',
-    label: 'Global Activated Carbon Supplier',
-    breadcrumbLabel: 'Global supplier',
-    title: 'Global activated carbon supplier for industrial buyers',
+    label: 'Global Activated Carbon Supply',
+    breadcrumbLabel: 'Global supply',
+    title: 'Global activated carbon supply for industrial buyers',
     description:
       'Black Opal Carbons supplies coconut shell activated carbon for bulk buyers, distributors, EPC teams, and industrial users across global export markets.',
     seoTitle: 'Global Activated Carbon Supplier',
@@ -52,7 +52,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     ],
     buyerSignals: [
       {
-        title: 'Procurement fit',
+        title: 'Procurement alignment',
         body: 'Suitable for RFQs where buyers compare source reliability, product family coverage, export support, and long-term supply consistency.',
       },
       {
@@ -79,56 +79,56 @@ export const supplierLandingPages: SupplierLandingPage[] = [
   },
   {
     slug: 'bulk-activated-carbon-supplier',
-    label: 'Bulk Activated Carbon Supplier',
-    breadcrumbLabel: 'Bulk supplier',
-    title: 'Bulk activated carbon supplier for recurring procurement',
+    label: 'Bulk Activated Carbon Supply',
+    breadcrumbLabel: 'Bulk supply',
+    title: 'Bulk activated carbon supply backed by manufacturing control',
     description:
-      'Black Opal Carbons supports bulk activated carbon purchasing for industrial users, distributors, treatment plants, mining operations, and project supply chains.',
+      'Black Opal supports industrial buyers, distributors, treatment companies, mining operations, and project supply chains with repeat coconut shell activated carbon supply.',
     seoTitle: 'Bulk Activated Carbon Supplier',
     seoDescription:
       'Bulk activated carbon supplier for recurring procurement. Coconut shell granular, powder, impregnated, and catalytic grades for industrial, distributor, water, gas, refinery, and mining buyers.',
     serviceType: 'Bulk activated carbon supply',
-    introTitle: 'Bulk supply depends on consistency, not only price',
+    introTitle: 'Reliable supply starts with controlled production',
     intro:
-      'For large-volume activated carbon buying, consistency across lots, specification clarity, packing, export handling, and responsive communication matter as much as the quoted price. Black Opal Carbons supports procurement teams that need repeatable coconut shell carbon supply.',
+      'Bulk activated carbon procurement depends on more than quoted price. Buyers need stable product quality, repeatable lot performance, clear documentation, practical packing, and a supplier who understands the application behind the order. Black Opal supports that requirement through coconut shell activated carbon manufacturing, product-family coverage, and export coordination.',
     highlights: [
-      'Bulk inquiry support for distributors, industrial plants, and project contractors',
-      'Product family coverage across liquid phase and vapor phase purification',
-      'Commercial discussion around volumes, shipment schedules, and packing formats',
-      'Manufacturing-backed supply rather than only spot-market sourcing',
+      'Coconut shell activated carbon manufactured for repeat industrial supply',
+      'Granular, powder, impregnated, and catalytic product families',
+      'Support for distributors, treatment companies, mining operations, and project buyers',
+      'Packing, documentation, shipment cadence, and destination-market coordination',
     ],
     buyerSignals: [
       {
-        title: 'Repeat shipments',
-        body: 'Useful for buyers planning monthly, quarterly, or project-based activated carbon purchasing instead of one-off sample-only inquiries.',
+        title: 'Repeat supply programs',
+        body: 'For buyers planning monthly, quarterly, tender-based, or project-linked shipments, Black Opal can discuss volume, grade continuity, packing, and shipment cadence from the start.',
       },
       {
-        title: 'Specification control',
-        body: 'Procurement can be aligned around iodine number, hardness, mesh size, ash, pH, moisture, and application-specific grade expectations.',
+        title: 'Specification discipline',
+        body: 'Commercial and technical review can be aligned around iodine number, hardness, mesh size, ash, pH, moisture, apparent density, and any application-specific test requirements.',
       },
       {
-        title: 'Export practicals',
-        body: 'Commercial teams can discuss packing, documentation, destination market, and freight expectations early in the RFQ process.',
+        title: 'Practical export coordination',
+        body: 'Packing format, private-label needs, certificates, documentation, destination port, and delivery timing can be clarified early so the supply response matches the buying process.',
       },
     ],
     specificationNotes: [
-      'Include annual or immediate purchase volume and whether the inquiry is for contract supply, tendering, distribution, or project delivery.',
-      'Mention preferred packaging, private label requirements, destination port, and target delivery timeline.',
-      'Share required test parameters so the response can stay aligned with the real buying decision.',
+      'Application: water treatment, gold recovery, air and gas purification, oil and gas, or another industrial purification process.',
+      'Specification: particle size or mesh, iodine number, hardness, ash, moisture, pH, apparent density, and certification requirements where applicable.',
+      'Supply plan: immediate or annual volume, packing format, destination port or market, shipment cadence, and required documentation.',
     ],
     productSlugs: ['granular', 'powder', 'impregnated', 'catalytic'],
     applicationSlugs: ['water-treatment', 'gold-recovery', 'air-gas', 'oil-gas'],
-    ctaTitle: 'Discuss bulk activated carbon requirements',
+    ctaTitle: 'Discuss a bulk activated carbon supply program',
     ctaDescription:
-      'Send volume, specification, destination, packing, and application context for a focused bulk supply response.',
+      'Share the application, required grade or specification, volume, packing, destination market, and delivery timeline so the Black Opal team can respond with the right product direction.',
     ctaLabel: 'Request bulk pricing',
     areaServed: 'Global export markets',
   },
   {
     slug: 'coconut-shell-activated-carbon-supplier',
-    label: 'Coconut Shell Activated Carbon Supplier',
+    label: 'Coconut Shell Activated Carbon Supply',
     breadcrumbLabel: 'Coconut shell carbon',
-    title: 'Coconut shell activated carbon supplier',
+    title: 'Coconut shell activated carbon supply',
     description:
       'Black Opal Carbons supplies coconut shell activated carbon for buyers that need high hardness, low ash, reliable adsorption performance, and industrial application support.',
     seoTitle: 'Coconut Shell Activated Carbon Supplier',
@@ -173,9 +173,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
   },
   {
     slug: 'granular-activated-carbon-supplier',
-    label: 'Granular Activated Carbon Supplier',
+    label: 'Granular Activated Carbon Supply',
     breadcrumbLabel: 'Granular carbon',
-    title: 'Granular activated carbon supplier',
+    title: 'Granular activated carbon supply',
     description:
       'Black Opal Carbons supplies coconut shell granular activated carbon for water treatment, gas purification, gold recovery, refinery service, and industrial filtration systems.',
     seoTitle: 'Granular Activated Carbon Supplier',
@@ -220,9 +220,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
   },
   {
     slug: 'powdered-activated-carbon-supplier',
-    label: 'Powdered Activated Carbon Supplier',
+    label: 'Powdered Activated Carbon Supply',
     breadcrumbLabel: 'Powdered carbon',
-    title: 'Powdered activated carbon supplier',
+    title: 'Powdered activated carbon supply',
     description:
       'Black Opal Carbons supplies powdered activated carbon for liquid treatment, process correction, decolorization, odor control, and specialty industrial purification needs.',
     seoTitle: 'Powdered Activated Carbon Supplier',
@@ -267,9 +267,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
   },
   {
     slug: 'impregnated-activated-carbon-supplier',
-    label: 'Impregnated Activated Carbon Supplier',
+    label: 'Impregnated Activated Carbon Supply',
     breadcrumbLabel: 'Impregnated carbon',
-    title: 'Impregnated activated carbon supplier',
+    title: 'Impregnated activated carbon supply',
     description:
       'Black Opal Carbons supplies impregnated activated carbon for targeted gas treatment, odor control, specialty purification, and contaminant-specific industrial applications.',
     seoTitle: 'Impregnated Activated Carbon Supplier',
@@ -314,9 +314,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
   },
   {
     slug: 'catalytic-activated-carbon-supplier',
-    label: 'Catalytic Activated Carbon Supplier',
+    label: 'Catalytic Activated Carbon Supply',
     breadcrumbLabel: 'Catalytic carbon',
-    title: 'Catalytic activated carbon supplier',
+    title: 'Catalytic activated carbon supply',
     description:
       'Black Opal Carbons supplies catalytic activated carbon for applications requiring enhanced reaction-assisted adsorption and specialty treatment performance.',
     seoTitle: 'Catalytic Activated Carbon Supplier',
@@ -363,7 +363,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     slug: 'activated-carbon-for-water-treatment',
     label: 'Activated Carbon For Water Treatment',
     breadcrumbLabel: 'Water treatment',
-    title: 'Activated carbon supplier for water treatment',
+    title: 'Activated carbon supply for water treatment',
     description:
       'Black Opal Carbons supplies coconut shell activated carbon for drinking water, process water, industrial filtration, polishing, taste, odor, and contaminant control programs.',
     seoTitle: 'Activated Carbon Supplier for Water Treatment',
@@ -410,7 +410,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     slug: 'activated-carbon-for-gold-recovery',
     label: 'Activated Carbon For Gold Recovery',
     breadcrumbLabel: 'Gold recovery',
-    title: 'Activated carbon supplier for gold recovery',
+    title: 'Activated carbon supply for gold recovery',
     description:
       'Black Opal Carbons supplies coconut shell activated carbon for gold recovery buyers focused on hardness, adsorption performance, attrition resistance, and operational consistency.',
     seoTitle: 'Activated Carbon Supplier for Gold Recovery',
@@ -457,7 +457,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     slug: 'activated-carbon-for-air-and-gas',
     label: 'Activated Carbon For Air And Gas',
     breadcrumbLabel: 'Air and gas',
-    title: 'Activated carbon supplier for air and gas purification',
+    title: 'Activated carbon supply for air and gas purification',
     description:
       'Black Opal Carbons supplies activated carbon for air and gas purification, odor control, solvent recovery, industrial ventilation, and vapor phase treatment applications.',
     seoTitle: 'Activated Carbon Supplier for Air and Gas Purification',
@@ -504,7 +504,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     slug: 'activated-carbon-for-oil-and-gas',
     label: 'Activated Carbon For Oil And Gas',
     breadcrumbLabel: 'Oil and gas',
-    title: 'Activated carbon supplier for oil and gas applications',
+    title: 'Activated carbon supply for oil and gas applications',
     description:
       'Black Opal Carbons supplies activated carbon for oil and gas, refinery, petrochemical, process purification, vapor treatment, and specialty industrial applications.',
     seoTitle: 'Activated Carbon Supplier for Oil and Gas',
@@ -549,9 +549,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
   },
   {
     slug: 'industrial-activated-carbon-supplier',
-    label: 'Industrial Activated Carbon Supplier',
-    breadcrumbLabel: 'Industrial supplier',
-    title: 'Industrial activated carbon supplier',
+    label: 'Industrial Activated Carbon Supply',
+    breadcrumbLabel: 'Industrial supply',
+    title: 'Industrial activated carbon supply',
     description:
       'Black Opal Carbons supplies industrial activated carbon for water treatment, mining, air and gas purification, refinery, chemical processing, odor control, and specialty purification.',
     seoTitle: 'Industrial Activated Carbon Supplier',

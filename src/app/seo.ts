@@ -569,7 +569,7 @@ export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbac
 
     schemas.push({
       '@type': 'ItemList',
-      name: 'High-intent activated carbon supplier pages',
+      name: 'Activated carbon product and application supply paths',
       itemListElement: supplierLandingPages.map((page, index) => ({
         '@type': 'ListItem',
         position: index + 1,
