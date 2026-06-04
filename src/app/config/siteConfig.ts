@@ -278,7 +278,7 @@ export const siteConfig = {
   ),
   heroDescription: envValue(
     'HERO_DESCRIPTION',
-    `${originStatement}, Black Opal coconut shell activated carbon supports demanding water, air, gas, gold recovery, and industrial purification systems.`,
+    `${originStatement}, Black Opal is a coconut shell activated carbon supplier for global industrial buyers across water treatment, air and gas purification, gold recovery, oil and gas, and specialty purification systems.`,
   ),
   originStatement,
   originDescription,
