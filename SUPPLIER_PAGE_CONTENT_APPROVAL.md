@@ -395,6 +395,125 @@ No CMS change. This supplier landing page content is code-backed in `src/app/con
 
 ---
 
+# Step 5 Approved: Coconut Shell Activated Carbon Page Revision
+
+Status: approved and implemented.
+
+This revision replaces the older coconut-shell supplier-page copy that used weak terms such as `buyers`, `procurement`, `repeat supply`, and generic pricing language. The approved copy stays inside the Black Opal narrative: selected coconut shell feedstock, high hardness, low ash, micropore structure, attrition resistance, steam activation, product-family coverage, and industrial application fit.
+
+## Approved Visible Copy
+
+Page:
+
+```text
+/activated-carbon-suppliers/coconut-shell-activated-carbon-supplier
+```
+
+### Page Label
+
+```text
+Coconut Shell Activated Carbon
+```
+
+### Breadcrumb Label
+
+```text
+Coconut shell carbon
+```
+
+### Page Heading
+
+```text
+Coconut shell activated carbon for demanding purification systems
+```
+
+### Page Description
+
+```text
+Black Opal Carbons manufactures coconut shell activated carbon from selected feedstock for water treatment, gold recovery, air and gas, oil and gas, and specialty purification applications.
+```
+
+### Intro Heading
+
+```text
+Selected coconut shell feedstock, steam activation, and controlled sizing
+```
+
+### Intro Body
+
+```text
+Selected coconut shells support high hardness, low ash, micropore structure, and attrition resistance. Black Opal controls feedstock selection, steam activation, sizing, packing, and final assurance before shipment, with granular, powder, impregnated, and catalytic formats available for application-specific requirements.
+```
+
+### Highlight Bullets
+
+```text
+Selected coconut shell feedstock for high hardness, low ash, and attrition resistance
+Steam activation, particle-size control, packing, and final assurance before shipment
+Granular, powder, impregnated, and catalytic activated carbon product families
+Applications across water treatment, gold recovery, air and gas, oil and gas, and specialty purification
+NSF 42 and NSF 61 listed grades for applicable water-treatment use
+```
+
+### Three Content Cards
+
+```text
+Coconut shell performance
+Coconut shell carbon is valued for hardness, low ash, micropore structure, and attrition resistance across liquid-phase and vapor-phase purification duties.
+
+Product family options
+Granular, powder, impregnated, and catalytic formats allow the carbon selection to follow the application, contaminant profile, contact time, and operating conditions.
+
+Application fit
+Black Opal coconut shell activated carbon supports water treatment, gold recovery, air and gas purification, oil and gas, and specialty industrial purification systems.
+```
+
+### Grade Selection Notes
+
+```text
+Product family: granular, powder, impregnated, or catalytic activated carbon.
+Application: water treatment, gold recovery, air and gas, oil and gas, catalytic carbon, or specialty purification.
+Specification: particle size, pore structure, hardness, surface area, attrition resistance, packing, and documentation where applicable.
+```
+
+### CTA
+
+```text
+Contact Black Opal for coconut shell activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the product family, application, grade requirement, volume, packing, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+## Metadata
+
+SEO title:
+
+```text
+Coconut Shell Activated Carbon Supplier | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Coconut shell activated carbon supplier with company-owned Indian manufacturing. Granular, powder, impregnated, and catalytic coconut carbon for water, gold, air, gas, and industrial purification.
+```
+
+## CMS Impact
+
+No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.
+
+---
+
 # Step 4 Approved: Bulk Activated Carbon Page Revision
 
 Status: approved and implemented.
