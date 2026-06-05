@@ -395,6 +395,125 @@ No CMS change. This supplier landing page content is code-backed in `src/app/con
 
 ---
 
+# Step 6 Approved: Granular Activated Carbon Page Revision
+
+Status: approved and implemented.
+
+This revision replaces the older granular supplier-page copy that used weak terms such as `bulk buyers`, `procurement`, `supplier response`, and generic pricing language. The approved copy stays inside the Black Opal narrative: high-hardness coconut shell GAC, selected coconut shell feedstock, mesh-size control, pore-structure control, attrition resistance, fixed-bed and cartridge systems, and application fit.
+
+## Approved Visible Copy
+
+Page:
+
+```text
+/activated-carbon-suppliers/granular-activated-carbon-supplier
+```
+
+### Page Label
+
+```text
+Granular Activated Carbon
+```
+
+### Breadcrumb Label
+
+```text
+Granular carbon
+```
+
+### Page Heading
+
+```text
+Coconut shell granular activated carbon for fixed-bed and process systems
+```
+
+### Page Description
+
+```text
+Black Opal Carbons manufactures high-hardness coconut shell granular activated carbon for water treatment, gold recovery, solvent recovery, condensate polishing, gas purification, refinery service, and industrial filtration systems.
+```
+
+### Intro Heading
+
+```text
+High-hardness GAC with mesh-size and pore-structure control
+```
+
+### Intro Body
+
+```text
+Black Opal granular activated carbon is produced from selected coconut shell feedstock and engineered so particle size and pore structure support adsorption performance in fixed-bed filters, cartridges, pressure vessels, adsorption columns, and process systems. Grades can be matched by mesh size, adsorption level, washing, pH adjustment, hardness, surface area, and documentation requirements.
+```
+
+### Highlight Bullets
+
+```text
+High-hardness coconut shell GAC for water treatment, gold recovery, solvent recovery, condensate polishing, and gas-phase service
+Produced from selected coconut shell feedstock with controls for hardness, surface area, and attrition resistance
+Mesh size, adsorption level, washing, and pH-adjusted variants available
+Suitable for fixed-bed filters, cartridges, pressure vessels, adsorption columns, and process systems
+NSF 42 and NSF 61 listed grades for applicable water-treatment use
+```
+
+### Three Content Cards
+
+```text
+Fixed-bed and cartridge systems
+Granular activated carbon supports filtration systems where flow control, contact time, adsorption capacity, mechanical strength, and pressure drop matter.
+
+Mechanical strength
+Coconut shell GAC is valued for hardness, abrasion resistance, attrition resistance, and durable performance through handling and service cycles.
+
+Application fit
+Black Opal granular activated carbon supports water treatment, gold recovery, solvent recovery, condensate polishing, hydrogen sulfide removal, gas purification, and refinery service.
+```
+
+### Grade Selection Notes
+
+```text
+Particle size or mesh size, adsorption level, hardness, ash, pH, moisture, apparent density, and documentation where applicable.
+Application: water treatment, gold recovery, solvent recovery, condensate polishing, air and gas, oil and gas, refinery service, or industrial filtration.
+System context: fixed-bed filter, cartridge, pressure vessel, contactor, adsorption column, or process system.
+```
+
+### CTA
+
+```text
+Contact Black Opal for granular activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the application, mesh size, grade requirement, volume, packing, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+## Metadata
+
+SEO title:
+
+```text
+Granular Activated Carbon Supplier | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Granular activated carbon supplier with company-owned Indian manufacturing. High-hardness coconut shell GAC for water treatment, gold recovery, gas purification, refinery service, and industrial filtration.
+```
+
+## CMS Impact
+
+No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.
+
+---
+
 # Step 5 Approved: Coconut Shell Activated Carbon Page Revision
 
 Status: approved and implemented.
