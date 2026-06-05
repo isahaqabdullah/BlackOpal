@@ -395,6 +395,125 @@ No CMS change. This supplier landing page content is code-backed in `src/app/con
 
 ---
 
+# Step 8 Approved: Impregnated Activated Carbon Page Revision
+
+Status: approved and implemented.
+
+This revision follows the same wording style as the previously approved supplier pages: product-led, Black Opal narrative, no weak `buyers`, `RFQ`, `supplier response`, or pricing-style CTA language. The copy uses existing site facts for Impregnated Activated Carbon: chemically enhanced coconut shell carbon, silver-impregnated carbon for bacteriostatic water systems, sulfur-impregnated carbon for mercury removal, and targeted impregnation for acid gases, ammonia, amines, gas purification, protective equipment, and specialty purification.
+
+## Approved Visible Copy
+
+Page:
+
+```text
+/activated-carbon-suppliers/impregnated-activated-carbon-supplier
+```
+
+### Page Label
+
+```text
+Impregnated Activated Carbon
+```
+
+### Breadcrumb Label
+
+```text
+Impregnated carbon
+```
+
+### Page Heading
+
+```text
+Impregnated activated carbon for targeted gas and water systems
+```
+
+### Page Description
+
+```text
+Black Opal Carbons provides chemically enhanced coconut shell activated carbon for targeted gas-stream, bacteriostatic, mercury-removal, and specialty purification duties.
+```
+
+### Intro Heading
+
+```text
+Chemically enhanced carbon for contaminant-specific performance
+```
+
+### Intro Body
+
+```text
+Impregnation extends standard activated carbon performance through the interaction between the chemical additive and the coconut shell carbon substrate. Black Opal impregnated carbon is used where the application is defined by a specific contaminant, stream condition, bacteriostatic requirement, or specialty purification duty.
+```
+
+### Highlight Bullets
+
+```text
+Chemically enhanced coconut shell carbon for targeted gas-stream, bacteriostatic, and specialty purification duties
+Silver-impregnated carbon for bacteriostatic protection in drinking-water filters and water systems
+Sulfur-impregnated carbon for mercury removal in natural gas, air, hydrogen, and other gas streams
+Targeted impregnation for acid gases, ammonia, amines, and other specialty contaminants
+Applicable across gas purification, protective equipment, mercury removal, and bacteriostatic drinking-water systems
+```
+
+### Three Content Cards
+
+```text
+Targeted chemistry
+Impregnation is used when untreated activated carbon alone is not the right direction for a contaminant-specific removal requirement.
+
+Water and gas examples
+Silver-impregnated carbon supports point-of-use water filters, while sulfur-impregnated carbon supports mercury capture in gas service.
+
+Operating context
+Grade selection depends on the contaminant, concentration, humidity, temperature, flow rate, contact time, safety requirements, and equipment design.
+```
+
+### Grade Selection Notes
+
+```text
+Target contaminant or duty: mercury, acid gases, ammonia, amines, bacteriostatic water systems, gas purification, protective equipment, or specialty purification.
+Operating data: inlet concentration, temperature, humidity, flow rate, contact time, and required removal objective.
+System context: bed design, equipment details, packing, safety documentation, and destination-market requirements where applicable.
+```
+
+### CTA
+
+```text
+Contact Black Opal for impregnated activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the target contaminant, operating conditions, grade requirement, volume, packing, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+## Metadata
+
+SEO title:
+
+```text
+Impregnated Activated Carbon Supplier | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Impregnated activated carbon supplier with company-owned Indian manufacturing. Chemically enhanced coconut shell carbon for gas purification, mercury removal, bacteriostatic water systems, and specialty contaminants.
+```
+
+## CMS Impact
+
+No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.
+
+---
+
 # Step 7 Approved: Powdered Activated Carbon Page Revision
 
 Status: approved and implemented.
