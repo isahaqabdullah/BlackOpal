@@ -121,7 +121,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     ctaTitle: 'Discuss a bulk activated carbon supply program',
     ctaDescription:
       'Share the application, required grade or specification, volume, packing, destination market, and delivery timeline so the Black Opal team can respond with the right product direction.',
-    ctaLabel: 'Request bulk pricing',
+    ctaLabel: 'Discuss a bulk carbon requirement',
     areaServed: 'Global export markets',
   },
   {

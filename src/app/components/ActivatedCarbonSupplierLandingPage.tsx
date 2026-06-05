@@ -11,8 +11,6 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import {
-  supplierLandingPagePath,
-  supplierLandingPages,
   type SupplierLandingPage,
 } from '../content/supplierLandingPages';
 import { useSiteContent } from '../content/SiteContentProvider';
@@ -31,7 +29,6 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
   const { applicationMap, productMap, siteSettings } = useSiteContent();
   const selectedProducts = page.productSlugs.map((slug) => productMap[slug]).filter(defined);
   const selectedApplications = page.applicationSlugs.map((slug) => applicationMap[slug]).filter(defined);
-  const relatedPages = supplierLandingPages.filter((relatedPage) => relatedPage.slug !== page.slug).slice(0, 6);
 
   return (
     <div>
@@ -55,7 +52,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Supply capability
+                  Manufacturing focus
                 </span>
                 <h2
                   className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.05rem)] leading-[1.05] mb-5"
@@ -80,11 +77,11 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                     <ArrowRight size={14} />
                   </Link>
                   <Link
-                    href="/activated-carbon-suppliers"
+                    href="/products"
                     className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
-                    Supply overview
+                    View product range
                   </Link>
                 </div>
               </div>
@@ -97,7 +94,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Manufacturing and export support
+                  Quality and export readiness
                 </span>
                 <div className="space-y-3">
                   {page.highlights.map((highlight) => (
@@ -124,20 +121,20 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Bulk program fit
+              Industrial requirements
             </span>
             <h2
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(1.9rem,3vw,2.6rem)] leading-[1.08] mb-4"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              Built for repeat industrial supply
+              Built around industrial requirements and specification control
             </h2>
             <p
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              Black Opal supports procurement teams that need stable lots, clear specifications, practical packing,
-              export documentation, and continuity across repeat shipments.
+              Black Opal works with industrial buyers who need consistent lots, clear specifications, practical
+              packing, export documentation, and dependable shipment planning.
             </p>
           </div>
 
@@ -180,13 +177,13 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                 className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Specification inputs
+                Grade selection
               </span>
               <h2
                 className="premium-heading premium-heading-elevated text-[clamp(1.85rem,3vw,2.5rem)] leading-[1.08] mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Details that shape the right carbon recommendation
+                Technical details needed for grade selection
               </h2>
               <div className="space-y-3">
                 {page.specificationNotes.map((note) => (
@@ -257,13 +254,13 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                 className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
-                Application fit
+                Applications
               </span>
               <h2
                 className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(1.9rem,3vw,2.6rem)] leading-[1.08] mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Where this supply capability is used
+                Common applications for this carbon range
               </h2>
             </div>
 
@@ -343,18 +340,18 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                       key={`${office.label}-${office.name}`}
                       className="not-italic rounded-[8px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
                     >
-                      <span
-                        className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
-                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                      >
-                        {office.label}
-                      </span>
                       <h3
                         className="premium-card-heading text-[15px] mb-1"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
                       >
-                        {office.name}
+                        {office.label}
                       </h3>
+                      <p
+                        className="premium-copy text-[12px] leading-[1.6] mb-2 text-[#c6b487]"
+                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                      >
+                        {office.name}
+                      </p>
                       {office.address.map((line) => (
                         <p
                           key={`${office.label}-${line}`}
@@ -394,61 +391,6 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
         </div>
       </section>
 
-      <section className="pb-12 md:pb-14">
-        <div className="premium-shell">
-          <div className="mb-7 max-w-3xl">
-            <span
-              className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-            >
-              Related supply capabilities
-            </span>
-            <h2
-              className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(1.9rem,3vw,2.6rem)] leading-[1.08] mb-4"
-              style={{ fontFamily: "'DM Serif Display', serif" }}
-            >
-              Explore product and application supply paths
-            </h2>
-          </div>
-
-          <div className="premium-auto-grid">
-            {relatedPages.map((relatedPage, index) => (
-              <Link
-                key={relatedPage.slug}
-                href={supplierLandingPagePath(relatedPage.slug)}
-                className="premium-panel-soft premium-card-animated premium-reveal p-5 md:p-6"
-                style={{ animationDelay: `${120 + index * 80}ms` }}
-              >
-                <span
-                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                >
-                  {relatedPage.label}
-                </span>
-                <h3
-                  className="premium-card-heading text-[17px] mb-3"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
-                >
-                  {relatedPage.title}
-                </h3>
-                <p
-                  className="premium-copy text-[13px] leading-[1.75] mb-5"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                >
-                  {relatedPage.description}
-                </p>
-                <span
-                  className="inline-flex items-center gap-2 text-[#f2d78b] text-[13px]"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                >
-                  View capability
-                  <ArrowRight size={14} />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
