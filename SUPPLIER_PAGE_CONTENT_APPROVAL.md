@@ -309,3 +309,86 @@ This keeps the search term in metadata, but removes the weak visible-page wordin
 ## Approval Needed
 
 Approve, reject, or edit this Step 2 draft before implementation.
+
+---
+
+# Step 3 Approved: Global Page Authority Revision
+
+Status: approved and implemented.
+
+This revision strengthens the previously approved global page by using public Black Opal / INDOCARB AC authority claims found across Black Opal websites, WQA 2026 exhibitor information, NSF listings, and the Black Opal name-change press release.
+
+## Source Basis
+
+- Black Opal ME states formerly `INDOCARB AC LLC`, established since 2010, 3 manufacturing facilities, 35000 metric tons/year, NSF 42, NSF 61, and Prop 65.
+- Black Opal US and Black Opal Group describe company-owned manufacturing, Black Opal / INDOCARB continuity, and activated carbon field experience.
+- WQA 2026 lists `INDOCARB AC (BLACK OPAL)` and references NSF 42, NSF 61, ISO 9001, ISO 14001, ISO 45001, India manufacturing, and sales office/warehouse coverage.
+- NSF lists Indocarb AC LLC coconut shell carbon media under NSF/ANSI 42 and NSF/ANSI/CAN 61.
+- The Black Opal name-change press release states that products, factory, facilities, pricing, support procedures, and team continuity remained in place through the transition.
+
+## Approved Visible Copy
+
+### Page Heading
+
+```text
+Global coconut activated carbon from company-owned manufacturing
+```
+
+### Page Description
+
+```text
+Black Opal Carbons, formerly INDOCARB AC, manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas, oil and gas, and industrial purification applications.
+```
+
+### Intro Heading
+
+```text
+Established manufacturing continuity under the Black Opal name
+```
+
+### Intro Body
+
+```text
+The group behind Black Opal was established in 2010 through coconut shell activated carbon manufacturing and activated carbon field experience. The transition from INDOCARB AC to Black Opal Carbons was a global brand change; the products, factory, facilities, pricing, and support procedures remained in place. Today, Black Opal controls raw material selection, steam activation, particle sizing, packing, and final quality assurance before shipment.
+```
+
+### Highlight Bullets
+
+```text
+Formerly INDOCARB AC, now operating under the Black Opal Carbons name
+Company-owned manufacturing with control over feedstock, activation, sizing, packing, and final quality assurance
+35000 metric tons annual coconut activated carbon capacity
+Granular, powder, impregnated, and catalytic activated carbon product families
+NSF 42 and NSF 61 listed coconut shell carbon grades for applicable water-treatment use
+```
+
+### Three Content Cards
+
+```text
+Manufacturing continuity
+The Black Opal transition kept the same product base, factory, facilities, pricing structure, and support procedures customers already worked with.
+
+Coconut shell specialization
+Selected coconut shells support high hardness, low ash, micropore structure, and attrition resistance for premium activated carbon.
+
+Application-matched grades
+Granular, powder, impregnated, and catalytic formats are matched to water treatment, gold recovery, air and gas, oil and gas, and specialty purification requirements.
+```
+
+## Metadata
+
+SEO title:
+
+```text
+Global Activated Carbon Supplier | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Black Opal Carbons, formerly INDOCARB AC, supplies coconut shell activated carbon from company-owned Indian manufacturing for water, gold, air, gas, oil and industrial purification applications.
+```
+
+## CMS Impact
+
+No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.

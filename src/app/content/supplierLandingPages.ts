@@ -34,34 +34,35 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     slug: 'global-activated-carbon-supplier',
     label: 'Global Activated Carbon',
     breadcrumbLabel: 'Global',
-    title: 'Coconut activated carbon for export markets',
+    title: 'Global coconut activated carbon from company-owned manufacturing',
     description:
-      'Black Opal Carbons carries forward the IndoCarb activated carbon legacy with coconut shell products built for purity, performance, service, and reliability.',
-    seoTitle: 'Global Activated Carbon Supplier',
+      'Black Opal Carbons, formerly INDOCARB AC, manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas, oil and gas, and industrial purification applications.',
+    seoTitle: 'Global Activated Carbon Supplier | Black Opal Carbons',
     seoDescription:
-      'Global activated carbon supplier for industrial applications. Coconut shell granular, powder, impregnated, and catalytic carbon for water, gold, air, gas, and refinery use.',
+      'Black Opal Carbons, formerly INDOCARB AC, supplies coconut shell activated carbon from company-owned Indian manufacturing for water, gold, air, gas, oil and industrial purification applications.',
     serviceType: 'Global activated carbon supply',
-    introTitle: 'Controlled from coconut shell selection to final shipment',
+    introTitle: 'Established manufacturing continuity under the Black Opal name',
     intro:
-      'Black Opal works from selected coconut shell feedstock through controlled activation, sizing, packing, and final quality checks. The product range covers granular, powder, impregnated, and catalytic activated carbon for water treatment, gold recovery, air and gas, oil and gas, and specialty purification.',
+      'The group behind Black Opal was established in 2010 through coconut shell activated carbon manufacturing and activated carbon field experience. The transition from INDOCARB AC to Black Opal Carbons was a global brand change; the products, factory, facilities, pricing, and support procedures remained in place. Today, Black Opal controls raw material selection, steam activation, particle sizing, packing, and final quality assurance before shipment.',
     highlights: [
-      'Coconut shell activated carbon manufactured and exported from India',
-      'Raw material selection, activation, sizing, and final quality assurance controlled before shipment',
+      'Formerly INDOCARB AC, now operating under the Black Opal Carbons name',
+      'Company-owned manufacturing with control over feedstock, activation, sizing, packing, and final quality assurance',
+      '35000 metric tons annual coconut activated carbon capacity',
       'Granular, powder, impregnated, and catalytic activated carbon product families',
-      'NSF 42, NSF 61, and Prop 65 aligned positioning for relevant water-treatment applications',
+      'NSF 42 and NSF 61 listed coconut shell carbon grades for applicable water-treatment use',
     ],
     buyerSignals: [
+      {
+        title: 'Manufacturing continuity',
+        body: 'The Black Opal transition kept the same product base, factory, facilities, pricing structure, and support procedures customers already worked with.',
+      },
       {
         title: 'Coconut shell specialization',
         body: 'Selected coconut shells support high hardness, low ash, micropore structure, and attrition resistance for premium activated carbon.',
       },
       {
-        title: 'Consistent quality',
-        body: 'Quality control starts at raw material selection and continues through activation, handling, screening, packing, and final assurance.',
-      },
-      {
         title: 'Application-matched grades',
-        body: 'Granular, powder, impregnated, and catalytic formats are matched to contaminant profile, contact time, and operating conditions.',
+        body: 'Granular, powder, impregnated, and catalytic formats are matched to water treatment, gold recovery, air and gas, oil and gas, and specialty purification requirements.',
       },
     ],
     specificationNotes: [
