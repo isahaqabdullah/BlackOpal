@@ -395,6 +395,125 @@ No CMS change. This supplier landing page content is code-backed in `src/app/con
 
 ---
 
+# Step 7 Approved: Powdered Activated Carbon Page Revision
+
+Status: approved and implemented.
+
+This revision follows the same wording style as the previously approved supplier pages: product-led, Black Opal narrative, no weak `buyers`, `supplier response`, or pricing-style CTA language. The copy uses existing site facts for Powder Activated Carbon: virgin PAC, drinking water, food-grade, wastewater, odor-control programs, inline dosing, batch addition, decolorization, remediation, and process polishing.
+
+## Approved Visible Copy
+
+Page:
+
+```text
+/activated-carbon-suppliers/powdered-activated-carbon-supplier
+```
+
+### Page Label
+
+```text
+Powder Activated Carbon
+```
+
+### Breadcrumb Label
+
+```text
+Powdered carbon
+```
+
+### Page Heading
+
+```text
+Powdered activated carbon for dosing and batch treatment
+```
+
+### Page Description
+
+```text
+Black Opal Carbons manufactures virgin powdered activated carbon for drinking water, wastewater, odor control, food-grade, decolorization, and specialty process applications.
+```
+
+### Intro Heading
+
+```text
+Fast-response PAC for inline dosing and batch addition
+```
+
+### Intro Body
+
+```text
+Powder activated carbon gives treatment systems a fast-response format where rapid contact and flexible dosing matter more than fixed-bed operation. Black Opal PAC is used for inline dosing, batch addition, water and wastewater treatment, odor removal, brewery and winery applications, food-related processes, remediation, color reduction, and organic control.
+```
+
+### Highlight Bullets
+
+```text
+Virgin powdered activated carbon for drinking water, food-grade, wastewater, and odor-control programs
+Used in water treatment, wastewater treatment, odor removal, and brewery or winery applications
+Applied for chloramines, pesticides, herbicides, groundwater remediation, and disinfection by-product reduction
+Fine-particle format for inline dosing, batch addition, decolorization, and process polishing
+Grade alignment around fineness, iodine number, ash, pH, moisture, packing, and documentation
+```
+
+### Three Content Cards
+
+```text
+Inline dosing and batch addition
+Powdered carbon fits treatment programs where carbon is added directly into a process stream or batch rather than used as a cartridge or pressure-vessel media.
+
+Rapid contact
+Fine particle size supports fast contact where color, odor, organic control, or contaminant reduction has to happen quickly.
+
+Application range
+Black Opal powder activated carbon supports drinking water, wastewater, odor removal, brewery and winery use, food-related processes, remediation, decolorization, and process polishing.
+```
+
+### Grade Selection Notes
+
+```text
+Fineness, iodine number, ash, pH, moisture, packing, and documentation where applicable.
+Application: drinking water, wastewater, odor removal, food-grade, brewery or winery, groundwater remediation, decolorization, or process polishing.
+System context: inline dosing, batch addition, contact time, dosage range, filtration, separation, and downstream handling.
+```
+
+### CTA
+
+```text
+Contact Black Opal for powder activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the application, fineness, grade requirement, dosage or contact-time context, volume, packing, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+## Metadata
+
+SEO title:
+
+```text
+Powdered Activated Carbon Supplier | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Powdered activated carbon supplier with company-owned Indian manufacturing. Virgin PAC for drinking water, wastewater, odor control, food-grade, decolorization, and remediation applications.
+```
+
+## CMS Impact
+
+No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.
+
+---
+
 # Step 6 Approved: Granular Activated Carbon Page Revision
 
 Status: approved and implemented.
