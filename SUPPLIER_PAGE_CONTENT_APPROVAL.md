@@ -392,3 +392,122 @@ Black Opal Carbons, formerly INDOCARB AC, supplies coconut shell activated carbo
 ## CMS Impact
 
 No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.
+
+---
+
+# Step 4 Approved: Bulk Activated Carbon Page Revision
+
+Status: approved and implemented.
+
+This revision replaces the older bulk-page language that used weak terms such as `buyers`, `procurement`, `repeat supply`, and `supply program`. The approved copy keeps the page inside the Black Opal narrative: company-owned manufacturing, coconut shell activated carbon, 35000 metric tons annual capacity, product-family coverage, export readiness, and application fit.
+
+## Approved Visible Copy
+
+Page:
+
+```text
+/activated-carbon-suppliers/bulk-activated-carbon-supplier
+```
+
+### Page Label
+
+```text
+Bulk Activated Carbon
+```
+
+### Breadcrumb Label
+
+```text
+Bulk
+```
+
+### Page Heading
+
+```text
+Bulk coconut activated carbon from controlled Indian manufacturing
+```
+
+### Page Description
+
+```text
+Black Opal Carbons manufactures coconut shell activated carbon in granular, powder, impregnated, and catalytic formats for industrial purification applications that require scale, consistency, packing discipline, and export readiness.
+```
+
+### Intro Heading
+
+```text
+Manufacturing scale for larger activated carbon requirements
+```
+
+### Intro Body
+
+```text
+Black Opal's company-owned manufacturing controls feedstock selection, steam activation, particle sizing, packing, and final quality assurance before shipment. With 35000 metric tons of annual coconut activated carbon capacity, the product range supports water treatment, gold recovery, air and gas, oil and gas, catalytic carbon, and specialty purification applications.
+```
+
+### Highlight Bullets
+
+```text
+35000 metric tons annual coconut activated carbon capacity
+Company-owned manufacturing with controlled feedstock, activation, sizing, packing, and final quality assurance
+Granular, powder, impregnated, and catalytic activated carbon product families
+Coconut shell carbon manufactured and exported from India
+NSF 42 and NSF 61 listed grades for applicable water-treatment use
+```
+
+### Three Content Cards
+
+```text
+Manufacturing control
+Company-owned facilities keep raw material selection, activation, processing, packing, and final assurance under direct operating control.
+
+Bulk product range
+Granular, powder, impregnated, and catalytic activated carbon grades cover liquid-phase, vapor-phase, precious metal recovery, refinery, and specialty purification duties.
+
+Export readiness
+Packing format, product documentation, shipment planning, and destination-market requirements can be aligned before dispatch.
+```
+
+### Grade Selection Notes
+
+```text
+Product family: granular, powder, impregnated, or catalytic activated carbon.
+Application: water treatment, gold recovery, air and gas, oil and gas, catalytic carbon, or specialty purification.
+Specification: particle size, pore structure, hardness, surface area, attrition resistance, packing, and documentation where applicable.
+```
+
+### CTA
+
+```text
+Contact Black Opal for bulk activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the product family, application, grade requirement, volume, packing, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+## Metadata
+
+SEO title:
+
+```text
+Bulk Activated Carbon Supplier | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Bulk activated carbon supplier with company-owned Indian manufacturing. Coconut shell granular, powder, impregnated, and catalytic carbon for industrial purification applications.
+```
+
+## CMS Impact
+
+No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.
