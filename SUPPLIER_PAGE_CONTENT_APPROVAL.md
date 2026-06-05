@@ -395,6 +395,125 @@ No CMS change. This supplier landing page content is code-backed in `src/app/con
 
 ---
 
+# Step 9 Approved: Catalytic Activated Carbon Page Revision
+
+Status: approved and implemented.
+
+This revision follows the same wording style as the previously approved supplier pages: product-led, Black Opal narrative, no weak `buyers`, `supplier review`, `specialty procurement`, `response`, or pricing-style CTA language. The copy uses existing site facts for Catalytic Activated Carbon: CATCARB, surface-modified coconut shell carbon, chloramine reduction, hydrogen sulfide decomposition, difficult water-treatment contaminants, and retained hardness, surface area, and attrition resistance.
+
+## Approved Visible Copy
+
+Page:
+
+```text
+/activated-carbon-suppliers/catalytic-activated-carbon-supplier
+```
+
+### Page Label
+
+```text
+Catalytic Activated Carbon
+```
+
+### Breadcrumb Label
+
+```text
+Catalytic carbon
+```
+
+### Page Heading
+
+```text
+Catalytic activated carbon for chloramine and hydrogen sulfide control
+```
+
+### Page Description
+
+```text
+Black Opal Carbons provides surface-modified coconut shell catalytic activated carbon for chloramine reduction, hydrogen sulfide decomposition, taste and odor reduction, and specialty water-treatment applications.
+```
+
+### Intro Heading
+
+```text
+CATCARB for difficult water-treatment contaminants
+```
+
+### Intro Body
+
+```text
+Black Opal CATCARB is surface modified, with particle size and pore structure tuned for adsorption while maintaining the hardness, surface area, and attrition resistance associated with high-quality coconut shell carbon. It is engineered for water-treatment applications requiring rapid chloramine and H2S decomposition.
+```
+
+### Highlight Bullets
+
+```text
+Surface-modified coconut shell carbon for chloramine, hydrogen sulfide, and difficult water-treatment contaminants
+CATCARB catalytic grades for water-treatment applications requiring rapid chloramine and H2S decomposition
+Used for chloramines, hydrogen sulfide, hydrogen peroxide, THMs, TCE, PCE, detergents, pesticides, phenols, and taste and odor compounds
+Supports chloramine reduction in drinking-water systems moving away from free chlorine
+Maintains hardness, surface area, and attrition resistance associated with high-quality coconut shell carbon
+```
+
+### Three Content Cards
+
+```text
+Why catalytic grades matter
+Standard activated carbon filters sized for chlorine removal have limited capacity for chloramine reduction at normal flow rates, which is where catalytic grades become important.
+
+How CATCARB works
+Surface modification enhances the media's natural ability to chemically change difficult contaminants while the coconut shell carbon structure supports adsorption performance.
+
+Water-treatment use
+CATCARB is built for chloramine-heavy drinking-water programs and is also suited for hydrogen sulfide decomposition, taste and odor reduction, and specialty water treatment.
+```
+
+### Grade Selection Notes
+
+```text
+Target contaminant or duty: chloramine, hydrogen sulfide, hydrogen peroxide, THMs, TCE, PCE, detergents, pesticides, phenols, taste and odor, or specialty water treatment.
+Operating data: water chemistry, flow rate, contact time, system design, and required treatment objective.
+System context: existing media, filtration design, equipment details, packing, documentation, and destination-market requirements where applicable.
+```
+
+### CTA
+
+```text
+Contact Black Opal for catalytic activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the treatment objective, operating conditions, grade requirement, volume, packing, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+## Metadata
+
+SEO title:
+
+```text
+Catalytic Activated Carbon Supplier | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Catalytic activated carbon supplier with company-owned Indian manufacturing. CATCARB surface-modified coconut shell carbon for chloramine, hydrogen sulfide, taste and odor, and specialty water treatment.
+```
+
+## CMS Impact
+
+No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.
+
+---
+
 # Step 8 Approved: Impregnated Activated Carbon Page Revision
 
 Status: approved and implemented.
