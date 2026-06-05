@@ -32,49 +32,49 @@ export function supplierLandingPagePath(slug: string) {
 export const supplierLandingPages: SupplierLandingPage[] = [
   {
     slug: 'global-activated-carbon-supplier',
-    label: 'Global Activated Carbon Supply',
-    breadcrumbLabel: 'Global supply',
-    title: 'Global activated carbon supply for industrial buyers',
+    label: 'Global Activated Carbon',
+    breadcrumbLabel: 'Global',
+    title: 'Coconut activated carbon for export markets',
     description:
-      'Black Opal Carbons supplies coconut shell activated carbon for bulk buyers, distributors, EPC teams, and industrial users across global export markets.',
+      'Black Opal Carbons carries forward the IndoCarb activated carbon legacy with coconut shell products built for purity, performance, service, and reliability.',
     seoTitle: 'Global Activated Carbon Supplier',
     seoDescription:
-      'Global activated carbon supplier for bulk industrial buyers. Coconut shell granular, powder, impregnated, and catalytic activated carbon for water, gold, air, gas, and refinery applications.',
+      'Global activated carbon supplier for industrial applications. Coconut shell granular, powder, impregnated, and catalytic carbon for water, gold, air, gas, and refinery use.',
     serviceType: 'Global activated carbon supply',
-    introTitle: 'Activated carbon supply built around international procurement',
+    introTitle: 'Controlled from coconut shell selection to final shipment',
     intro:
-      'Industrial buyers usually need more than a product list. They need dependable coconut shell activated carbon, application-fit grades, export documentation, and a supplier who can support repeat shipments without breaking specification discipline.',
+      'Black Opal works from selected coconut shell feedstock through controlled activation, sizing, packing, and final quality checks. The product range covers granular, powder, impregnated, and catalytic activated carbon for water treatment, gold recovery, air and gas, oil and gas, and specialty purification.',
     highlights: [
       'Coconut shell activated carbon manufactured and exported from India',
-      'Support for bulk industrial, distributor, and project-based purchasing',
+      'Raw material selection, activation, sizing, and final quality assurance controlled before shipment',
       'Granular, powder, impregnated, and catalytic activated carbon product families',
-      'Application coverage for water, gold recovery, air, gas, refinery, and specialty purification',
+      'NSF 42, NSF 61, and Prop 65 aligned positioning for relevant water-treatment applications',
     ],
     buyerSignals: [
       {
-        title: 'Procurement alignment',
-        body: 'Suitable for RFQs where buyers compare source reliability, product family coverage, export support, and long-term supply consistency.',
+        title: 'Coconut shell specialization',
+        body: 'Selected coconut shells support high hardness, low ash, micropore structure, and attrition resistance for premium activated carbon.',
       },
       {
-        title: 'Global coordination',
-        body: 'The Black Opal office network supports customers across Europe, the Middle East, Asia, and other export markets through aligned commercial and technical communication.',
+        title: 'Consistent quality',
+        body: 'Quality control starts at raw material selection and continues through activation, handling, screening, packing, and final assurance.',
       },
       {
-        title: 'Application matching',
-        body: 'Grades can be discussed around liquid phase, vapor phase, precious metal recovery, refinery service, and specialty carbon requirements.',
+        title: 'Application-matched grades',
+        body: 'Granular, powder, impregnated, and catalytic formats are matched to contaminant profile, contact time, and operating conditions.',
       },
     ],
     specificationNotes: [
-      'Share target application, particle size, iodine number, hardness, ash, moisture, pH, and packing expectations when requesting pricing.',
-      'For recurring purchase programs, include annual or monthly volume, shipment cadence, destination port, and documentation needs.',
-      'For replacement projects, include the current carbon grade and operating issue so the team can compare performance requirements.',
+      'Application: water treatment, gold recovery, air and gas, oil and gas, catalytic carbon, or specialty purification.',
+      'Product family: granular, powder, impregnated, or catalytic activated carbon.',
+      'Specification: particle size, pore structure, hardness, surface area, attrition resistance, packing, and documentation where applicable.',
     ],
     productSlugs: ['granular', 'powder', 'impregnated', 'catalytic'],
     applicationSlugs: ['water-treatment', 'gold-recovery', 'air-gas', 'oil-gas'],
-    ctaTitle: 'Source activated carbon for global supply programs',
+    ctaTitle: 'Contact Black Opal for activated carbon requirements',
     ctaDescription:
-      'Send the application, target specification, volume, packing, and delivery market for a practical supplier response.',
-    ctaLabel: 'Request global pricing',
+      'Share the application, product family, grade requirement, volume, packing, and destination market with the Black Opal team.',
+    ctaLabel: 'Contact Black Opal',
     areaServed: 'Global export markets',
   },
   {

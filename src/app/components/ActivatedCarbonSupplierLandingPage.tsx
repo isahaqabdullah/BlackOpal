@@ -133,8 +133,8 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              Black Opal works with industrial buyers who need consistent lots, clear specifications, practical
-              packing, export documentation, and dependable shipment planning.
+              Black Opal supports industrial requirements that depend on consistent lots, clear specifications,
+              practical packing, export documentation, and dependable shipment planning.
             </p>
           </div>
 
