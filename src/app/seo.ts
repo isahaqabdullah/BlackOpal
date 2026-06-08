@@ -467,7 +467,7 @@ function entitySchema(metadata: SeoMetadata, content: SeoContent = fallbackSeoCo
       areaServed: page.areaServed || siteConfig.serviceArea,
       audience: {
         '@type': 'BusinessAudience',
-        audienceType: 'Industrial buyers, distributors, EPC teams, and procurement teams',
+        audienceType: 'Industrial distributors, treatment companies, EPC teams, mining operations, and process industries',
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
@@ -569,7 +569,7 @@ export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbac
 
     schemas.push({
       '@type': 'ItemList',
-      name: 'Activated carbon product and application supply paths',
+      name: 'Activated carbon product and application pathways',
       itemListElement: supplierLandingPages.map((page, index) => ({
         '@type': 'ListItem',
         position: index + 1,

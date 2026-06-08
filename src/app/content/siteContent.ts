@@ -706,7 +706,7 @@ export const pageCopyContent: PageCopyContent = {
     productsBreadcrumbLabel: 'Products',
     overviewLabel: 'Overview',
     commonUsesLabel: 'Common uses',
-    ctaTitle: 'Pricing and recommendations shaped by process conditions',
+    ctaTitle: 'Recommendations shaped by process conditions',
     ctaDescription:
       'Application, volume, and performance targets shape the grade match and availability recommendation.',
     allProductsCtaPath: '/products',
@@ -764,10 +764,10 @@ export const pageCopyContent: PageCopyContent = {
     brandDetailsCtaLabel: 'Brand transition details',
     whyMattersLabel: 'Why it matters',
     whyMattersBody:
-      'The Black Opal brand replaced INDOCARB AC while products, facilities, pricing, and customer support continuity remained intact.',
+      'The Black Opal brand replaced INDOCARB AC while products, facilities, and customer-support continuity remained intact.',
     resourcesTitle: 'Product Resources',
     resourcesDescription:
-      'Access product information and supporting documents for technical review, procurement, and application discussions with the Black Opal sales team.',
+      'Access product information and supporting documents for technical review, application discussions, and sales conversations with the Black Opal team.',
     resourceLabel: 'Product resource',
     latestVersionCtaPath: '/contact',
     latestVersionCtaLabel: 'Latest version',
@@ -776,7 +776,7 @@ export const pageCopyContent: PageCopyContent = {
     kicker: 'Newsroom',
     title: 'Resources and brand updates',
     description:
-      'Technical notes and brand notices stay tied to the same products, facilities, and support channels buyers already work with.',
+      'Technical notes and brand notices stay tied to the same products, facilities, and support channels customers already know.',
     resourceCenterCtaPath: '/newsroom',
     resourceCenterCtaLabel: 'Resource center',
     pressReleaseLabel: 'Press release',
@@ -858,7 +858,7 @@ export const aboutPageContent: AboutPageContent = {
       icon: 'refresh-ccw',
       title: 'Brand transition',
       desc:
-        'The INDOCARB AC transition to Black Opal Carbons preserved the products, facilities, pricing structure, and support team customers already worked with.',
+        'The INDOCARB AC transition to Black Opal Carbons preserved the products, facilities, service structure, and support team customers already worked with.',
     },
   ],
   brandUpdateLabel: 'Brand update',
@@ -869,9 +869,9 @@ export const aboutPageContent: AboutPageContent = {
 export const contactPageContent: ContactPageContent = {
   siteId: siteConfig.siteId,
   seo: {
-    seoTitle: 'Pricing and Technical Recommendations | Black Opal Carbons',
+    seoTitle: 'Availability and Technical Recommendations | Black Opal Carbons',
     seoDescription:
-      `${siteConfig.siteName} pricing, product availability, and technical recommendations connect application requirements with ${siteConfig.originDescription}.`,
+      `${siteConfig.siteName} product availability and technical recommendations connect application requirements with ${siteConfig.originDescription}.`,
     noIndex: false,
   },
   intro: {
@@ -919,7 +919,7 @@ export const products: ProductEntry[] = [
     summary:
       'High-hardness coconut shell GAC for water treatment, gold recovery, solvent recovery, and condensate polishing.',
     intro:
-      'Granular Activated Carbon (GAC) media and cartridges are used across water, mining, and gas-phase treatment when buyers need hardness, adsorption performance, and reliable attrition resistance.',
+      'Granular Activated Carbon (GAC) media and cartridges are used across water, mining, and gas-phase treatment where hardness, adsorption performance, and reliable attrition resistance are important.',
     highlights: [
       'Manufactured from selected grades of coconut shell under stringent controls for hardness, surface area, and attrition resistance.',
       'Available in different mesh sizes, adsorption levels, and pH-adjusted or washed variants tailored to customer requirements.',
@@ -943,7 +943,7 @@ export const products: ProductEntry[] = [
           'The GAC range is produced from high-quality coconut shell feedstock and engineered so the particle size and pore structure support strong adsorption performance in fixed-bed and cartridge-based systems.',
       },
       {
-        title: 'Why buyers specify it',
+        title: 'Why granular carbon is specified',
         body:
           'Granular carbon is the backbone product when a process needs durable media, low attrition, and the flexibility to match mesh size and washing requirements to the application.',
         bullets: [
@@ -1033,7 +1033,7 @@ export const products: ProductEntry[] = [
       {
         title: 'Common targets',
         body:
-          'This category is the specialty branch of the portfolio, used when a buyer has a contaminant-specific requirement rather than a broad adsorption problem.',
+          'This category is the specialty branch of the portfolio, used when an application has a contaminant-specific requirement rather than a broad adsorption problem.',
         bullets: [
           'Mercury',
           'Acid gases',
@@ -1166,7 +1166,7 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Operating advantages',
         body:
-          'Buyers specify these grades for durability, adsorption performance, and clean operation in recovery circuits.',
+          'Mining circuits use these grades for durability, adsorption performance, and clean operation in recovery systems.',
         bullets: [
           'Superior hardness to minimize attrition loss and dust',
           'Higher gold adsorption capacities for maximum loading',
@@ -1245,7 +1245,7 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Operating advantages',
         body:
-          'Refinery buyers typically prioritize these performance qualities.',
+          'Refinery and process applications often prioritize these performance qualities.',
         bullets: [
           'Lowest level of silica leaching',
           'Low ash content and nil dust',
@@ -1341,7 +1341,7 @@ export const newsroomItems: NewsroomItem[] = [
     detail: [
       `The transition process announced in 2019 moved toward completion with the ${siteConfig.marketName} brand operating under the Black Opal Carbons name.`,
       `The new name better reflects the product portfolio and aligns the ${siteConfig.marketName} business with the wider group, including manufacturing and export operations in South India.`,
-      'Core operating elements remained the same: products, factory, address, facilities, pricing, support procedures, and day-to-day contacts.',
+      'Core operating elements remained the same: products, factory, address, facilities, support procedures, and day-to-day contacts.',
       'The announcement also covered expanded production capacity, additional sales and customer-service resources, and new specialty-product offerings.',
     ],
     bullets: [
@@ -1369,7 +1369,7 @@ export const newsroomItems: NewsroomItem[] = [
     title: 'PowerPoint Presentation',
     type: 'resource',
     summary:
-      'Company presentation material for procurement reviews and sales discussions.',
+      'Company presentation material for technical review and sales discussions.',
   },
   {
     slug: 'water-treatment-resource',

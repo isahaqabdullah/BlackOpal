@@ -10,7 +10,7 @@ export type SupplierLandingPage = {
   introTitle: string;
   intro: string;
   highlights: string[];
-  buyerSignals: Array<{
+  capabilitySignals: Array<{
     title: string;
     body: string;
   }>;
@@ -43,7 +43,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     serviceType: 'Global activated carbon supply',
     introTitle: 'Established manufacturing continuity under the Black Opal name',
     intro:
-      'The group behind Black Opal was established in 2010 through coconut shell activated carbon manufacturing and activated carbon field experience. The transition from INDOCARB AC to Black Opal Carbons was a global brand change; the products, factory, facilities, pricing, and support procedures remained in place. Today, Black Opal controls raw material selection, steam activation, particle sizing, packing, and final quality assurance before shipment.',
+      'The group behind Black Opal was established in 2010 through coconut shell activated carbon manufacturing and activated carbon field experience. The transition from INDOCARB AC to Black Opal Carbons was a global brand change; the products, factory, facilities, and support procedures remained in place. Today, Black Opal controls raw material selection, steam activation, particle sizing, packing, and final quality assurance before shipment.',
     highlights: [
       'Formerly INDOCARB AC, now operating under the Black Opal Carbons name',
       'Company-owned manufacturing with control over feedstock, activation, sizing, packing, and final quality assurance',
@@ -51,10 +51,10 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Granular, powder, impregnated, and catalytic activated carbon product families',
       'NSF 42 and NSF 61 listed coconut shell carbon grades for applicable water-treatment use',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Manufacturing continuity',
-        body: 'The Black Opal transition kept the same product base, factory, facilities, pricing structure, and support procedures customers already worked with.',
+        body: 'The Black Opal transition kept the same product base, factory, facilities, service structure, and support procedures customers already worked with.',
       },
       {
         title: 'Coconut shell specialization',
@@ -99,7 +99,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Coconut shell carbon manufactured and exported from India',
       'NSF 42 and NSF 61 listed grades for applicable water-treatment use',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Manufacturing control',
         body: 'Company-owned facilities keep raw material selection, activation, processing, packing, and final assurance under direct operating control.',
@@ -147,7 +147,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Applications across water treatment, gold recovery, air and gas, oil and gas, and specialty purification',
       'NSF 42 and NSF 61 listed grades for applicable water-treatment use',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Coconut shell performance',
         body: 'Coconut shell carbon is valued for hardness, low ash, micropore structure, and attrition resistance across liquid-phase and vapor-phase purification duties.',
@@ -195,7 +195,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Suitable for fixed-bed filters, cartridges, pressure vessels, adsorption columns, and process systems',
       'NSF 42 and NSF 61 listed grades for applicable water-treatment use',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Fixed-bed and cartridge systems',
         body: 'Granular activated carbon supports filtration systems where flow control, contact time, adsorption capacity, mechanical strength, and pressure drop matter.',
@@ -243,7 +243,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Fine-particle format for inline dosing, batch addition, decolorization, and process polishing',
       'Grade alignment around fineness, iodine number, ash, pH, moisture, packing, and documentation',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Inline dosing and batch addition',
         body: 'Powdered carbon fits treatment programs where carbon is added directly into a process stream or batch rather than used as a cartridge or pressure-vessel media.',
@@ -291,7 +291,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Targeted impregnation for acid gases, ammonia, amines, and other specialty contaminants',
       'Applicable across gas purification, protective equipment, mercury removal, and bacteriostatic drinking-water systems',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Targeted chemistry',
         body: 'Impregnation is used when untreated activated carbon alone is not the right direction for a contaminant-specific removal requirement.',
@@ -339,7 +339,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Supports chloramine reduction in drinking-water systems moving away from free chlorine',
       'Maintains hardness, surface area, and attrition resistance associated with high-quality coconut shell carbon',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Why catalytic grades matter',
         body: 'Standard activated carbon filters sized for chlorine removal have limited capacity for chloramine reduction at normal flow rates, which is where catalytic grades become important.',
@@ -387,7 +387,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Catalytic CATCARB grades for chloramine and hydrogen sulfide decomposition where required',
       'Application fit across drinking water, process water, groundwater remediation, wastewater polishing, and specialty water treatment',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Water-treatment range',
         body: 'The water-treatment range includes GAC, PAC, impregnated, acid or water-washed, and specialty catalytic grades.',
@@ -435,7 +435,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Higher gold adsorption capacities for maximum loading',
       'Low dust and clean operation for recovery circuits',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Circuit performance',
         body: 'Gold recovery is a specialist performance application where hardness, low platelets, low dust, and adsorption kinetics directly affect metal loading and carbon loss.',
@@ -483,7 +483,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Filters and adsorbers for indoor air quality, cabin air filtration, emission control, odor control, mines, chemical facilities, nuclear power stations, and manufacturing plants',
       'Vapor-phase treatment support for solvent recovery, gas polishing, industrial ventilation, and odor-control duties',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Protective equipment',
         body: 'IndoCarb VP granular activated carbon filters are used in respirators and gas masks for protection against acid gases, organic vapors, ammonia, mercury vapor, formaldehyde, and radioactive iodides.',
@@ -531,7 +531,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Treated activated carbons for contaminant removal, de-oiling condensate, and protecting downstream ion-exchange resins, boiler tubes, and turbine blades',
       'Refinery water-service positioning around extremely low silica leaching and nil ash',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Refinery recovery and gas cleanup',
         body: 'Activated carbon supports recovery of economically valuable vapors and removal of hydrogen sulfide during oil refining.',
@@ -579,7 +579,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Food and beverage purification for taste and odor control, CO2 purification, and edible-oil decolorization',
       'Company-owned manufacturing with controlled feedstock selection, steam activation, sizing, packing, and final assurance before shipment',
     ],
-    buyerSignals: [
+    capabilitySignals: [
       {
         title: 'Application range',
         body: 'Industrial applications include water treatment, mining, air and gas purification, refinery service, chemical processing, solvent recovery, odor control, food and beverage purification, and specialty purification.',

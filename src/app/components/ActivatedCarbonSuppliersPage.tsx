@@ -41,7 +41,7 @@ const evaluationPoints = [
   {
     icon: Truck,
     title: 'Global supply support',
-    body: 'Black Opal Carbons connects buyers across global export markets with the wider Black Opal product portfolio, technical support, and office network.',
+    body: 'Black Opal Carbons connects global export markets with the wider Black Opal product portfolio, technical support, and office network.',
   },
 ];
 
@@ -91,7 +91,7 @@ export function ActivatedCarbonSuppliersPage() {
                     className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
-                    Request pricing
+                    Contact Black Opal
                     <ArrowRight size={14} />
                   </Link>
                   <Link
@@ -199,20 +199,21 @@ export function ActivatedCarbonSuppliersPage() {
               className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
-              Supply capabilities
+              Product capability
             </span>
             <h2
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(1.9rem,3vw,2.6rem)] leading-[1.08] mb-4"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              Product and application supply paths
+              Product and application pathways
             </h2>
             <p
               className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
-              Black Opal supports buyers by product format, application environment, and procurement model. These
-              pages connect the relevant carbon families with the buying context behind each requirement.
+              Black Opal organizes its coconut shell activated carbon portfolio by product format, application
+              environment, and performance requirement. These pages connect each carbon family with the treatment
+              conditions it is built to serve.
             </p>
           </div>
 
@@ -360,7 +361,7 @@ export function ActivatedCarbonSuppliersPage() {
               className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(1.9rem,3vw,2.6rem)] leading-[1.08] mb-4"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              Common activated carbon supply programs
+              Activated carbon by application
             </h2>
           </div>
 
@@ -418,7 +419,7 @@ export function ActivatedCarbonSuppliersPage() {
                   className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85] mb-7"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
-                  The Black Opal office network connects global buyers with coconut activated carbon product families,
+                  The Black Opal office network connects global export markets with coconut activated carbon product families,
                   technical support, and company-owned manufacturing capabilities.
                 </p>
                 <Link

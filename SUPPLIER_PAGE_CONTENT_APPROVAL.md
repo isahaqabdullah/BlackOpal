@@ -401,6 +401,26 @@ Status: approved and implemented.
 
 This revision completes the remaining supplier pages in the same approved style: application-led, Black Opal narrative, no weak `buyers`, `procurement`, `supplier review`, `supplier response`, or pricing-style CTA language. The pages are still code-backed in `src/app/content/supplierLandingPages.ts`.
 
+## Shared Template Cleanup
+
+Live verification found that shared product, resource, template, and JSON-LD strings were also rendered inside supplier-page HTML. Those shared strings were updated so the finished pages do not carry the older buyer/procurement/pricing wording:
+
+- JSON-LD audience text now names distributors, treatment companies, EPC teams, mining operations, and process industries.
+- Shared supplier-page CTA changed from `Request pricing` to `Contact Black Opal`.
+- Shared related-page heading changed from `Product and application supply paths` to `Product and application pathways`.
+- Shared application heading changed from `Common activated carbon supply programs` to `Activated carbon by application`.
+- Granular product intro, oil-and-gas application text, newsroom resource text, and default site descriptions now use application/manufacturing language instead of buyer/procurement language.
+
+## CMS And Env Cleanup
+
+Final rendered-page verification showed older buyer/procurement/pricing wording coming from shared Sanity documents and Vercel build-time env values, not from the supplier landing-page copy itself. The cleanup was applied in three places:
+
+- Source fallbacks and supplier templates: removed old buyer/procurement/pricing wording from shared product, application, newsroom, contact, JSON-LD, and supplier-page strings.
+- Sanity CMS: updated 13 published documents with the same wording cleanup and pulled the new production snapshot after the write.
+- Vercel env: updated `NEXT_PUBLIC_SITE_DESCRIPTION` and `NEXT_PUBLIC_CONTACT_TITLE` for both `black-opal` and `black-opal-india` in production and preview.
+
+The final local rendered HTML check passed for the supplier overview plus air/gas, oil/gas, and industrial supplier pages with the old weak phrases absent.
+
 ## Page 1: Air And Gas
 
 Page:

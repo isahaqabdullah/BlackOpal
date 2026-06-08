@@ -22,7 +22,7 @@ const DEFAULT_SITE_URL = 'https://www.blackopalcarbonsme.com';
 const DEFAULT_SITE_NAME = 'Black Opal Private Limited';
 const GROUP_HEADQUARTERS_LABEL = 'Black Opal Group Head Quarters';
 const DEFAULT_DESCRIPTION =
-  'Black Opal Private Limited manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas purification, and industrial buyers across global export markets.';
+  'Black Opal Private Limited manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas purification, and industrial applications across global export markets.';
 const runtimeEnv: Record<string, string | undefined> = {
   SITE_ID: process.env.NEXT_PUBLIC_SITE_ID,
   SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
@@ -278,7 +278,7 @@ export const siteConfig = {
   ),
   heroDescription: envValue(
     'HERO_DESCRIPTION',
-    `${originStatement}, Black Opal is a coconut shell activated carbon supplier for global industrial buyers across water treatment, air and gas purification, gold recovery, oil and gas, and specialty purification systems.`,
+    `${originStatement}, Black Opal manufactures coconut shell activated carbon for global water treatment, air and gas purification, gold recovery, oil and gas, and specialty purification systems.`,
   ),
   originStatement,
   originDescription,
@@ -296,7 +296,7 @@ export const siteConfig = {
     'COMPANY_BODY_SECONDARY',
     'Grades can be customised by mesh size, adsorption level, pH adjustment, washing, and impregnation requirements instead of forcing every application into the same carbon.',
   ),
-  contactTitle: envValue('CONTACT_TITLE', 'Pricing, availability, and technical recommendations'),
+  contactTitle: envValue('CONTACT_TITLE', 'Availability and technical recommendations'),
   contactDescription: envValue(
     'CONTACT_DESCRIPTION',
     `Grade matching, availability, and logistics coordination start with the application conditions and expected volume.`,

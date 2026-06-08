@@ -139,7 +139,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
           </div>
 
           <div className="premium-compact-grid">
-            {page.buyerSignals.map((signal, index) => (
+            {page.capabilitySignals.map((signal, index) => (
               <div
                 key={signal.title}
                 className="premium-panel-soft premium-card-animated premium-reveal p-5 md:p-6"
