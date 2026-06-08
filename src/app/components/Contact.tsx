@@ -83,8 +83,8 @@ export function ContactPage() {
                           {office.label}
                         </span>
                         <h3
-                          className="premium-card-heading text-[15px] mb-1"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                          className="premium-card-heading text-[15px] text-[#b8ab8b] mb-1"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
                         >
                           {office.name}
                         </h3>
@@ -102,20 +102,20 @@ export function ContactPage() {
                             <a
                               key={phone.href}
                               href={phone.href}
-                              className="flex items-center gap-2 text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
-                              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                              className="flex items-center gap-2 text-[#b8ab8b] transition-colors hover:text-[#f2d78b]"
+                              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
                             >
-                              <Phone size={14} className="shrink-0 text-[#e6cb87]" />
+                              <Phone size={14} className="shrink-0 text-[#b8ab8b]" />
                               <span className="text-[13px] leading-[1.5]">{phone.display}</span>
                             </a>
                           ))}
                           {office.email ? (
                             <a
                               href={`mailto:${office.email}`}
-                              className="flex items-center gap-2 text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
-                              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                              className="flex items-center gap-2 text-[#b8ab8b] transition-colors hover:text-[#f2d78b]"
+                              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
                             >
-                              <Mail size={14} className="shrink-0 text-[#e6cb87]" />
+                              <Mail size={14} className="shrink-0 text-[#b8ab8b]" />
                               <span className="text-[13px] leading-[1.5] break-all">{office.email}</span>
                             </a>
                           ) : null}

@@ -83,7 +83,12 @@ export function Footer() {
                 {footerContact.email ? (
                   <p>
                     {siteSettings.footer.emailLabel}:{' '}
-                    <span>{footerContact.email}</span>
+                    <a
+                      href={`mailto:${footerContact.email}`}
+                      className="text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
+                    >
+                      {footerContact.email}
+                    </a>
                   </p>
                 ) : null}
                 <Link href={siteSettings.footer.contactLinkPath} className="inline-flex text-[#f2d78b] hover:text-[#fff2bf] transition-colors">

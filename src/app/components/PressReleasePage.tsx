@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { usePageCopyDataAttribute, useSanityDataAttribute } from '../cms/visualEditingAttributes';
 import { useSiteContent } from '../content/SiteContentProvider';
+import { EmailLinkText } from './EmailLinkText';
 import { NotFoundPage } from './NotFoundPage';
 import { PageIntro } from './PageIntro';
 
@@ -56,7 +57,7 @@ export function PressReleasePage() {
                     className="premium-copy text-[14px] leading-[1.9]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
-                    {paragraph}
+                    <EmailLinkText text={paragraph} />
                   </p>
                 ))}
               </div>
@@ -79,7 +80,9 @@ export function PressReleasePage() {
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                   >
                     <span className="w-1.5 h-1.5 bg-[#d4ae5b] rounded-full mt-2 shrink-0 shadow-[0_0_12px_rgba(212,174,91,0.65)]" />
-                    <span>{bullet}</span>
+                    <span>
+                      <EmailLinkText text={bullet} />
+                    </span>
                   </div>
                 ))}
               </div>
