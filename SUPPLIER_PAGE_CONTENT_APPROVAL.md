@@ -395,6 +395,125 @@ No CMS change. This supplier landing page content is code-backed in `src/app/con
 
 ---
 
+# Step 11 Approved: Gold Recovery Activated Carbon Page Revision
+
+Status: approved and implemented.
+
+This revision follows the same wording style as the previously approved supplier pages: application-led, Black Opal narrative, no weak `buyers`, `procurement`, `supplier response`, or pricing-style CTA language. The copy uses existing site facts for gold recovery: GC grades, microporous coconut shell carbon, CIP, CIC, tank-adsorbed precious-metal recovery systems, adsorption of metal and cyanide complexes, high hardness, low dust, low platelets, adsorption kinetics, loading capacity, and attrition resistance.
+
+## Approved Visible Copy
+
+Page:
+
+```text
+/activated-carbon-suppliers/activated-carbon-for-gold-recovery
+```
+
+### Page Label
+
+```text
+Activated Carbon For Gold Recovery
+```
+
+### Breadcrumb Label
+
+```text
+Gold recovery
+```
+
+### Page Heading
+
+```text
+High-hardness coconut shell activated carbon for gold recovery
+```
+
+### Page Description
+
+```text
+Black Opal Carbons manufactures microporous coconut shell granular activated carbon grades for CIP, CIC, and tank-adsorbed precious-metal recovery systems where hardness, adsorption kinetics, low dust, and attrition resistance directly affect recovery.
+```
+
+### Intro Heading
+
+```text
+GC grades for CIP, CIC, and tank-adsorbed systems
+```
+
+### Intro Body
+
+```text
+Black Opal GC grades are built for Carbon-in-Pulp, Carbon-in-Column, and tank-adsorbed systems where adsorption of metal and cyanide complexes has to happen quickly and cleanly. The particle size and pore structure are engineered for precious-metal adsorption while maintaining the hardness needed to resist attrition in mining circuits.
+```
+
+### Highlight Bullets
+
+```text
+Microporous coconut shell carbon grades for CIP, CIC, and tank-adsorbed precious-metal recovery systems
+High-hardness GC grades with excellent attrition resistance for repeated mining service
+Strong gold adsorption rates for high-throughput circuits
+Higher gold adsorption capacities for maximum loading
+Low dust and clean operation for recovery circuits
+```
+
+### Three Content Cards
+
+```text
+Circuit performance
+Gold recovery is a specialist performance application where hardness, low platelets, low dust, and adsorption kinetics directly affect metal loading and carbon loss.
+
+Precious-metal adsorption
+The particle size and pore structure are engineered for adsorption of metal and cyanide complexes while maintaining mechanical strength in mining circuits.
+
+Mining service durability
+Coconut shell carbon provides the hardness, abrasion resistance, attrition resistance, and clean handling profile required for repeated mining service.
+```
+
+### Grade Selection Notes
+
+```text
+Application: CIP, CIC, tank-adsorbed system, carbon-in-leach, carbon-in-pulp, or precious-metal adsorption circuit.
+Specification: mesh size, hardness, attrition, ash, iodine number, adsorption rate, loading target, moisture, and documentation where applicable.
+System context: ore body, slurry conditions, elution process, current media performance, packing, volume, and destination-market requirements.
+```
+
+### CTA
+
+```text
+Contact Black Opal for gold recovery activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the recovery circuit, current carbon grade, specification target, volume, packing, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+## Metadata
+
+SEO title:
+
+```text
+Activated Carbon Supplier for Gold Recovery | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Activated carbon supplier for gold recovery with company-owned Indian manufacturing. High-hardness microporous coconut shell GC grades for CIP, CIC, tank-adsorbed systems, gold adsorption, loading capacity, low dust, and attrition resistance.
+```
+
+## CMS Impact
+
+No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.
+
+---
+
 # Step 10 Approved: Water Treatment Activated Carbon Page Revision
 
 Status: approved and implemented.
