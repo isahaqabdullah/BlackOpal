@@ -395,6 +395,303 @@ No CMS change. This supplier landing page content is code-backed in `src/app/con
 
 ---
 
+# Step 12 Approved: Remaining Supplier Page Revisions
+
+Status: approved and implemented.
+
+This revision completes the remaining supplier pages in the same approved style: application-led, Black Opal narrative, no weak `buyers`, `procurement`, `supplier review`, `supplier response`, or pricing-style CTA language. The pages are still code-backed in `src/app/content/supplierLandingPages.ts`.
+
+## Page 1: Air And Gas
+
+Page:
+
+```text
+/activated-carbon-suppliers/activated-carbon-for-air-and-gas
+```
+
+### Page Heading
+
+```text
+Coconut shell activated carbon for air and gas purification
+```
+
+### Page Description
+
+```text
+Black Opal Carbons manufactures coconut shell and impregnated activated carbon grades for indoor air quality, protective equipment, flue gas, odor control, emission control, solvent recovery, and vapor-phase filtration.
+```
+
+### Intro Heading
+
+```text
+Coconut shell and impregnated grades for vapor-phase duties
+```
+
+### Intro Body
+
+```text
+Air and gas purification depends on hardness and retentivity, making coconut shell carbon a strong base media for demanding filtration duties. Black Opal standard and impregnated grades fit vapor-phase service because of their microporous structure, toughness, and application range across industrial and protective environments.
+```
+
+### Highlight Bullets
+
+```text
+Coconut shell and impregnated grades for indoor air quality, protective equipment, flue gas, and odor control
+Microporous coconut shell carbon for air and gas service where hardness and retentivity matter
+Standard and impregnated grades for industrial and protective environments
+Filters and adsorbers for indoor air quality, cabin air filtration, emission control, odor control, mines, chemical facilities, nuclear power stations, and manufacturing plants
+Vapor-phase treatment support for solvent recovery, gas polishing, industrial ventilation, and odor-control duties
+```
+
+### Three Content Cards
+
+```text
+Protective equipment
+IndoCarb VP granular activated carbon filters are used in respirators and gas masks for protection against acid gases, organic vapors, ammonia, mercury vapor, formaldehyde, and radioactive iodides.
+
+Industrial filtration
+Air and gas applications include filters and adsorbers for indoor air quality, cabin air filtration, emission control, odor control, mines, chemical facilities, nuclear power stations, and manufacturing plants.
+
+Stream conditions
+Grade selection depends on contaminant type, concentration, temperature, humidity, airflow or gas flow, pressure drop, contact time, and bed design.
+```
+
+### Grade Selection Notes
+
+```text
+Target contaminant or duty: acid gases, organic vapors, ammonia, mercury vapor, formaldehyde, radioactive iodides, odor control, solvent recovery, emission control, or gas polishing.
+Operating data: concentration, air or gas flow, temperature, humidity, pressure drop limit, contact time, and desired removal objective.
+System context: filter, adsorber, respirator, gas mask, cabin air unit, industrial ventilation system, packing, safety documentation, and destination-market requirements.
+```
+
+### CTA
+
+```text
+Contact Black Opal for air and gas activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the stream conditions, target contaminants, grade requirement, volume, packing, safety documentation, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+### Metadata
+
+SEO title:
+
+```text
+Activated Carbon Supplier for Air and Gas Purification | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Activated carbon supplier for air and gas purification with company-owned Indian manufacturing. Coconut shell and impregnated grades for indoor air quality, protective equipment, flue gas, odor control, solvent recovery, and vapor-phase treatment.
+```
+
+## Page 2: Oil And Gas
+
+Page:
+
+```text
+/activated-carbon-suppliers/activated-carbon-for-oil-and-gas
+```
+
+### Page Heading
+
+```text
+Activated carbon for refinery, oil, and gas purification
+```
+
+### Page Description
+
+```text
+Black Opal Carbons manufactures coconut shell granular and impregnated activated carbon for vapor recovery, hydrogen sulfide removal, condensate polishing, low-silica boiler-feed protection, and refinery process purification.
+```
+
+### Intro Heading
+
+```text
+Petro-grade carbon for vapor recovery and condensate polishing
+```
+
+### Intro Body
+
+```text
+Oil and gas applications include refinery vapor recovery, hydrogen sulfide removal, and high-purity condensate boiler-feed water treatment. Black Opal activated carbon adsorbs gasoline vapors, benzene, solvents, and hydrogen sulfide during refining, while treated grades support condensate polishing and refinery water-service requirements.
+```
+
+### Highlight Bullets
+
+```text
+Activated carbon for vapor recovery, H2S removal, condensate polishing, and low-silica boiler-feed protection
+Granular and impregnated grades for refinery, gas cleanup, and process purification duties
+Adsorption of gasoline vapors, benzene, solvents, and hydrogen sulfide during refining
+Treated activated carbons for contaminant removal, de-oiling condensate, and protecting downstream ion-exchange resins, boiler tubes, and turbine blades
+Refinery water-service positioning around extremely low silica leaching and nil ash
+```
+
+### Three Content Cards
+
+```text
+Refinery recovery and gas cleanup
+Activated carbon supports recovery of economically valuable vapors and removal of hydrogen sulfide during oil refining.
+
+Condensate and boiler-feed water
+Treated activated carbons remove contaminants, de-oil condensate, and help protect downstream ion-exchange resins, boiler tubes, and turbine blades from fouling and deterioration.
+
+Operating context
+Grade selection depends on stream type, target contaminants, temperature, pressure, humidity, flow rate, safety requirements, and current media performance.
+```
+
+### Grade Selection Notes
+
+```text
+Application: refinery vapor recovery, hydrogen sulfide removal, gas cleanup, process purification, condensate polishing, boiler-feed water, or refinery water service.
+Operating data: stream type, target contaminants, temperature, pressure, humidity, flow rate, current carbon grade, and required treatment objective.
+Specification: particle size, iodine number, hardness, ash, moisture, pH, silica-leaching requirement, packing, safety documentation, and destination-market requirements.
+```
+
+### CTA
+
+```text
+Contact Black Opal for oil and gas activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the stream type, target contaminants, operating conditions, grade requirement, volume, packing, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+### Metadata
+
+SEO title:
+
+```text
+Activated Carbon Supplier for Oil and Gas | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Activated carbon supplier for oil and gas with company-owned Indian manufacturing. Coconut shell granular and impregnated grades for refinery vapor recovery, H2S removal, condensate polishing, boiler-feed protection, and process purification.
+```
+
+## Page 3: Industrial Activated Carbon
+
+Page:
+
+```text
+/activated-carbon-suppliers/industrial-activated-carbon-supplier
+```
+
+### Page Heading
+
+```text
+Industrial coconut shell activated carbon for purification applications
+```
+
+### Page Description
+
+```text
+Black Opal Carbons manufactures granular, powder, impregnated, and catalytic activated carbon for water treatment, gold recovery, air and gas purification, refinery, chemical processing, solvent recovery, food and beverage purification, odor control, and specialty industrial processes.
+```
+
+### Intro Heading
+
+```text
+Product families matched to industrial purification duties
+```
+
+### Intro Body
+
+```text
+Granular, powder, impregnated, and catalytic grades cover fixed-bed filtration, fast-response dosing, targeted gas treatment, chloramine reduction, solvent recovery, refinery service, and specialty process duties. Water, gold recovery, air, gas, refinery, and specialty industrial applications each place different demands on hardness, pore structure, activity, and purity.
+```
+
+### Highlight Bullets
+
+```text
+Granular, powder, impregnated, and catalytic activated carbon product families
+Applications across water treatment, gold recovery, air and gas purification, oil and gas, chloramine removal, and specialty industrial processes
+Solvent recovery for printing, dry cleaning, paint, and related industrial applications
+Food and beverage purification for taste and odor control, CO2 purification, and edible-oil decolorization
+Company-owned manufacturing with controlled feedstock selection, steam activation, sizing, packing, and final assurance before shipment
+```
+
+### Three Content Cards
+
+```text
+Application range
+Industrial applications include water treatment, mining, air and gas purification, refinery service, chemical processing, solvent recovery, odor control, food and beverage purification, and specialty purification.
+
+Product format
+Granular, powder, impregnated, and catalytic formats allow the carbon selection to follow the application, contaminant profile, contact time, and operating conditions.
+
+Specialty processes
+Solvent recovery, food and beverage purification, edible-oil decolorization, chloramine removal, and refinery duties extend the portfolio beyond the main water, mining, gas, and refinery categories.
+```
+
+### Grade Selection Notes
+
+```text
+Application category: water treatment, gold recovery, air and gas, oil and gas, solvent recovery, food and beverage, refinery, chemical processing, odor control, or specialty purification.
+Product family: granular, powder, impregnated, catalytic, acid or water-washed, pH-adjusted, or specialty activated carbon.
+Specification: particle size, hardness, surface area, attrition resistance, ash, pH, moisture, contaminant profile, packing, and documentation where applicable.
+```
+
+### CTA
+
+```text
+Contact Black Opal for industrial activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the application mix, product family, specification targets, volume, packing, documentation, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+### Metadata
+
+SEO title:
+
+```text
+Industrial Activated Carbon Supplier | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Industrial activated carbon supplier with company-owned Indian manufacturing. Coconut shell granular, powder, impregnated, and catalytic carbon for water, mining, air, gas, refinery, solvent recovery, food and beverage, odor control, and specialty purification.
+```
+
+## CMS Impact
+
+No CMS change. These supplier landing page contents are code-backed in `src/app/content/supplierLandingPages.ts`.
+
+---
+
 # Step 11 Approved: Gold Recovery Activated Carbon Page Revision
 
 Status: approved and implemented.
