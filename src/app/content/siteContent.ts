@@ -629,7 +629,7 @@ export const siteMetrics: SiteMetric[] = [
 export const siteSettingsContent: SiteSettingsContent = {
   siteId: siteConfig.siteId,
   navigation: {
-    logoImage: '/images/black-opal-nav-logo-clean.png',
+    logoImage: '/images/black-opal-nav-lockup.png',
     logoAlt: 'Black Opal Carbons logo',
     links: [
       { label: 'Home', to: '/' },

@@ -419,10 +419,8 @@
   .premium-nav-brand {
     --premium-nav-logo-width: clamp(13.75rem, 48vw, 16.25rem);
     display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    gap: 0.22rem;
     min-width: 0;
   }
 
@@ -433,33 +431,9 @@
     max-width: min(var(--premium-nav-logo-width), calc(100vw - 5.25rem));
   }
 
-  .premium-nav-company {
-    display: block;
-    max-width: calc(100% - (var(--premium-nav-logo-width) * 0.2));
-    margin-left: calc(var(--premium-nav-logo-width) * 0.2);
-    font-family: 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
-    font-size: clamp(0.46rem, 1.55vw, 0.58rem);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    background-image: linear-gradient(90deg, #bb8432 0%, #f2d17a 48%, #fff2a6 100%);
-    background-clip: text;
-    color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: none;
-  }
-
   @media (min-width: 768px) {
     .premium-nav-brand {
       --premium-nav-logo-width: clamp(15.5rem, 17.5vw, 17.75rem);
-    }
-
-    .premium-nav-company {
-      font-size: 0.56rem;
-      letter-spacing: 0.18em;
     }
   }
 

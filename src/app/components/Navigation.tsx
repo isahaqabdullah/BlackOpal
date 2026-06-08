@@ -25,7 +25,6 @@ export function Navigation() {
             alt=""
             className="premium-nav-logo object-contain shrink-0"
           />
-          <span className="premium-nav-company">A Black Opal Group Company</span>
         </Link>
 
         {/* Desktop */}
