@@ -395,6 +395,125 @@ No CMS change. This supplier landing page content is code-backed in `src/app/con
 
 ---
 
+# Step 10 Approved: Water Treatment Activated Carbon Page Revision
+
+Status: approved and implemented.
+
+This revision follows the same wording style as the previously approved supplier pages: application-led, Black Opal narrative, no weak `buyers`, `procurement`, `bulk pricing`, `supplier support`, or pricing-style CTA language. The copy uses existing site facts for water treatment: GAC, PAC, impregnated, acid or water-washed, and catalytic grades; drinking water; process water; municipal systems; groundwater remediation; wastewater polishing; NSF 42 and NSF 61 listed grades; VOCs; pesticides; solvents; THMs; chlorine; chloramine; taste; odor; and color removal.
+
+## Approved Visible Copy
+
+Page:
+
+```text
+/activated-carbon-suppliers/activated-carbon-for-water-treatment
+```
+
+### Page Label
+
+```text
+Activated Carbon For Water Treatment
+```
+
+### Breadcrumb Label
+
+```text
+Water treatment
+```
+
+### Page Heading
+
+```text
+Coconut shell activated carbon for water treatment systems
+```
+
+### Page Description
+
+```text
+Black Opal Carbons manufactures coconut shell activated carbon grades for drinking water, process water, municipal systems, groundwater remediation, wastewater polishing, taste and odor control, and contaminant-specific filtration.
+```
+
+### Intro Heading
+
+```text
+GAC, PAC, impregnated, and catalytic grades for water purification
+```
+
+### Intro Body
+
+```text
+Black Opal manufactures granular, powder, impregnated, and catalytic activated carbon for drinking water, industrial process water, municipal systems, groundwater remediation, and wastewater polishing. Coconut shell carbon supports chlorine reduction and adsorption of VOCs, pesticides, solvents, THMs, and other organics, with specialty options for bacteriostatic and chloramine duties.
+```
+
+### Highlight Bullets
+
+```text
+Granular, powder, impregnated, and catalytic grades for drinking water, municipal systems, industrial process water, and wastewater purification
+NSF 42 and NSF 61 listed grades for applicable water-treatment use
+Coconut shell GAC and PAC for filtration, dosing, polishing, taste and odor control, and contaminant-specific treatment
+Catalytic CATCARB grades for chloramine and hydrogen sulfide decomposition where required
+Application fit across drinking water, process water, groundwater remediation, wastewater polishing, and specialty water treatment
+```
+
+### Three Content Cards
+
+```text
+Water-treatment range
+The water-treatment range includes GAC, PAC, impregnated, acid or water-washed, and specialty catalytic grades.
+
+Contaminant profile
+Municipal and industrial systems use activated carbon for taste, odor, and color removal, plus adsorption of VOCs, pesticides, disinfectant by-products, chlorinated hydrocarbons, and inhibitory compounds.
+
+Wastewater and remediation
+Activated carbon is an efficient and cost-effective option for industrial and municipal wastewater, contaminated ground and groundwater, and wastewater polishing.
+```
+
+### Grade Selection Notes
+
+```text
+Product format: GAC, PAC, impregnated, acid or water-washed, or catalytic activated carbon.
+Application: drinking water, process water, municipal system, groundwater remediation, wastewater polishing, taste, odor, color, VOC, pesticide, solvent, THM, chlorine, or chloramine reduction.
+System context: cartridge, pressure vessel, gravity filter, dosing system, flow rate, bed depth, contact time, influent profile, packing, and documentation where applicable.
+```
+
+### CTA
+
+```text
+Contact Black Opal for water treatment activated carbon requirements
+```
+
+### CTA Body
+
+```text
+Share the water application, product format, target contaminant, grade requirement, volume, packing, and destination market with the Black Opal team.
+```
+
+### CTA Button
+
+```text
+Contact Black Opal
+```
+
+## Metadata
+
+SEO title:
+
+```text
+Activated Carbon Supplier for Water Treatment | Black Opal Carbons
+```
+
+Meta description:
+
+```text
+Activated carbon supplier for water treatment with company-owned Indian manufacturing. Coconut shell GAC, PAC, impregnated, and catalytic grades for drinking water, process water, wastewater, taste, odor, VOC, pesticide, THM, and chloramine applications.
+```
+
+## CMS Impact
+
+No CMS change. This supplier landing page content is code-backed in `src/app/content/supplierLandingPages.ts`.
+
+---
+
 # Step 9 Approved: Catalytic Activated Carbon Page Revision
 
 Status: approved and implemented.
