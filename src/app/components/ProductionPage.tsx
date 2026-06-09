@@ -1,12 +1,236 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, FileText } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import type { PackagingMediaEntry } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { useProductionPageDataAttribute } from '../cms/visualEditingAttributes';
 import { PageIntro } from './PageIntro';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from './ui/carousel';
 
 const balancedOverviewTitle =
   'From Coconut Shell Charcoal to High-Performance Activated Carbon - Fully Integrated Production';
+
+type ProductionPackagingGalleryProps = {
+  kicker: string;
+  title: string;
+  body: string;
+  media: PackagingMediaEntry[];
+  documentLabel: string;
+  documentUrl: string;
+  dataAttribute: (path: string) => string | undefined;
+};
+
+function ProductionPackagingGallery({
+  kicker,
+  title,
+  body,
+  media,
+  documentLabel,
+  documentUrl,
+  dataAttribute,
+}: ProductionPackagingGalleryProps) {
+  const [galleryApi, setGalleryApi] = useState<CarouselApi>();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    if (!galleryApi) {
+      return;
+    }
+
+    const updateSelection = () => {
+      setSelectedIndex(galleryApi.selectedScrollSnap());
+    };
+
+    updateSelection();
+    galleryApi.on('select', updateSelection);
+    galleryApi.on('reInit', updateSelection);
+
+    return () => {
+      galleryApi.off('select', updateSelection);
+      galleryApi.off('reInit', updateSelection);
+    };
+  }, [galleryApi]);
+
+  const hasDocument = Boolean(documentLabel.trim() && documentUrl.trim());
+
+  return (
+    <section className="py-10 md:py-12">
+      <div className="premium-shell">
+        <div className="mb-7 max-w-3xl">
+          <span
+            data-sanity={dataAttribute('packagingKicker')}
+            className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
+            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+          >
+            {kicker}
+          </span>
+          <h2
+            data-sanity={dataAttribute('packagingTitle')}
+            className="premium-heading premium-heading-elevated text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.08] mb-4"
+            style={{ fontFamily: "'DM Serif Display', serif" }}
+          >
+            {title}
+          </h2>
+          <p
+            data-sanity={dataAttribute('packagingBody')}
+            className="premium-copy text-[14px] leading-[1.85]"
+            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+          >
+            {body}
+          </p>
+        </div>
+
+        <div className="premium-panel p-5 md:p-7">
+          {media.length ? (
+            <>
+              <Carousel
+                setApi={(api) => setGalleryApi(api)}
+                opts={{ align: 'start', loop: media.length > 1 }}
+                className="mx-auto w-full max-w-[62rem]"
+              >
+                <CarouselContent className="ml-0">
+                  {media.map((item, index) => {
+                    const itemPath = item._key ? `packagingMedia[_key=="${item._key}"]` : `packagingMedia[${index}]`;
+                    const isVideo = item.mediaType === 'video';
+
+                    return (
+                      <CarouselItem key={item._key ?? `${item.mediaType}-${item.title}`} className="pl-0">
+                        <div data-sanity-edit-target className="space-y-5">
+                          <div className="flex items-center justify-between gap-3">
+                            <span
+                              className="inline-flex items-center rounded-full border border-[#c9a24d]/16 bg-[#070707]/65 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-[#c6b487]"
+                              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                            >
+                              {isVideo ? 'Dispatch video' : 'Packaging photo'}
+                            </span>
+                            <span
+                              className="text-[#8f835f] text-[11px] tracking-[0.14em] uppercase"
+                              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                            >
+                              {index + 1} / {media.length}
+                            </span>
+                          </div>
+
+                          <div className="overflow-hidden rounded-[8px] border border-[#c9a24d]/12 bg-[#050505]/55">
+                            {isVideo ? (
+                              <video
+                                data-sanity={dataAttribute(`${itemPath}.videoUrl`)}
+                                src={item.videoUrl}
+                                controls
+                                playsInline
+                                preload="metadata"
+                                aria-label={item.mediaAlt}
+                                className="h-[24rem] w-full bg-black object-contain sm:h-[30rem] lg:h-[36rem]"
+                              />
+                            ) : (
+                              <img
+                                data-sanity={dataAttribute(`${itemPath}.imageUrl`)}
+                                src={item.imageUrl}
+                                alt={item.mediaAlt}
+                                className="h-[24rem] w-full bg-[#050505] object-contain sm:h-[30rem] lg:h-[36rem]"
+                              />
+                            )}
+                          </div>
+
+                          <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+                            <div>
+                              <h3
+                                data-sanity={dataAttribute(`${itemPath}.title`)}
+                                className="premium-card-heading text-[18px] mb-2"
+                                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                              >
+                                {item.title}
+                              </h3>
+                              <p
+                                data-sanity={dataAttribute(`${itemPath}.caption`)}
+                                className="premium-copy text-[13px] leading-[1.8]"
+                                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                              >
+                                {item.caption}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+
+                {media.length > 1 ? (
+                  <>
+                    <CarouselPrevious
+                      variant="ghost"
+                      className="left-3 top-4 translate-y-0 border border-[#c9a24d]/18 bg-[#050505]/75 text-[#f7efdb] hover:bg-[#15120b] hover:text-[#f2d78b]"
+                    />
+                    <CarouselNext
+                      variant="ghost"
+                      className="right-3 top-4 translate-y-0 border border-[#c9a24d]/18 bg-[#050505]/75 text-[#f7efdb] hover:bg-[#15120b] hover:text-[#f2d78b]"
+                    />
+                  </>
+                ) : null}
+              </Carousel>
+
+              {media.length > 1 ? (
+                <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+                  {media.map((item, index) => (
+                    <button
+                      key={item._key ?? `${item.mediaType}-${item.title}-dot`}
+                      type="button"
+                      onClick={() => galleryApi?.scrollTo(index)}
+                      className={`h-2.5 rounded-full transition-all ${
+                        selectedIndex === index ? 'w-8 bg-[#d4ae5b]' : 'w-2.5 bg-[#4c4331] hover:bg-[#8f835f]'
+                      }`}
+                      aria-label={`Show ${item.title}`}
+                    />
+                  ))}
+                </div>
+              ) : null}
+            </>
+          ) : null}
+
+          {hasDocument ? (
+            <div className="mt-6 flex flex-col gap-4 border-t border-[#c9a24d]/12 pt-5 md:flex-row md:items-center md:justify-between">
+              <div>
+                <span
+                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-2"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                >
+                  Supporting document
+                </span>
+                <p
+                  className="premium-copy text-[13px] leading-[1.75]"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                >
+                  Current packaging formats and handling options.
+                </p>
+              </div>
+
+              <a
+                data-sanity={dataAttribute('packagingDocumentLabel')}
+                href={documentUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+              >
+                <FileText size={14} />
+                {documentLabel}
+              </a>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export function ProductionPage() {
   const { productionPage, siteSettings } = useSiteContent();
@@ -196,6 +420,18 @@ export function ProductionPage() {
           </div>
         </div>
       </section>
+
+      {productionPage.packagingMedia.length > 0 || Boolean(productionPage.packagingDocumentUrl) ? (
+        <ProductionPackagingGallery
+          kicker={productionPage.packagingKicker}
+          title={productionPage.packagingTitle}
+          body={productionPage.packagingBody}
+          media={productionPage.packagingMedia}
+          documentLabel={productionPage.packagingDocumentLabel}
+          documentUrl={productionPage.packagingDocumentUrl}
+          dataAttribute={productionPageDataAttribute}
+        />
+      ) : null}
 
       <section className="pb-12 md:pb-14">
         <div className="premium-shell">

@@ -109,6 +109,42 @@ export const productionStepEntry = {
   ],
 };
 
+export const packagingMediaEntry = {
+  name: 'packagingMediaEntry',
+  title: 'Packaging Media',
+  type: 'object',
+  fields: [
+    {
+      name: 'mediaType',
+      title: 'Media Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Image', value: 'image' },
+          { title: 'Video', value: 'video' },
+        ],
+        layout: 'radio',
+      },
+      validation: (Rule: any) => Rule.required(),
+    },
+    { name: 'title', title: 'Title', type: 'string', validation: (Rule: any) => Rule.required() },
+    { name: 'caption', title: 'Caption', type: 'text', rows: 3, validation: (Rule: any) => Rule.required() },
+    {
+      name: 'imageUrl',
+      title: 'Image URL',
+      description: 'Use a public path like /images/packaging/export-palletized-bags.jpeg or a full URL.',
+      type: 'string',
+    },
+    {
+      name: 'videoUrl',
+      title: 'Video URL',
+      description: 'Use a public path like /videos/packaging/export-packaging-video.mp4 or a full URL.',
+      type: 'string',
+    },
+    { name: 'mediaAlt', title: 'Accessibility Label', type: 'string', validation: (Rule: any) => Rule.required() },
+  ],
+};
+
 function siteIdField(title = 'Website') {
   return {
     name: 'siteId',
@@ -420,6 +456,17 @@ export const productionPage = {
     { name: 'activationKicker', title: 'Activation Section Kicker', type: 'string' },
     { name: 'activationSteps', title: 'Activation Steps', type: 'array', of: [{ type: 'productionStepEntry' }] },
     { name: 'activationNote', title: 'Activation Note', type: 'text', rows: 3 },
+    { name: 'packagingKicker', title: 'Packaging Section Kicker', type: 'string' },
+    { name: 'packagingTitle', title: 'Packaging Section Title', type: 'string' },
+    { name: 'packagingBody', title: 'Packaging Section Body', type: 'text', rows: 3 },
+    { name: 'packagingMedia', title: 'Packaging Media', type: 'array', of: [{ type: 'packagingMediaEntry' }] },
+    { name: 'packagingDocumentLabel', title: 'Packaging Document Label', type: 'string' },
+    {
+      name: 'packagingDocumentUrl',
+      title: 'Packaging Document URL',
+      description: 'Use a public path like /documents/packaging/packaging-options.pdf or a full URL.',
+      type: 'string',
+    },
     { name: 'contactTextBeforeEmail', title: 'Contact Text Before Email', type: 'text', rows: 2 },
     { name: 'contactTextAfterEmail', title: 'Contact Text After Email', type: 'string' },
   ],
@@ -671,6 +718,7 @@ export const schemaTypes = [
   pageIntro,
   featuredCapabilityEntry,
   productionStepEntry,
+  packagingMediaEntry,
   seoFields,
   homePage,
   siteSettings,

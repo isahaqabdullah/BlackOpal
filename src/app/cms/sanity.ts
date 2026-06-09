@@ -210,6 +210,20 @@ export const siteContentQuery = `{
     activationKicker,
     activationSteps,
     activationNote,
+    packagingKicker,
+    packagingTitle,
+    packagingBody,
+    packagingMedia[] {
+      _key,
+      mediaType,
+      title,
+      caption,
+      imageUrl,
+      videoUrl,
+      mediaAlt
+    },
+    packagingDocumentLabel,
+    packagingDocumentUrl,
     contactTextBeforeEmail,
     contactTextAfterEmail
   },

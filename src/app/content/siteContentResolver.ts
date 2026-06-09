@@ -24,6 +24,7 @@ import {
   type OfficeEntry,
   type PageCopyContent,
   type PageIntroContent,
+  type PackagingMediaEntry,
   type ProductEntry,
   type ProductionStepEntry,
   type ProductionPageContent,
@@ -306,6 +307,53 @@ function productionSteps(value: unknown, fallback: ProductionStepEntry[] = []) {
   return entries.length ? entries : fallback;
 }
 
+function packagingMediaEntries(value: unknown, fallback: PackagingMediaEntry[] = []) {
+  if (!Array.isArray(value)) {
+    return fallback;
+  }
+
+  const entries = value
+    .map((item, index): PackagingMediaEntry | null => {
+      if (!item || typeof item !== 'object') {
+        return null;
+      }
+
+      const entry = item as Partial<PackagingMediaEntry>;
+      const fallbackItem = fallback[index];
+      const mediaType = cleanTextValue(entry.mediaType, fallbackItem?.mediaType) as PackagingMediaEntry['mediaType'];
+      const title = textValue(entry.title, fallbackItem?.title);
+      const caption = textValue(entry.caption, fallbackItem?.caption);
+      const imageUrl = cleanTextValue(entry.imageUrl, fallbackItem?.imageUrl);
+      const videoUrl = cleanTextValue(entry.videoUrl, fallbackItem?.videoUrl);
+      const mediaAlt = textValue(entry.mediaAlt, fallbackItem?.mediaAlt);
+
+      if (!title || !caption || !mediaAlt || !['image', 'video'].includes(mediaType)) {
+        return null;
+      }
+
+      if (mediaType === 'image' && !imageUrl) {
+        return null;
+      }
+
+      if (mediaType === 'video' && !videoUrl) {
+        return null;
+      }
+
+      return {
+        _key: cleanTextValue(entry._key) || undefined,
+        mediaType,
+        title,
+        caption,
+        imageUrl: imageUrl || undefined,
+        videoUrl: videoUrl || undefined,
+        mediaAlt,
+      };
+    })
+    .filter((item): item is PackagingMediaEntry => item !== null);
+
+  return entries.length ? entries : fallback;
+}
+
 function normalizeSeo(value?: Partial<SeoFields>, fallback?: SeoFields): SeoFields | undefined {
   const seo = {
     seoTitle: cleanTextValue(value?.seoTitle, fallback?.seoTitle),
@@ -513,6 +561,12 @@ function normalizeProductionPage(value?: Partial<ProductionPageContent> | null):
     activationKicker: textValue(value?.activationKicker, fallback.activationKicker),
     activationSteps: productionSteps(value?.activationSteps, fallback.activationSteps),
     activationNote: textValue(value?.activationNote, fallback.activationNote),
+    packagingKicker: textValue(value?.packagingKicker, fallback.packagingKicker),
+    packagingTitle: textValue(value?.packagingTitle, fallback.packagingTitle),
+    packagingBody: textValue(value?.packagingBody, fallback.packagingBody),
+    packagingMedia: packagingMediaEntries(value?.packagingMedia, fallback.packagingMedia),
+    packagingDocumentLabel: textValue(value?.packagingDocumentLabel, fallback.packagingDocumentLabel),
+    packagingDocumentUrl: cleanTextValue(value?.packagingDocumentUrl, fallback.packagingDocumentUrl),
     contactTextBeforeEmail: textValue(value?.contactTextBeforeEmail, fallback.contactTextBeforeEmail),
     contactTextAfterEmail: textValue(value?.contactTextAfterEmail, fallback.contactTextAfterEmail),
     contactButtonLabel: fallback.contactButtonLabel,

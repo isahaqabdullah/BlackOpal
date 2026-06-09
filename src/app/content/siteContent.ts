@@ -97,6 +97,12 @@ export type ProductionPageContent = {
   activationKicker: string;
   activationSteps: ProductionStepEntry[];
   activationNote: string;
+  packagingKicker: string;
+  packagingTitle: string;
+  packagingBody: string;
+  packagingMedia: PackagingMediaEntry[];
+  packagingDocumentLabel: string;
+  packagingDocumentUrl: string;
   contactTextBeforeEmail: string;
   contactTextAfterEmail: string;
   contactButtonLabel: string;
@@ -213,6 +219,16 @@ export type ProductionStepEntry = {
   step: string;
   title: string;
   body: string;
+};
+
+export type PackagingMediaEntry = {
+  _key?: string;
+  mediaType: 'image' | 'video';
+  title: string;
+  caption: string;
+  imageUrl?: string;
+  videoUrl?: string;
+  mediaAlt: string;
 };
 
 export type SiteSettingsContent = {
@@ -616,6 +632,41 @@ export const productionPageContent: ProductionPageContent = {
   ],
   activationNote:
     'Activation time, temperature, and post-production sizing allow the pore structure and particle size to be matched to water purification, gas treatment, color removal, granular media, and powdered carbon requirements.',
+  packagingKicker: 'Packaging and dispatch',
+  packagingTitle: 'Prepared for palletized export shipment',
+  packagingBody:
+    'These examples show bagged activated carbon prepared with pallet stacking, strapping, stretch wrapping, batch labels, and warehouse-ready dispatch handling.',
+  packagingMedia: [
+    {
+      _key: 'palletized-40-bag-shipment',
+      mediaType: 'image',
+      title: 'Palletized 40-bag shipment',
+      caption:
+        'Bagged activated carbon labeled, stacked on a wooden pallet, strapped, and stretch wrapped for dispatch.',
+      imageUrl: '/images/packaging/export-palletized-bags.jpeg',
+      mediaAlt: 'Palletized bagged activated carbon wrapped and strapped for export shipment',
+    },
+    {
+      _key: 'warehouse-pallet-staging',
+      mediaType: 'image',
+      title: 'Warehouse pallet staging',
+      caption:
+        'Palletized bags staged in the warehouse with stretch wrapping and strapping before shipment handling.',
+      imageUrl: '/images/packaging/warehouse-palletized-bags.jpeg',
+      mediaAlt: 'Warehouse pallets of packaged activated carbon prepared for shipment',
+    },
+    {
+      _key: 'packaging-handling-video',
+      mediaType: 'video',
+      title: 'Packaging handling video',
+      caption:
+        'Short warehouse video showing palletized packaged carbon prepared for movement and dispatch.',
+      videoUrl: '/videos/packaging/export-packaging-video.mp4',
+      mediaAlt: 'Warehouse video of palletized packaged activated carbon',
+    },
+  ],
+  packagingDocumentLabel: 'View packaging options',
+  packagingDocumentUrl: '/documents/packaging/packaging-options.pdf',
   contactTextBeforeEmail:
     'For questions regarding manufacturing, technical specifications, or current product availability, contact Black Opal at ',
   contactTextAfterEmail: '.',
