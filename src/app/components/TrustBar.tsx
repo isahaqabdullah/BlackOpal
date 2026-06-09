@@ -15,6 +15,9 @@ export function TrustBar() {
       labelPath: 'trustCertificationLabel',
       value: homePage.trustCertificationValue,
       valuePath: 'trustCertificationValue',
+      linkLabel: homePage.trustCertificationLinkLabel,
+      linkLabelPath: 'trustCertificationLinkLabel',
+      linkUrl: homePage.trustCertificationLinkUrl,
     },
     {
       icon: Calendar,
@@ -67,6 +70,18 @@ export function TrustBar() {
                 >
                   {item.value}
                 </span>
+                {'linkLabel' in item && item.linkLabel && item.linkUrl ? (
+                  <a
+                    data-sanity={homePageDataAttribute(item.linkLabelPath)}
+                    href={item.linkUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-2 block w-fit text-[12px] text-[#f2d78b] transition-colors hover:text-[#f7efdb]"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                  >
+                    {item.linkLabel}
+                  </a>
+                ) : null}
               </div>
             </div>
           ))}

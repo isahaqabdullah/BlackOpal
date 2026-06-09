@@ -41,6 +41,8 @@ export type HomePageContent = {
   heroVideoFallback: string;
   trustCertificationLabel: string;
   trustCertificationValue: string;
+  trustCertificationLinkLabel: string;
+  trustCertificationLinkUrl: string;
   trustEstablishedLabel: string;
   trustEstablishedValue: string;
   trustProductionLabel: string;
@@ -425,6 +427,8 @@ export const homePageContent: HomePageContent = {
   heroVideoFallback: 'Your browser does not support the video tag.',
   trustCertificationLabel: 'Certifications',
   trustCertificationValue: 'NSF 42 · NSF 61 · Prop 65',
+  trustCertificationLinkLabel: 'View official NSF listing',
+  trustCertificationLinkUrl: 'https://info.nsf.org/Certified/DWTU/Listings.asp?Company=C0546994&Standard=042',
   trustEstablishedLabel: 'Established',
   trustEstablishedValue: 'Since 2010',
   trustProductionLabel: 'Production',

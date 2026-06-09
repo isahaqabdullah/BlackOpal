@@ -50,6 +50,8 @@ export const siteContentQuery = `{
     heroVideoFallback,
     trustCertificationLabel,
     trustCertificationValue,
+    trustCertificationLinkLabel,
+    trustCertificationLinkUrl,
     trustEstablishedLabel,
     trustEstablishedValue,
     trustProductionLabel,

@@ -269,6 +269,16 @@ export const homePage = {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      name: 'trustCertificationLinkLabel',
+      title: 'Trust Bar Certification Link Label',
+      type: 'string',
+    },
+    {
+      name: 'trustCertificationLinkUrl',
+      title: 'Trust Bar Certification Link URL',
+      type: 'url',
+    },
+    {
       name: 'trustEstablishedLabel',
       title: 'Trust Bar Established Label',
       type: 'string',

@@ -500,6 +500,8 @@ function normalizeHomePage(value?: Partial<HomePageContent> | null): HomePageCon
     heroVideoFallback: textValue(value?.heroVideoFallback, fallback.heroVideoFallback),
     trustCertificationLabel: textValue(value?.trustCertificationLabel, fallback.trustCertificationLabel),
     trustCertificationValue: textValue(value?.trustCertificationValue, fallback.trustCertificationValue),
+    trustCertificationLinkLabel: textValue(value?.trustCertificationLinkLabel, fallback.trustCertificationLinkLabel),
+    trustCertificationLinkUrl: cleanTextValue(value?.trustCertificationLinkUrl, fallback.trustCertificationLinkUrl),
     trustEstablishedLabel: textValue(value?.trustEstablishedLabel, fallback.trustEstablishedLabel),
     trustEstablishedValue: textValue(value?.trustEstablishedValue, fallback.trustEstablishedValue),
     trustProductionLabel: textValue(value?.trustProductionLabel, fallback.trustProductionLabel),
