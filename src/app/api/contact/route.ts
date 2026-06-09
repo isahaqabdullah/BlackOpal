@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { Resend } from 'resend';
+import { Resend, type Attachment } from 'resend';
 import { companyDetails, siteConfig } from '../../config/siteConfig';
 
 type ContactSubmission = {
@@ -24,6 +24,35 @@ const requiredFields: Array<keyof Omit<ContactSubmission, 'phone' | 'website'>> 
   'message',
 ];
 
+const attachmentLimits = {
+  maxFiles: 3,
+  maxFileSize: 5 * 1024 * 1024,
+  maxTotalSize: 15 * 1024 * 1024,
+};
+
+const allowedAttachmentExtensions = new Set([
+  'pdf',
+  'jpg',
+  'jpeg',
+  'png',
+  'webp',
+  'doc',
+  'docx',
+  'xls',
+  'xlsx',
+]);
+
+const allowedAttachmentTypes = new Set([
+  'application/pdf',
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/vnd.ms-excel',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+]);
+
 function textValue(value: unknown, maxLength: number) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
 }
@@ -42,6 +71,75 @@ function readSubmission(value: unknown): ContactSubmission {
     message: textValue(input.message, 3000),
     website: textValue(input.website, 120),
   };
+}
+
+function fileExtension(filename: string) {
+  return filename.split('.').pop()?.toLowerCase() ?? '';
+}
+
+function formatFileSize(bytes: number) {
+  return `${Math.round((bytes / 1024 / 1024) * 10) / 10} MB`;
+}
+
+function sanitizeFilename(filename: string) {
+  return filename.replace(/[/\\]/g, '-').replace(/[^\w.\- ()]/g, '').slice(0, 120) || 'attachment';
+}
+
+function readSubmissionFromFormData(formData: FormData): ContactSubmission {
+  return {
+    firstName: textValue(formData.get('firstName'), 80),
+    lastName: textValue(formData.get('lastName'), 80),
+    email: textValue(formData.get('email'), 160),
+    company: textValue(formData.get('company'), 160),
+    phone: textValue(formData.get('phone'), 80),
+    subject: textValue(formData.get('subject'), 180),
+    application: textValue(formData.get('application'), 160),
+    message: textValue(formData.get('message'), 3000),
+    website: textValue(formData.get('website'), 120),
+  };
+}
+
+function readFilesFromFormData(formData: FormData) {
+  return formData
+    .getAll('attachments')
+    .filter((value): value is File => value instanceof File && value.size > 0);
+}
+
+async function buildAttachments(files: File[]): Promise<Attachment[]> {
+  if (files.length > attachmentLimits.maxFiles) {
+    throw new Error(`Please attach no more than ${attachmentLimits.maxFiles} files.`);
+  }
+
+  const totalSize = files.reduce((total, file) => total + file.size, 0);
+  if (totalSize > attachmentLimits.maxTotalSize) {
+    throw new Error(`Attachments must be under ${formatFileSize(attachmentLimits.maxTotalSize)} total.`);
+  }
+
+  return Promise.all(
+    files.map(async (file) => {
+      const extension = fileExtension(file.name);
+
+      const hasSupportedExtension = allowedAttachmentExtensions.has(extension);
+      const hasUnsupportedSpecificType =
+        file.type && file.type !== 'application/octet-stream' && !allowedAttachmentTypes.has(file.type);
+
+      if (!hasSupportedExtension || hasUnsupportedSpecificType) {
+        throw new Error(`${file.name} is not a supported file type.`);
+      }
+
+      if (file.size > attachmentLimits.maxFileSize) {
+        throw new Error(`${file.name} must be under ${formatFileSize(attachmentLimits.maxFileSize)}.`);
+      }
+
+      const content = Buffer.from(await file.arrayBuffer()).toString('base64');
+
+      return {
+        content,
+        filename: sanitizeFilename(file.name),
+        contentType: file.type,
+      };
+    }),
+  );
 }
 
 function isValidEmail(value: string) {
@@ -117,8 +215,11 @@ function buildHtmlEmail(submission: ContactSubmission) {
 }
 
 export async function POST(request: NextRequest) {
-  const payload = await request.json().catch(() => null);
-  const submission = readSubmission(payload);
+  const contentType = request.headers.get('content-type') ?? '';
+  const isMultipart = contentType.toLowerCase().includes('multipart/form-data');
+  const formData = isMultipart ? await request.formData().catch(() => null) : null;
+  const payload = formData ? null : await request.json().catch(() => null);
+  const submission = formData ? readSubmissionFromFormData(formData) : readSubmission(payload);
 
   if (submission.website) {
     return NextResponse.json({ ok: true });
@@ -131,6 +232,19 @@ export async function POST(request: NextRequest) {
       { ok: false, error: 'Please complete the required fields with a valid email address.' },
       { status: 400 },
     );
+  }
+
+  let attachments: Attachment[] = [];
+
+  if (formData) {
+    try {
+      attachments = await buildAttachments(readFilesFromFormData(formData));
+    } catch (error) {
+      return NextResponse.json(
+        { ok: false, error: error instanceof Error ? error.message : 'One or more attachments could not be accepted.' },
+        { status: 400 },
+      );
+    }
   }
 
   const resendApiKey = process.env.RESEND_API_KEY;
@@ -153,6 +267,7 @@ export async function POST(request: NextRequest) {
     subject: `[${siteConfig.siteName}] ${submission.subject}`,
     text: buildTextEmail(submission),
     html: buildHtmlEmail(submission),
+    attachments: attachments.length ? attachments : undefined,
     headers: {
       'X-Entity-Ref-ID': `contact-${Date.now()}`,
     },

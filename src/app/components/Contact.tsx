@@ -6,6 +6,36 @@ import { useSiteContent } from '../content/SiteContentProvider';
 import { formatPhoneNumbers } from '../utils/phone';
 import { PageIntro } from './PageIntro';
 
+const attachmentLimits = {
+  maxFiles: 3,
+  maxFileSize: 5 * 1024 * 1024,
+  maxTotalSize: 15 * 1024 * 1024,
+};
+
+const acceptedAttachmentTypes = [
+  '.pdf',
+  '.jpg',
+  '.jpeg',
+  '.png',
+  '.webp',
+  '.doc',
+  '.docx',
+  '.xls',
+  '.xlsx',
+].join(',');
+
+const acceptedAttachmentExtensions = new Set(
+  acceptedAttachmentTypes.split(',').map((extension) => extension.slice(1)),
+);
+
+function fileExtension(filename: string) {
+  return filename.split('.').pop()?.toLowerCase() ?? '';
+}
+
+function formatFileSize(bytes: number) {
+  return `${Math.round((bytes / 1024 / 1024) * 10) / 10} MB`;
+}
+
 export function ContactPage() {
   const { contactPage, siteSettings } = useSiteContent();
   const [submitted, setSubmitted] = useState(false);
@@ -16,18 +46,43 @@ export function ContactPage() {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
+    const attachments = formData
+      .getAll('attachments')
+      .filter((value): value is File => value instanceof File && value.size > 0);
 
     setIsSubmitting(true);
     setSubmissionError('');
 
+    if (attachments.length > attachmentLimits.maxFiles) {
+      setSubmissionError(`Please attach no more than ${attachmentLimits.maxFiles} files.`);
+      setIsSubmitting(false);
+      return;
+    }
+
+    const totalAttachmentSize = attachments.reduce((total, file) => total + file.size, 0);
+    const invalidAttachment = attachments.find((file) => {
+      const extension = fileExtension(file.name);
+      return !acceptedAttachmentExtensions.has(extension) || file.size > attachmentLimits.maxFileSize;
+    });
+
+    if (invalidAttachment) {
+      setSubmissionError(
+        `${invalidAttachment.name} is not supported or is larger than ${formatFileSize(attachmentLimits.maxFileSize)}.`,
+      );
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (totalAttachmentSize > attachmentLimits.maxTotalSize) {
+      setSubmissionError(`Attachments must be under ${formatFileSize(attachmentLimits.maxTotalSize)} total.`);
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
+        body: formData,
       });
       const result = (await response.json().catch(() => null)) as { error?: string } | null;
 
@@ -286,6 +341,27 @@ export function ContactPage() {
                       className={`${inputClass} resize-none`}
                       placeholder={contactPage.messagePlaceholder}
                     />
+                  </div>
+
+                  <div>
+                    <label
+                      className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                    >
+                      Attach photos or documents
+                    </label>
+                    <input
+                      type="file"
+                      name="attachments"
+                      multiple
+                      accept={acceptedAttachmentTypes}
+                      className={`${inputClass} file:mr-4 file:rounded-full file:border-0 file:bg-[#c9a24d]/15 file:px-4 file:py-2 file:text-[12px] file:font-semibold file:text-[#f2d78b] hover:file:bg-[#c9a24d]/22`}
+                    />
+                    <p
+                      className="mt-2 text-[12px] leading-[1.6] text-[#8f835f]"
+                      style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                    >
+                      Up to 3 files, 5 MB each. PDF, images, Word, and Excel files only.
+                    </p>
                   </div>
 
                   {submissionError ? (
