@@ -684,7 +684,7 @@ export const siteMetrics: SiteMetric[] = [
 export const siteSettingsContent: SiteSettingsContent = {
   siteId: siteConfig.siteId,
   navigation: {
-    logoImage: '/images/black-opal-nav-lockup.png',
+    logoImage: '/images/black-opal-nav-lockup.png?v=20260610-indocarb-reference-red',
     logoAlt: 'Black Opal Carbons logo',
     links: [
       { label: 'Home', to: '/' },
