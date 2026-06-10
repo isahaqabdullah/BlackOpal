@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getPublishedSeoContent } from './cms/siteContent';
+import { resourceDetailPagePaths } from './content/resourcePages';
 import { supplierLandingPagePaths } from './content/supplierLandingPages';
 import { absoluteUrl } from './seo';
 
@@ -14,6 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/applications',
     ...content.applications.map((application) => `/applications/${application.slug}`),
     '/production',
+    '/resources',
+    ...resourceDetailPagePaths,
     '/about',
     '/newsroom',
     ...content.newsroomItems.filter((item) => item.type === 'press-release').map((item) => `/newsroom/${item.slug}`),

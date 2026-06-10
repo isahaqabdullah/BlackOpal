@@ -692,6 +692,7 @@ export const siteSettingsContent: SiteSettingsContent = {
       { label: 'Applications', to: '/applications' },
       { label: 'Production', to: '/production' },
       { label: 'About', to: '/about' },
+      { label: 'Resources', to: '/resources' },
       { label: 'Newsroom', to: '/newsroom' },
       { label: 'Contact', to: '/contact' },
     ],
@@ -709,6 +710,7 @@ export const siteSettingsContent: SiteSettingsContent = {
       { label: 'Home', to: '/' },
       { label: 'About', to: '/about' },
       { label: 'Production', to: '/production' },
+      { label: 'Resources', to: '/resources' },
       { label: 'Newsroom', to: '/newsroom' },
       { label: 'Contact', to: '/contact' },
     ],
@@ -719,6 +721,7 @@ export const siteSettingsContent: SiteSettingsContent = {
     copyrightText: `© {year} ${siteConfig.siteName}. All rights reserved.`,
     bottomLinks: [
       { label: 'Home', to: '/' },
+      { label: 'Resources', to: '/resources' },
       { label: 'Contact', to: '/contact' },
     ],
   },

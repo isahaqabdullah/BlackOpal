@@ -8,7 +8,13 @@ import { useSiteContent } from '../content/SiteContentProvider';
 
 export function Navigation() {
   const { siteSettings } = useSiteContent();
-  const links = siteSettings.navigation.links;
+  const links = siteSettings.navigation.links.some((link) => link.to === '/resources')
+    ? siteSettings.navigation.links
+    : [
+        ...siteSettings.navigation.links.filter((link) => link.to !== '/contact'),
+        { label: 'Resources', to: '/resources' },
+        ...siteSettings.navigation.links.filter((link) => link.to === '/contact'),
+      ];
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const isActive = (to: string) =>

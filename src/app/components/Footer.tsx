@@ -15,10 +15,17 @@ export function Footer() {
         ...siteSettings.footer.companyLinks,
         { label: 'Activated carbon suppliers', to: '/activated-carbon-suppliers' },
       ];
+  const companyLinksWithResources = companyLinks.some((link) => link.to === '/resources')
+    ? companyLinks
+    : [
+        ...companyLinks.filter((link) => link.to !== '/contact'),
+        { label: 'Resources', to: '/resources' },
+        ...companyLinks.filter((link) => link.to === '/contact'),
+      ];
   const columns = [
     {
       title: siteSettings.footer.companyColumnTitle,
-      links: companyLinks,
+      links: companyLinksWithResources,
     },
     {
       title: siteSettings.footer.productColumnTitle,

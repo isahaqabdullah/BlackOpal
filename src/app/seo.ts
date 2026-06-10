@@ -12,6 +12,12 @@ import {
   siteSettingsContent,
 } from './content/siteContent';
 import {
+  resourceDetailPageMap,
+  resourceHubCards,
+  resourceHub,
+  type ResourceDetailPage,
+} from './content/resourcePages';
+import {
   supplierLandingPageMap,
   supplierLandingPagePath,
   supplierLandingPages,
@@ -44,6 +50,7 @@ type SeoEntity =
   | { type: 'product'; item: ProductEntry }
   | { type: 'application'; item: ApplicationEntry }
   | { type: 'article'; item: NewsroomItem }
+  | { type: 'resource'; item: ResourceDetailPage }
   | { type: 'supplierLanding'; item: SupplierLandingPage };
 
 export type SeoContent = {
@@ -186,6 +193,15 @@ function staticPageMetadata(path: string, content: SeoContent): StaticPageMetada
     };
   }
 
+  if (path === '/resources') {
+    return {
+      title: pageTitle(resourceHub.seoTitle),
+      description: resourceHub.seoDescription,
+      imageAlt: resourceHub.title,
+      breadcrumbLabel: resourceHub.label,
+    };
+  }
+
   if (path === '/about') {
     const page = content.aboutPage;
     return {
@@ -266,6 +282,27 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
           { name: page.breadcrumbLabel, path },
         ],
         entity: { type: 'supplierLanding', item: page },
+      };
+    }
+  }
+
+  const resourceMatch = path.match(/^\/resources\/([^/]+)$/);
+  if (resourceMatch) {
+    const page = resourceDetailPageMap[resourceMatch[1]];
+
+    if (page) {
+      return {
+        title: pageTitle(page.seoTitle),
+        description: page.seoDescription,
+        path,
+        image: absoluteUrl(DEFAULT_IMAGE_PATH),
+        imageAlt: page.title,
+        breadcrumbs: [
+          { name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath },
+          { name: resourceHub.label, path: resourceHub.path },
+          { name: page.title, path },
+        ],
+        entity: { type: 'resource', item: page },
       };
     }
   }
@@ -448,6 +485,22 @@ function entitySchema(metadata: SeoMetadata, content: SeoContent = fallbackSeoCo
     };
   }
 
+  if (metadata.entity?.type === 'resource') {
+    const resource = metadata.entity.item;
+
+    return {
+      '@type': 'TechArticle',
+      headline: resource.title,
+      description: metadata.description,
+      url,
+      mainEntityOfPage: url,
+      publisher: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      about: 'Activated carbon technical documentation and grade matching',
+    };
+  }
+
   if (metadata.entity?.type === 'supplierLanding') {
     const page = metadata.entity.item;
     const offeredProducts = page.productSlugs
@@ -575,6 +628,19 @@ export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbac
         position: index + 1,
         name: page.title,
         url: absoluteUrl(supplierLandingPagePath(page.slug)),
+      })),
+    });
+  }
+
+  if (metadata.path === '/resources') {
+    schemas.push({
+      '@type': 'ItemList',
+      name: resourceHub.title,
+      itemListElement: resourceHubCards.map((card, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: card.title,
+        url: absoluteUrl(card.href),
       })),
     });
   }
