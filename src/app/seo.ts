@@ -394,6 +394,16 @@ function breadcrumbSchema(breadcrumbs: Breadcrumb[]) {
   };
 }
 
+function productFamilyListItem(product: ProductEntry, index: number) {
+  return {
+    '@type': 'ListItem',
+    position: index + 1,
+    name: product.name,
+    description: product.summary,
+    url: absoluteUrl(`/products/${product.slug}`),
+  };
+}
+
 function organizationSchema(content: SeoContent) {
   const websiteContact = content.siteSettings.websiteContact;
   const [streetAddress = '', addressLine = ''] = websiteContact.address;
@@ -442,14 +452,15 @@ function entitySchema(metadata: SeoMetadata, content: SeoContent = fallbackSeoCo
     const product = metadata.entity.item;
 
     return {
-      '@type': 'Product',
+      '@type': 'DefinedTerm',
       name: product.name,
       description: product.summary,
       image: product.image,
       url,
-      category: 'Activated Carbon',
-      brand: {
-        '@id': `${siteUrl}/#organization`,
+      termCode: product.slug,
+      inDefinedTermSet: {
+        '@type': 'DefinedTermSet',
+        name: 'Activated carbon product families',
       },
     };
   }
@@ -522,22 +533,10 @@ function entitySchema(metadata: SeoMetadata, content: SeoContent = fallbackSeoCo
         '@type': 'BusinessAudience',
         audienceType: 'Industrial distributors, treatment companies, EPC teams, mining operations, and process industries',
       },
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
+      subjectOf: {
+        '@type': 'ItemList',
         name: `${page.label} product match`,
-        itemListElement: offeredProducts.map((product) => ({
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Product',
-            name: product.name,
-            description: product.summary,
-            category: 'Activated Carbon',
-            brand: {
-              '@id': `${siteUrl}/#organization`,
-            },
-            url: absoluteUrl(`/products/${product.slug}`),
-          },
-        })),
+        itemListElement: offeredProducts.map(productFamilyListItem),
       },
     };
   }
@@ -601,22 +600,10 @@ export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbac
         '@id': `${siteUrl}/#organization`,
       },
       areaServed: siteConfig.serviceArea,
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
+      subjectOf: {
+        '@type': 'ItemList',
         name: 'Activated carbon product families',
-        itemListElement: content.products.map((product) => ({
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Product',
-            name: product.name,
-            description: product.summary,
-            category: 'Activated Carbon',
-            brand: {
-              '@id': `${siteUrl}/#organization`,
-            },
-            url: absoluteUrl(`/products/${product.slug}`),
-          },
-        })),
+        itemListElement: content.products.map(productFamilyListItem),
       },
     });
 
