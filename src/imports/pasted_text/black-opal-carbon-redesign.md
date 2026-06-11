@@ -46,7 +46,7 @@ NSF 42 / NSF 61
 Prop 65 Compliant
 35000 metric tons capacity
 2 production centers
-Black Opal Group Head Quarters + office network
+Black Opal Group Headquarters + office network
 2. Trust bar
 Display:
 Certifications
@@ -87,7 +87,7 @@ Short story:
 established in 2010
 joint venture roots
 manufacturing facilities in India
-Black Opal Group Head Quarters in Pittsburgh
+Black Opal Group Headquarters in Pittsburgh
 reliability, consistency, service
 8. Client / partner logos
 Cleaner monochrome logo grid with better spacing
@@ -168,7 +168,7 @@ Main products: granular, powder, impregnated, catalytic
 Main applications: water treatment, gold recovery, air & gas, oil & gas, catalytic/chloramine removal
 Trust points: NSF 42, NSF 61, Prop 65 compliant
 Scale points: established 2010, 2 production centers, 35000 metric tons
-Black Opal Group Head Quarters in Pittsburgh, with regional office support
+Black Opal Group Headquarters in Pittsburgh, with regional office support
 Primary CTA should be quote/inquiry driven
 I can turn this next into a full page-by-page wireframe outline or actual rewritten website copy for the new design.
 

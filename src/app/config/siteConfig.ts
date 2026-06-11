@@ -20,7 +20,7 @@ type Headquarters = {
 
 const DEFAULT_SITE_URL = 'https://www.blackopalcarbonsme.com';
 const DEFAULT_SITE_NAME = 'Black Opal Private Limited';
-const GROUP_HEADQUARTERS_LABEL = 'Black Opal Group Head Quarters';
+const GROUP_HEADQUARTERS_LABEL = 'Black Opal Group Headquarters';
 const DEFAULT_DESCRIPTION =
   'Black Opal Private Limited manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas purification, and industrial applications across global export markets.';
 const runtimeEnv: Record<string, string | undefined> = {
@@ -63,8 +63,6 @@ const runtimeEnv: Record<string, string | undefined> = {
   COMPANY_BODY_PRIMARY: process.env.NEXT_PUBLIC_COMPANY_BODY_PRIMARY,
   COMPANY_BODY_SECONDARY:
     process.env.NEXT_PUBLIC_COMPANY_BODY_SECONDARY,
-  CONTACT_TITLE: process.env.NEXT_PUBLIC_CONTACT_TITLE,
-  CONTACT_DESCRIPTION: process.env.NEXT_PUBLIC_CONTACT_DESCRIPTION,
   ADDITIONAL_OFFICES_TITLE:
     process.env.NEXT_PUBLIC_ADDITIONAL_OFFICES_TITLE,
   LOGISTICS_SUMMARY: process.env.NEXT_PUBLIC_LOGISTICS_SUMMARY,
@@ -81,7 +79,19 @@ function envValue(name: string, fallback: string) {
 }
 
 function normalizeHeadquartersCopy(value: string) {
-  return value.replace(/\b(?:the\s+)?U\.S\. headquarters\b/gi, GROUP_HEADQUARTERS_LABEL);
+  return value
+    .replace(/\bHead\s+Quarters\b/gi, 'Headquarters')
+    .replace(/\b(?:the\s+)?U\.S\. headquarters\b/gi, GROUP_HEADQUARTERS_LABEL);
+}
+
+function normalizeOfficeCopy(office: Office): Office {
+  return {
+    ...office,
+    label: normalizeHeadquartersCopy(office.label),
+    name: normalizeHeadquartersCopy(office.name),
+    address: office.address.map(normalizeHeadquartersCopy),
+    note: office.note ? normalizeHeadquartersCopy(office.note) : office.note,
+  };
 }
 
 function officeKind(office: Office) {
@@ -227,7 +237,9 @@ const defaultAdditionalOffices: Office[] = [
   },
   groupHeadquartersOffice,
 ];
-const additionalOffices = parseOffices(runtimeEnv.ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices;
+const additionalOffices = (parseOffices(runtimeEnv.ADDITIONAL_OFFICES_JSON) ?? defaultAdditionalOffices).map(
+  normalizeOfficeCopy,
+);
 const defaultLogisticsSummary =
   'Company-owned manufacturing, 35000 metric tons annual capacity, and final quality assurance before shipment support consistent coconut activated carbon supply.';
 const headquartersLabel = normalizeHeadquartersCopy(envValue('HEADQUARTERS_LABEL', GROUP_HEADQUARTERS_LABEL));
@@ -238,7 +250,7 @@ const marketBaseTitle = envValue('MARKET_BASE_TITLE', 'Manufacturing base and of
 const marketBaseDescription = normalizeHeadquartersCopy(
   envValue(
     'MARKET_BASE_DESCRIPTION',
-    "Black Opal's state-of-the-art factory in India anchors 35000 metric tons of annual coconut activated carbon capacity. Black Opal Group Head Quarters, India office, and Middle East office keep customers connected to the team for enquiries, technical support, and service.",
+    "Black Opal's state-of-the-art factory in India anchors 35000 metric tons of annual coconut activated carbon capacity. Black Opal Group Headquarters, India office, and Middle East office keep customers connected to the team for enquiries, technical support, and service.",
   ),
 );
 const configuredContact: Office = {
@@ -296,11 +308,9 @@ export const siteConfig = {
     'COMPANY_BODY_SECONDARY',
     'Grades can be customised by mesh size, adsorption level, pH adjustment, washing, and impregnation requirements instead of forcing every application into the same carbon.',
   ),
-  contactTitle: envValue('CONTACT_TITLE', 'Availability and technical recommendations'),
-  contactDescription: envValue(
-    'CONTACT_DESCRIPTION',
-    `Grade matching, availability, and logistics coordination start with the application conditions and expected volume.`,
-  ),
+  contactTitle: 'Enquiry and technical recommendations',
+  contactDescription:
+    'Grade matching, enquiry support, and logistics coordination start with the application conditions and expected volume.',
   additionalOfficesTitle: envValue('ADDITIONAL_OFFICES_TITLE', 'Office network'),
   regionLabel,
   serviceArea,

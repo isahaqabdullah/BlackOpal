@@ -412,7 +412,7 @@ export type ContactPageContent = {
 
 export const homePageContent: HomePageContent = {
   siteId: siteConfig.siteId,
-  heroLogoImage: '/images/black-opal-hero-logo-user-clean.png',
+  heroLogoImage: '/images/black-opal-hero-logo-user-clean.png?v=20260611-purity-bigger-transparent',
   heroLogoAlt: siteConfig.siteName,
   heroKicker: siteConfig.heroKicker,
   heroTitle: siteConfig.heroTitle,
@@ -672,7 +672,7 @@ export const productionPageContent: ProductionPageContent = {
   packagingDocumentLabel: 'View packaging options',
   packagingDocumentUrl: '/documents/packaging/packaging-options.pdf',
   contactTextBeforeEmail:
-    'For questions regarding manufacturing, technical specifications, or current product availability, contact Black Opal at ',
+    'For questions regarding manufacturing, technical specifications, or product enquiries, contact Black Opal at ',
   contactTextAfterEmail: '.',
   contactButtonLabel: 'Email production team',
 };
@@ -684,7 +684,7 @@ export const siteMetrics: SiteMetric[] = [
 export const siteSettingsContent: SiteSettingsContent = {
   siteId: siteConfig.siteId,
   navigation: {
-    logoImage: '/images/black-opal-nav-lockup.png?v=20260610-indocarb-reference-red',
+    logoImage: '/images/black-opal-nav-lockup.png?v=20260611-indocarb-ac-llc',
     logoAlt: 'Black Opal Carbons logo',
     links: [
       { label: 'Home', to: '/' },
@@ -766,7 +766,7 @@ export const pageCopyContent: PageCopyContent = {
     commonUsesLabel: 'Common uses',
     ctaTitle: 'Recommendations shaped by process conditions',
     ctaDescription:
-      'Application, volume, and performance targets shape the grade match and availability recommendation.',
+      'Application, volume, and performance targets shape the grade match and technical recommendation.',
     allProductsCtaPath: '/products',
     allProductsCtaLabel: 'All products',
     quoteCtaPath: '/contact',
@@ -802,7 +802,7 @@ export const pageCopyContent: PageCopyContent = {
     recommendedProductsLabel: 'Recommended products',
     recommendedProductsTitle: 'Product families commonly tied to this application',
     recommendedProductsDescription:
-      'These product families form the usual starting point for grade matching, performance review, and availability planning.',
+      'These product families form the usual starting point for grade matching, performance review, and enquiry planning.',
     discussCtaPath: '/contact',
     discussCtaLabel: 'Discuss this application',
   },
@@ -873,7 +873,7 @@ export const aboutPageContent: AboutPageContent = {
   seo: {
     seoTitle: `About ${siteConfig.siteName} | Black Opal Carbons`,
     seoDescription:
-      `${siteConfig.siteName}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} supplies ${siteConfig.originDescription} through company-owned manufacturing and an office network covering India, the Middle East, and Black Opal Group Head Quarters.`,
+      `${siteConfig.siteName}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} supplies ${siteConfig.originDescription} through company-owned manufacturing and an office network covering India, the Middle East, and Black Opal Group Headquarters.`,
     noIndex: false,
   },
   intro: {
@@ -927,9 +927,9 @@ export const aboutPageContent: AboutPageContent = {
 export const contactPageContent: ContactPageContent = {
   siteId: siteConfig.siteId,
   seo: {
-    seoTitle: 'Availability and Technical Recommendations | Black Opal Carbons',
+    seoTitle: 'Enquiry and Technical Recommendations | Black Opal Carbons',
     seoDescription:
-      `${siteConfig.siteName} product availability and technical recommendations connect application requirements with ${siteConfig.originDescription}.`,
+      `${siteConfig.siteName} product enquiries and technical recommendations connect application requirements with ${siteConfig.originDescription}.`,
     noIndex: false,
   },
   intro: {
