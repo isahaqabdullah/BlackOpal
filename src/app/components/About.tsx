@@ -8,6 +8,7 @@ import {
 } from '../cms/visualEditingAttributes';
 import type { FeatureIconName } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
+import { getSiteNavigation } from './navigation/siteNavigation';
 import { PageIntro } from './PageIntro';
 
 const icons: Record<FeatureIconName, typeof Factory> = {
@@ -27,6 +28,7 @@ export function AboutPage() {
   const pressRelease = newsroomMap['name-change-press-release'];
   const aboutPageDataAttribute = useAboutPageDataAttribute(aboutPage._id);
   const sanityDataAttribute = useSanityDataAttribute();
+  const navigation = getSiteNavigation(siteSettings);
 
   return (
     <div>
@@ -35,13 +37,21 @@ export function AboutPage() {
         title={aboutPage.intro.title}
         description={aboutPage.intro.description}
         titleVisual={
-          <span className="premium-brand-logo-frame premium-page-title-logo-frame" aria-hidden="true">
+          <span
+            className={`premium-brand-logo-frame premium-page-title-logo-frame${
+              navigation.logoSubtitle ? ' premium-page-title-logo-frame-stacked' : ''
+            }`}
+            aria-hidden="true"
+          >
             <img
               data-sanity={aboutPageDataAttribute('titleLogoImage')}
-              src={aboutPage.titleLogoImage}
+              src={navigation.logoImage}
               alt=""
               className="premium-brand-logo premium-page-title-logo"
             />
+            {navigation.logoSubtitle ? (
+              <span className="premium-page-title-logo-subtitle">{navigation.logoSubtitle}</span>
+            ) : null}
           </span>
         }
         breadcrumbs={[{ label: aboutPage.intro.breadcrumbLabel, dataSanity: aboutPageDataAttribute('intro.breadcrumbLabel') }]}

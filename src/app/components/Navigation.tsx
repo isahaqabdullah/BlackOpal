@@ -5,15 +5,17 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
+import { getSiteNavigation } from './navigation/siteNavigation';
 
 export function Navigation() {
   const { siteSettings } = useSiteContent();
-  const links = siteSettings.navigation.links.some((link) => link.to === '/resources')
-    ? siteSettings.navigation.links
+  const navigation = getSiteNavigation(siteSettings);
+  const links = navigation.links.some((link) => link.to === '/resources')
+    ? navigation.links
     : [
-        ...siteSettings.navigation.links.filter((link) => link.to !== '/contact'),
+        ...navigation.links.filter((link) => link.to !== '/contact'),
         { label: 'Resources', to: '/resources' },
-        ...siteSettings.navigation.links.filter((link) => link.to === '/contact'),
+        ...navigation.links.filter((link) => link.to === '/contact'),
       ];
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -25,12 +27,15 @@ export function Navigation() {
   return (
     <nav className="sticky top-0 z-50 border-b border-[#c9a24d]/15 bg-[#050505]/85 backdrop-blur-xl">
       <div className="premium-shell h-20 flex items-center justify-between">
-        <Link href="/" className="premium-nav-brand" aria-label={siteSettings.navigation.logoAlt}>
+        <Link href="/" className="premium-nav-brand" aria-label={navigation.logoAlt}>
           <img
-            src={siteSettings.navigation.logoImage}
+            src={navigation.logoImage}
             alt=""
             className="premium-nav-logo object-contain shrink-0"
           />
+          {navigation.logoSubtitle ? (
+            <span className="premium-nav-logo-subtitle">{navigation.logoSubtitle}</span>
+          ) : null}
         </Link>
 
         {/* Desktop */}
@@ -49,16 +54,16 @@ export function Navigation() {
             </Link>
           ))}
           <Link
-            href={siteSettings.navigation.ctaPath}
+            href={navigation.ctaPath}
             className="premium-primary-btn text-[13px] px-5 py-2.5 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
-            {siteSettings.navigation.ctaLabel}
+            {navigation.ctaLabel}
           </Link>
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden text-[#f2d78b]" onClick={() => setOpen(!open)} aria-label={siteSettings.navigation.mobileMenuLabel}>
+        <button className="md:hidden text-[#f2d78b]" onClick={() => setOpen(!open)} aria-label={navigation.mobileMenuLabel}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
@@ -81,12 +86,12 @@ export function Navigation() {
             </Link>
           ))}
           <Link
-            href={siteSettings.navigation.ctaPath}
+            href={navigation.ctaPath}
             onClick={() => setOpen(false)}
             className="premium-primary-btn block text-[13px] text-center px-5 py-2.5 rounded-full mt-4"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
-            {siteSettings.navigation.ctaLabel}
+            {navigation.ctaLabel}
           </Link>
         </div>
       )}
