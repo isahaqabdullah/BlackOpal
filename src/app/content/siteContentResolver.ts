@@ -396,13 +396,31 @@ function contentSections(value: unknown, fallback: ContentSection[] = []) {
   return sections.length ? sections : fallback;
 }
 
+const legacyProductImageMarkers: Record<string, string[]> = {
+  powder: ['photo-1581092160607-ee22621dd758', 'photo-1534259434801-e3d2427ae102'],
+  impregnated: ['photo-1611284446314-60a58ac0deb9'],
+  catalytic: ['photo-1774789599304-cca1e1ffbb95'],
+};
+
+function normalizeProductImage(slug: string, image: string) {
+  const replacement = fallbackProductMap[slug]?.image;
+  const legacyMarkers = legacyProductImageMarkers[slug] ?? [];
+
+  if (replacement && legacyMarkers.some((marker) => image.includes(marker))) {
+    return replacement;
+  }
+
+  return image;
+}
+
 function normalizeProduct(value: Partial<ProductEntry>, fallback?: ProductEntry) {
   const slug = cleanTextValue(value.slug, fallback?.slug);
   const name = textValue(value.name, fallback?.name);
   const shortName = textValue(value.shortName, fallback?.shortName || name);
   const summary = textValue(value.summary, fallback?.summary);
   const intro = textValue(value.intro, fallback?.intro);
-  const image = cleanTextValue(value.image, fallback?.image);
+  const resolvedImage = cleanTextValue(value.image, fallback?.image);
+  const image = slug && resolvedImage ? normalizeProductImage(slug, resolvedImage) : resolvedImage;
 
   if (!slug || !name || !summary || !intro || !image) {
     return null;

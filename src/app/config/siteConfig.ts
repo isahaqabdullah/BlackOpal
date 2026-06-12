@@ -310,7 +310,7 @@ export const siteConfig = {
   ),
   contactTitle: 'Enquiry and technical recommendations',
   contactDescription:
-    'Grade matching, enquiry support, and logistics coordination start with the application conditions and expected volume.',
+    'Partner with our specialists for expert guidance on product specifications and technical information. We provide carbon management solutions and industry expertise to support informed decisions and achieve your business goals.',
   additionalOfficesTitle: envValue('ADDITIONAL_OFFICES_TITLE', 'Office network'),
   regionLabel,
   serviceArea,

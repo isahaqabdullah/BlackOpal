@@ -1056,7 +1056,7 @@ export const products: ProductEntry[] = [
       },
     ],
     image:
-      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      '/images/products/powder-activated-carbon.png',
   },
   {
     slug: 'impregnated',
@@ -1101,7 +1101,7 @@ export const products: ProductEntry[] = [
       },
     ],
     image:
-      'https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1620203853151-496c7228306c?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5kdXN0cmlhbCUyMHBpcGVzfGVufDB8fDB8fHww&ixlib=rb-4.1.0&q=80&w=1600',
   },
   {
     slug: 'catalytic',
@@ -1146,7 +1146,7 @@ export const products: ProductEntry[] = [
       },
     ],
     image:
-      'https://images.unsplash.com/photo-1774789599304-cca1e1ffbb95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXRlciUyMHRyZWF0bWVudCUyMHBsYW50JTIwaW5kdXN0cmlhbCUyMGZhY2lsaXR5fGVufDF8fHx8MTc3NTQ3NTQ4Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      'https://images.unsplash.com/photo-1674578745937-c73f81bdda07?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHdhdGVyJTIwdHJlYXRtZW50fGVufDB8fDB8fHww&ixlib=rb-4.1.0&q=80&w=1600',
   },
 ];
 

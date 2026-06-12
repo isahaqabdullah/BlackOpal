@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, X } from 'lucide-react';
 import { useState } from 'react';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { formatPhoneNumbers } from '../utils/phone';
@@ -183,27 +183,11 @@ export function ContactPage() {
             </div>
 
             <div>
-              {submitted ? (
-                <div className="premium-panel p-8 text-center">
-                  <h3
-                    className="premium-heading text-[18px] mb-2"
-                    style={{ fontFamily: "'DM Serif Display', serif" }}
-                  >
-                    {contactPage.successTitle}
-                  </h3>
-                  <p
-                    className="premium-copy text-[14px]"
-                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                  >
-                    {contactPage.successMessage}
-                  </p>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="premium-panel space-y-5 p-6 md:p-7"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
-                >
+              <form
+                onSubmit={handleSubmit}
+                className="premium-panel space-y-5 p-6 md:p-7"
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+              >
                   <input
                     type="text"
                     name="website"
@@ -382,12 +366,54 @@ export function ContactPage() {
                   >
                     {isSubmitting ? 'Sending...' : contactPage.submitLabel}
                   </button>
-                </form>
-              )}
+              </form>
             </div>
           </div>
         </div>
       </section>
+
+      {submitted ? (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-[#050505]/75 px-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="contact-success-title"
+          aria-describedby="contact-success-message"
+        >
+          <div className="premium-panel relative w-full max-w-md p-7 text-center shadow-2xl">
+            <button
+              type="button"
+              onClick={() => setSubmitted(false)}
+              className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#c9a24d]/20 text-[#b8ab8b] transition-colors hover:border-[#d4ae5b]/45 hover:text-[#f2d78b]"
+              aria-label="Close confirmation"
+            >
+              <X size={16} aria-hidden="true" />
+            </button>
+            <h3
+              id="contact-success-title"
+              className="premium-heading mb-3 pr-8 text-[22px]"
+              style={{ fontFamily: "'DM Serif Display', serif" }}
+            >
+              {contactPage.successTitle}
+            </h3>
+            <p
+              id="contact-success-message"
+              className="premium-copy text-[14px] leading-[1.7]"
+              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+            >
+              {contactPage.successMessage}
+            </p>
+            <button
+              type="button"
+              onClick={() => setSubmitted(false)}
+              className="premium-primary-btn mt-6 rounded-full px-8 py-3 text-[13px]"
+              style={{ fontWeight: 500 }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
