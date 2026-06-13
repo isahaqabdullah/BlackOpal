@@ -11,7 +11,7 @@ export function Hero() {
   const heroLogoImage = isIndiaSite ? '/images/black-opal-india-logo-original.png' : homePage.heroLogoImage;
   const heroLogoAlt = isIndiaSite ? 'Black Opal logo' : homePage.heroLogoAlt;
   const heroLogoCaption = isIndiaSite ? 'WHERE PURITY BEGINS' : '';
-  const heroTitle = isIndiaSite ? 'Premium Coconut Shell' : homePage.heroTitle;
+  const heroTitle = isIndiaSite ? 'Premium Coconut Shell Activated Carbon' : homePage.heroTitle;
   const videoBrandLogoImage = isIndiaSite ? '/images/black-opal-india-logo-original.png' : '/images/black-opal-nav-logo-transparent.png';
   const videoBrandLogoClassName = `premium-video-brand-logo${isIndiaSite ? ' premium-video-brand-logo-india' : ''}`;
   const homePageDocumentId = homePage._id;
