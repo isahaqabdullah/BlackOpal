@@ -220,6 +220,13 @@
     margin-inline: auto;
   }
 
+  .premium-hero-shell {
+    position: relative;
+    z-index: 10;
+    padding-top: clamp(2.25rem, 6vh, 5rem);
+    padding-bottom: clamp(1.25rem, 3vh, 2rem);
+  }
+
   .premium-split-grid {
     display: grid;
     align-items: center;
@@ -229,6 +236,36 @@
 
   .premium-hero-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .premium-hero-heading {
+    max-width: 36rem;
+    margin-bottom: 1.5rem;
+    font-size: clamp(2.25rem, 4.6vw, 4.35rem);
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+
+  .premium-hero-heading-india {
+    max-width: min(100%, 48rem);
+    font-size: clamp(2.15rem, 4.35vw, 4.1rem);
+  }
+
+  .premium-hero-heading-line {
+    display: block;
+  }
+
+  .premium-hero-heading-line-nowrap {
+    white-space: nowrap;
+  }
+
+  .premium-hero-media {
+    align-self: start;
+    max-width: min(100%, 58rem);
+  }
+
+  .premium-hero-video {
+    aspect-ratio: 16 / 9;
   }
 
   .premium-auto-grid {
@@ -263,6 +300,32 @@
     .premium-hero-grid {
       grid-template-columns: minmax(22rem, 0.82fr) minmax(32rem, 1.18fr);
       gap: clamp(2.25rem, 3.5vw, 4.5rem);
+    }
+  }
+
+  @media (min-width: 1024px) and (max-height: 760px) {
+    .premium-hero-grid {
+      grid-template-columns: minmax(36rem, 1fr) minmax(28rem, 0.8fr);
+      gap: clamp(1.75rem, 3vw, 3rem);
+    }
+
+    .premium-hero-shell {
+      padding-top: clamp(1.75rem, 4vh, 3rem);
+      padding-bottom: 0.5rem;
+    }
+
+    .premium-brand-title {
+      margin-bottom: 1rem;
+    }
+
+    .premium-hero-media {
+      max-width: min(100%, 52rem, calc((100svh - 18rem) * 16 / 9));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .premium-hero-heading-line-nowrap {
+      white-space: normal;
     }
   }
 

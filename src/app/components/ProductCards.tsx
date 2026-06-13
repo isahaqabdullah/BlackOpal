@@ -12,7 +12,7 @@ export function ProductCards() {
   const sanityDataAttribute = useSanityDataAttribute();
 
   return (
-    <section className="py-10 md:py-12">
+    <section className="pt-4 pb-10 md:pt-5 md:pb-12">
       <div className="premium-shell">
         <div className="mb-8 md:mb-10" data-sanity-edit-target>
           <span

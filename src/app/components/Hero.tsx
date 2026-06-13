@@ -18,14 +18,14 @@ export function Hero() {
   const homePageDataAttribute = useHomePageDataAttribute(homePageDocumentId);
 
   return (
-    <section className="relative overflow-hidden border-b border-[#c9a24d]/10">
+    <section className="premium-hero-section relative overflow-hidden border-b border-[#c9a24d]/10">
       <div className="pointer-events-none absolute inset-0">
         <div className="premium-flow-lines absolute inset-x-[-10%] top-[10%] bottom-[-12%]" />
         <div className="absolute left-[10%] top-[8%] h-48 w-48 rounded-full bg-[#c9a24d]/10 blur-3xl" />
         <div className="absolute right-[5%] top-[18%] h-64 w-64 rounded-full bg-[#8b6725]/14 blur-3xl" />
       </div>
 
-      <div className="premium-shell pt-14 pb-8 md:pt-20 md:pb-10 relative z-10">
+      <div className="premium-shell premium-hero-shell">
         <div className="premium-brand-title premium-reveal">
           <span className={`premium-brand-logo-frame${heroLogoCaption ? ' premium-brand-logo-frame-stacked' : ''}`}>
             <img
@@ -52,14 +52,23 @@ export function Hero() {
             </span>
             <h1
               data-sanity={homePageDataAttribute('heroTitle')}
-              className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.25rem,4.6vw,4.35rem)] leading-[0.98] tracking-normal mb-6 max-w-xl"
+              className={`premium-heading premium-heading-elevated premium-hero-heading premium-reveal premium-reveal-delay-1${
+                isIndiaSite ? ' premium-hero-heading-india' : ''
+              }`}
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              {heroTitle}
+              {isIndiaSite ? (
+                <>
+                  <span className="premium-hero-heading-line premium-hero-heading-line-nowrap">Premium Coconut Shell</span>
+                  <span className="premium-hero-heading-line">Activated Carbon</span>
+                </>
+              ) : (
+                heroTitle
+              )}
             </h1>
             <p
               data-sanity={homePageDataAttribute('heroDescription')}
-              className="premium-copy premium-hero-copy premium-reveal premium-reveal-delay-2 text-[16px] md:text-[18px] leading-[1.72] mb-9 max-w-2xl"
+              className="premium-copy premium-hero-copy premium-reveal premium-reveal-delay-2 text-[16px] md:text-[18px] leading-[1.72] mb-6 md:mb-7 max-w-2xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
               {homePage.heroDescription}
@@ -82,14 +91,14 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative w-full max-w-[58rem] xl:justify-self-end">
+          <div className="premium-hero-media relative w-full">
             <div className="pointer-events-none absolute inset-x-[12%] bottom-[-7%] h-24 rounded-full bg-[#c9a24d]/12 blur-3xl" />
             <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1">
               <div className="relative overflow-hidden rounded-[1.15rem]">
                 <video
                   data-sanity={homePageDataAttribute('heroVideoUrl')}
                   src={homePage.heroVideoUrl}
-                  className="block w-full aspect-video object-cover"
+                  className="premium-hero-video block w-full object-cover"
                   autoPlay
                   muted
                   loop

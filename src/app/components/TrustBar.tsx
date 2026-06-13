@@ -43,29 +43,29 @@ export function TrustBar() {
   ];
 
   return (
-    <section className="py-4 md:py-5">
+    <section className="py-1.5 md:py-1.5">
       <div className="premium-shell">
-        <div className="premium-compact-grid border-y border-[#c9a24d]/10 py-4">
+        <div className="premium-compact-grid border-y border-[#c9a24d]/10 py-1.5">
           {items.map((item, index) => (
             <div
               key={item.labelPath}
               data-sanity-edit-target
-              className={`flex items-start gap-4 ${index > 0 ? 'xl:border-l xl:border-[#c9a24d]/10 xl:pl-6' : ''}`}
+              className={`flex items-center gap-3 ${index > 0 ? 'xl:border-l xl:border-[#c9a24d]/10 xl:pl-5' : ''}`}
             >
-              <div className="premium-icon-wrap w-10 h-10 rounded-full flex items-center justify-center shrink-0">
-                <item.icon size={18} className="text-[#e6cb87]" />
+              <div className="premium-icon-wrap w-8 h-8 rounded-full flex items-center justify-center shrink-0">
+                <item.icon size={16} className="text-[#e6cb87]" />
               </div>
               <div>
                 <span
                   data-sanity={homePageDataAttribute(item.labelPath)}
-                  className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
+                  className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                 >
                   {item.label}
                 </span>
                 <span
                   data-sanity={homePageDataAttribute(item.valuePath)}
-                  className="text-[#f7efdb] text-[14px]"
+                  className="text-[#f7efdb] text-[13px]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {item.value}
@@ -76,7 +76,7 @@ export function TrustBar() {
                     href={item.linkUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-2 block w-fit text-[12px] text-[#f2d78b] transition-colors hover:text-[#f7efdb]"
+                    className="mt-1 block w-fit text-[11px] text-[#f2d78b] transition-colors hover:text-[#f7efdb]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
                     {item.linkLabel}
