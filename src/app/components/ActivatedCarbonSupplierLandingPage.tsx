@@ -347,7 +347,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                         {office.label}
                       </h3>
                       <p
-                        className="premium-copy text-[12px] leading-[1.6] mb-2 text-[#c6b487]"
+                        className="premium-copy premium-office-name text-[12px] leading-[1.6] mb-2"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                       >
                         {office.name}

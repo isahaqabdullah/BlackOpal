@@ -448,7 +448,7 @@ export function ActivatedCarbonSuppliersPage() {
                         {office.label}
                       </span>
                       <h3
-                        className="premium-card-heading text-[15px] mb-1"
+                        className="premium-card-heading premium-office-name text-[15px] mb-1"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
                       >
                         {office.name}

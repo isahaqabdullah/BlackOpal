@@ -62,7 +62,7 @@ export function Footer() {
                   {footerContact.label}
                 </span>
                 <p>
-                  <span className="text-[#f7efdb]">{footerContact.name}</span>
+                  <span className="premium-office-name">{footerContact.name}</span>
                   <br />
                   {footerContact.address.map((line) => (
                     <span key={line}>

@@ -686,6 +686,10 @@
     color: rgba(247, 239, 219, 0.58);
   }
 
+  .premium-office-name {
+    color: #f2d78b;
+  }
+
   .premium-panel {
     border: 1px solid rgba(201, 162, 77, 0.14);
     background:
