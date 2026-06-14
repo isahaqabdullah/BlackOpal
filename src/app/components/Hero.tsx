@@ -68,7 +68,7 @@ export function Hero() {
             </h1>
             <p
               data-sanity={homePageDataAttribute('heroDescription')}
-              className="premium-copy premium-hero-copy premium-reveal premium-reveal-delay-2 text-[16px] md:text-[18px] leading-[1.72] mb-6 md:mb-7 max-w-2xl"
+              className="premium-copy premium-hero-copy premium-reveal premium-reveal-delay-2 mb-6 md:mb-7"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
             >
               {homePage.heroDescription}
