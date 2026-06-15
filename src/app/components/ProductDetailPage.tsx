@@ -45,7 +45,7 @@ export function ProductDetailPage() {
         }}
       />
 
-      <section className="pb-10 md:pb-12">
+      <section className="pb-6 md:pb-8">
         <div className="premium-shell">
           <div className="premium-split-grid items-start">
             <div className="premium-image-frame premium-image-animated premium-reveal premium-reveal-delay-1 w-full max-w-[42rem]">
@@ -53,7 +53,7 @@ export function ProductDetailPage() {
                 data-sanity={sanityDataAttribute('product', product._id, 'imageUrl')}
                 src={product.image}
                 alt={product.name}
-                className="w-full aspect-[4/3] object-cover"
+                className="w-full aspect-[16/9] max-h-[28rem] object-cover"
               />
             </div>
 
@@ -67,7 +67,7 @@ export function ProductDetailPage() {
               </span>
               <p
                 data-sanity={sanityDataAttribute('product', product._id, 'intro')}
-                className="premium-copy text-[14px] leading-[1.85] mb-6"
+                className="premium-copy text-[16px] leading-[1.85] mb-6"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {product.intro}
@@ -78,7 +78,7 @@ export function ProductDetailPage() {
                   <div
                     key={highlight}
                     data-sanity={sanityDataAttribute('product', product._id, `highlights[${highlightIndex}]`)}
-                    className="flex items-start gap-3 text-[13px] text-[#d7c7a2]"
+                    className="flex items-start gap-3 text-[15px] text-[#d7c7a2]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                   >
                     <span className="w-1.5 h-1.5 bg-[#d4ae5b] rounded-full mt-2 shrink-0 shadow-[0_0_12px_rgba(212,174,91,0.65)]" />
@@ -113,7 +113,7 @@ export function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="py-10 md:py-12">
+      <section className="pt-4 pb-10 md:pt-5 md:pb-12">
         <div className="premium-shell space-y-6">
           {product.sections.map((section, index) => {
             const sectionPath = section._key ? `sections[_key=="${section._key}"]` : `sections[${index}]`;
@@ -134,7 +134,7 @@ export function ProductDetailPage() {
                 </h2>
                 <p
                   data-sanity={sanityDataAttribute('product', product._id, `${sectionPath}.body`)}
-                  className="premium-copy text-[14px] leading-[1.8]"
+                  className="premium-copy text-[16px] leading-[1.8]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {section.body}
@@ -145,7 +145,7 @@ export function ProductDetailPage() {
                       <div
                         key={bullet}
                         data-sanity={sanityDataAttribute('product', product._id, `${sectionPath}.bullets[${bulletIndex}]`)}
-                        className="flex items-start gap-3 text-[13px] text-[#d7c7a2]"
+                        className="flex items-start gap-3 text-[15px] text-[#d7c7a2]"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                       >
                         <span className="w-1.5 h-1.5 bg-[#d4ae5b] rounded-full mt-2 shrink-0 shadow-[0_0_12px_rgba(212,174,91,0.65)]" />
@@ -173,7 +173,7 @@ export function ProductDetailPage() {
               </h2>
               <p
                 data-sanity={pageCopyDataAttribute('productDetailPage.ctaDescription')}
-                className="premium-copy text-[14px]"
+                className="premium-copy text-[16px]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {copy.ctaDescription}
@@ -183,14 +183,14 @@ export function ProductDetailPage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href={copy.allProductsCtaPath}
-                className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
+                className="premium-secondary-btn inline-flex items-center gap-2 text-[14px] px-5 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {copy.allProductsCtaLabel}
               </Link>
               <Link
                 href={copy.quoteCtaPath}
-                className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
+                className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-5 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {copy.quoteCtaLabel}

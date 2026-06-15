@@ -54,7 +54,7 @@ export function PressReleasePage() {
                   <p
                     key={paragraph}
                     data-sanity={sanityDataAttribute('newsroomItem', story._id, `detail[${paragraphIndex}]`)}
-                    className="premium-copy text-[14px] leading-[1.9]"
+                    className="premium-copy text-[16px] leading-[1.9]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     <EmailLinkText text={paragraph} />
@@ -76,7 +76,7 @@ export function PressReleasePage() {
                   <div
                     key={bullet}
                     data-sanity={sanityDataAttribute('newsroomItem', story._id, `bullets[${bulletIndex}]`)}
-                    className="flex items-start gap-3 text-[13px] text-[#d7c7a2]"
+                    className="flex items-start gap-3 text-[15px] text-[#d7c7a2]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                   >
                     <span className="w-1.5 h-1.5 bg-[#d4ae5b] rounded-full mt-2 shrink-0 shadow-[0_0_12px_rgba(212,174,91,0.65)]" />
@@ -89,7 +89,7 @@ export function PressReleasePage() {
 
               <Link
                 href={copy.salesCoordinationCtaPath}
-                className="premium-primary-btn inline-block text-[13px] px-6 py-2.5 rounded-full"
+                className="premium-primary-btn inline-block text-[14px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {copy.salesCoordinationCtaLabel}

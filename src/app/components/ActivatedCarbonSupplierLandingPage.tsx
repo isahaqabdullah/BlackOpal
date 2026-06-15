@@ -61,7 +61,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   {page.introTitle}
                 </h2>
                 <p
-                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85] max-w-3xl mb-7"
+                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85] max-w-3xl mb-7"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {page.intro}
@@ -70,7 +70,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href="/contact"
-                    className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+                    className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
                     {page.ctaLabel}
@@ -78,7 +78,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   </Link>
                   <Link
                     href="/products"
-                    className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+                    className="premium-secondary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
                     View product range
@@ -100,7 +100,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   {page.highlights.map((highlight) => (
                     <div
                       key={highlight}
-                      className="flex items-start gap-3 text-[13px] leading-[1.65] text-[#d7c7a2]"
+                      className="flex items-start gap-3 text-[15px] leading-[1.65] text-[#d7c7a2]"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                     >
                       <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#e6cb87]" />
@@ -130,7 +130,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
               Built around industrial requirements and specification control
             </h2>
             <p
-              className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
+              className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               Black Opal supports industrial requirements that depend on consistent lots, clear specifications,
@@ -155,7 +155,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   {signal.title}
                 </h3>
                 <p
-                  className="premium-copy text-[13px] leading-[1.75]"
+                  className="premium-copy text-[16px] leading-[1.75]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {signal.body}
@@ -189,7 +189,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                 {page.specificationNotes.map((note) => (
                   <div
                     key={note}
-                    className="flex items-start gap-3 text-[13px] leading-[1.75] text-[#d7c7a2]"
+                    className="flex items-start gap-3 text-[15px] leading-[1.75] text-[#d7c7a2]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                   >
                     <span className="w-1.5 h-1.5 bg-[#d4ae5b] rounded-full mt-2 shrink-0 shadow-[0_0_12px_rgba(212,174,91,0.65)]" />
@@ -226,7 +226,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                       {product.name}
                     </h3>
                     <p
-                      className="premium-copy text-[12px] leading-[1.65] mb-3"
+                      className="premium-copy text-[16px] leading-[1.65] mb-3"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                     >
                       {product.summary}
@@ -279,7 +279,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                     {application.name}
                   </h3>
                   <p
-                    className="premium-copy text-[13px] leading-[1.75] mb-5"
+                    className="premium-copy text-[16px] leading-[1.75] mb-5"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {application.summary}
@@ -316,14 +316,14 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   {page.ctaTitle}
                 </h2>
                 <p
-                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85] mb-7"
+                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85] mb-7"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {page.ctaDescription}
                 </p>
                 <Link
                   href="/contact"
-                  className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+                  className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   Contact sales
@@ -347,7 +347,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                         {office.label}
                       </h3>
                       <p
-                        className="premium-copy premium-office-name text-[12px] leading-[1.6] mb-2"
+                        className="premium-copy premium-office-name text-[14px] leading-[1.6] mb-2"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                       >
                         {office.name}
@@ -355,7 +355,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                       {office.address.map((line) => (
                         <p
                           key={`${office.label}-${line}`}
-                          className="premium-copy text-[13px] leading-[1.7]"
+                          className="premium-copy text-[16px] leading-[1.7]"
                           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                         >
                           {line}

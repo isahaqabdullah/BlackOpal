@@ -151,6 +151,8 @@ export type NewsroomItem = {
   summary: string;
   detail?: string[];
   bullets?: string[];
+  documentUrl?: string;
+  documentLabel?: string;
 };
 
 export type LinkEntry = {
@@ -421,12 +423,12 @@ export const homePageContent: HomePageContent = {
   heroPrimaryCtaLabel: 'Request a Quote',
   heroSecondaryCtaPath: '/contact',
   heroSecondaryCtaLabel: 'Talk to Technical Sales',
-  heroLegacyLabel: 'FORMERLY INDOCARB AC LLC',
+  heroLegacyLabel: 'Formerly Indocarb AC LLC',
   heroVideoUrl: '/images/blackopal-home-page-video.mp4',
   heroVideoLabel: 'Black Opal home page video',
   heroVideoFallback: 'Your browser does not support the video tag.',
   trustCertificationLabel: 'Certifications',
-  trustCertificationValue: 'NSF 42 · NSF 61 · Prop 65',
+  trustCertificationValue: 'NSF 42 · NSF 61 · Prop 65 Compliant',
   trustCertificationLinkLabel: 'View official NSF listing',
   trustCertificationLinkUrl: 'https://info.nsf.org/Certified/DWTU/Listings.asp?Company=C0546994&Standard=042',
   trustEstablishedLabel: 'Established',
@@ -526,7 +528,7 @@ export const homePageContent: HomePageContent = {
       label: 'Gold recovery',
       title: 'High-hardness carbon for gold circuits',
       copy:
-        'Microporous GC grades for CIP, CIC, and tank-adsorbed systems where adsorption rate, loading capacity, low dust, and attrition resistance directly affect recovery.',
+        'Microporous GC grades for CIP, CIL, CIC and tank-adsorbed systems where adsorption rate, loading capacity, low dust, and attrition resistance directly affect recovery.',
       highlights: [
         'Low platelet content and clean screening for reduced fines',
         'Strong gold adsorption rates for high-throughput circuits',
@@ -545,7 +547,7 @@ export const homePageContent: HomePageContent = {
         'Granular, powder, impregnated, and catalytic grades support drinking water, process water, wastewater polishing, taste and odor control, and contaminant-specific filtration.',
       highlights: [
         'Low ash, high strength, and consistent particle-size distribution',
-        'NSF 42 and NSF 61 aligned water-treatment grades',
+        'NSF 42, NSF 61, and Prop 65 compliant water-treatment grades',
         'Options for chlorine, chloramine, VOC, pesticide, THM, and odor reduction',
       ],
       imageSource: 'application',
@@ -582,8 +584,9 @@ export const productionPageContent: ProductionPageContent = {
   },
   intro: {
     label: 'Production',
-    title: '35000 metric tons capacity, steam activation, and mesh-size control',
-    description: `${siteConfig.originStatement}. Raw material selection, activation, sizing, and final quality assurance are controlled before shipment.`,
+    title: '35,000 Metric Tons Annual Capacity. Built for Consistent Global Supply',
+    description:
+      'Consistent quality, multiple grades and dependable delivery for water treatment, air and gas purification, gold recovery and industrial applications',
     breadcrumbLabel: 'Production',
   },
   glanceLabel: 'Production at a glance',
@@ -603,7 +606,7 @@ export const productionPageContent: ProductionPageContent = {
   ],
   overviewTitle: 'From Coconut Shell Charcoal to High-Performance Activated Carbon - Fully Integrated Production',
   overviewBody:
-    "Black Opal's India coconut activated carbon facility is the largest in the region, with annual production capacity of 35000 metric tons. The same production flow controls raw material selection, steam activation, particle sizing, packing, and final assurance before shipment.",
+    "Black Opal's India coconut activated carbon facility is the largest in the region, with annual production capacity of 35000 metric tons. The integrated production flow controls raw material selection, steam activation, particle sizing, impregnation, packing, and final inspection so every shipment is prepared to specification.",
   image: '/images/production-facility.avif',
   imageAlt: 'Black Opal production facility',
   qualityKicker: 'Quality program',
@@ -611,7 +614,7 @@ export const productionPageContent: ProductionPageContent = {
   qualityParagraphs: [
     'Controlled, tested, and verified from raw material preparation to final dispatch.',
     'Charcoal is sourced from selected outlets only after rigorous quality inspection. State-of-the-art equipment and skilled technicians support control over activation, handling, screening, and packing.',
-    'INDOCARB brand coconut carbon products, now carried under Black Opal Carbons, have been extensively tested and acclaimed by major industry leaders and reputed laboratories around the world.',
+    'Indocarb AC LLC brand coconut carbon products, now carried under Black Opal Carbons, have been extensively tested and acclaimed by major industry leaders and reputed laboratories around the world.',
   ],
   activationKicker: 'Steam activation method',
   activationSteps: [
@@ -660,6 +663,15 @@ export const productionPageContent: ProductionPageContent = {
       mediaAlt: 'Warehouse pallets of packaged activated carbon prepared for shipment',
     },
     {
+      _key: 'yellow-packaging-carbon-bags',
+      mediaType: 'image',
+      title: 'Labeled bag and bulk packaging',
+      caption:
+        'Yellow retail bag and palletized bulk bags shown against activated carbon media for packaging reference.',
+      imageUrl: '/images/packaging/yellow-packaging-carbon-bags.png',
+      mediaAlt: 'Yellow Black Opal activated carbon retail bag and palletized bulk bags on activated carbon',
+    },
+    {
       _key: 'packaging-handling-video',
       mediaType: 'video',
       title: 'Packaging handling video',
@@ -684,7 +696,7 @@ export const siteMetrics: SiteMetric[] = [
 export const siteSettingsContent: SiteSettingsContent = {
   siteId: siteConfig.siteId,
   navigation: {
-    logoImage: '/images/black-opal-nav-lockup.png?v=20260611-indocarb-ac-llc',
+    logoImage: '/images/black-opal-nav-lockup.png?v=20260611-legacy-llc',
     logoAlt: 'Black Opal Carbons logo',
     links: [
       { label: 'Home', to: '/' },
@@ -822,7 +834,7 @@ export const pageCopyContent: PageCopyContent = {
     brandDetailsCtaLabel: 'Brand transition details',
     whyMattersLabel: 'Why it matters',
     whyMattersBody:
-      'The Black Opal brand replaced INDOCARB AC while products, facilities, and customer-support continuity remained intact.',
+      'The Black Opal brand replaced Indocarb AC LLC while products, facilities, and customer-support continuity remained intact.',
     resourcesTitle: 'Product Resources',
     resourcesDescription:
       'Access product information and supporting documents for technical review, application discussions, and sales conversations with the Black Opal team.',
@@ -890,7 +902,7 @@ export const aboutPageContent: AboutPageContent = {
     'The group was established in 2010 as a joint venture between the largest privately owned coconut shell activated carbon manufacturer in South India and highly experienced activated carbon entrepreneurs with more than 50 years of combined field experience.',
     'Over the years, Black Opal Carbons has become one of the most recognized brands in the activated carbon industry, with a reputation built on quality, innovation, service, and reliability.',
     'Company-owned and operated manufacturing facilities give the group direct control over raw material selection, activation, processing, and final quality assurance. That operating model supports higher standards, dependable supply, and consistent product performance.',
-    'The state-of-the-art factory in South India has an annual production capacity of 35000 metric tons of coconut activated carbon for export markets. The team is committed to value-added products and services, open communication, and customer support focused on satisfaction 24 hours a day, 7 days a week.',
+    'The state-of-the-art factories in South India has a combined annual production capacity of 35000 metric tons of coconut activated carbon for export markets. The team is committed to value-added products and services, open communication, and customer support focused on satisfaction 24 hours a day, 7 days a week.',
   ],
   officeNetworkLabel: 'Office network',
   metrics: siteMetrics,
@@ -916,7 +928,7 @@ export const aboutPageContent: AboutPageContent = {
       icon: 'refresh-ccw',
       title: 'Brand transition',
       desc:
-        'The INDOCARB AC transition to Black Opal Carbons preserved the products, facilities, service structure, and support team customers already worked with.',
+        'The Indocarb AC LLC transition to Black Opal Carbons preserved the products, facilities, service structure, and support team customers already worked with.',
     },
   ],
   brandUpdateLabel: 'Brand update',
@@ -981,7 +993,7 @@ export const products: ProductEntry[] = [
     highlights: [
       'Manufactured from selected grades of coconut shell under stringent controls for hardness, surface area, and attrition resistance.',
       'Available in different mesh sizes, adsorption levels, and pH-adjusted or washed variants tailored to customer requirements.',
-      'Water-treatment grades are manufactured in ISO accredited facilities and support NSF 42 and NSF 61 applications.',
+      'Water-treatment grades are manufactured in ISO accredited facilities and support NSF 42, NSF 61, and Prop 65 compliant applications.',
     ],
     commonUses: [
       'Water treatment',
@@ -1007,7 +1019,7 @@ export const products: ProductEntry[] = [
         bullets: [
           'High hardness and abrasion resistance',
           'Process-specific mesh size and washing options',
-          'Suitable for regulated water-treatment programs',
+          'Suitable for regulated and Prop 65 compliant water-treatment programs',
         ],
       },
     ],
@@ -1023,7 +1035,7 @@ export const products: ProductEntry[] = [
     intro:
       'PAC gives treatment teams a fast-response format for drinking water and batch programs where rapid contact and flexible dosing matter more than fixed-bed operation.',
     highlights: [
-      'Suitable for drinking-water and food-grade applications aligned with ANSI/NSF Standard 42 and 61 requirements.',
+      'Suitable for drinking-water and food-grade applications aligned with ANSI/NSF Standard 42 and 61 requirements and Prop 65 compliance.',
       'Used in water treatment, wastewater treatment, odor removal, and brewery or winery applications.',
       'Commonly applied for chloramines, pesticides, herbicides, groundwater remediation, and DBP reduction.',
     ],
@@ -1101,7 +1113,7 @@ export const products: ProductEntry[] = [
       },
     ],
     image:
-      'https://images.unsplash.com/photo-1620203853151-496c7228306c?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5kdXN0cmlhbCUyMHBpcGVzfGVufDB8fDB8fHww&ixlib=rb-4.1.0&q=80&w=1600',
+      '/images/products/impregnated-activated-carbon.png',
   },
   {
     slug: 'catalytic',
@@ -1146,7 +1158,7 @@ export const products: ProductEntry[] = [
       },
     ],
     image:
-      'https://images.unsplash.com/photo-1674578745937-c73f81bdda07?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHdhdGVyJTIwdHJlYXRtZW50fGVufDB8fDB8fHww&ixlib=rb-4.1.0&q=80&w=1600',
+      '/images/products/catalytic-activated-carbon.png',
   },
 ];
 
@@ -1171,7 +1183,7 @@ export const applications: ApplicationEntry[] = [
           'Water filters, cartridges, and carbon blocks are among the most widely used water-filtration technologies. Black Opal emphasizes balanced adsorption and pore structure, low ash, high strength, and consistent particle-size distribution.',
         bullets: [
           'NSF 42 positioning',
-          'Prop 65 messaging',
+          'Prop 65 compliant positioning',
           'Silver-impregnated and catalytic options for bacteriostatic and chloramine duties',
         ],
       },
@@ -1200,7 +1212,7 @@ export const applications: ApplicationEntry[] = [
     slug: 'gold-recovery',
     name: 'Gold Recovery',
     summary:
-      'Microporous coconut shell carbon grades for CIP, CIC, and tank-adsorbed precious-metal recovery systems.',
+      'Microporous coconut shell carbon grades for CIP, CIL, CIC and tank-adsorbed precious-metal recovery systems.',
     intro:
       'Gold recovery is a specialist performance application where hardness, low platelets, low dust, and adsorption kinetics directly affect metal loading and carbon loss.',
     keyPoints: [
@@ -1214,7 +1226,7 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Recovery systems',
         body:
-          'GC grades are built for Carbon-in-Pulp, Carbon-in-Column, and tank-adsorbed systems where adsorption of metal and cyanide complexes has to happen quickly and cleanly.',
+          'GC grades are built for Carbon-in-Pulp, Carbon-in-Leach, Carbon-in-Column, and tank-adsorbed systems where adsorption of metal and cyanide complexes has to happen quickly and cleanly.',
       },
       {
         title: 'Why the carbon is tuned this way',
@@ -1233,7 +1245,7 @@ export const applications: ApplicationEntry[] = [
       },
     ],
     image:
-      'https://images.unsplash.com/photo-1662251773377-104e93441427?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb2xkJTIwbWluaW5nJTIwb3BlcmF0aW9uJTIwbWFjaGluZXJ5JTIwZXh0cmFjdGlvbnxlbnwxfHx8fDE3NzU0NzU0ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      '/images/applications/gold-recovery.png',
   },
   {
     slug: 'air-gas',
@@ -1273,7 +1285,7 @@ export const applications: ApplicationEntry[] = [
       },
     ],
     image:
-      'https://images.unsplash.com/photo-1759646827242-cf09e30709aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhaXIlMjBmaWx0cmF0aW9uJTIwc3lzdGVtJTIwaW5kdXN0cmlhbCUyMHZlbnRpbGF0aW9ufGVufDF8fHx8MTc3NTQ3NTQ4OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      '/images/applications/air-and-gas.png',
   },
   {
     slug: 'oil-gas',
@@ -1395,17 +1407,26 @@ export const newsroomItems: NewsroomItem[] = [
     title: 'Name Change Press Release',
     type: 'press-release',
     summary:
-      'Black Opal announced the completion of its transition from INDOCARB AC to Black Opal Carbons as part of a broader global branding effort.',
+      'Black Opal announced the completion of its transition from Indocarb AC LLC to Black Opal Carbons as part of a broader global branding effort.',
     detail: [
-      `The transition process announced in 2019 moved toward completion with the ${siteConfig.marketName} brand operating under the Black Opal Carbons name.`,
-      `The new name better reflects the product portfolio and aligns the ${siteConfig.marketName} business with the wider group, including manufacturing and export operations in South India.`,
-      'Core operating elements remained the same: products, factory, address, facilities, support procedures, and day-to-day contacts.',
-      'The announcement also covered expanded production capacity, additional sales and customer-service resources, and new specialty-product offerings.',
+      'We are delighted to announce that the change of name and the transition process which we initiated and announced in 2019 is in completion stage. Our new name will be, Black Opal Carbons. This name change is a part of our exciting worldwide branding effort to integrate our North American brand and businesses in other parts of the world including manufacturing facilities in India.',
+      "Black Opal, one of the world's highest quality, most enchanting and precious gemstones, better denotes our product portfolio and group. The goal of the name change is to align our corporate and product brand identities and is a part of our exciting worldwide branding effort to integrate our North American brand with our other group activities rest of the world. Along with the name change, we are adopting a new corporate identity, including a new logo and new visual identity. A new website is coming soon. While our company name is changing, all core elements of the organization will remain the same.",
+      'So, what does this mean for our clients? You will see very little changes -',
+      'Our products, factory, address, facilities, pricing and support procedures will remain unchanged.',
+      'You will continue to work with the same people in our organization as you have in the past.',
+      'This rebranding will not affect or delay any current or future orders of our products.',
+      'But you will really see significant benefits in the following areas:',
+      '• Increased resources with expanded production capacities.',
+      '• Increased expertise with additional sales and customer service resources.',
+      '• New offerings including specialty products.',
+      'All of us want to personally say a big Thank You for your continued business, and we look forward to our continuing relationship. Our goal has always been – and remains – to help make you more successful.',
+      'Please feel free to reach out to any of us with any and all questions you may have about these exciting changes.',
     ],
     bullets: [
-      'Former name: INDOCARB AC',
+      'Former name: Indocarb AC LLC',
       'Transition initiated in 2019',
-      `Contact listed in release: ${companyDetails.infoEmail}`,
+      'Products, factory, address, facilities, pricing, and support procedures remain unchanged',
+      'Expanded production capacities, added expertise, and specialty products',
     ],
   },
   {
@@ -1420,7 +1441,7 @@ export const newsroomItems: NewsroomItem[] = [
     title: 'Gold Grade Carbon',
     type: 'resource',
     summary:
-      'Grade context for CIP, CIC, and tank-adsorbed precious-metal recovery systems where hardness and adsorption kinetics matter.',
+      'Grade context for CIP, CIL, CIC and tank-adsorbed precious-metal recovery systems where hardness and adsorption kinetics matter.',
   },
   {
     slug: 'powerpoint-presentation-resource',
@@ -1428,6 +1449,8 @@ export const newsroomItems: NewsroomItem[] = [
     type: 'resource',
     summary:
       'Company presentation material for technical review and sales discussions.',
+    documentUrl: '/documents/newsroom/black-opal-powerpoint-presentation.pdf',
+    documentLabel: 'Open presentation PDF',
   },
   {
     slug: 'water-treatment-resource',

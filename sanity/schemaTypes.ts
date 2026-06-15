@@ -552,6 +552,13 @@ export const newsroomItem = {
     { name: 'summary', title: 'Summary', type: 'text', rows: 3, validation: (Rule: any) => Rule.required() },
     { name: 'detail', title: 'Detail Paragraphs', type: 'array', of: [{ type: 'text' }] },
     { name: 'bullets', title: 'Bullets', type: 'array', of: [{ type: 'string' }] },
+    {
+      name: 'documentUrl',
+      title: 'Document URL',
+      description: 'Use a public path like /documents/newsroom/file.pdf or a full URL.',
+      type: 'string',
+    },
+    { name: 'documentLabel', title: 'Document Label', type: 'string' },
   ],
 };
 

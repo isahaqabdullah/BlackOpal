@@ -49,7 +49,7 @@ export function NewsroomPage() {
                 </h2>
                 <p
                   data-sanity={sanityDataAttribute('newsroomItem', pressRelease._id, 'summary')}
-                  className="premium-copy text-[14px] leading-[1.85] mb-6"
+                  className="premium-copy text-[16px] leading-[1.85] mb-6"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {pressRelease.summary}
@@ -59,7 +59,7 @@ export function NewsroomPage() {
                     <div
                       key={bullet}
                       data-sanity={sanityDataAttribute('newsroomItem', pressRelease._id, `bullets[${bulletIndex}]`)}
-                      className="flex items-start gap-3 text-[13px] text-[#d7c7a2]"
+                      className="flex items-start gap-3 text-[15px] text-[#d7c7a2]"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                     >
                       <span className="w-1.5 h-1.5 bg-[#d4ae5b] rounded-full mt-2 shrink-0 shadow-[0_0_12px_rgba(212,174,91,0.65)]" />
@@ -69,7 +69,7 @@ export function NewsroomPage() {
                 </div>
                 <Link
                   href={`/newsroom/${pressRelease.slug}`}
-                  className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+                  className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {copy.brandDetailsCtaLabel}
@@ -87,7 +87,7 @@ export function NewsroomPage() {
                 </span>
                 <p
                   data-sanity={pageCopyDataAttribute('newsroomPage.whyMattersBody')}
-                  className="premium-copy text-[14px] leading-[1.8]"
+                  className="premium-copy text-[16px] leading-[1.8]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {copy.whyMattersBody}
@@ -111,7 +111,7 @@ export function NewsroomPage() {
               </h2>
               <p
                 data-sanity={pageCopyDataAttribute('newsroomPage.resourcesDescription')}
-                className="premium-copy text-[14px] leading-[1.8] max-w-3xl"
+                className="premium-copy text-[16px] leading-[1.8] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {copy.resourcesDescription}
@@ -120,44 +120,52 @@ export function NewsroomPage() {
           </div>
 
           <div className="premium-auto-grid">
-            {resourceItems.map((item, index) => (
-              <div
-                key={item.slug}
-                data-sanity-edit-target
-                className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
-                style={{ animationDelay: `${120 + index * 90}ms` }}
-              >
-                <span
-                  data-sanity={pageCopyDataAttribute('newsroomPage.resourceLabel')}
-                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+            {resourceItems.map((item, index) => {
+              const resourceHref = item.documentUrl || copy.latestVersionCtaPath;
+              const resourceLabel = item.documentLabel || copy.latestVersionCtaLabel;
+              const opensDocument = Boolean(item.documentUrl);
+
+              return (
+                <div
+                  key={item.slug}
+                  data-sanity-edit-target
+                  className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
+                  style={{ animationDelay: `${120 + index * 90}ms` }}
                 >
-                  {copy.resourceLabel}
-                </span>
-                <h3
-                  data-sanity={sanityDataAttribute('newsroomItem', item._id, 'title')}
-                  className="premium-card-heading text-[18px] mb-3"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  data-sanity={sanityDataAttribute('newsroomItem', item._id, 'summary')}
-                  className="premium-copy text-[13px] leading-[1.75] mb-5"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
-                >
-                  {item.summary}
-                </p>
-                <Link
-                  href={copy.latestVersionCtaPath}
-                  className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                >
-                  {copy.latestVersionCtaLabel}
-                  <ArrowRight size={13} />
-                </Link>
-              </div>
-            ))}
+                  <span
+                    data-sanity={pageCopyDataAttribute('newsroomPage.resourceLabel')}
+                    className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                  >
+                    {copy.resourceLabel}
+                  </span>
+                  <h3
+                    data-sanity={sanityDataAttribute('newsroomItem', item._id, 'title')}
+                    className="premium-card-heading text-[18px] mb-3"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    data-sanity={sanityDataAttribute('newsroomItem', item._id, 'summary')}
+                    className="premium-copy text-[16px] leading-[1.75] mb-5"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                  >
+                    {item.summary}
+                  </p>
+                  <Link
+                    href={resourceHref}
+                    target={opensDocument ? '_blank' : undefined}
+                    rel={opensDocument ? 'noreferrer' : undefined}
+                    className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-[10px]"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                  >
+                    {resourceLabel}
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

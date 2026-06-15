@@ -292,7 +292,9 @@ export const siteContentQuery = `{
     type,
     summary,
     detail,
-    bullets
+    bullets,
+    documentUrl,
+    documentLabel
   }
 }`;
 
@@ -311,7 +313,7 @@ export function createSanityClient({ preview = false, studioUrl = sanityStudioUr
     projectId: sanityProjectId!,
     dataset: sanityDataset,
     apiVersion: sanityApiVersion,
-    useCdn: false,
+    useCdn: !preview,
     token,
     perspective: preview ? 'previewDrafts' : 'published',
     stega: preview

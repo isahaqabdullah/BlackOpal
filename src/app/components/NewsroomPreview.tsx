@@ -33,7 +33,7 @@ export function NewsroomPreview() {
             </h2>
             <p
               data-sanity={pageCopyDataAttribute('newsroomPreview.description')}
-              className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.8]"
+              className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.8]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               {copy.description}
@@ -42,7 +42,7 @@ export function NewsroomPreview() {
 
           <Link
             href={copy.resourceCenterCtaPath}
-            className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2.5 rounded-full"
+            className="premium-link-btn inline-flex items-center gap-2 text-[14px] px-4 py-2.5 rounded-full"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             {copy.resourceCenterCtaLabel}
@@ -76,7 +76,7 @@ export function NewsroomPreview() {
               </h3>
               <p
                 data-sanity={sanityDataAttribute('newsroomItem', item._id, 'summary')}
-                className="premium-copy text-[13px] leading-[1.75] mb-5"
+                className="premium-copy text-[16px] leading-[1.75] mb-5"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {item.summary}

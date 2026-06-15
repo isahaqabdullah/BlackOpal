@@ -476,6 +476,8 @@ function normalizeNewsroomItem(value: Partial<NewsroomItem>, fallback?: Newsroom
   const summary = textValue(value.summary, fallback?.summary);
   const rawType = cleanTextValue(value.type, fallback?.type);
   const type = rawType === 'press-release' || rawType === 'resource' ? rawType : fallback?.type;
+  const documentUrl = cleanTextValue(value.documentUrl, fallback?.documentUrl);
+  const documentLabel = cleanTextValue(value.documentLabel, fallback?.documentLabel);
 
   if (!slug || !title || !summary || !type) {
     return null;
@@ -491,6 +493,8 @@ function normalizeNewsroomItem(value: Partial<NewsroomItem>, fallback?: Newsroom
     summary,
     detail: stringArray(value.detail, fallback?.detail),
     bullets: stringArray(value.bullets, fallback?.bullets),
+    documentUrl,
+    documentLabel,
   } satisfies NewsroomItem;
 }
 

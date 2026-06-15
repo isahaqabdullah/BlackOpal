@@ -76,14 +76,14 @@ export function Hero() {
             <div className="premium-reveal premium-reveal-delay-3 flex flex-wrap gap-3">
               <Link
                 href={homePage.heroPrimaryCtaPath}
-                className="premium-primary-btn text-[13px] px-7 py-3 rounded-full"
+                className="premium-primary-btn text-[14px] px-7 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {homePage.heroPrimaryCtaLabel}
               </Link>
               <Link
                 href={homePage.heroSecondaryCtaPath}
-                className="premium-secondary-btn text-[13px] px-7 py-3 rounded-full"
+                className="premium-secondary-btn text-[14px] px-7 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {homePage.heroSecondaryCtaLabel}

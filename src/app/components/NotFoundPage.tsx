@@ -30,7 +30,7 @@ export function NotFoundPage() {
           </h1>
           <p
             data-sanity={pageCopyDataAttribute('notFoundPage.description')}
-            className="premium-copy text-[15px] leading-[1.8] max-w-2xl mx-auto mb-8"
+            className="premium-copy text-[16px] leading-[1.8] max-w-2xl mx-auto mb-8"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
             {copy.description}
@@ -38,7 +38,7 @@ export function NotFoundPage() {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href={copy.homeCtaPath}
-              className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+              className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
               <ArrowLeft size={14} />
@@ -46,7 +46,7 @@ export function NotFoundPage() {
             </Link>
             <Link
               href={copy.secondaryCtaPath}
-              className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+              className="premium-secondary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
               {copy.secondaryCtaLabel}

@@ -54,7 +54,7 @@ export function Footer() {
                   className="h-12 w-auto object-contain shrink-0 drop-shadow-[0_10px_28px_rgba(201,162,77,0.14)]"
                 />
               </Link>
-              <div className="space-y-2.5 text-[13px] text-[#b8ab8b]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
+              <div className="space-y-2.5 text-[14px] text-[#b8ab8b]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
                 <span
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
@@ -118,7 +118,7 @@ export function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.to}
-                        className="text-[13px] text-[#b8ab8b] hover:text-[#f2d78b] transition-colors"
+                        className="text-[14px] text-[#b8ab8b] hover:text-[#f2d78b] transition-colors"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                       >
                         {link.label}
@@ -133,10 +133,10 @@ export function Footer() {
           <div className="premium-divider mb-6" />
 
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-            <span className="text-[#8f835f] text-[12px]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
+            <span className="text-[#8f835f] text-[13px]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
               {siteSettings.footer.copyrightText.replace('{year}', currentYear)}
             </span>
-            <div className="flex gap-6 text-[12px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
+            <div className="flex gap-6 text-[13px] text-[#8f835f]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
               {siteSettings.footer.bottomLinks.map((link) => (
                 <Link key={link.to} href={link.to} className="hover:text-[#f2d78b] transition-colors">
                   {link.label}

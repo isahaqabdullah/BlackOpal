@@ -53,14 +53,14 @@ export function ApplicationsPage() {
                   </h2>
                   <p
                     data-sanity={sanityDataAttribute('application', application._id, 'summary')}
-                    className="premium-copy text-[14px] leading-[1.8] mb-5 max-w-2xl"
+                    className="premium-copy text-[16px] leading-[1.8] mb-5 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {application.summary}
                   </p>
                   <p
                     data-sanity={sanityDataAttribute('application', application._id, 'intro')}
-                    className="premium-copy text-[13px] leading-[1.8] mb-6 max-w-2xl"
+                    className="premium-copy text-[16px] leading-[1.8] mb-6 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {application.intro}
@@ -80,7 +80,7 @@ export function ApplicationsPage() {
                           <div
                             key={point}
                             data-sanity={sanityDataAttribute('application', application._id, `keyPoints[${pointIndex}]`)}
-                            className="flex items-start gap-3 text-[13px] text-[#d7c7a2]"
+                            className="flex items-start gap-3 text-[15px] text-[#d7c7a2]"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                           >
                             <span className="w-1.5 h-1.5 bg-[#d4ae5b] rounded-full mt-2 shrink-0 shadow-[0_0_12px_rgba(212,174,91,0.65)]" />
@@ -120,7 +120,7 @@ export function ApplicationsPage() {
                   <div className="mt-7 pt-6 border-t border-[#c9a24d]/10 flex flex-wrap gap-3">
                     <Link
                       href={`/applications/${application.slug}`}
-                      className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
+                      className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
                       {copy.detailCtaLabel}
@@ -128,7 +128,7 @@ export function ApplicationsPage() {
                     </Link>
                     <Link
                       href={copy.discussCtaPath}
-                      className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
+                      className="premium-secondary-btn inline-flex items-center gap-2 text-[14px] px-5 py-2.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
                       {copy.discussCtaLabel}
@@ -141,7 +141,7 @@ export function ApplicationsPage() {
                     data-sanity={sanityDataAttribute('application', application._id, 'imageUrl')}
                     src={application.image}
                     alt={application.name}
-                    className="w-full aspect-[4/3] object-cover"
+                    className="w-full aspect-[16/9] max-h-[26rem] object-cover"
                   />
                 </div>
               </div>

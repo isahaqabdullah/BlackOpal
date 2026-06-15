@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight, FileText } from 'lucide-react';
+import { ArrowRight, FileText, ShieldCheck } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import type { PackagingMediaEntry } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
@@ -17,6 +17,13 @@ import {
 
 const balancedOverviewTitle =
   'From Coconut Shell Charcoal to High-Performance Activated Carbon - Fully Integrated Production';
+
+const productionCertifications = ['ISO 9001', 'ISO 14001', 'ISO 45001'];
+
+const portraitPackagingImageUrls = new Set([
+  '/images/packaging/export-palletized-bags.jpeg',
+  '/images/packaging/warehouse-palletized-bags.jpeg',
+]);
 
 type ProductionPackagingGalleryProps = {
   kicker: string;
@@ -60,6 +67,7 @@ function ProductionPackagingGallery({
   }, [galleryApi]);
 
   const hasDocument = Boolean(documentLabel.trim() && documentUrl.trim());
+  const imageMedia = media.filter((item) => item.mediaType === 'image' && item.imageUrl);
 
   return (
     <section className="py-10 md:py-12">
@@ -81,7 +89,7 @@ function ProductionPackagingGallery({
           </h2>
           <p
             data-sanity={dataAttribute('packagingBody')}
-            className="premium-copy text-[14px] leading-[1.85]"
+            className="premium-copy text-[16px] leading-[1.85]"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
             {body}
@@ -100,6 +108,12 @@ function ProductionPackagingGallery({
                   {media.map((item, index) => {
                     const itemPath = item._key ? `packagingMedia[_key=="${item._key}"]` : `packagingMedia[${index}]`;
                     const isVideo = item.mediaType === 'video';
+                    const collageImages = !isVideo && item.imageUrl && portraitPackagingImageUrls.has(item.imageUrl)
+                      ? [
+                          item,
+                          ...imageMedia.filter((imageItem) => imageItem.imageUrl !== item.imageUrl),
+                        ].slice(0, 3)
+                      : [];
 
                     return (
                       <CarouselItem key={item._key ?? `${item.mediaType}-${item.title}`} className="pl-0">
@@ -130,12 +144,31 @@ function ProductionPackagingGallery({
                                 aria-label={item.mediaAlt}
                                 className="h-[24rem] w-full bg-black object-contain sm:h-[30rem] lg:h-[36rem]"
                               />
+                            ) : collageImages.length > 1 ? (
+                              <div className="grid h-[24rem] gap-2 bg-[#050505] p-2 sm:h-[30rem] lg:h-[36rem] md:grid-cols-[1.25fr_0.9fr]">
+                                <img
+                                  data-sanity={dataAttribute(`${itemPath}.imageUrl`)}
+                                  src={collageImages[0].imageUrl}
+                                  alt={collageImages[0].mediaAlt}
+                                  className="h-full w-full rounded-[6px] object-cover"
+                                />
+                                <div className="grid min-h-0 gap-2">
+                                  {collageImages.slice(1).map((collageItem) => (
+                                    <img
+                                      key={collageItem._key ?? collageItem.imageUrl}
+                                      src={collageItem.imageUrl}
+                                      alt={collageItem.mediaAlt}
+                                      className="min-h-0 h-full w-full rounded-[6px] object-cover"
+                                    />
+                                  ))}
+                                </div>
+                              </div>
                             ) : (
                               <img
                                 data-sanity={dataAttribute(`${itemPath}.imageUrl`)}
                                 src={item.imageUrl}
                                 alt={item.mediaAlt}
-                                className="h-[24rem] w-full bg-[#050505] object-contain sm:h-[30rem] lg:h-[36rem]"
+                                className="h-[24rem] w-full bg-[#050505] object-cover sm:h-[30rem] lg:h-[36rem]"
                               />
                             )}
                           </div>
@@ -151,7 +184,7 @@ function ProductionPackagingGallery({
                               </h3>
                               <p
                                 data-sanity={dataAttribute(`${itemPath}.caption`)}
-                                className="premium-copy text-[13px] leading-[1.8]"
+                                className="premium-copy text-[16px] leading-[1.8]"
                                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                               >
                                 {item.caption}
@@ -206,7 +239,7 @@ function ProductionPackagingGallery({
                   Supporting document
                 </span>
                 <p
-                  className="premium-copy text-[13px] leading-[1.75]"
+                  className="premium-copy text-[16px] leading-[1.75]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   Current packaging formats and handling options.
@@ -218,7 +251,7 @@ function ProductionPackagingGallery({
                 href={documentUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-5 py-2.5 rounded-full"
+                className="premium-secondary-btn inline-flex items-center gap-2 text-[14px] px-5 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 <FileText size={14} />
@@ -297,6 +330,27 @@ export function ProductionPage() {
                 })}
               </div>
 
+              <div className="mb-6">
+                <span
+                  className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                >
+                  Production certifications
+                </span>
+                <div className="flex flex-wrap gap-2.5">
+                  {productionCertifications.map((certification) => (
+                    <span
+                      key={certification}
+                      className="inline-flex items-center gap-2 rounded-full border border-[#c9a24d]/18 bg-[#080806]/70 px-3.5 py-2 text-[12px] text-[#f2d78b] shadow-[0_10px_26px_rgba(0,0,0,0.18)]"
+                      style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                    >
+                      <ShieldCheck size={14} className="text-[#e6cb87]" aria-hidden="true" />
+                      {certification}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               <h2
                 data-sanity={productionPageDataAttribute('overviewTitle')}
                 className="premium-heading premium-heading-elevated max-w-[36rem] text-[clamp(1.42rem,1.95vw,1.85rem)] leading-[1.14] mb-4"
@@ -310,7 +364,7 @@ export function ProductionPage() {
               </h2>
               <p
                 data-sanity={productionPageDataAttribute('overviewBody')}
-                className="premium-copy text-[14px] leading-[1.85] max-w-3xl"
+                className="premium-copy text-[16px] leading-[1.85] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {productionPage.overviewBody}
@@ -349,7 +403,7 @@ export function ProductionPage() {
                   {productionPage.qualityTitle}
                 </h2>
                 <div
-                  className="space-y-4 premium-copy text-[14px] leading-[1.85]"
+                  className="space-y-4 premium-copy text-[16px] leading-[1.85]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {productionPage.qualityParagraphs.map((paragraph, paragraphIndex) => (
@@ -398,7 +452,7 @@ export function ProductionPage() {
                           </h3>
                           <p
                             data-sanity={productionPageDataAttribute(`${stepPath}.body`)}
-                            className="premium-copy text-[13px] leading-[1.75]"
+                            className="premium-copy text-[16px] leading-[1.75]"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                           >
                             {step.body}
@@ -410,7 +464,7 @@ export function ProductionPage() {
                 </div>
                 <p
                   data-sanity={productionPageDataAttribute('activationNote')}
-                  className="premium-copy text-[13px] leading-[1.75] mt-5"
+                  className="premium-copy text-[16px] leading-[1.75] mt-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {productionPage.activationNote}
@@ -437,7 +491,7 @@ export function ProductionPage() {
         <div className="premium-shell">
           <div className="flex flex-col items-center gap-5 border-t border-[#c9a24d]/12 pt-8 text-center">
             <p
-              className="premium-copy text-[14px] leading-[1.75] max-w-2xl"
+              className="premium-copy text-[16px] leading-[1.75] max-w-2xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               <span data-sanity={productionPageDataAttribute('contactTextBeforeEmail')}>
@@ -456,7 +510,7 @@ export function ProductionPage() {
             </p>
             <a
               href={`mailto:${productionContactEmail}`}
-              className="premium-primary-btn inline-flex items-center justify-center gap-2 text-[13px] px-7 py-3 rounded-full"
+              className="premium-primary-btn inline-flex items-center justify-center gap-2 text-[14px] px-7 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
               {productionPage.contactButtonLabel}

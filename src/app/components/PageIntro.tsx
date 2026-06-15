@@ -19,6 +19,7 @@ type PageIntroProps = {
   description?: string;
   breadcrumbs?: Breadcrumb[];
   enableBreadcrumbEditing?: boolean;
+  titleClassName?: string;
   dataSanity?: {
     label?: string;
     title?: string;
@@ -33,6 +34,7 @@ export function PageIntro({
   description,
   breadcrumbs = [],
   enableBreadcrumbEditing = true,
+  titleClassName = 'text-[clamp(2.2rem,4.8vw,4rem)] tracking-[-0.03em]',
   dataSanity,
 }: PageIntroProps) {
   const { siteSettings } = useSiteContent();
@@ -87,7 +89,7 @@ export function PageIntro({
         </span>
         <h1
           data-sanity={dataSanity?.title}
-          className={`premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2.2rem,4.8vw,4rem)] leading-[1.02] tracking-[-0.03em] max-w-4xl${description ? ' mb-5' : ''}${titleVisual ? ' premium-page-title-visual' : ''}`}
+          className={`premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 ${titleClassName} leading-[1.02] max-w-4xl${description ? ' mb-5' : ''}${titleVisual ? ' premium-page-title-visual' : ''}`}
           aria-label={titleVisual ? title : undefined}
           style={{ fontFamily: "'DM Serif Display', serif" }}
         >
@@ -96,7 +98,7 @@ export function PageIntro({
         {description ? (
           <p
             data-sanity={dataSanity?.description}
-            className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.85] max-w-3xl"
+            className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85] max-w-3xl"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
             {description}

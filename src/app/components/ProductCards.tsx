@@ -48,7 +48,7 @@ export function ProductCards() {
               </h3>
               <p
                 data-sanity={sanityDataAttribute('product', p._id, 'summary')}
-                className="premium-copy text-[14px] leading-[1.75] mb-5"
+                className="premium-copy text-[16px] leading-[1.75] mb-5"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {p.summary}
@@ -58,7 +58,7 @@ export function ProductCards() {
                   <li
                     key={u}
                     data-sanity={sanityDataAttribute('product', p._id, `commonUses[${useIndex}]`)}
-                    className="text-[13px] text-[#d7c7a2] flex items-center gap-2"
+                    className="text-[15px] text-[#d7c7a2] flex items-center gap-2"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                   >
                     <span className="w-1.5 h-1.5 bg-[#d4ae5b] rounded-full shrink-0 shadow-[0_0_12px_rgba(212,174,91,0.65)]" />
@@ -68,7 +68,7 @@ export function ProductCards() {
               </ul>
               <Link
                 href={`/products/${p.slug}`}
-                className="premium-link-btn inline-flex items-center gap-2 text-[13px] px-4 py-2 rounded-[8px] transition-all"
+                className="premium-link-btn inline-flex items-center gap-2 text-[14px] px-4 py-2 rounded-[8px] transition-all"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {homePage.productCardCtaLabel} <ArrowRight size={14} />

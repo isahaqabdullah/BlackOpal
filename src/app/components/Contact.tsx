@@ -28,6 +28,8 @@ const acceptedAttachmentExtensions = new Set(
   acceptedAttachmentTypes.split(',').map((extension) => extension.slice(1)),
 );
 
+const CONTACT_PAGE_HEADING = 'Product Enquiry and Technical Guidance.';
+
 function fileExtension(filename: string) {
   return filename.split('.').pop()?.toLowerCase() ?? '';
 }
@@ -105,7 +107,7 @@ export function ContactPage() {
     <div>
       <PageIntro
         label={contactPage.intro.label}
-        title={contactPage.intro.title}
+        title={CONTACT_PAGE_HEADING}
         description={contactPage.intro.description}
         breadcrumbs={[{ label: contactPage.intro.breadcrumbLabel }]}
         enableBreadcrumbEditing={false}
@@ -146,7 +148,7 @@ export function ContactPage() {
                         {office.address.map((line) => (
                           <p
                             key={`${office.label}-${line}`}
-                            className="premium-copy text-[13px] leading-[1.7]"
+                            className="premium-copy text-[16px] leading-[1.7]"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                           >
                             {line}
@@ -199,7 +201,7 @@ export function ContactPage() {
                   <div className="premium-form-grid">
                     <div>
                       <label
-                        className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                        className="text-[13px] text-[#b8ab8b] mb-1.5 block"
                       >
                         {contactPage.firstNameLabel}
                       </label>
@@ -214,7 +216,7 @@ export function ContactPage() {
                     </div>
                     <div>
                       <label
-                        className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                        className="text-[13px] text-[#b8ab8b] mb-1.5 block"
                       >
                         {contactPage.lastNameLabel}
                       </label>
@@ -232,7 +234,7 @@ export function ContactPage() {
                   <div className="premium-form-grid">
                     <div>
                       <label
-                        className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                        className="text-[13px] text-[#b8ab8b] mb-1.5 block"
                       >
                         {contactPage.emailLabel}
                       </label>
@@ -247,7 +249,7 @@ export function ContactPage() {
                     </div>
                     <div>
                       <label
-                        className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                        className="text-[13px] text-[#b8ab8b] mb-1.5 block"
                       >
                         {contactPage.companyLabel}
                       </label>
@@ -265,7 +267,7 @@ export function ContactPage() {
                   <div className="premium-form-grid">
                     <div>
                       <label
-                        className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                        className="text-[13px] text-[#b8ab8b] mb-1.5 block"
                       >
                         {contactPage.phoneLabel}
                       </label>
@@ -278,7 +280,7 @@ export function ContactPage() {
                     </div>
                     <div>
                       <label
-                        className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                        className="text-[13px] text-[#b8ab8b] mb-1.5 block"
                       >
                         {contactPage.subjectLabel}
                       </label>
@@ -294,7 +296,7 @@ export function ContactPage() {
 
                   <div>
                     <label
-                      className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                      className="text-[13px] text-[#b8ab8b] mb-1.5 block"
                     >
                       {contactPage.applicationLabel}
                     </label>
@@ -314,7 +316,7 @@ export function ContactPage() {
 
                   <div>
                     <label
-                      className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                      className="text-[13px] text-[#b8ab8b] mb-1.5 block"
                     >
                       {contactPage.messageLabel}
                     </label>
@@ -329,7 +331,7 @@ export function ContactPage() {
 
                   <div>
                     <label
-                      className="text-[12px] text-[#b8ab8b] mb-1.5 block"
+                      className="text-[13px] text-[#b8ab8b] mb-1.5 block"
                     >
                       Attach photos or documents
                     </label>
@@ -361,7 +363,7 @@ export function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="premium-primary-btn text-[13px] px-10 py-3 rounded-full"
+                    className="premium-primary-btn text-[14px] px-10 py-3 rounded-full"
                     style={{ fontWeight: 500 }}
                   >
                     {isSubmitting ? 'Sending...' : contactPage.submitLabel}
@@ -398,7 +400,7 @@ export function ContactPage() {
             </h3>
             <p
               id="contact-success-message"
-              className="premium-copy text-[14px] leading-[1.7]"
+              className="premium-copy text-[16px] leading-[1.7]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               {contactPage.successMessage}
@@ -406,7 +408,7 @@ export function ContactPage() {
             <button
               type="button"
               onClick={() => setSubmitted(false)}
-              className="premium-primary-btn mt-6 rounded-full px-8 py-3 text-[13px]"
+              className="premium-primary-btn mt-6 rounded-full px-8 py-3 text-[14px]"
               style={{ fontWeight: 500 }}
             >
               Close

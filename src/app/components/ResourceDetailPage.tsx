@@ -31,7 +31,7 @@ export function ResourceDetailPage({ page }: ResourceDetailPageProps) {
                 {page.body.map((paragraph) => (
                   <p
                     key={paragraph}
-                    className="premium-copy text-[14px] leading-[1.9]"
+                    className="premium-copy text-[16px] leading-[1.9]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {paragraph}
@@ -51,7 +51,7 @@ export function ResourceDetailPage({ page }: ResourceDetailPageProps) {
                 Documentation review
               </span>
               <p
-                className="premium-copy text-[13px] leading-[1.75] mb-6"
+                className="premium-copy text-[16px] leading-[1.75] mb-6"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 Product family, application, packing format, and destination-market documentation are confirmed before
@@ -59,7 +59,7 @@ export function ResourceDetailPage({ page }: ResourceDetailPageProps) {
               </p>
               <Link
                 href={page.ctaHref}
-                className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+                className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {page.ctaLabel}

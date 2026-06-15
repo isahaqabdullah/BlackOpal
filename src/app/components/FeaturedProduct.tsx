@@ -79,7 +79,7 @@ export function FeaturedProduct() {
             </h2>
             <p
               data-sanity={homePageDataAttribute(`${activeSlidePath}.copy`)}
-              className="premium-copy text-[15px] leading-[1.85] mb-6 max-w-lg"
+              className="premium-copy text-[16px] leading-[1.85] mb-6 max-w-lg"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               {activeSlide.copy}
@@ -89,7 +89,7 @@ export function FeaturedProduct() {
                 <li
                   key={item}
                   data-sanity={homePageDataAttribute(`${activeSlidePath}.highlights[${highlightIndex}]`)}
-                  className="flex items-start gap-2.5 text-[13px] text-[#d7c7a2]"
+                  className="flex items-start gap-2.5 text-[15px] text-[#d7c7a2]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                 >
                   <span className="w-1.5 h-1.5 bg-[#d4ae5b] rounded-full mt-1.5 shrink-0 shadow-[0_0_12px_rgba(212,174,91,0.65)]" />
@@ -100,7 +100,7 @@ export function FeaturedProduct() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href={activeSlide.to}
-                className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+                className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {activeSlide.cta} <ArrowRight size={14} />

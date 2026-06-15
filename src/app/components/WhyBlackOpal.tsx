@@ -65,7 +65,7 @@ export function WhyBlackOpal() {
                 </h3>
                 <p
                   data-sanity={homePageDataAttribute(`${reasonPath}.desc`)}
-                  className="premium-copy text-[13px] leading-[1.75]"
+                  className="premium-copy text-[16px] leading-[1.75]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {r.desc}

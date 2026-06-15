@@ -36,20 +36,20 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     breadcrumbLabel: 'Global',
     title: 'Global coconut activated carbon from company-owned manufacturing',
     description:
-      'Black Opal Carbons, formerly INDOCARB AC, manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas, oil and gas, and industrial purification applications.',
+      'Black Opal Carbons, formerly Indocarb AC LLC, manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas, oil and gas, and industrial purification applications.',
     seoTitle: 'Global Activated Carbon Supplier | Black Opal Carbons',
     seoDescription:
-      'Black Opal Carbons, formerly INDOCARB AC, supplies coconut shell activated carbon from company-owned Indian manufacturing for water, gold, air, gas, oil and industrial purification applications.',
+      'Black Opal Carbons, formerly Indocarb AC LLC, supplies coconut shell activated carbon from company-owned Indian manufacturing for water, gold, air, gas, oil and industrial purification applications.',
     serviceType: 'Global activated carbon supply',
     introTitle: 'Established manufacturing continuity under the Black Opal name',
     intro:
-      'The group behind Black Opal was established in 2010 through coconut shell activated carbon manufacturing and activated carbon field experience. The transition from INDOCARB AC to Black Opal Carbons was a global brand change; the products, factory, facilities, and support procedures remained in place. Today, Black Opal controls raw material selection, steam activation, particle sizing, packing, and final quality assurance before shipment.',
+      'The group behind Black Opal was established in 2010 through coconut shell activated carbon manufacturing and activated carbon field experience. The transition from Indocarb AC LLC to Black Opal Carbons was a global brand change; the products, factory, facilities, and support procedures remained in place. Today, Black Opal controls raw material selection, steam activation, particle sizing, packing, and final quality assurance before shipment.',
     highlights: [
-      'Formerly INDOCARB AC, now operating under the Black Opal Carbons name',
+      'Formerly Indocarb AC LLC, now operating under the Black Opal Carbons name',
       'Company-owned manufacturing with control over feedstock, activation, sizing, packing, and final quality assurance',
       '35000 metric tons annual coconut activated carbon capacity',
       'Granular, powder, impregnated, and catalytic activated carbon product families',
-      'NSF 42 and NSF 61 listed coconut shell carbon grades for applicable water-treatment use',
+      'NSF 42, NSF 61, and Prop 65 compliant coconut shell carbon grades for applicable water-treatment use',
     ],
     capabilitySignals: [
       {
@@ -97,7 +97,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Company-owned manufacturing with controlled feedstock, activation, sizing, packing, and final quality assurance',
       'Granular, powder, impregnated, and catalytic activated carbon product families',
       'Coconut shell carbon manufactured and exported from India',
-      'NSF 42 and NSF 61 listed grades for applicable water-treatment use',
+      'NSF 42, NSF 61, and Prop 65 compliant grades for applicable water-treatment use',
     ],
     capabilitySignals: [
       {
@@ -145,7 +145,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Steam activation, particle-size control, packing, and final assurance before shipment',
       'Granular, powder, impregnated, and catalytic activated carbon product families',
       'Applications across water treatment, gold recovery, air and gas, oil and gas, and specialty purification',
-      'NSF 42 and NSF 61 listed grades for applicable water-treatment use',
+      'NSF 42, NSF 61, and Prop 65 compliant grades for applicable water-treatment use',
     ],
     capabilitySignals: [
       {
@@ -193,7 +193,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Produced from selected coconut shell feedstock with controls for hardness, surface area, and attrition resistance',
       'Mesh size, adsorption level, washing, and pH-adjusted variants available',
       'Suitable for fixed-bed filters, cartridges, pressure vessels, adsorption columns, and process systems',
-      'NSF 42 and NSF 61 listed grades for applicable water-treatment use',
+      'NSF 42, NSF 61, and Prop 65 compliant grades for applicable water-treatment use',
     ],
     capabilitySignals: [
       {
@@ -382,7 +382,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Black Opal manufactures granular, powder, impregnated, and catalytic activated carbon for drinking water, industrial process water, municipal systems, groundwater remediation, and wastewater polishing. Coconut shell carbon supports chlorine reduction and adsorption of VOCs, pesticides, solvents, THMs, and other organics, with specialty options for bacteriostatic and chloramine duties.',
     highlights: [
       'Granular, powder, impregnated, and catalytic grades for drinking water, municipal systems, industrial process water, and wastewater purification',
-      'NSF 42 and NSF 61 listed grades for applicable water-treatment use',
+      'NSF 42, NSF 61, and Prop 65 compliant grades for applicable water-treatment use',
       'Coconut shell GAC and PAC for filtration, dosing, polishing, taste and odor control, and contaminant-specific treatment',
       'Catalytic CATCARB grades for chloramine and hydrogen sulfide decomposition where required',
       'Application fit across drinking water, process water, groundwater remediation, wastewater polishing, and specialty water treatment',
@@ -420,16 +420,16 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     breadcrumbLabel: 'Gold recovery',
     title: 'High-hardness coconut shell activated carbon for gold recovery',
     description:
-      'Black Opal Carbons manufactures microporous coconut shell granular activated carbon grades for CIP, CIC, and tank-adsorbed precious-metal recovery systems where hardness, adsorption kinetics, low dust, and attrition resistance directly affect recovery.',
+      'Black Opal Carbons manufactures microporous coconut shell granular activated carbon grades for CIP, CIL, CIC and tank-adsorbed precious-metal recovery systems where hardness, adsorption kinetics, low dust, and attrition resistance directly affect recovery.',
     seoTitle: 'Activated Carbon Supplier for Gold Recovery | Black Opal Carbons',
     seoDescription:
-      'Activated carbon supplier for gold recovery with company-owned Indian manufacturing. High-hardness microporous coconut shell GC grades for CIP, CIC, tank-adsorbed systems, gold adsorption, loading capacity, low dust, and attrition resistance.',
+      'Activated carbon supplier for gold recovery with company-owned Indian manufacturing. High-hardness microporous coconut shell GC grades for CIP, CIL, CIC and tank-adsorbed systems, gold adsorption, loading capacity, low dust, and attrition resistance.',
     serviceType: 'Activated carbon for gold recovery',
-    introTitle: 'GC grades for CIP, CIC, and tank-adsorbed systems',
+    introTitle: 'GC grades for CIP, CIL, CIC and tank-adsorbed systems',
     intro:
-      'Black Opal GC grades are built for Carbon-in-Pulp, Carbon-in-Column, and tank-adsorbed systems where adsorption of metal and cyanide complexes has to happen quickly and cleanly. The particle size and pore structure are engineered for precious-metal adsorption while maintaining the hardness needed to resist attrition in mining circuits.',
+      'Black Opal GC grades are built for Carbon-in-Pulp, Carbon-in-Leach, Carbon-in-Column, and tank-adsorbed systems where adsorption of metal and cyanide complexes has to happen quickly and cleanly. The particle size and pore structure are engineered for precious-metal adsorption while maintaining the hardness needed to resist attrition in mining circuits.',
     highlights: [
-      'Microporous coconut shell carbon grades for CIP, CIC, and tank-adsorbed precious-metal recovery systems',
+      'Microporous coconut shell carbon grades for CIP, CIL, CIC and tank-adsorbed precious-metal recovery systems',
       'High-hardness GC grades with excellent attrition resistance for repeated mining service',
       'Strong gold adsorption rates for high-throughput circuits',
       'Higher gold adsorption capacities for maximum loading',
@@ -450,7 +450,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       },
     ],
     specificationNotes: [
-      'Application: CIP, CIC, tank-adsorbed system, carbon-in-leach, carbon-in-pulp, or precious-metal adsorption circuit.',
+      'Application: CIP, CIL, CIC, tank-adsorbed system, carbon-in-leach, carbon-in-pulp, carbon-in-column, or precious-metal adsorption circuit.',
       'Specification: mesh size, hardness, attrition, ash, iodine number, adsorption rate, loading target, moisture, and documentation where applicable.',
       'System context: ore body, slurry conditions, elution process, current media performance, packing, volume, and destination-market requirements.',
     ],

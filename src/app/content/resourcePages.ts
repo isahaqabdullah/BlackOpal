@@ -45,7 +45,7 @@ export const resourceHubCards: ResourceHubCard[] = [
   {
     title: 'Gold recovery activated carbon',
     description:
-      'High-hardness microporous coconut shell carbon for CIP, CIC, and tank-adsorbed recovery systems where adsorption rate, loading capacity, low dust, and attrition resistance matter.',
+      'High-hardness microporous coconut shell carbon for CIP, CIL, CIC and tank-adsorbed recovery systems where adsorption rate, loading capacity, low dust, and attrition resistance matter.',
     href: '/applications/gold-recovery',
     ctaLabel: 'View application',
   },

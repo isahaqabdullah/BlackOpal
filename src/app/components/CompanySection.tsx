@@ -37,7 +37,7 @@ export function CompanySection() {
               {homePage.companyTitle}
             </h2>
             <div
-              className="space-y-4 premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85] mb-10"
+              className="space-y-4 premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85] mb-10"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               <p>
@@ -78,14 +78,14 @@ export function CompanySection() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href={homePage.companyAboutCtaPath}
-                className="premium-primary-btn text-[13px] px-6 py-2.5 rounded-full"
+                className="premium-primary-btn text-[14px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {homePage.companyAboutCtaLabel}
               </Link>
               <Link
                 href={homePage.companyProductionCtaPath}
-                className="premium-secondary-btn text-[13px] px-6 py-2.5 rounded-full"
+                className="premium-secondary-btn text-[14px] px-6 py-2.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
               >
                 {homePage.companyProductionCtaLabel}

@@ -76,7 +76,7 @@ export function ActivatedCarbonSuppliersPage() {
                   Pioneering activated carbon solutions from the Black Opal Group
                 </h2>
                 <p
-                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85] max-w-3xl mb-7"
+                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85] max-w-3xl mb-7"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   Black Opal Carbons carries forward the IndoCarb activated carbon legacy with coconut shell products
@@ -88,7 +88,7 @@ export function ActivatedCarbonSuppliersPage() {
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href="/contact"
-                    className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+                    className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
                     Contact Black Opal
@@ -96,7 +96,7 @@ export function ActivatedCarbonSuppliersPage() {
                   </Link>
                   <Link
                     href="/products"
-                    className="premium-secondary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+                    className="premium-secondary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                   >
                     View product families
@@ -115,7 +115,7 @@ export function ActivatedCarbonSuppliersPage() {
                   {supplierCapabilities.map((capability) => (
                     <div
                       key={capability}
-                      className="flex items-start gap-3 text-[13px] leading-[1.65] text-[#d7c7a2]"
+                      className="flex items-start gap-3 text-[15px] leading-[1.65] text-[#d7c7a2]"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                     >
                       <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#e6cb87]" />
@@ -145,7 +145,7 @@ export function ActivatedCarbonSuppliersPage() {
               Activated carbon products
             </h2>
             <p
-              className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
+              className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               The Black Opal portfolio covers the main coconut shell activated carbon categories used across liquid
@@ -174,7 +174,7 @@ export function ActivatedCarbonSuppliersPage() {
                   {product.name}
                 </h3>
                 <p
-                  className="premium-copy text-[13px] leading-[1.75] mb-5"
+                  className="premium-copy text-[16px] leading-[1.75] mb-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {product.summary}
@@ -208,7 +208,7 @@ export function ActivatedCarbonSuppliersPage() {
               Product and application pathways
             </h2>
             <p
-              className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85]"
+              className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               Black Opal organizes its coconut shell activated carbon portfolio by product format, application
@@ -238,7 +238,7 @@ export function ActivatedCarbonSuppliersPage() {
                   {page.title}
                 </h3>
                 <p
-                  className="premium-copy text-[13px] leading-[1.75] mb-5"
+                  className="premium-copy text-[16px] leading-[1.75] mb-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {page.description}
@@ -278,7 +278,7 @@ export function ActivatedCarbonSuppliersPage() {
                     {point.title}
                   </h3>
                   <p
-                    className="premium-copy text-[13px] leading-[1.75]"
+                    className="premium-copy text-[16px] leading-[1.75]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {point.body}
@@ -304,14 +304,14 @@ export function ActivatedCarbonSuppliersPage() {
                 Black Opal Group heritage
               </h2>
               <p
-                className="premium-copy text-[13px] leading-[1.8] mb-4"
+                className="premium-copy text-[16px] leading-[1.8] mb-4"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 The group was established in 2010 through activated carbon manufacturing and field experience, with a
                 reputation built on quality, innovation, service, and reliability.
               </p>
               <p
-                className="premium-copy text-[13px] leading-[1.8]"
+                className="premium-copy text-[16px] leading-[1.8]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 Company-owned manufacturing supports tighter control over coconut shell selection, activation, sizing,
@@ -330,14 +330,14 @@ export function ActivatedCarbonSuppliersPage() {
                 Quality from feedstock to final carbon
               </h2>
               <p
-                className="premium-copy text-[13px] leading-[1.8] mb-4"
+                className="premium-copy text-[16px] leading-[1.8] mb-4"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 Black Opal’s quality position starts with selected coconut shell raw material and continues through
                 controlled activation, screening, washing or pH adjustment where required, packing, and final checks.
               </p>
               <p
-                className="premium-copy text-[13px] leading-[1.8]"
+                className="premium-copy text-[16px] leading-[1.8]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 The result is an application-focused carbon range with strong hardness, surface area, attrition
@@ -380,7 +380,7 @@ export function ActivatedCarbonSuppliersPage() {
                   {application.name}
                 </h3>
                 <p
-                  className="premium-copy text-[13px] leading-[1.75] mb-5"
+                  className="premium-copy text-[16px] leading-[1.75] mb-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {application.summary}
@@ -416,7 +416,7 @@ export function ActivatedCarbonSuppliersPage() {
                   Connect with Black Opal Carbons
                 </h2>
                 <p
-                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.85] mb-7"
+                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85] mb-7"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   The Black Opal office network connects global export markets with coconut activated carbon product families,
@@ -424,7 +424,7 @@ export function ActivatedCarbonSuppliersPage() {
                 </p>
                 <Link
                   href="/contact"
-                  className="premium-primary-btn inline-flex items-center gap-2 text-[13px] px-6 py-3 rounded-full"
+                  className="premium-primary-btn inline-flex items-center gap-2 text-[14px] px-6 py-3 rounded-full"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   Contact sales
@@ -456,7 +456,7 @@ export function ActivatedCarbonSuppliersPage() {
                       {office.address.map((line) => (
                         <p
                           key={`${office.label}-${line}`}
-                          className="premium-copy text-[13px] leading-[1.7]"
+                          className="premium-copy text-[16px] leading-[1.7]"
                           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                         >
                           {line}

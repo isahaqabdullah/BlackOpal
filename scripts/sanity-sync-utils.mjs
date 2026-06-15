@@ -219,7 +219,9 @@ export const cmsDocumentsProjection = `{
     type,
     summary,
     detail,
-    bullets
+    bullets,
+    documentUrl,
+    documentLabel
   }
 }`;
 

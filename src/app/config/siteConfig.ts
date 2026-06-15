@@ -324,7 +324,7 @@ export const siteConfig = {
 };
 
 export const companyDetails = {
-  legacyName: optionalEnvValue('LEGACY_NAME', 'INDOCARB AC'),
+  legacyName: optionalEnvValue('LEGACY_NAME', 'Indocarb AC LLC'),
   headquarters,
   headquartersLabel,
   headquartersDescriptor,
