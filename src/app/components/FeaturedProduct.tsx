@@ -79,7 +79,7 @@ export function FeaturedProduct() {
             </h2>
             <p
               data-sanity={homePageDataAttribute(`${activeSlidePath}.copy`)}
-              className="premium-copy text-[15px] leading-[1.65] mb-6 max-w-lg"
+              className="premium-copy text-[14px] leading-[1.65] mb-6 max-w-lg"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               {activeSlide.copy}

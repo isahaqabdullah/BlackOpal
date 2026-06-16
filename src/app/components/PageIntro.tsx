@@ -98,7 +98,7 @@ export function PageIntro({
         {description ? (
           <p
             data-sanity={dataSanity?.description}
-            className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.65] max-w-3xl"
+            className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.65] max-w-3xl"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
             {description}

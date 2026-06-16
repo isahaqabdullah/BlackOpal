@@ -33,7 +33,7 @@ export function NewsroomPreview() {
             </h2>
             <p
               data-sanity={pageCopyDataAttribute('newsroomPreview.description')}
-              className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.65]"
+              className="premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.65]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               {copy.description}
@@ -76,7 +76,7 @@ export function NewsroomPreview() {
               </h3>
               <p
                 data-sanity={sanityDataAttribute('newsroomItem', item._id, 'summary')}
-                className="premium-copy text-[15px] leading-[1.65] mb-5"
+                className="premium-copy text-[14px] leading-[1.65] mb-5"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {item.summary}

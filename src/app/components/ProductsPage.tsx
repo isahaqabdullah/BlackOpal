@@ -53,14 +53,14 @@ export function ProductsPage() {
                   </h2>
                   <p
                     data-sanity={sanityDataAttribute('product', product._id, 'summary')}
-                    className="premium-copy text-[15px] leading-[1.65] mb-5 max-w-2xl"
+                    className="premium-copy text-[14px] leading-[1.65] mb-5 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {product.summary}
                   </p>
                   <p
                     data-sanity={sanityDataAttribute('product', product._id, 'intro')}
-                    className="premium-copy text-[15px] leading-[1.65] mb-6 max-w-2xl"
+                    className="premium-copy text-[14px] leading-[1.65] mb-6 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {product.intro}

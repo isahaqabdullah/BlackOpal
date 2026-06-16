@@ -37,7 +37,7 @@ export function CompanySection() {
               {homePage.companyTitle}
             </h2>
             <div
-              className="space-y-4 premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.65] mb-10"
+              className="space-y-4 premium-copy premium-reveal premium-reveal-delay-2 text-[14px] leading-[1.65] mb-10"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               <p>

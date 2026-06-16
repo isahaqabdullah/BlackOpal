@@ -29,7 +29,7 @@ export function CTABand() {
           </h2>
           <p
             data-sanity={homePageDataAttribute('ctaDescription')}
-            className="premium-copy premium-reveal premium-reveal-delay-1 text-[15px] mb-8 max-w-lg mx-auto relative z-10"
+            className="premium-copy premium-reveal premium-reveal-delay-1 text-[14px] mb-8 max-w-lg mx-auto relative z-10"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
             {homePage.ctaDescription}

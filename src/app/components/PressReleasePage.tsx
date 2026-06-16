@@ -54,7 +54,7 @@ export function PressReleasePage() {
                   <p
                     key={paragraph}
                     data-sanity={sanityDataAttribute('newsroomItem', story._id, `detail[${paragraphIndex}]`)}
-                    className="premium-copy text-[15px] leading-[1.7]"
+                    className="premium-copy text-[14px] leading-[1.7]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     <EmailLinkText text={paragraph} />

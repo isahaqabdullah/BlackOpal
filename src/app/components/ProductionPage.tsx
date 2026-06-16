@@ -89,7 +89,7 @@ function ProductionPackagingGallery({
           </h2>
           <p
             data-sanity={dataAttribute('packagingBody')}
-            className="premium-copy text-[15px] leading-[1.65]"
+            className="premium-copy text-[14px] leading-[1.65]"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
             {body}
@@ -184,7 +184,7 @@ function ProductionPackagingGallery({
                               </h3>
                               <p
                                 data-sanity={dataAttribute(`${itemPath}.caption`)}
-                                className="premium-copy text-[15px] leading-[1.65]"
+                                className="premium-copy text-[14px] leading-[1.65]"
                                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                               >
                                 {item.caption}
@@ -239,7 +239,7 @@ function ProductionPackagingGallery({
                   Supporting document
                 </span>
                 <p
-                  className="premium-copy text-[15px] leading-[1.65]"
+                  className="premium-copy text-[14px] leading-[1.65]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   Current packaging formats and handling options.
@@ -364,7 +364,7 @@ export function ProductionPage() {
               </h2>
               <p
                 data-sanity={productionPageDataAttribute('overviewBody')}
-                className="premium-copy text-[15px] leading-[1.65] max-w-3xl"
+                className="premium-copy text-[14px] leading-[1.65] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {productionPage.overviewBody}
@@ -403,7 +403,7 @@ export function ProductionPage() {
                   {productionPage.qualityTitle}
                 </h2>
                 <div
-                  className="space-y-4 premium-copy text-[15px] leading-[1.65]"
+                  className="space-y-4 premium-copy text-[14px] leading-[1.65]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {productionPage.qualityParagraphs.map((paragraph, paragraphIndex) => (
@@ -452,7 +452,7 @@ export function ProductionPage() {
                           </h3>
                           <p
                             data-sanity={productionPageDataAttribute(`${stepPath}.body`)}
-                            className="premium-copy text-[15px] leading-[1.65]"
+                            className="premium-copy text-[14px] leading-[1.65]"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                           >
                             {step.body}
@@ -464,7 +464,7 @@ export function ProductionPage() {
                 </div>
                 <p
                   data-sanity={productionPageDataAttribute('activationNote')}
-                  className="premium-copy text-[15px] leading-[1.65] mt-5"
+                  className="premium-copy text-[14px] leading-[1.65] mt-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {productionPage.activationNote}
@@ -491,7 +491,7 @@ export function ProductionPage() {
         <div className="premium-shell">
           <div className="flex flex-col items-center gap-5 border-t border-[#c9a24d]/12 pt-8 text-center">
             <p
-              className="premium-copy text-[15px] leading-[1.65] max-w-2xl"
+              className="premium-copy text-[14px] leading-[1.65] max-w-2xl"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               <span data-sanity={productionPageDataAttribute('contactTextBeforeEmail')}>

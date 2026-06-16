@@ -82,7 +82,7 @@ export function AboutPage() {
                 {aboutPage.storyTitle}
               </h2>
               <div
-                className="space-y-4 premium-copy text-[15px] leading-[1.65] mb-8"
+                className="space-y-4 premium-copy text-[14px] leading-[1.65] mb-8"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {aboutPage.storyParagraphs.map((paragraph, paragraphIndex) => (
@@ -121,7 +121,7 @@ export function AboutPage() {
                       {office.address.map((line) => (
                         <p
                           key={`${office.label}-${line}`}
-                          className="premium-copy text-[15px] leading-[1.65]"
+                          className="premium-copy text-[14px] leading-[1.65]"
                           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                         >
                           {line}
@@ -186,7 +186,7 @@ export function AboutPage() {
                   </h3>
                   <p
                     data-sanity={aboutPageDataAttribute(`${card._key ? `cards[_key=="${card._key}"]` : `cards[${index}]`}.desc`)}
-                    className="premium-copy text-[15px] leading-[1.65]"
+                    className="premium-copy text-[14px] leading-[1.65]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {card.desc}
@@ -218,7 +218,7 @@ export function AboutPage() {
               </h2>
               <p
                 data-sanity={sanityDataAttribute('newsroomItem', pressRelease._id, 'summary')}
-                className="premium-copy text-[15px] leading-[1.65] mb-5 max-w-3xl"
+                className="premium-copy text-[14px] leading-[1.65] mb-5 max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {pressRelease.summary}

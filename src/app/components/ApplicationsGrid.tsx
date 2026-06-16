@@ -68,7 +68,7 @@ export function ApplicationsGrid() {
                 </h3>
                 <p
                   data-sanity={sanityDataAttribute('application', a._id, 'summary')}
-                  className="premium-copy text-[15px] leading-[1.65] mb-4"
+                  className="premium-copy text-[14px] leading-[1.65] mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {a.summary}
