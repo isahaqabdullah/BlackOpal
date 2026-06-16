@@ -48,7 +48,7 @@ export function ProductCards() {
               </h3>
               <p
                 data-sanity={sanityDataAttribute('product', p._id, 'summary')}
-                className="premium-copy text-[16px] leading-[1.75] mb-5"
+                className="premium-copy text-[15px] leading-[1.65] mb-5"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {p.summary}

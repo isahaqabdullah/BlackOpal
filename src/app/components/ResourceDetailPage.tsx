@@ -31,7 +31,7 @@ export function ResourceDetailPage({ page }: ResourceDetailPageProps) {
                 {page.body.map((paragraph) => (
                   <p
                     key={paragraph}
-                    className="premium-copy text-[16px] leading-[1.9]"
+                    className="premium-copy text-[15px] leading-[1.7]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {paragraph}
@@ -51,7 +51,7 @@ export function ResourceDetailPage({ page }: ResourceDetailPageProps) {
                 Documentation review
               </span>
               <p
-                className="premium-copy text-[16px] leading-[1.75] mb-6"
+                className="premium-copy text-[15px] leading-[1.65] mb-6"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 Product family, application, packing format, and destination-market documentation are confirmed before

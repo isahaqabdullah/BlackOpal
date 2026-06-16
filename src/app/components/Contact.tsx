@@ -148,7 +148,7 @@ export function ContactPage() {
                         {office.address.map((line) => (
                           <p
                             key={`${office.label}-${line}`}
-                            className="premium-copy text-[16px] leading-[1.7]"
+                            className="premium-copy text-[15px] leading-[1.65]"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                           >
                             {line}
@@ -400,7 +400,7 @@ export function ContactPage() {
             </h3>
             <p
               id="contact-success-message"
-              className="premium-copy text-[16px] leading-[1.7]"
+              className="premium-copy text-[15px] leading-[1.65]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               {contactPage.successMessage}

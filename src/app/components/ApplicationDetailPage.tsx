@@ -58,7 +58,7 @@ export function ApplicationDetailPage() {
               </span>
               <p
                 data-sanity={sanityDataAttribute('application', application._id, 'intro')}
-                className="premium-copy text-[16px] leading-[1.85] mb-6"
+                className="premium-copy text-[15px] leading-[1.65] mb-6"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {application.intro}
@@ -136,7 +136,7 @@ export function ApplicationDetailPage() {
                 </h2>
                 <p
                   data-sanity={sanityDataAttribute('application', application._id, `${sectionPath}.body`)}
-                  className="premium-copy text-[16px] leading-[1.8]"
+                  className="premium-copy text-[15px] leading-[1.65]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {section.body}
@@ -187,7 +187,7 @@ export function ApplicationDetailPage() {
                 </h2>
                 <p
                   data-sanity={pageCopyDataAttribute('applicationDetailPage.recommendedProductsDescription')}
-                  className="premium-copy text-[16px] mb-5"
+                  className="premium-copy text-[15px] mb-5"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {copy.recommendedProductsDescription}

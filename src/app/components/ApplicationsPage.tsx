@@ -53,14 +53,14 @@ export function ApplicationsPage() {
                   </h2>
                   <p
                     data-sanity={sanityDataAttribute('application', application._id, 'summary')}
-                    className="premium-copy text-[16px] leading-[1.8] mb-5 max-w-2xl"
+                    className="premium-copy text-[15px] leading-[1.65] mb-5 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {application.summary}
                   </p>
                   <p
                     data-sanity={sanityDataAttribute('application', application._id, 'intro')}
-                    className="premium-copy text-[16px] leading-[1.8] mb-6 max-w-2xl"
+                    className="premium-copy text-[15px] leading-[1.65] mb-6 max-w-2xl"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {application.intro}

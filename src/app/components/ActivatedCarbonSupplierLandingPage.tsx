@@ -61,7 +61,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   {page.introTitle}
                 </h2>
                 <p
-                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85] max-w-3xl mb-7"
+                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.65] max-w-3xl mb-7"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {page.intro}
@@ -130,7 +130,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
               Built around industrial requirements and specification control
             </h2>
             <p
-              className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85]"
+              className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.65]"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
             >
               Black Opal supports industrial requirements that depend on consistent lots, clear specifications,
@@ -155,7 +155,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   {signal.title}
                 </h3>
                 <p
-                  className="premium-copy text-[16px] leading-[1.75]"
+                  className="premium-copy text-[15px] leading-[1.65]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {signal.body}
@@ -226,7 +226,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                       {product.name}
                     </h3>
                     <p
-                      className="premium-copy text-[16px] leading-[1.65] mb-3"
+                      className="premium-copy text-[15px] leading-[1.65] mb-3"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                     >
                       {product.summary}
@@ -279,7 +279,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                     {application.name}
                   </h3>
                   <p
-                    className="premium-copy text-[16px] leading-[1.75] mb-5"
+                    className="premium-copy text-[15px] leading-[1.65] mb-5"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {application.summary}
@@ -316,7 +316,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                   {page.ctaTitle}
                 </h2>
                 <p
-                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[16px] leading-[1.85] mb-7"
+                  className="premium-copy premium-reveal premium-reveal-delay-2 text-[15px] leading-[1.65] mb-7"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {page.ctaDescription}
@@ -355,7 +355,7 @@ export function ActivatedCarbonSupplierLandingPage({ page }: ActivatedCarbonSupp
                       {office.address.map((line) => (
                         <p
                           key={`${office.label}-${line}`}
-                          className="premium-copy text-[16px] leading-[1.7]"
+                          className="premium-copy text-[15px] leading-[1.65]"
                           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                         >
                           {line}

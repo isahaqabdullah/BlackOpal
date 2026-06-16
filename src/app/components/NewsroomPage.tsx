@@ -49,7 +49,7 @@ export function NewsroomPage() {
                 </h2>
                 <p
                   data-sanity={sanityDataAttribute('newsroomItem', pressRelease._id, 'summary')}
-                  className="premium-copy text-[16px] leading-[1.85] mb-6"
+                  className="premium-copy text-[15px] leading-[1.65] mb-6"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {pressRelease.summary}
@@ -87,7 +87,7 @@ export function NewsroomPage() {
                 </span>
                 <p
                   data-sanity={pageCopyDataAttribute('newsroomPage.whyMattersBody')}
-                  className="premium-copy text-[16px] leading-[1.8]"
+                  className="premium-copy text-[15px] leading-[1.65]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {copy.whyMattersBody}
@@ -111,7 +111,7 @@ export function NewsroomPage() {
               </h2>
               <p
                 data-sanity={pageCopyDataAttribute('newsroomPage.resourcesDescription')}
-                className="premium-copy text-[16px] leading-[1.8] max-w-3xl"
+                className="premium-copy text-[15px] leading-[1.65] max-w-3xl"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {copy.resourcesDescription}
@@ -148,7 +148,7 @@ export function NewsroomPage() {
                   </h3>
                   <p
                     data-sanity={sanityDataAttribute('newsroomItem', item._id, 'summary')}
-                    className="premium-copy text-[16px] leading-[1.75] mb-5"
+                    className="premium-copy text-[15px] leading-[1.65] mb-5"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                   >
                     {item.summary}

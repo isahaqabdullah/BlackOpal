@@ -248,7 +248,7 @@
 
   .premium-hero-heading-india {
     max-width: min(100%, 48rem);
-    font-size: clamp(2.25rem, 4.6vw, 4.35rem);
+    font-size: clamp(2.12rem, 4.25vw, 4.05rem);
   }
 
   .premium-hero-heading-line {

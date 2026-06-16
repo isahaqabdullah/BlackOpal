@@ -67,7 +67,7 @@ export function ProductDetailPage() {
               </span>
               <p
                 data-sanity={sanityDataAttribute('product', product._id, 'intro')}
-                className="premium-copy text-[16px] leading-[1.85] mb-6"
+                className="premium-copy text-[15px] leading-[1.65] mb-6"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {product.intro}
@@ -134,7 +134,7 @@ export function ProductDetailPage() {
                 </h2>
                 <p
                   data-sanity={sanityDataAttribute('product', product._id, `${sectionPath}.body`)}
-                  className="premium-copy text-[16px] leading-[1.8]"
+                  className="premium-copy text-[15px] leading-[1.65]"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
                 >
                   {section.body}
@@ -173,7 +173,7 @@ export function ProductDetailPage() {
               </h2>
               <p
                 data-sanity={pageCopyDataAttribute('productDetailPage.ctaDescription')}
-                className="premium-copy text-[16px]"
+                className="premium-copy text-[15px]"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
               >
                 {copy.ctaDescription}

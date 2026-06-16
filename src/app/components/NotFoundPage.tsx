@@ -30,7 +30,7 @@ export function NotFoundPage() {
           </h1>
           <p
             data-sanity={pageCopyDataAttribute('notFoundPage.description')}
-            className="premium-copy text-[16px] leading-[1.8] max-w-2xl mx-auto mb-8"
+            className="premium-copy text-[15px] leading-[1.65] max-w-2xl mx-auto mb-8"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
           >
             {copy.description}
