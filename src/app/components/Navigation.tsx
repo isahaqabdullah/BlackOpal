@@ -266,11 +266,11 @@ export function Navigation() {
           keywords: 'contact quote enquiry sales technical support',
         },
         {
-          title: 'Activated Carbon Suppliers',
+          title: 'Activated Carbon Manufacturers',
           href: '/activated-carbon-suppliers',
           category: 'Page',
-          summary: 'Supplier pages for activated carbon products and applications.',
-          keywords: 'supplier activated carbon bulk global coconut shell',
+          summary: 'Manufacturer pages for activated carbon products and applications.',
+          keywords: 'manufacturer activated carbon bulk global coconut shell',
         },
         ...products.map((product) => ({
           title: product.name,
@@ -303,7 +303,7 @@ export function Navigation() {
         ...supplierLandingPages.map((page) => ({
           title: page.title,
           href: `/activated-carbon-suppliers/${page.slug}`,
-          category: 'Supplier',
+          category: 'Manufacturer',
           summary: page.description,
           keywords: `${page.label} ${page.serviceType} ${page.intro} ${page.highlights.join(' ')}`,
         })),

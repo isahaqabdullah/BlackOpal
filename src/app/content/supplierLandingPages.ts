@@ -37,10 +37,10 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Global coconut activated carbon from company-owned manufacturing',
     description:
       'Black Opal Carbons, formerly Indocarb AC LLC, manufactures and exports coconut shell activated carbon from India for water treatment, gold recovery, air and gas, oil and gas, and industrial purification applications.',
-    seoTitle: 'Global Activated Carbon Supplier | Black Opal Carbons',
+    seoTitle: 'Global Activated Carbon Manufacturer | Black Opal Carbons',
     seoDescription:
-      'Black Opal Carbons, formerly Indocarb AC LLC, supplies coconut shell activated carbon from company-owned Indian manufacturing for water, gold, air, gas, oil and industrial purification applications.',
-    serviceType: 'Global activated carbon supply',
+      'Black Opal Carbons, formerly Indocarb AC LLC, manufactures coconut shell activated carbon through company-owned Indian manufacturing for water, gold, air, gas, oil and industrial purification applications.',
+    serviceType: 'Global activated carbon manufacturing and export support',
     introTitle: 'Established manufacturing continuity under the Black Opal name',
     intro:
       'The group behind Black Opal was established in 2010 through coconut shell activated carbon manufacturing and activated carbon field experience. The transition from Indocarb AC LLC to Black Opal Carbons was a global brand change; the products, factory, facilities, and support procedures remained in place. Today, Black Opal controls raw material selection, steam activation, particle sizing, packing, and final quality assurance before shipment.',
@@ -85,10 +85,10 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Bulk coconut activated carbon from controlled Indian manufacturing',
     description:
       'Black Opal Carbons manufactures coconut shell activated carbon in granular, powder, impregnated, and catalytic formats for industrial purification applications that require scale, consistency, packing discipline, and export readiness.',
-    seoTitle: 'Bulk Activated Carbon Supplier | Black Opal Carbons',
+    seoTitle: 'Bulk Activated Carbon Manufacturer | Black Opal Carbons',
     seoDescription:
-      'Bulk activated carbon supplier with company-owned Indian manufacturing. Coconut shell granular, powder, impregnated, and catalytic carbon for industrial purification applications.',
-    serviceType: 'Bulk activated carbon supply',
+      'Bulk activated carbon manufacturer with company-owned Indian manufacturing. Coconut shell granular, powder, impregnated, and catalytic carbon for industrial purification applications.',
+    serviceType: 'Bulk activated carbon manufacturing',
     introTitle: 'Manufacturing scale for larger activated carbon requirements',
     intro:
       "Black Opal's company-owned manufacturing controls feedstock selection, steam activation, particle sizing, packing, and final quality assurance before shipment. With 35000 metric tons of annual coconut activated carbon capacity, the product range supports water treatment, gold recovery, air and gas, oil and gas, catalytic carbon, and specialty purification applications.",
@@ -133,10 +133,10 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Coconut shell activated carbon for demanding purification systems',
     description:
       'Black Opal Carbons manufactures coconut shell activated carbon from selected feedstock for water treatment, gold recovery, air and gas, oil and gas, and specialty purification applications.',
-    seoTitle: 'Coconut Shell Activated Carbon Supplier | Black Opal Carbons',
+    seoTitle: 'Coconut Shell Activated Carbon Manufacturer | Black Opal Carbons',
     seoDescription:
-      'Coconut shell activated carbon supplier with company-owned Indian manufacturing. Granular, powder, impregnated, and catalytic coconut carbon for water, gold, air, gas, and industrial purification.',
-    serviceType: 'Coconut shell activated carbon supply',
+      'Coconut shell activated carbon manufacturer with company-owned Indian manufacturing. Granular, powder, impregnated, and catalytic coconut carbon for water, gold, air, gas, and industrial purification.',
+    serviceType: 'Coconut shell activated carbon manufacturing',
     introTitle: 'Selected coconut shell feedstock, steam activation, and controlled sizing',
     intro:
       'Selected coconut shells support high hardness, low ash, micropore structure, and attrition resistance. Black Opal controls feedstock selection, steam activation, sizing, packing, and final assurance before shipment, with granular, powder, impregnated, and catalytic formats available for application-specific requirements.',
@@ -181,10 +181,10 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Coconut shell granular activated carbon for fixed-bed and process systems',
     description:
       'Black Opal Carbons manufactures high-hardness coconut shell granular activated carbon for water treatment, gold recovery, solvent recovery, condensate polishing, gas purification, refinery service, and industrial filtration systems.',
-    seoTitle: 'Granular Activated Carbon Supplier | Black Opal Carbons',
+    seoTitle: 'Granular Activated Carbon Manufacturer | Black Opal Carbons',
     seoDescription:
-      'Granular activated carbon supplier with company-owned Indian manufacturing. High-hardness coconut shell GAC for water treatment, gold recovery, gas purification, refinery service, and industrial filtration.',
-    serviceType: 'Granular activated carbon supply',
+      'Granular activated carbon manufacturer with company-owned Indian manufacturing. High-hardness coconut shell GAC for water treatment, gold recovery, gas purification, refinery service, and industrial filtration.',
+    serviceType: 'Granular activated carbon manufacturing',
     introTitle: 'High-hardness GAC with mesh-size and pore-structure control',
     intro:
       'Black Opal granular activated carbon is produced from selected coconut shell feedstock and engineered so particle size and pore structure support adsorption performance in fixed-bed filters, cartridges, pressure vessels, adsorption columns, and process systems. Grades can be matched by mesh size, adsorption level, washing, pH adjustment, hardness, surface area, and documentation requirements.',
@@ -229,9 +229,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Powdered activated carbon for dosing and batch treatment',
     description:
       'Black Opal Carbons manufactures virgin powdered activated carbon for drinking water, wastewater, odor control, food-grade, decolorization, and specialty process applications.',
-    seoTitle: 'Powdered Activated Carbon Supplier | Black Opal Carbons',
+    seoTitle: 'Powdered Activated Carbon Manufacturer | Black Opal Carbons',
     seoDescription:
-      'Powdered activated carbon supplier with company-owned Indian manufacturing. Virgin PAC for drinking water, wastewater, odor control, food-grade, decolorization, and remediation applications.',
+      'Powdered activated carbon manufacturer with company-owned Indian manufacturing. Virgin PAC for drinking water, wastewater, odor control, food-grade, decolorization, and remediation applications.',
     serviceType: 'Powdered activated carbon',
     introTitle: 'Fast-response PAC for inline dosing and batch addition',
     intro:
@@ -277,9 +277,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Impregnated activated carbon for targeted gas and water systems',
     description:
       'Black Opal Carbons provides chemically enhanced coconut shell activated carbon for targeted gas-stream, bacteriostatic, mercury-removal, and specialty purification duties.',
-    seoTitle: 'Impregnated Activated Carbon Supplier | Black Opal Carbons',
+    seoTitle: 'Impregnated Activated Carbon Manufacturer | Black Opal Carbons',
     seoDescription:
-      'Impregnated activated carbon supplier with company-owned Indian manufacturing. Chemically enhanced coconut shell carbon for gas purification, mercury removal, bacteriostatic water systems, and specialty contaminants.',
+      'Impregnated activated carbon manufacturer with company-owned Indian manufacturing. Chemically enhanced coconut shell carbon for gas purification, mercury removal, bacteriostatic water systems, and specialty contaminants.',
     serviceType: 'Impregnated activated carbon',
     introTitle: 'Chemically enhanced carbon for contaminant-specific performance',
     intro:
@@ -325,9 +325,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Catalytic activated carbon for chloramine and hydrogen sulfide control',
     description:
       'Black Opal Carbons provides surface-modified coconut shell catalytic activated carbon for chloramine reduction, hydrogen sulfide decomposition, taste and odor reduction, and specialty water-treatment applications.',
-    seoTitle: 'Catalytic Activated Carbon Supplier | Black Opal Carbons',
+    seoTitle: 'Catalytic Activated Carbon Manufacturer | Black Opal Carbons',
     seoDescription:
-      'Catalytic activated carbon supplier with company-owned Indian manufacturing. CATCARB surface-modified coconut shell carbon for chloramine, hydrogen sulfide, taste and odor, and specialty water treatment.',
+      'Catalytic activated carbon manufacturer with company-owned Indian manufacturing. CATCARB surface-modified coconut shell carbon for chloramine, hydrogen sulfide, taste and odor, and specialty water treatment.',
     serviceType: 'Catalytic activated carbon',
     introTitle: 'CATCARB for difficult water-treatment contaminants',
     intro:
@@ -373,9 +373,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Coconut shell activated carbon for water treatment systems',
     description:
       'Black Opal Carbons manufactures coconut shell activated carbon grades for drinking water, process water, municipal systems, groundwater remediation, wastewater polishing, taste and odor control, and contaminant-specific filtration.',
-    seoTitle: 'Activated Carbon Supplier for Water Treatment | Black Opal Carbons',
+    seoTitle: 'Activated Carbon Manufacturer for Water Treatment | Black Opal Carbons',
     seoDescription:
-      'Activated carbon supplier for water treatment with company-owned Indian manufacturing. Coconut shell GAC, PAC, impregnated, and catalytic grades for drinking water, process water, wastewater, taste, odor, VOC, pesticide, THM, and chloramine applications.',
+      'Activated carbon manufacturer for water treatment with company-owned Indian manufacturing. Coconut shell GAC, PAC, impregnated, and catalytic grades for drinking water, process water, wastewater, taste, odor, VOC, pesticide, THM, and chloramine applications.',
     serviceType: 'Activated carbon for water treatment',
     introTitle: 'GAC, PAC, impregnated, and catalytic grades for water purification',
     intro:
@@ -421,9 +421,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'High-hardness coconut shell activated carbon for gold recovery',
     description:
       'Black Opal Carbons manufactures microporous coconut shell granular activated carbon grades for CIP, CIL, CIC and tank-adsorbed precious-metal recovery systems where hardness, adsorption kinetics, low dust, and attrition resistance directly affect recovery.',
-    seoTitle: 'Activated Carbon Supplier for Gold Recovery | Black Opal Carbons',
+    seoTitle: 'Activated Carbon Manufacturer for Gold Recovery | Black Opal Carbons',
     seoDescription:
-      'Activated carbon supplier for gold recovery with company-owned Indian manufacturing. High-hardness microporous coconut shell GC grades for CIP, CIL, CIC and tank-adsorbed systems, gold adsorption, loading capacity, low dust, and attrition resistance.',
+      'Activated carbon manufacturer for gold recovery with company-owned Indian manufacturing. High-hardness microporous coconut shell GC grades for CIP, CIL, CIC and tank-adsorbed systems, gold adsorption, loading capacity, low dust, and attrition resistance.',
     serviceType: 'Activated carbon for gold recovery',
     introTitle: 'GC grades for CIP, CIL, CIC and tank-adsorbed systems',
     intro:
@@ -469,9 +469,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Coconut shell activated carbon for air and gas purification',
     description:
       'Black Opal Carbons manufactures coconut shell and impregnated activated carbon grades for indoor air quality, protective equipment, flue gas, odor control, emission control, solvent recovery, and vapor-phase filtration.',
-    seoTitle: 'Activated Carbon Supplier for Air and Gas Purification | Black Opal Carbons',
+    seoTitle: 'Activated Carbon Manufacturer for Air and Gas Purification | Black Opal Carbons',
     seoDescription:
-      'Activated carbon supplier for air and gas purification with company-owned Indian manufacturing. Coconut shell and impregnated grades for indoor air quality, protective equipment, flue gas, odor control, solvent recovery, and vapor-phase treatment.',
+      'Activated carbon manufacturer for air and gas purification with company-owned Indian manufacturing. Coconut shell and impregnated grades for indoor air quality, protective equipment, flue gas, odor control, solvent recovery, and vapor-phase treatment.',
     serviceType: 'Activated carbon for air and gas purification',
     introTitle: 'Coconut shell and impregnated grades for vapor-phase duties',
     intro:
@@ -517,9 +517,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Activated carbon for refinery, oil, and gas purification',
     description:
       'Black Opal Carbons manufactures coconut shell granular and impregnated activated carbon for vapor recovery, hydrogen sulfide removal, condensate polishing, low-silica boiler-feed protection, and refinery process purification.',
-    seoTitle: 'Activated Carbon Supplier for Oil and Gas | Black Opal Carbons',
+    seoTitle: 'Activated Carbon Manufacturer for Oil and Gas | Black Opal Carbons',
     seoDescription:
-      'Activated carbon supplier for oil and gas with company-owned Indian manufacturing. Coconut shell granular and impregnated grades for refinery vapor recovery, H2S removal, condensate polishing, boiler-feed protection, and process purification.',
+      'Activated carbon manufacturer for oil and gas with company-owned Indian manufacturing. Coconut shell granular and impregnated grades for refinery vapor recovery, H2S removal, condensate polishing, boiler-feed protection, and process purification.',
     serviceType: 'Activated carbon for oil and gas applications',
     introTitle: 'Petro-grade carbon for vapor recovery and condensate polishing',
     intro:
@@ -565,9 +565,9 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Industrial coconut shell activated carbon for purification applications',
     description:
       'Black Opal Carbons manufactures granular, powder, impregnated, and catalytic activated carbon for water treatment, gold recovery, air and gas purification, refinery, chemical processing, solvent recovery, food and beverage purification, odor control, and specialty industrial processes.',
-    seoTitle: 'Industrial Activated Carbon Supplier | Black Opal Carbons',
+    seoTitle: 'Industrial Activated Carbon Manufacturer | Black Opal Carbons',
     seoDescription:
-      'Industrial activated carbon supplier with company-owned Indian manufacturing. Coconut shell granular, powder, impregnated, and catalytic carbon for water, mining, air, gas, refinery, solvent recovery, food and beverage, odor control, and specialty purification.',
+      'Industrial activated carbon manufacturer with company-owned Indian manufacturing. Coconut shell granular, powder, impregnated, and catalytic carbon for water, mining, air, gas, refinery, solvent recovery, food and beverage, odor control, and specialty purification.',
     serviceType: 'Industrial activated carbon',
     introTitle: 'Product families matched to industrial purification duties',
     intro:

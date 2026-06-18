@@ -464,7 +464,7 @@ export const homePageContent: HomePageContent = {
   ctaPrimaryPath: '/contact',
   ctaPrimaryLabel: 'Request Quote',
   ctaSecondaryPath: '/activated-carbon-suppliers/bulk-activated-carbon-supplier',
-  ctaSecondaryLabel: 'Bulk supply capability',
+  ctaSecondaryLabel: 'Bulk manufacturing capability',
   whyKicker: `Why ${siteConfig.siteName}`,
   whyTitle: 'High-performance activated carbon backed by quality, innovation, service, and reliability',
   whyReasons: [
@@ -885,7 +885,7 @@ export const aboutPageContent: AboutPageContent = {
   seo: {
     seoTitle: `About ${siteConfig.siteName} | Black Opal Carbons`,
     seoDescription:
-      `${siteConfig.siteName}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} supplies ${siteConfig.originDescription} through company-owned manufacturing and an office network covering India, the Middle East, and Black Opal Group Headquarters.`,
+      `${siteConfig.siteName}${companyDetails.legacyName ? `, formerly ${companyDetails.legacyName},` : ''} manufactures coconut shell activated carbon in India through company-owned production and supports it through an office network covering India, the Middle East, and Black Opal Group Headquarters.`,
     noIndex: false,
   },
   intro: {
@@ -1169,7 +1169,7 @@ export const applications: ApplicationEntry[] = [
     summary:
       'Granular, powder, impregnated, and catalytic grades for drinking water, municipal systems, and wastewater purification.',
     intro:
-      'Black Opal supplies activated carbon for drinking water, industrial process water, municipal systems, groundwater remediation, and wastewater polishing.',
+      'Black Opal manufactures activated carbon for drinking water, industrial process water, municipal systems, groundwater remediation, and wastewater polishing.',
     keyPoints: [
       'Activated carbon is an efficient and cost-effective option for industrial and municipal wastewater plus contaminated ground and groundwater.',
       'Coconut shell carbon supports chlorine reduction and adsorption of VOCs, pesticides, solvents, THMs, and other organics.',
@@ -1218,7 +1218,7 @@ export const applications: ApplicationEntry[] = [
     keyPoints: [
       'GC grades are highly microporous, high-hardness, and built with excellent attrition resistance.',
       'The product range emphasizes very low platelet content, zero dust, and vee-wire screening to keep fines to a minimum.',
-      'Black Opal positions itself as a supplier to some of the world’s largest mining companies.',
+      'Black Opal manufactures activated carbon used by some of the world’s largest mining companies.',
     ],
     recommendedProducts: ['granular'],
     grades: ['GC E612 Gold Grade', 'GC E816 Gold Grade'],
@@ -1367,7 +1367,7 @@ export const applications: ApplicationEntry[] = [
     summary:
       'Specialty grades for solvent recovery, food and beverage purification, edible oil, and related industrial processes.',
     intro:
-      'Black Opal supplies specialty grades for solvent recovery plus food and beverage purification work beyond the main water, mining, gas, and refinery categories.',
+      'Black Opal manufactures specialty grades for solvent recovery plus food and beverage purification work beyond the main water, mining, gas, and refinery categories.',
     keyPoints: [
       'Solvent recovery supports printing, dry cleaning, and paint applications.',
       'Food and beverage applications focus on taste and odor control, CO2 purification, and edible-oil decolorization.',

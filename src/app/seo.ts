@@ -163,11 +163,11 @@ function staticPageMetadata(path: string, content: SeoContent): StaticPageMetada
 
   if (path === '/activated-carbon-suppliers') {
     return {
-      title: pageTitle('Coconut Shell Activated Carbon Supplier'),
+      title: pageTitle('Coconut Shell Activated Carbon Manufacturer'),
       description:
-        'Black Opal Carbons supplies high-performance coconut shell activated carbon, including granular, powder, impregnated, and catalytic grades, for water, gold recovery, air, gas, refinery, and specialty applications.',
-      imageAlt: 'Coconut shell activated carbon supplier',
-      breadcrumbLabel: 'Activated carbon suppliers',
+        'Black Opal Carbons manufactures high-performance coconut shell activated carbon, including granular, powder, impregnated, and catalytic grades, for water, gold recovery, air, gas, refinery, and specialty applications.',
+      imageAlt: 'Coconut shell activated carbon manufacturer',
+      breadcrumbLabel: 'Activated carbon manufacturers',
     };
   }
 
@@ -278,7 +278,7 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
         imageAlt: page.title,
         breadcrumbs: [
           { name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath },
-          { name: 'Activated carbon suppliers', path: '/activated-carbon-suppliers' },
+          { name: 'Activated carbon manufacturers', path: '/activated-carbon-suppliers' },
           { name: page.breadcrumbLabel, path },
         ],
         entity: { type: 'supplierLanding', item: page },
@@ -591,9 +591,9 @@ export function buildJsonLd(metadata: SeoMetadata, content: SeoContent = fallbac
   if (metadata.path === '/activated-carbon-suppliers') {
     schemas.push({
       '@type': 'Service',
-      name: 'Activated carbon supplier and export support',
+      name: 'Activated carbon manufacturer and export support',
       description: metadata.description,
-      serviceType: 'Activated carbon supply',
+      serviceType: 'Activated carbon manufacturing and export support',
       category: 'Activated Carbon',
       url: absoluteUrl(metadata.path),
       provider: {

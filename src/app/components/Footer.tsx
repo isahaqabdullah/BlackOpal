@@ -13,7 +13,7 @@ export function Footer() {
     ? siteSettings.footer.companyLinks
     : [
         ...siteSettings.footer.companyLinks,
-        { label: 'Activated carbon suppliers', to: '/activated-carbon-suppliers' },
+        { label: 'Activated carbon manufacturers', to: '/activated-carbon-suppliers' },
       ];
   const companyLinksWithResources = companyLinks.some((link) => link.to === '/resources')
     ? companyLinks

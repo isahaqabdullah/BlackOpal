@@ -40,7 +40,7 @@ const evaluationPoints = [
   },
   {
     icon: Truck,
-    title: 'Global supply support',
+    title: 'Global export support',
     body: 'Black Opal Carbons connects global export markets with the wider Black Opal product portfolio, technical support, and office network.',
   },
 ];
@@ -51,10 +51,10 @@ export function ActivatedCarbonSuppliersPage() {
   return (
     <div>
       <PageIntro
-        label="Activated Carbon Supply"
-        title="Premium coconut shell activated carbon supply"
-        description="Black Opal Carbons supplies high-performance coconut shell activated carbon for water treatment, gold recovery, air and gas purification, oil and gas, catalytic carbon, and specialty industrial applications."
-        breadcrumbs={[{ label: 'Activated carbon supply' }]}
+        label="Activated Carbon Manufacturing"
+        title="Premium coconut shell activated carbon manufacturing"
+        description="Black Opal Carbons manufactures high-performance coconut shell activated carbon for water treatment, gold recovery, air and gas purification, oil and gas, catalytic carbon, and specialty industrial applications."
+        breadcrumbs={[{ label: 'Activated carbon manufacturing' }]}
         enableBreadcrumbEditing={false}
       />
 
@@ -67,7 +67,7 @@ export function ActivatedCarbonSuppliersPage() {
                   className="premium-kicker premium-reveal text-[11px] tracking-[0.24em] uppercase mb-4"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  Supplier capability
+                  Manufacturing capability
                 </span>
                 <h2
                   className="premium-heading premium-heading-elevated premium-reveal premium-reveal-delay-1 text-[clamp(2rem,3.5vw,3.05rem)] leading-[1.05] mb-5"

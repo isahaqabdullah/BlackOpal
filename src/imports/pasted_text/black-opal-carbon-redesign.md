@@ -1,7 +1,7 @@
 Project
 Redesign the Black Opal Carbon website as a modern industrial B2B manufacturing site for activated carbon products.
 Brand position
-Black Opal Carbon is a manufacturer/supplier of coconut shell activated carbon serving industrial and water treatment use cases. The brand should feel:
+Black Opal Carbon is a manufacturer of coconut shell activated carbon serving industrial and water treatment use cases. The brand should feel:
 technical
 credible
 clean
@@ -171,6 +171,5 @@ Scale points: established 2010, 2 production centers, 35000 metric tons
 Black Opal Group Headquarters in Pittsburgh, with regional office support
 Primary CTA should be quote/inquiry driven
 I can turn this next into a full page-by-page wireframe outline or actual rewritten website copy for the new design.
-
 
 
