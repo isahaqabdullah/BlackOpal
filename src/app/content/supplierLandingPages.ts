@@ -133,7 +133,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
     title: 'Coconut shell activated carbon for demanding purification systems',
     description:
       'Black Opal Carbons manufactures coconut shell activated carbon from selected feedstock for water treatment, gold recovery, air and gas, oil and gas, and specialty purification applications.',
-    seoTitle: 'Coconut Shell Activated Carbon Manufacturer | Black Opal Carbons',
+    seoTitle: 'Coconut Shell Activated Carbon Supplier | Black Opal Carbons',
     seoDescription:
       'Coconut shell activated carbon manufacturer with company-owned Indian manufacturing. Granular, powder, impregnated, and catalytic coconut carbon for water, gold, air, gas, and industrial purification.',
     serviceType: 'Coconut shell activated carbon manufacturing',

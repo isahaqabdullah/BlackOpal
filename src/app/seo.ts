@@ -137,16 +137,18 @@ const originSeoNote = `Includes ${siteConfig.originDescription} for dependable r
 type StaticPageMetadata = Omit<SeoMetadata, 'path' | 'breadcrumbs'> & {
   breadcrumbLabel: string;
   seo?: SeoFields;
+  preserveTitle?: boolean;
 };
 
 function staticPageMetadata(path: string, content: SeoContent): StaticPageMetadata | undefined {
   if (path === '/') {
     return {
-      title: siteConfig.homeTitle,
+      title: 'Black Opal Carbons | Coconut Shell Activated Carbon Manufacturer',
       description: defaultDescription,
       imageAlt: content.homePage.heroLogoAlt,
       breadcrumbLabel: content.siteSettings.pageIntro.homeLabel,
       seo: content.homePage.seo,
+      preserveTitle: true,
     };
   }
 
@@ -163,11 +165,12 @@ function staticPageMetadata(path: string, content: SeoContent): StaticPageMetada
 
   if (path === '/activated-carbon-suppliers') {
     return {
-      title: pageTitle('Coconut Shell Activated Carbon Manufacturer'),
+      title: pageTitle('Activated Carbon Manufacturer for Bulk Supply'),
       description:
         'Black Opal Carbons manufactures high-performance coconut shell activated carbon, including granular, powder, impregnated, and catalytic grades, for water, gold recovery, air, gas, refinery, and specialty applications.',
       imageAlt: 'Coconut shell activated carbon manufacturer',
       breadcrumbLabel: 'Activated carbon manufacturers',
+      preserveTitle: true,
     };
   }
 
@@ -250,7 +253,7 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
   const staticPage = staticPageMetadata(path, content);
 
   if (staticPage) {
-    const { breadcrumbLabel, seo, ...pageMetadata } = staticPage;
+    const { breadcrumbLabel, seo, preserveTitle, ...pageMetadata } = staticPage;
 
     const resolved = {
       ...pageMetadata,
@@ -262,7 +265,14 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
           : baseBreadcrumb(path, breadcrumbLabel, content),
     };
 
-    return applyExplicitSeo(resolved, { seo });
+    const explicitSeo = applyExplicitSeo(resolved, { seo });
+
+    return preserveTitle
+      ? {
+          ...explicitSeo,
+          title: resolved.title,
+        }
+      : explicitSeo;
   }
 
   const supplierLandingMatch = path.match(/^\/activated-carbon-suppliers\/([^/]+)$/);

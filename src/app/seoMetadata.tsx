@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { absoluteUrl, buildJsonLd, resolveSeo } from './seo';
-import { getSeoContent } from './cms/siteContent';
+import { getPublishedSeoContent } from './cms/siteContent';
 import { siteConfig } from './config/siteConfig';
 
 function jsonForHtml(value: unknown) {
@@ -8,7 +8,7 @@ function jsonForHtml(value: unknown) {
 }
 
 export async function generateRouteMetadata(path: string): Promise<Metadata> {
-  const content = await getSeoContent();
+  const content = await getPublishedSeoContent();
   const metadata = resolveSeo(path, content);
   const canonical = absoluteUrl(metadata.path);
   const image = metadata.image ? absoluteUrl(metadata.image) : absoluteUrl(siteConfig.defaultImagePath);
@@ -47,7 +47,7 @@ export async function generateRouteMetadata(path: string): Promise<Metadata> {
 }
 
 export async function RouteStructuredData({ path }: { path: string }) {
-  const content = await getSeoContent();
+  const content = await getPublishedSeoContent();
   const metadata = resolveSeo(path, content);
   const jsonLd = buildJsonLd(metadata, content);
 
