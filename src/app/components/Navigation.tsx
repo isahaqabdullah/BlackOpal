@@ -201,6 +201,7 @@ export function Navigation() {
         ...navigation.links.filter((link) => link.to === '/contact'),
       ];
   const [open, setOpen] = useState(false);
+  const mobileMenuId = useId();
   const pathname = usePathname();
   const isActive = (to: string) =>
     to === '/'
@@ -314,7 +315,7 @@ export function Navigation() {
   return (
     <nav className="sticky top-0 z-50 border-b border-[#c9a24d]/15 bg-[#050505]/85 backdrop-blur-xl">
       <div className="premium-shell h-20 flex items-center justify-between">
-        <Link href="/" className="premium-nav-brand" aria-label={navigation.logoAlt}>
+        <Link href="/" className="premium-nav-brand shrink-0" aria-label={navigation.logoAlt}>
           <img
             src={navigation.logoImage}
             alt=""
@@ -326,7 +327,7 @@ export function Navigation() {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-4 xl:gap-5">
+        <div className="hidden min-[1200px]:flex items-center gap-3 min-[1360px]:gap-4 min-[1500px]:gap-5">
           {links.map((l) => (
             <Link
               key={l.to}
@@ -340,10 +341,13 @@ export function Navigation() {
               {l.label}
             </Link>
           ))}
-          <NavigationSearch entries={searchEntries} className="w-[10.5rem] xl:w-[13rem]" />
+          <NavigationSearch
+            entries={searchEntries}
+            className="w-[9rem] min-[1360px]:w-[11rem] min-[1500px]:w-[13rem]"
+          />
           <Link
             href={navigation.ctaPath}
-            className="premium-primary-btn text-[13px] px-5 py-2.5 rounded-full"
+            className="premium-primary-btn whitespace-nowrap rounded-full px-4 py-2.5 text-[13px] min-[1440px]:px-5"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             {navigation.ctaLabel}
@@ -351,14 +355,24 @@ export function Navigation() {
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden text-[#f2d78b]" onClick={() => setOpen(!open)} aria-label={navigation.mobileMenuLabel}>
+        <button
+          type="button"
+          className="inline-flex size-10 items-center justify-center rounded-full text-[#f2d78b] transition-colors hover:bg-[#d6b866]/10 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f2d78b] min-[1200px]:hidden"
+          onClick={() => setOpen(!open)}
+          aria-label={navigation.mobileMenuLabel}
+          aria-expanded={open}
+          aria-controls={mobileMenuId}
+        >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-[#c9a24d]/15 bg-[#080808]/95 px-6 py-5 space-y-3">
+        <div
+          id={mobileMenuId}
+          className="min-[1200px]:hidden border-t border-[#c9a24d]/15 bg-[#080808]/95 px-6 py-5 space-y-3"
+        >
           <NavigationSearch entries={searchEntries} onNavigate={() => setOpen(false)} className="mb-4" />
           {links.map((l) => (
             <Link

@@ -1,6 +1,6 @@
 'use client';
 
-import { Building2, Factory, RefreshCcw, ShieldCheck } from 'lucide-react';
+import { Building2, Factory, Mail, Phone, RefreshCcw, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import {
   useAboutPageDataAttribute,
@@ -8,6 +8,7 @@ import {
 } from '../cms/visualEditingAttributes';
 import type { FeatureIconName } from '../content/siteContent';
 import { useSiteContent } from '../content/SiteContentProvider';
+import { formatPhoneNumbers } from '../utils/phone';
 import { getSiteNavigation } from './navigation/siteNavigation';
 import { PageIntro } from './PageIntro';
 
@@ -100,35 +101,64 @@ export function AboutPage() {
                 >
                   {aboutPage.officeNetworkLabel}
                 </span>
-                <div className="grid gap-3 lg:grid-cols-3">
-                  {siteSettings.officeNetwork.map((office) => (
-                    <address
-                      key={`${office.label}-${office.name}`}
-                      className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
-                    >
-                      <span
-                        className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
-                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                <div className="grid gap-3 min-[1280px]:grid-cols-2 min-[1700px]:grid-cols-3">
+                  {siteSettings.officeNetwork.map((office) => {
+                    const phones = formatPhoneNumbers(office.phone);
+
+                    return (
+                      <address
+                        key={`${office.label}-${office.name}`}
+                        className="not-italic rounded-[6px] border border-[#c9a24d]/12 bg-[#050505]/35 p-4"
                       >
-                        {office.label}
-                      </span>
-                      <h3
-                        className="premium-card-heading premium-office-name text-[14px] mb-1"
-                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
-                      >
-                        {office.name}
-                      </h3>
-                      {office.address.map((line) => (
-                        <p
-                          key={`${office.label}-${line}`}
-                          className="premium-copy text-[14px] leading-[1.65]"
-                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                        <span
+                          className="text-[#8f835f] text-[10px] tracking-[0.18em] uppercase block mb-1"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                         >
-                          {line}
-                        </p>
-                      ))}
-                    </address>
-                  ))}
+                          {office.label}
+                        </span>
+                        <h3
+                          className="premium-card-heading premium-office-name text-[14px] mb-1"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                        >
+                          {office.name}
+                        </h3>
+                        {office.address.map((line) => (
+                          <p
+                            key={`${office.label}-${line}`}
+                            className="premium-copy text-[14px] leading-[1.65]"
+                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}
+                          >
+                            {line}
+                          </p>
+                        ))}
+                        {phones.length || office.email ? (
+                          <div className="mt-4 space-y-2 border-t border-[#c9a24d]/10 pt-3">
+                            {phones.map((phone) => (
+                              <a
+                                key={phone.href}
+                                href={phone.href}
+                                className="flex w-fit items-center gap-2 text-[#b8ab8b] transition-colors hover:text-[#f2d78b]"
+                                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                              >
+                                <Phone size={14} aria-hidden="true" className="shrink-0" />
+                                <span className="text-[13px] leading-[1.5]">{phone.display}</span>
+                              </a>
+                            ))}
+                            {office.email ? (
+                              <a
+                                href={`mailto:${office.email}`}
+                                className="flex w-fit max-w-full items-center gap-2 text-[#b8ab8b] transition-colors hover:text-[#f2d78b]"
+                                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                              >
+                                <Mail size={14} aria-hidden="true" className="shrink-0" />
+                                <span className="whitespace-nowrap text-[12px] leading-[1.5]">{office.email}</span>
+                              </a>
+                            ) : null}
+                          </div>
+                        ) : null}
+                      </address>
+                    );
+                  })}
                 </div>
               </div>
 
