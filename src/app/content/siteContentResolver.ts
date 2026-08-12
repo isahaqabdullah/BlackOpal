@@ -639,6 +639,7 @@ function normalizePageCopy(value?: Partial<PageCopyContent> | null): PageCopyCon
       intro: pageIntro(productsPage?.intro, fallback.productsPage.intro),
       highlightsLabel: textValue(productsPage?.highlightsLabel, fallback.productsPage.highlightsLabel),
       commonUsesLabel: textValue(productsPage?.commonUsesLabel, fallback.productsPage.commonUsesLabel),
+      applicationsLabel: textValue(productsPage?.applicationsLabel, fallback.productsPage.applicationsLabel),
       referencedGradesLabel: textValue(productsPage?.referencedGradesLabel, fallback.productsPage.referencedGradesLabel),
       detailCtaLabel: fallback.productsPage.detailCtaLabel,
       quoteCtaPath: fallback.productsPage.quoteCtaPath,
@@ -653,6 +654,10 @@ function normalizePageCopy(value?: Partial<PageCopyContent> | null): PageCopyCon
       ),
       overviewLabel: textValue(productDetailPage?.overviewLabel, fallback.productDetailPage.overviewLabel),
       commonUsesLabel: textValue(productDetailPage?.commonUsesLabel, fallback.productDetailPage.commonUsesLabel),
+      applicationsLabel: textValue(
+        productDetailPage?.applicationsLabel,
+        fallback.productDetailPage.applicationsLabel,
+      ),
       ctaTitle: textValue(productDetailPage?.ctaTitle, fallback.productDetailPage.ctaTitle),
       ctaDescription: textValue(productDetailPage?.ctaDescription, fallback.productDetailPage.ctaDescription),
       allProductsCtaPath: fallback.productDetailPage.allProductsCtaPath,

@@ -9,6 +9,15 @@ export const contentSection = {
   ],
 };
 
+const productSlugOptions = [
+  { title: 'Granular Activated Carbon', value: 'granular' },
+  { title: 'Powder Activated Carbon', value: 'powder' },
+  { title: 'Impregnated Activated Carbon', value: 'impregnated' },
+  { title: 'Catalytic Activated Carbon', value: 'catalytic' },
+];
+
+const supportedProductSlugs = new Set(productSlugOptions.map((option) => option.value));
+
 export const linkEntry = {
   name: 'linkEntry',
   title: 'Link',
@@ -506,9 +515,23 @@ export const application = {
     {
       name: 'recommendedProducts',
       title: 'Recommended Product Slugs',
-      description: 'Use product slugs like granular, powder, impregnated, or catalytic.',
+      description: 'This is the canonical product-to-application relationship used throughout the website.',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'string', options: { list: productSlugOptions } }],
+      validation: (Rule: any) =>
+        Rule.unique().custom((slugs: unknown) => {
+          if (!Array.isArray(slugs)) {
+            return true;
+          }
+
+          const invalidSlugs = slugs.filter(
+            (slug) => typeof slug !== 'string' || !supportedProductSlugs.has(slug),
+          );
+
+          return invalidSlugs.length
+            ? `Unknown product slug${invalidSlugs.length === 1 ? '' : 's'}: ${invalidSlugs.join(', ')}`
+            : true;
+        }),
     },
     { name: 'grades', title: 'Referenced Grades', type: 'array', of: [{ type: 'string' }] },
     { name: 'sections', title: 'Sections', type: 'array', of: [{ type: 'contentSection' }] },
@@ -601,6 +624,7 @@ export const pageCopy = {
         { name: 'intro', title: 'Page Intro', type: 'pageIntro' },
         { name: 'highlightsLabel', title: 'Highlights Label', type: 'string' },
         { name: 'commonUsesLabel', title: 'Common Uses Label', type: 'string' },
+        { name: 'applicationsLabel', title: 'Applications Label', type: 'string' },
         { name: 'referencedGradesLabel', title: 'Referenced Grades Label', type: 'string' },
       ],
     },
@@ -614,6 +638,7 @@ export const pageCopy = {
         { name: 'productsBreadcrumbLabel', title: 'Products Breadcrumb Label', type: 'string' },
         { name: 'overviewLabel', title: 'Overview Label', type: 'string' },
         { name: 'commonUsesLabel', title: 'Common Uses Label', type: 'string' },
+        { name: 'applicationsLabel', title: 'Applications Label', type: 'string' },
         { name: 'ctaTitle', title: 'Closing Section Title', type: 'string' },
         { name: 'ctaDescription', title: 'Closing Section Description', type: 'text', rows: 3 },
       ],

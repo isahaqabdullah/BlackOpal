@@ -4,14 +4,16 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { usePageCopyDataAttribute, useSanityDataAttribute } from '../cms/visualEditingAttributes';
+import { applicationsForProduct } from '../content/productApplicationRelationships';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { NotFoundPage } from './NotFoundPage';
 import { PageIntro } from './PageIntro';
 
 export function ProductDetailPage() {
   const { productSlug } = useParams<{ productSlug: string }>();
-  const { pageCopy, productMap, status } = useSiteContent();
+  const { applications, pageCopy, productMap, status } = useSiteContent();
   const product = productSlug ? productMap[productSlug] : undefined;
+  const relatedApplications = product ? applicationsForProduct(product.slug, applications) : [];
   const copy = pageCopy.productDetailPage;
   const pageCopyDataAttribute = usePageCopyDataAttribute();
   const sanityDataAttribute = useSanityDataAttribute();
@@ -89,22 +91,23 @@ export function ProductDetailPage() {
 
               <div className="pt-6 border-t border-[#c9a24d]/10">
                 <span
-                  data-sanity={pageCopyDataAttribute('productDetailPage.commonUsesLabel')}
+                  data-sanity={pageCopyDataAttribute('productDetailPage.applicationsLabel')}
                   className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
-                  {copy.commonUsesLabel}
+                  {copy.applicationsLabel}
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {product.commonUses.map((use, useIndex) => (
-                    <span
-                      key={use}
-                      data-sanity={sanityDataAttribute('product', product._id, `commonUses[${useIndex}]`)}
-                      className="premium-link-btn text-[12px] px-3 py-1.5 rounded-full"
+                  {relatedApplications.map((application) => (
+                    <Link
+                      key={application.slug}
+                      href={`/applications/${application.slug}`}
+                      className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-3 py-1.5 rounded-full"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                     >
-                      {use}
-                    </span>
+                      {application.name}
+                      <ArrowRight size={13} aria-hidden="true" />
+                    </Link>
                   ))}
                 </div>
               </div>

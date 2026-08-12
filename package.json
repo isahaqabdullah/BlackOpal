@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "mkdir -p .next/cache && NODE_OPTIONS=\"${NODE_OPTIONS:+$NODE_OPTIONS }--localstorage-file=.next/cache/node-localstorage\" next build",
+    "build": "npm run validate:relationships && mkdir -p .next/cache && NODE_OPTIONS=\"${NODE_OPTIONS:+$NODE_OPTIONS }--localstorage-file=.next/cache/node-localstorage\" next build",
     "cms:build": "node scripts/run-sanity.mjs build --yes",
     "cms:deploy": "node scripts/run-sanity.mjs build --yes && node scripts/run-sanity.mjs deploy --no-build --yes",
     "cms:dev": "node scripts/run-sanity.mjs dev",
@@ -16,7 +16,8 @@
     "cms:push": "node scripts/push-sanity-content.mjs",
     "cms:seed": "tsx scripts/generate-sanity-seed.ts",
     "dev": "mkdir -p .next/cache && NODE_OPTIONS=\"${NODE_OPTIONS:+$NODE_OPTIONS }--localstorage-file=.next/cache/node-localstorage\" next dev",
-    "start": "mkdir -p .next/cache && NODE_OPTIONS=\"${NODE_OPTIONS:+$NODE_OPTIONS }--localstorage-file=.next/cache/node-localstorage\" next start"
+    "start": "mkdir -p .next/cache && NODE_OPTIONS=\"${NODE_OPTIONS:+$NODE_OPTIONS }--localstorage-file=.next/cache/node-localstorage\" next start",
+    "validate:relationships": "tsx scripts/validate-content-relationships.ts"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

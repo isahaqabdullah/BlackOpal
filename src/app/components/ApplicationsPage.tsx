@@ -99,20 +99,26 @@ export function ApplicationsPage() {
                         {copy.recommendedProductsLabel}
                       </span>
                       <div className="flex flex-wrap gap-2">
-                        {application.recommendedProducts.map((slug, productIndex) => (
-                          <span
-                            key={slug}
-                            data-sanity={sanityDataAttribute(
-                              'application',
-                              application._id,
-                              `recommendedProducts[${productIndex}]`,
-                            )}
-                            className="premium-link-btn text-[12px] px-3 py-1.5 rounded-full"
-                            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-                          >
-                            {productMap[slug]?.shortName ?? slug}
-                          </span>
-                        ))}
+                        {application.recommendedProducts.map((slug, productIndex) => {
+                          const product = productMap[slug];
+
+                          return product ? (
+                            <Link
+                              key={slug}
+                              href={`/products/${slug}`}
+                              data-sanity={sanityDataAttribute(
+                                'application',
+                                application._id,
+                                `recommendedProducts[${productIndex}]`,
+                              )}
+                              className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-3 py-1.5 rounded-full"
+                              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                            >
+                              {product.shortName}
+                              <ArrowRight size={13} aria-hidden="true" />
+                            </Link>
+                          ) : null;
+                        })}
                       </div>
                     </div>
                   </div>

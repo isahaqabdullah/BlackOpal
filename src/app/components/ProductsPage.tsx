@@ -3,11 +3,12 @@
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { usePageCopyDataAttribute, useSanityDataAttribute } from '../cms/visualEditingAttributes';
+import { applicationsForProduct } from '../content/productApplicationRelationships';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { PageIntro } from './PageIntro';
 
 export function ProductsPage() {
-  const { pageCopy, products } = useSiteContent();
+  const { applications, pageCopy, products } = useSiteContent();
   const copy = pageCopy.productsPage;
   const pageCopyDataAttribute = usePageCopyDataAttribute();
   const sanityDataAttribute = useSanityDataAttribute();
@@ -28,15 +29,18 @@ export function ProductsPage() {
 
       <section className="pb-10 md:pb-12">
         <div className="premium-shell space-y-6">
-          {products.map((product, index) => (
-            <div
-              key={product.slug}
-              data-sanity-edit-target
-              className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
-              style={{ animationDelay: `${120 + index * 90}ms` }}
-            >
-              <div className="premium-split-grid items-start">
-                <div>
+          {products.map((product, index) => {
+            const relatedApplications = applicationsForProduct(product.slug, applications);
+
+            return (
+              <div
+                key={product.slug}
+                data-sanity-edit-target
+                className="premium-panel-soft premium-card-animated premium-reveal p-6 md:p-7"
+                style={{ animationDelay: `${120 + index * 90}ms` }}
+              >
+                <div className="premium-split-grid items-start">
+                  <div>
                   <span
                     data-sanity={sanityDataAttribute('product', product._id, 'shortName')}
                     className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
@@ -92,22 +96,23 @@ export function ProductsPage() {
 
                     <div>
                       <span
-                        data-sanity={pageCopyDataAttribute('productsPage.commonUsesLabel')}
+                        data-sanity={pageCopyDataAttribute('productsPage.applicationsLabel')}
                         className="text-[#8f835f] text-[10px] tracking-[0.22em] uppercase block mb-3"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                       >
-                        {copy.commonUsesLabel}
+                        {copy.applicationsLabel}
                       </span>
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {product.commonUses.map((use, useIndex) => (
-                          <span
-                            key={use}
-                            data-sanity={sanityDataAttribute('product', product._id, `commonUses[${useIndex}]`)}
-                            className="premium-link-btn text-[12px] px-3 py-1.5 rounded-full"
+                        {relatedApplications.map((application) => (
+                          <Link
+                            key={application.slug}
+                            href={`/applications/${application.slug}`}
+                            className="premium-link-btn inline-flex items-center gap-2 text-[12px] px-3 py-1.5 rounded-full"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                           >
-                            {use}
-                          </span>
+                            {application.name}
+                            <ArrowRight size={13} aria-hidden="true" />
+                          </Link>
                         ))}
                       </div>
 
@@ -154,19 +159,20 @@ export function ProductsPage() {
                       {copy.quoteCtaLabel}
                     </Link>
                   </div>
-                </div>
+                  </div>
 
-                <div className="premium-image-frame w-full max-w-[38rem] xl:justify-self-end">
-                  <img
-                    data-sanity={sanityDataAttribute('product', product._id, 'imageUrl')}
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full aspect-[16/9] max-h-[26rem] object-cover"
-                  />
+                  <div className="premium-image-frame w-full max-w-[38rem] xl:justify-self-end">
+                    <img
+                      data-sanity={sanityDataAttribute('product', product._id, 'imageUrl')}
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full aspect-[16/9] max-h-[26rem] object-cover"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>

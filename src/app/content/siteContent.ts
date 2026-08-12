@@ -280,6 +280,7 @@ export type PageCopyContent = {
     intro: PageIntroContent;
     highlightsLabel: string;
     commonUsesLabel: string;
+    applicationsLabel: string;
     referencedGradesLabel: string;
     detailCtaLabel: string;
     quoteCtaPath: string;
@@ -291,6 +292,7 @@ export type PageCopyContent = {
     productsBreadcrumbLabel: string;
     overviewLabel: string;
     commonUsesLabel: string;
+    applicationsLabel: string;
     ctaTitle: string;
     ctaDescription: string;
     allProductsCtaPath: string;
@@ -462,7 +464,7 @@ export const homePageContent: HomePageContent = {
   ctaTitle: 'Grade selection starts with the process',
   ctaDescription: 'Mesh size, activity, washing, compliance, and delivery requirements shape the final recommendation.',
   ctaPrimaryPath: '/contact',
-  ctaPrimaryLabel: 'Request Quote',
+  ctaPrimaryLabel: 'Request Quote/TDS',
   ctaSecondaryPath: '/activated-carbon-suppliers/bulk-activated-carbon-supplier',
   ctaSecondaryLabel: 'Bulk manufacturing capability',
   whyKicker: `Why ${siteConfig.siteName}`,
@@ -709,7 +711,7 @@ export const siteSettingsContent: SiteSettingsContent = {
       { label: 'Contact', to: '/contact' },
     ],
     ctaPath: '/contact',
-    ctaLabel: 'Request Quote',
+    ctaLabel: 'Request Quote/TDS',
     mobileMenuLabel: 'Toggle navigation menu',
   },
   footer: {
@@ -765,10 +767,11 @@ export const pageCopyContent: PageCopyContent = {
     },
     highlightsLabel: 'Highlights',
     commonUsesLabel: 'Common uses',
+    applicationsLabel: 'Applications',
     referencedGradesLabel: 'Referenced grades',
     detailCtaLabel: 'Product details',
     quoteCtaPath: '/contact',
-    quoteCtaLabel: 'Request quote',
+    quoteCtaLabel: 'Request Quote/TDS',
   },
   productDetailPage: {
     introLabel: 'Product Detail',
@@ -776,13 +779,14 @@ export const pageCopyContent: PageCopyContent = {
     productsBreadcrumbLabel: 'Products',
     overviewLabel: 'Overview',
     commonUsesLabel: 'Common uses',
+    applicationsLabel: 'Applications',
     ctaTitle: 'Recommendations shaped by process conditions',
     ctaDescription:
       'Application, volume, and performance targets shape the grade match and technical recommendation.',
     allProductsCtaPath: '/products',
     allProductsCtaLabel: 'All products',
     quoteCtaPath: '/contact',
-    quoteCtaLabel: 'Request quote',
+    quoteCtaLabel: 'Request Quote/TDS',
   },
   applicationsPage: {
     seo: {
@@ -1259,7 +1263,7 @@ export const applications: ApplicationEntry[] = [
       'Coconut shell carbon fits air and gas service because of its microporous structure and toughness.',
       'Both standard and impregnated grades are suited for industrial and protective environments.',
     ],
-    recommendedProducts: ['impregnated', 'granular'],
+    recommendedProducts: ['granular', 'impregnated'],
     sections: [
       {
         title: 'Protective equipment',
@@ -1371,7 +1375,7 @@ export const applications: ApplicationEntry[] = [
     keyPoints: [
       'Solvent recovery supports printing, dry cleaning, and paint applications.',
       'Food and beverage applications focus on taste and odor control, CO2 purification, and edible-oil decolorization.',
-      'Granular, extruded, and food-grade powder carbons support different process requirements.',
+      'Granular, extruded, food-grade powder, and specialty impregnated carbons support different process requirements.',
     ],
     recommendedProducts: ['granular', 'powder', 'impregnated'],
     sections: [
@@ -1388,11 +1392,12 @@ export const applications: ApplicationEntry[] = [
       {
         title: 'Grades and outputs',
         body:
-          'Specialty applications require application-matched activity levels, desorption characteristics, filtration performance, and purity instead of a one-size-fits-all carbon grade.',
+          'Specialty applications require application-matched activity levels, desorption characteristics, filtration performance, and purity instead of a one-size-fits-all carbon grade. Specialty impregnated carbon is available when a process requires contaminant-specific chemistry beyond standard adsorption.',
         bullets: [
           'Solvent Recovery Grade',
           'Edible Oil Grade',
           'Food-grade powdered carbon',
+          'Specialty impregnated carbon',
         ],
       },
     ],

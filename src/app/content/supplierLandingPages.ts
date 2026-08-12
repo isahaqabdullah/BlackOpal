@@ -71,7 +71,14 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Specification: particle size, pore structure, hardness, surface area, attrition resistance, packing, and documentation where applicable.',
     ],
     productSlugs: ['granular', 'powder', 'impregnated', 'catalytic'],
-    applicationSlugs: ['water-treatment', 'gold-recovery', 'air-gas', 'oil-gas'],
+    applicationSlugs: [
+      'water-treatment',
+      'gold-recovery',
+      'air-gas',
+      'oil-gas',
+      'catalytic-carbon',
+      'other-applications',
+    ],
     ctaTitle: 'Contact Black Opal for activated carbon requirements',
     ctaDescription:
       'Share the application, product family, grade requirement, volume, packing, and destination market with the Black Opal team.',
@@ -119,7 +126,14 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Specification: particle size, pore structure, hardness, surface area, attrition resistance, packing, and documentation where applicable.',
     ],
     productSlugs: ['granular', 'powder', 'impregnated', 'catalytic'],
-    applicationSlugs: ['water-treatment', 'gold-recovery', 'air-gas', 'oil-gas'],
+    applicationSlugs: [
+      'water-treatment',
+      'gold-recovery',
+      'air-gas',
+      'oil-gas',
+      'catalytic-carbon',
+      'other-applications',
+    ],
     ctaTitle: 'Contact Black Opal for bulk activated carbon requirements',
     ctaDescription:
       'Share the product family, application, grade requirement, volume, packing, and destination market with the Black Opal team.',
@@ -167,7 +181,14 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Specification: particle size, pore structure, hardness, surface area, attrition resistance, packing, and documentation where applicable.',
     ],
     productSlugs: ['granular', 'powder', 'impregnated', 'catalytic'],
-    applicationSlugs: ['water-treatment', 'gold-recovery', 'air-gas', 'other-applications'],
+    applicationSlugs: [
+      'water-treatment',
+      'gold-recovery',
+      'air-gas',
+      'oil-gas',
+      'catalytic-carbon',
+      'other-applications',
+    ],
     ctaTitle: 'Contact Black Opal for coconut shell activated carbon requirements',
     ctaDescription:
       'Share the product family, application, grade requirement, volume, packing, and destination market with the Black Opal team.',
@@ -215,7 +236,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'System context: fixed-bed filter, cartridge, pressure vessel, contactor, adsorption column, or process system.',
     ],
     productSlugs: ['granular'],
-    applicationSlugs: ['water-treatment', 'gold-recovery', 'air-gas', 'oil-gas'],
+    applicationSlugs: ['water-treatment', 'gold-recovery', 'air-gas', 'oil-gas', 'other-applications'],
     ctaTitle: 'Contact Black Opal for granular activated carbon requirements',
     ctaDescription:
       'Share the application, mesh size, grade requirement, volume, packing, and destination market with the Black Opal team.',
@@ -311,7 +332,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'System context: bed design, equipment details, packing, safety documentation, and destination-market requirements where applicable.',
     ],
     productSlugs: ['impregnated'],
-    applicationSlugs: ['air-gas', 'other-applications'],
+    applicationSlugs: ['water-treatment', 'air-gas', 'oil-gas', 'other-applications'],
     ctaTitle: 'Contact Black Opal for impregnated activated carbon requirements',
     ctaDescription:
       'Share the target contaminant, operating conditions, grade requirement, volume, packing, and destination market with the Black Opal team.',
@@ -359,7 +380,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'System context: existing media, filtration design, equipment details, packing, documentation, and destination-market requirements where applicable.',
     ],
     productSlugs: ['catalytic'],
-    applicationSlugs: ['catalytic-carbon', 'water-treatment', 'air-gas'],
+    applicationSlugs: ['water-treatment', 'catalytic-carbon'],
     ctaTitle: 'Contact Black Opal for catalytic activated carbon requirements',
     ctaDescription:
       'Share the treatment objective, operating conditions, grade requirement, volume, packing, and destination market with the Black Opal team.',
@@ -406,7 +427,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Application: drinking water, process water, municipal system, groundwater remediation, wastewater polishing, taste, odor, color, VOC, pesticide, solvent, THM, chlorine, or chloramine reduction.',
       'System context: cartridge, pressure vessel, gravity filter, dosing system, flow rate, bed depth, contact time, influent profile, packing, and documentation where applicable.',
     ],
-    productSlugs: ['granular', 'powder', 'catalytic'],
+    productSlugs: ['granular', 'powder', 'impregnated', 'catalytic'],
     applicationSlugs: ['water-treatment'],
     ctaTitle: 'Contact Black Opal for water treatment activated carbon requirements',
     ctaDescription:
@@ -502,7 +523,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Operating data: concentration, air or gas flow, temperature, humidity, pressure drop limit, contact time, and desired removal objective.',
       'System context: filter, adsorber, respirator, gas mask, cabin air unit, industrial ventilation system, packing, safety documentation, and destination-market requirements.',
     ],
-    productSlugs: ['granular', 'impregnated', 'catalytic'],
+    productSlugs: ['granular', 'impregnated'],
     applicationSlugs: ['air-gas', 'other-applications'],
     ctaTitle: 'Contact Black Opal for air and gas activated carbon requirements',
     ctaDescription:
@@ -550,7 +571,7 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Operating data: stream type, target contaminants, temperature, pressure, humidity, flow rate, current carbon grade, and required treatment objective.',
       'Specification: particle size, iodine number, hardness, ash, moisture, pH, silica-leaching requirement, packing, safety documentation, and destination-market requirements.',
     ],
-    productSlugs: ['granular', 'impregnated', 'catalytic'],
+    productSlugs: ['granular', 'impregnated'],
     applicationSlugs: ['oil-gas', 'air-gas', 'other-applications'],
     ctaTitle: 'Contact Black Opal for oil and gas activated carbon requirements',
     ctaDescription:
@@ -599,7 +620,14 @@ export const supplierLandingPages: SupplierLandingPage[] = [
       'Specification: particle size, hardness, surface area, attrition resistance, ash, pH, moisture, contaminant profile, packing, and documentation where applicable.',
     ],
     productSlugs: ['granular', 'powder', 'impregnated', 'catalytic'],
-    applicationSlugs: ['water-treatment', 'gold-recovery', 'air-gas', 'oil-gas', 'other-applications'],
+    applicationSlugs: [
+      'water-treatment',
+      'gold-recovery',
+      'air-gas',
+      'oil-gas',
+      'catalytic-carbon',
+      'other-applications',
+    ],
     ctaTitle: 'Contact Black Opal for industrial activated carbon requirements',
     ctaDescription:
       'Share the application mix, product family, specification targets, volume, packing, documentation, and destination market with the Black Opal team.',

@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type FocusEvent } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Search, X } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Menu, Search, X } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { getSiteNavigation } from './navigation/siteNavigation';
 import { resourceDetailPages } from '../content/resourcePages';
@@ -15,6 +15,11 @@ type SearchEntry = {
   category: string;
   summary: string;
   keywords: string;
+};
+
+type NavigationDropdownItem = {
+  label: string;
+  href: string;
 };
 
 function normalizeSearchValue(value: string) {
@@ -181,6 +186,204 @@ function NavigationSearch({
   );
 }
 
+function DesktopNavigationDropdown({
+  label,
+  href,
+  items,
+  active,
+}: {
+  label: string;
+  href: string;
+  items: NavigationDropdownItem[];
+  active: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const dropdownId = useId();
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  const closeIfFocusLeaves = (event: FocusEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+      setOpen(false);
+    }
+  };
+
+  return (
+    <div
+      ref={rootRef}
+      className="group relative isolate flex items-center"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onBlur={closeIfFocusLeaves}
+      onKeyDown={(event) => {
+        if (event.key === 'Escape') {
+          setOpen(false);
+          rootRef.current?.querySelector<HTMLButtonElement>('button')?.focus();
+        }
+      }}
+    >
+      <Link
+        href={href}
+        data-active={active}
+        className={`premium-nav-link text-[13px] transition-colors ${
+          active ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
+        }`}
+        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+      >
+        {label}
+      </Link>
+      <button
+        type="button"
+        aria-label={`Toggle ${label} menu`}
+        aria-expanded={open}
+        aria-controls={dropdownId}
+        onClick={() => setOpen((current) => !current)}
+        className={`ml-0.5 inline-flex size-5 items-center justify-center rounded-full transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f2d78b] ${
+          active || open ? 'text-[#f2d78b]' : 'text-[#8f835f] hover:text-[#f7efdb]'
+        }`}
+      >
+        <ChevronDown
+          size={13}
+          aria-hidden="true"
+          className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+      <div
+        id={dropdownId}
+        aria-hidden={!open}
+        className={`absolute left-0 top-full z-[70] w-[20rem] origin-top-left pt-[2.4rem] transition duration-200 ${
+          open
+            ? 'visible scale-100 opacity-100'
+            : 'pointer-events-none invisible scale-[0.985] opacity-0'
+        }`}
+      >
+        <div className="overflow-hidden rounded-[14px] border border-[#d6b866]/20 bg-[#0a0907]/98 p-2 shadow-[0_26px_70px_rgba(0,0,0,0.62),inset_0_1px_0_rgba(255,255,255,0.035)] backdrop-blur-2xl">
+          <div className="px-3 pb-2 pt-2">
+            <span
+              className="text-[9px] uppercase tracking-[0.24em] text-[#8f835f]"
+              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+            >
+              Explore {label}
+            </span>
+          </div>
+          <div className="space-y-0.5">
+            {items.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                tabIndex={open ? 0 : -1}
+                className="group/menu-item flex items-center gap-3 rounded-[9px] px-3 py-2.5 text-[#cfc3a3] transition-colors hover:bg-[#d6b866]/10 hover:text-[#fff5d8] focus:bg-[#d6b866]/10 focus:text-[#fff5d8] focus:outline-none"
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+              >
+                <span className="flex-1 text-[13px] leading-snug">{item.label}</span>
+                <ArrowUpRight
+                  size={13}
+                  aria-hidden="true"
+                  className="text-[#6f654d] transition duration-200 group-hover/menu-item:-translate-y-0.5 group-hover/menu-item:translate-x-0.5 group-hover/menu-item:text-[#d6b866]"
+                />
+              </Link>
+            ))}
+          </div>
+          <div className="mx-3 mt-2 h-px bg-gradient-to-r from-transparent via-[#d6b866]/18 to-transparent" />
+          <Link
+            href={href}
+            tabIndex={open ? 0 : -1}
+            className="group/view-all mt-1.5 flex items-center justify-between rounded-[9px] px-3 py-2.5 text-[11px] uppercase tracking-[0.12em] text-[#9f906c] transition-colors hover:bg-[#d6b866]/8 hover:text-[#f2d78b] focus:bg-[#d6b866]/8 focus:text-[#f2d78b] focus:outline-none"
+            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+          >
+            View all {label}
+            <ArrowUpRight
+              size={13}
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover/view-all:-translate-y-0.5 group-hover/view-all:translate-x-0.5"
+            />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MobileNavigationDropdown({
+  label,
+  href,
+  items,
+  active,
+  onNavigate,
+}: {
+  label: string;
+  href: string;
+  items: NavigationDropdownItem[];
+  active: boolean;
+  onNavigate: () => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const dropdownId = useId();
+
+  return (
+    <div>
+      <div className="flex items-center justify-between">
+        <Link
+          href={href}
+          onClick={onNavigate}
+          data-active={active}
+          className={`premium-nav-link block py-1.5 text-[14px] ${
+            active ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
+          }`}
+          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+        >
+          {label}
+        </Link>
+        <button
+          type="button"
+          aria-label={`Toggle ${label} menu`}
+          aria-expanded={open}
+          aria-controls={dropdownId}
+          onClick={() => setOpen((current) => !current)}
+          className={`inline-flex size-8 items-center justify-center rounded-full border transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f2d78b] ${
+            active || open
+              ? 'border-[#d6b866]/35 bg-[#d6b866]/6 text-[#f2d78b]'
+              : 'border-transparent text-[#8f835f]'
+          }`}
+        >
+          <ChevronDown
+            size={16}
+            aria-hidden="true"
+            className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          />
+        </button>
+      </div>
+      <div
+        id={dropdownId}
+        hidden={!open}
+        className="mt-2 overflow-hidden rounded-[12px] border border-[#d6b866]/16 bg-[#0a0907]/88 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)]"
+      >
+        <div
+          className="px-3 pb-1.5 pt-2 text-[9px] uppercase tracking-[0.22em] text-[#786e55]"
+          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+        >
+          Explore {label}
+        </div>
+        {items.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={onNavigate}
+            className="group/mobile-item flex items-center gap-3 rounded-[8px] px-3 py-2.5 text-[#b8aa86] transition-colors hover:bg-[#d6b866]/9 hover:text-[#f7efdb] focus:bg-[#d6b866]/9 focus:text-[#f7efdb] focus:outline-none"
+            style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+          >
+            <span className="flex-1 text-[13px] leading-snug">{item.label}</span>
+            <ArrowUpRight
+              size={13}
+              aria-hidden="true"
+              className="text-[#655d49] transition-colors group-hover/mobile-item:text-[#d6b866]"
+            />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function Navigation() {
   const {
     aboutPage,
@@ -207,6 +410,19 @@ export function Navigation() {
     to === '/'
       ? pathname === '/'
       : pathname === to || pathname.startsWith(`${to}/`);
+  const dropdownItems = useMemo(
+    () => ({
+      products: products.map((product) => ({
+        label: product.name,
+        href: `/products/${product.slug}`,
+      })),
+      applications: applications.map((application) => ({
+        label: application.name,
+        href: `/applications/${application.slug}`,
+      })),
+    }),
+    [applications, products],
+  );
   const searchEntries = useMemo(
     () =>
       uniqueSearchEntries([
@@ -328,19 +544,36 @@ export function Navigation() {
 
         {/* Desktop */}
         <div className="hidden min-[1200px]:flex items-center gap-3 min-[1360px]:gap-4 min-[1500px]:gap-5">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              href={l.to}
-              data-active={isActive(l.to)}
-              className={`premium-nav-link text-[13px] transition-colors ${
-                isActive(l.to) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
-              }`}
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const items =
+              l.to === '/products'
+                ? dropdownItems.products
+                : l.to === '/applications'
+                  ? dropdownItems.applications
+                  : null;
+
+            return items ? (
+              <DesktopNavigationDropdown
+                key={l.to}
+                label={l.label}
+                href={l.to}
+                items={items}
+                active={isActive(l.to)}
+              />
+            ) : (
+              <Link
+                key={l.to}
+                href={l.to}
+                data-active={isActive(l.to)}
+                className={`premium-nav-link text-[13px] transition-colors ${
+                  isActive(l.to) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
+                }`}
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
           <NavigationSearch
             entries={searchEntries}
             className="w-[9rem] min-[1360px]:w-[11rem] min-[1500px]:w-[13rem]"
@@ -374,20 +607,38 @@ export function Navigation() {
           className="min-[1200px]:hidden border-t border-[#c9a24d]/15 bg-[#080808]/95 px-6 py-5 space-y-3"
         >
           <NavigationSearch entries={searchEntries} onNavigate={() => setOpen(false)} className="mb-4" />
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              href={l.to}
-              onClick={() => setOpen(false)}
-              data-active={isActive(l.to)}
-              className={`premium-nav-link block text-[14px] py-1.5 ${
-                isActive(l.to) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
-              }`}
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const items =
+              l.to === '/products'
+                ? dropdownItems.products
+                : l.to === '/applications'
+                  ? dropdownItems.applications
+                  : null;
+
+            return items ? (
+              <MobileNavigationDropdown
+                key={l.to}
+                label={l.label}
+                href={l.to}
+                items={items}
+                active={isActive(l.to)}
+                onNavigate={() => setOpen(false)}
+              />
+            ) : (
+              <Link
+                key={l.to}
+                href={l.to}
+                onClick={() => setOpen(false)}
+                data-active={isActive(l.to)}
+                className={`premium-nav-link block text-[14px] py-1.5 ${
+                  isActive(l.to) ? 'text-[#f2d78b]' : 'text-[#c0b08a] hover:text-[#f7efdb]'
+                }`}
+                style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
           <Link
             href={navigation.ctaPath}
             onClick={() => setOpen(false)}

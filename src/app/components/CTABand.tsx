@@ -34,20 +34,13 @@ export function CTABand() {
           >
             {homePage.ctaDescription}
           </p>
-          <div className="premium-reveal premium-reveal-delay-2 flex flex-wrap justify-center gap-3 relative z-10">
+          <div className="premium-reveal premium-reveal-delay-2 flex justify-center relative z-10">
             <Link
               href={homePage.ctaPrimaryPath}
               className="premium-primary-btn text-[14px] px-8 py-3 rounded-full"
               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
             >
               {homePage.ctaPrimaryLabel}
-            </Link>
-            <Link
-              href={homePage.ctaSecondaryPath}
-              className="premium-secondary-btn text-[14px] px-8 py-3 rounded-full"
-              style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
-            >
-              {homePage.ctaSecondaryLabel}
             </Link>
           </div>
         </div>

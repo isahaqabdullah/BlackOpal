@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Phone } from 'lucide-react';
 import { useSiteContent } from '../content/SiteContentProvider';
 import { formatPhoneNumbers } from '../utils/phone';
 
@@ -72,27 +73,25 @@ export function Footer() {
                   ))}
                 </p>
                 {footerPhones.length ? (
-                  <div>
-                    <span>{siteSettings.footer.phoneLabel}:</span>
-                    <div className="mt-1 flex flex-col gap-1">
-                      {footerPhones.map((phone) => (
-                        <a
-                          key={phone.href}
-                          href={phone.href}
-                          className="w-fit text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
-                        >
-                          {phone.display}
-                        </a>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+                    {footerPhones.map((phone) => (
+                      <a
+                        key={phone.href}
+                        href={phone.href}
+                        className="inline-flex w-fit items-center gap-2 whitespace-nowrap text-[#f2d78b] transition-colors hover:text-[#fff2bf]"
+                      >
+                        <Phone size={14} strokeWidth={1.8} aria-hidden="true" className="shrink-0" />
+                        <span>{phone.display}</span>
+                      </a>
+                    ))}
                   </div>
                 ) : null}
                 {footerContact.email ? (
-                  <p>
+                  <p className="text-[#f2d78b]">
                     {siteSettings.footer.emailLabel}:{' '}
                     <a
                       href={`mailto:${footerContact.email}`}
-                      className="text-[#f7efdb] transition-colors hover:text-[#f2d78b]"
+                      className="transition-colors hover:text-[#fff2bf]"
                     >
                       {footerContact.email}
                     </a>

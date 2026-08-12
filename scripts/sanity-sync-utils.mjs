@@ -84,6 +84,7 @@ export const cmsDocumentsProjection = `{
       intro,
       highlightsLabel,
       commonUsesLabel,
+      applicationsLabel,
       referencedGradesLabel
     },
     productDetailPage {
@@ -92,6 +93,7 @@ export const cmsDocumentsProjection = `{
       productsBreadcrumbLabel,
       overviewLabel,
       commonUsesLabel,
+      applicationsLabel,
       ctaTitle,
       ctaDescription
     },

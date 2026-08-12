@@ -95,7 +95,7 @@ Cleaner monochrome logo grid with better spacing
 “Need the right activated carbon for your process?”
 Buttons:
 
-Request Quote
+Request Quote/TDS
 Send Technical Inquiry
 10. Footer
 Products
@@ -125,7 +125,7 @@ About
 Production / Manufacturing
 Certifications / Quality
 Newsroom
-Contact / Request Quote
+Contact / Request Quote/TDS
 This is more aligned with the current content than the present single-page density.
 Copy direction
 The current copy is informative but long and sometimes repetitive. A good rewrite should move toward:
@@ -171,5 +171,4 @@ Scale points: established 2010, 2 production centers, 35000 metric tons
 Black Opal Group Headquarters in Pittsburgh, with regional office support
 Primary CTA should be quote/inquiry driven
 I can turn this next into a full page-by-page wireframe outline or actual rewritten website copy for the new design.
-
 

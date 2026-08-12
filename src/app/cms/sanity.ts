@@ -108,6 +108,7 @@ export const siteContentQuery = `{
       intro,
       highlightsLabel,
       commonUsesLabel,
+      applicationsLabel,
       referencedGradesLabel
     },
     productDetailPage {
@@ -116,6 +117,7 @@ export const siteContentQuery = `{
       productsBreadcrumbLabel,
       overviewLabel,
       commonUsesLabel,
+      applicationsLabel,
       ctaTitle,
       ctaDescription
     },
