@@ -138,6 +138,7 @@ type StaticPageMetadata = Omit<SeoMetadata, 'path' | 'breadcrumbs'> & {
   breadcrumbLabel: string;
   seo?: SeoFields;
   preserveTitle?: boolean;
+  preserveImage?: boolean;
 };
 
 function staticPageMetadata(path: string, content: SeoContent): StaticPageMetadata | undefined {
@@ -145,10 +146,12 @@ function staticPageMetadata(path: string, content: SeoContent): StaticPageMetada
     return {
       title: 'Black Opal Carbons | Coconut Shell Activated Carbon Manufacturer',
       description: defaultDescription,
+      image: siteConfig.homePreviewImagePath,
       imageAlt: content.homePage.heroLogoAlt,
       breadcrumbLabel: content.siteSettings.pageIntro.homeLabel,
       seo: content.homePage.seo,
       preserveTitle: true,
+      preserveImage: true,
     };
   }
 
@@ -253,12 +256,12 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
   const staticPage = staticPageMetadata(path, content);
 
   if (staticPage) {
-    const { breadcrumbLabel, seo, preserveTitle, ...pageMetadata } = staticPage;
+    const { breadcrumbLabel, seo, preserveTitle, preserveImage, ...pageMetadata } = staticPage;
 
     const resolved = {
       ...pageMetadata,
       path,
-      image: absoluteUrl(DEFAULT_IMAGE_PATH),
+      image: absoluteUrl(pageMetadata.image || DEFAULT_IMAGE_PATH),
       breadcrumbs:
         path === '/'
           ? [{ name: content.siteSettings.pageIntro.homeLabel, path: content.siteSettings.pageIntro.homePath }]
@@ -267,12 +270,11 @@ export function resolveSeo(pathname: string, content: SeoContent = fallbackSeoCo
 
     const explicitSeo = applyExplicitSeo(resolved, { seo });
 
-    return preserveTitle
-      ? {
-          ...explicitSeo,
-          title: resolved.title,
-        }
-      : explicitSeo;
+    return {
+      ...explicitSeo,
+      ...(preserveTitle ? { title: resolved.title } : {}),
+      ...(preserveImage ? { image: resolved.image } : {}),
+    };
   }
 
   const supplierLandingMatch = path.match(/^\/activated-carbon-suppliers\/([^/]+)$/);
